@@ -2,18 +2,18 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JPanel.java to edit this template
  */
-package Vista;
+package vista;
 
 /**
  *
  * @author brand
  */
-public class Intermedios extends javax.swing.JPanel {
+public class Producto extends javax.swing.JPanel {
 
     /**
      * Creates new form Cliente
      */
-    public Intermedios() {
+    public Producto() {
         initComponents();
     }
 
@@ -30,36 +30,38 @@ public class Intermedios extends javax.swing.JPanel {
         jLabel2 = new javax.swing.JLabel();
         panelRound4 = new extra.PanelRound();
         jLabel3 = new javax.swing.JLabel();
-        Int_Codigo = new javax.swing.JTextField();
+        Pro_Codigo = new javax.swing.JTextField();
         jLabel4 = new javax.swing.JLabel();
-        Int_Nombre = new javax.swing.JTextField();
+        Pro_Nombre = new javax.swing.JTextField();
         jLabel5 = new javax.swing.JLabel();
-        Int_Tipo = new javax.swing.JTextField();
+        Pro_Descripcion = new javax.swing.JTextField();
         jLabel6 = new javax.swing.JLabel();
+        Pro_Precio = new javax.swing.JTextField();
         jLabel7 = new javax.swing.JLabel();
-        Int_Estado = new javax.swing.JTextField();
+        Pro_Tipo = new javax.swing.JTextField();
         jLabel8 = new javax.swing.JLabel();
-        Int_Detalle = new javax.swing.JTextField();
-        Int_FechaRegistro = new com.toedter.calendar.JDateChooser();
+        Pro_TipoProduccion = new javax.swing.JTextField();
+        jLabel9 = new javax.swing.JLabel();
+        Pro_FechaCreacion = new com.toedter.calendar.JDateChooser();
         panelRound5 = new extra.PanelRound();
         jScrollPane1 = new javax.swing.JScrollPane();
-        Tabla_Intermedios = new javax.swing.JTable();
-        Int_Guardar = new RSMaterialComponent.RSButtonMaterialIconDos();
-        Int_Eliminar = new RSMaterialComponent.RSButtonMaterialIconDos();
-        Int_Editar = new RSMaterialComponent.RSButtonMaterialIconDos();
-        lnt_Buscar = new RSMaterialComponent.RSButtonMaterialIconDos();
+        Tabla_Producto = new javax.swing.JTable();
+        Pro_Guardar = new RSMaterialComponent.RSButtonMaterialIconDos();
+        Pro_Eliminar = new RSMaterialComponent.RSButtonMaterialIconDos();
+        Pro_Editar = new RSMaterialComponent.RSButtonMaterialIconDos();
+        Pro_Buscar = new RSMaterialComponent.RSButtonMaterialIconDos();
         rSButtonMaterialIconDos5 = new RSMaterialComponent.RSButtonMaterialIconDos();
 
         setBackground(new java.awt.Color(239, 235, 233));
 
         jLabel1.setBackground(new java.awt.Color(58, 42, 83));
         jLabel1.setFont(new java.awt.Font("Segoe UI Black", 0, 36)); // NOI18N
-        jLabel1.setForeground(new java.awt.Color(61, 77, 33));
-        jLabel1.setText("Registro de Materiales Intermedios");
+        jLabel1.setForeground(new java.awt.Color(38, 7, 6));
+        jLabel1.setText("Registro de Productos");
 
         jLabel2.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
-        jLabel2.setForeground(new java.awt.Color(61, 77, 33));
-        jLabel2.setText("Complete la informacion de los materiales intermedios");
+        jLabel2.setForeground(new java.awt.Color(38, 7, 6));
+        jLabel2.setText("Complete la informacion de los productos");
 
         panelRound4.setBackground(new java.awt.Color(255, 255, 255));
         panelRound4.setRoundBottomLeft(75);
@@ -74,16 +76,19 @@ public class Intermedios extends javax.swing.JPanel {
         jLabel4.setText("Nombre:");
 
         jLabel5.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
-        jLabel5.setText("Tipo:");
+        jLabel5.setText("Descripcion:");
 
         jLabel6.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
-        jLabel6.setText("Fecha Registro:");
+        jLabel6.setText("Precio:");
 
         jLabel7.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
-        jLabel7.setText("Estado:");
+        jLabel7.setText("Tipo:");
 
         jLabel8.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
-        jLabel8.setText("Detalle:");
+        jLabel8.setText("Tipo Produccion:");
+
+        jLabel9.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        jLabel9.setText("Fecha Creacion:");
 
         javax.swing.GroupLayout panelRound4Layout = new javax.swing.GroupLayout(panelRound4);
         panelRound4.setLayout(panelRound4Layout);
@@ -92,18 +97,20 @@ public class Intermedios extends javax.swing.JPanel {
             .addGroup(panelRound4Layout.createSequentialGroup()
                 .addGap(31, 31, 31)
                 .addGroup(panelRound4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(Int_Detalle, javax.swing.GroupLayout.DEFAULT_SIZE, 252, Short.MAX_VALUE)
+                    .addComponent(jLabel9)
+                    .addComponent(Pro_TipoProduccion, javax.swing.GroupLayout.DEFAULT_SIZE, 252, Short.MAX_VALUE)
                     .addComponent(jLabel8)
-                    .addComponent(Int_Estado, javax.swing.GroupLayout.DEFAULT_SIZE, 252, Short.MAX_VALUE)
+                    .addComponent(Pro_Tipo, javax.swing.GroupLayout.DEFAULT_SIZE, 252, Short.MAX_VALUE)
                     .addComponent(jLabel7)
+                    .addComponent(Pro_Precio, javax.swing.GroupLayout.DEFAULT_SIZE, 252, Short.MAX_VALUE)
                     .addComponent(jLabel6)
-                    .addComponent(Int_Tipo, javax.swing.GroupLayout.DEFAULT_SIZE, 252, Short.MAX_VALUE)
+                    .addComponent(Pro_Descripcion, javax.swing.GroupLayout.DEFAULT_SIZE, 252, Short.MAX_VALUE)
                     .addComponent(jLabel5)
-                    .addComponent(Int_Nombre, javax.swing.GroupLayout.DEFAULT_SIZE, 252, Short.MAX_VALUE)
+                    .addComponent(Pro_Nombre, javax.swing.GroupLayout.DEFAULT_SIZE, 252, Short.MAX_VALUE)
                     .addComponent(jLabel4)
                     .addComponent(jLabel3)
-                    .addComponent(Int_Codigo, javax.swing.GroupLayout.DEFAULT_SIZE, 252, Short.MAX_VALUE)
-                    .addComponent(Int_FechaRegistro, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(Pro_Codigo, javax.swing.GroupLayout.DEFAULT_SIZE, 252, Short.MAX_VALUE)
+                    .addComponent(Pro_FechaCreacion, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap(40, Short.MAX_VALUE))
         );
         panelRound4Layout.setVerticalGroup(
@@ -112,28 +119,32 @@ public class Intermedios extends javax.swing.JPanel {
                 .addGap(24, 24, 24)
                 .addComponent(jLabel3)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(Int_Codigo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(Pro_Codigo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jLabel4)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(Int_Nombre, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(Pro_Nombre, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jLabel5)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(Int_Tipo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(Pro_Descripcion, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jLabel6)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(Int_FechaRegistro, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(Pro_Precio, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jLabel7)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(Int_Estado, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(Pro_Tipo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jLabel8)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(Int_Detalle, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(38, Short.MAX_VALUE))
+                .addComponent(Pro_TipoProduccion, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jLabel9)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(Pro_FechaCreacion, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(37, Short.MAX_VALUE))
         );
 
         panelRound5.setBackground(new java.awt.Color(255, 255, 255));
@@ -142,15 +153,15 @@ public class Intermedios extends javax.swing.JPanel {
         panelRound5.setRoundTopLeft(75);
         panelRound5.setRoundTopRight(75);
 
-        Tabla_Intermedios.setModel(new javax.swing.table.DefaultTableModel(
+        Tabla_Producto.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
             },
             new String [] {
-                "Codigo", "Nombre", "Tipo", "Fecha Registro", "Estado", "Detalle"
+                "Codigo", "Nombre", "Descripcion", "Precio", "Tipo", "Tipo Produccion", "Fecha Creacion"
             }
         ));
-        jScrollPane1.setViewportView(Tabla_Intermedios);
+        jScrollPane1.setViewportView(Tabla_Producto);
 
         javax.swing.GroupLayout panelRound5Layout = new javax.swing.GroupLayout(panelRound5);
         panelRound5.setLayout(panelRound5Layout);
@@ -159,7 +170,7 @@ public class Intermedios extends javax.swing.JPanel {
             .addGroup(panelRound5Layout.createSequentialGroup()
                 .addGap(36, 36, 36)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 769, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(35, Short.MAX_VALUE))
+                .addContainerGap(34, Short.MAX_VALUE))
         );
         panelRound5Layout.setVerticalGroup(
             panelRound5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -169,44 +180,44 @@ public class Intermedios extends javax.swing.JPanel {
                 .addContainerGap(34, Short.MAX_VALUE))
         );
 
-        Int_Guardar.setBackground(new java.awt.Color(61, 77, 33));
-        Int_Guardar.setText("Guardar");
-        Int_Guardar.setIcons(rojeru_san.efectos.ValoresEnum.ICONS.SAVE);
-        Int_Guardar.addActionListener(new java.awt.event.ActionListener() {
+        Pro_Guardar.setBackground(new java.awt.Color(38, 7, 6));
+        Pro_Guardar.setText("Guardar");
+        Pro_Guardar.setIcons(rojeru_san.efectos.ValoresEnum.ICONS.SAVE);
+        Pro_Guardar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                Int_GuardarActionPerformed(evt);
+                Pro_GuardarActionPerformed(evt);
             }
         });
 
-        Int_Eliminar.setBackground(new java.awt.Color(61, 77, 33));
-        Int_Eliminar.setText("Eliminar");
-        Int_Eliminar.setIcons(rojeru_san.efectos.ValoresEnum.ICONS.DELETE);
-        Int_Eliminar.addActionListener(new java.awt.event.ActionListener() {
+        Pro_Eliminar.setBackground(new java.awt.Color(38, 7, 6));
+        Pro_Eliminar.setText("Eliminar");
+        Pro_Eliminar.setIcons(rojeru_san.efectos.ValoresEnum.ICONS.DELETE);
+        Pro_Eliminar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                Int_EliminarActionPerformed(evt);
+                Pro_EliminarActionPerformed(evt);
             }
         });
 
-        Int_Editar.setBackground(new java.awt.Color(61, 77, 33));
-        Int_Editar.setText("Editar");
-        Int_Editar.setIcons(rojeru_san.efectos.ValoresEnum.ICONS.EDIT);
-        Int_Editar.addActionListener(new java.awt.event.ActionListener() {
+        Pro_Editar.setBackground(new java.awt.Color(38, 7, 6));
+        Pro_Editar.setText("Editar");
+        Pro_Editar.setIcons(rojeru_san.efectos.ValoresEnum.ICONS.EDIT);
+        Pro_Editar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                Int_EditarActionPerformed(evt);
+                Pro_EditarActionPerformed(evt);
             }
         });
 
-        lnt_Buscar.setBackground(new java.awt.Color(61, 77, 33));
-        lnt_Buscar.setText("Buscar");
-        lnt_Buscar.setIcons(rojeru_san.efectos.ValoresEnum.ICONS.SEARCH);
-        lnt_Buscar.addActionListener(new java.awt.event.ActionListener() {
+        Pro_Buscar.setBackground(new java.awt.Color(38, 7, 6));
+        Pro_Buscar.setText("Buscar");
+        Pro_Buscar.setIcons(rojeru_san.efectos.ValoresEnum.ICONS.SEARCH);
+        Pro_Buscar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                lnt_BuscarActionPerformed(evt);
+                Pro_BuscarActionPerformed(evt);
             }
         });
 
-        rSButtonMaterialIconDos5.setBackground(new java.awt.Color(61, 77, 33));
-        rSButtonMaterialIconDos5.setIcons(rojeru_san.efectos.ValoresEnum.ICONS.GROUP_ADD);
+        rSButtonMaterialIconDos5.setBackground(new java.awt.Color(38, 7, 6));
+        rSButtonMaterialIconDos5.setIcons(rojeru_san.efectos.ValoresEnum.ICONS.DASHBOARD);
         rSButtonMaterialIconDos5.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 rSButtonMaterialIconDos5ActionPerformed(evt);
@@ -221,27 +232,26 @@ public class Intermedios extends javax.swing.JPanel {
                 .addGap(24, 24, 24)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                .addGroup(layout.createSequentialGroup()
-                                    .addComponent(Int_Editar, javax.swing.GroupLayout.PREFERRED_SIZE, 151, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 21, Short.MAX_VALUE)
-                                    .addComponent(lnt_Buscar, javax.swing.GroupLayout.PREFERRED_SIZE, 151, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addGroup(layout.createSequentialGroup()
-                                    .addComponent(Int_Guardar, javax.swing.GroupLayout.PREFERRED_SIZE, 151, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                    .addComponent(Int_Eliminar, javax.swing.GroupLayout.PREFERRED_SIZE, 151, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                            .addComponent(panelRound4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(360, 360, 360))
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(Pro_Eliminar, javax.swing.GroupLayout.PREFERRED_SIZE, 151, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(Pro_Guardar, javax.swing.GroupLayout.PREFERRED_SIZE, 151, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(panelRound4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
+                                .addComponent(Pro_Editar, javax.swing.GroupLayout.PREFERRED_SIZE, 151, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(Pro_Buscar, javax.swing.GroupLayout.PREFERRED_SIZE, 151, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addGap(131, 131, 131))
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(rSButtonMaterialIconDos5, javax.swing.GroupLayout.PREFERRED_SIZE, 77, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jLabel2)
                             .addComponent(jLabel1))))
-                .addContainerGap(538, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGap(82, 404, Short.MAX_VALUE)
                 .addComponent(panelRound5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(26, 26, 26))
         );
@@ -259,35 +269,34 @@ public class Intermedios extends javax.swing.JPanel {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(panelRound5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(14, 14, 14)
                         .addComponent(panelRound4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(26, 26, 26)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(Pro_Guardar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(Pro_Eliminar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(18, 18, 18)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(Int_Guardar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(Int_Eliminar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(18, 18, 18)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(Int_Editar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(lnt_Buscar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                            .addComponent(Pro_Editar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(Pro_Buscar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
                 .addContainerGap(36, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
 
-    private void Int_GuardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Int_GuardarActionPerformed
+    private void Pro_GuardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Pro_GuardarActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_Int_GuardarActionPerformed
+    }//GEN-LAST:event_Pro_GuardarActionPerformed
 
-    private void Int_EliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Int_EliminarActionPerformed
+    private void Pro_EliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Pro_EliminarActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_Int_EliminarActionPerformed
+    }//GEN-LAST:event_Pro_EliminarActionPerformed
 
-    private void Int_EditarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Int_EditarActionPerformed
+    private void Pro_EditarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Pro_EditarActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_Int_EditarActionPerformed
+    }//GEN-LAST:event_Pro_EditarActionPerformed
 
-    private void lnt_BuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_lnt_BuscarActionPerformed
+    private void Pro_BuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Pro_BuscarActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_lnt_BuscarActionPerformed
+    }//GEN-LAST:event_Pro_BuscarActionPerformed
 
     private void rSButtonMaterialIconDos5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rSButtonMaterialIconDos5ActionPerformed
         // TODO add your handling code here:
@@ -295,16 +304,18 @@ public class Intermedios extends javax.swing.JPanel {
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JTextField Int_Codigo;
-    private javax.swing.JTextField Int_Detalle;
-    private RSMaterialComponent.RSButtonMaterialIconDos Int_Editar;
-    private RSMaterialComponent.RSButtonMaterialIconDos Int_Eliminar;
-    private javax.swing.JTextField Int_Estado;
-    private com.toedter.calendar.JDateChooser Int_FechaRegistro;
-    private RSMaterialComponent.RSButtonMaterialIconDos Int_Guardar;
-    private javax.swing.JTextField Int_Nombre;
-    private javax.swing.JTextField Int_Tipo;
-    private javax.swing.JTable Tabla_Intermedios;
+    private RSMaterialComponent.RSButtonMaterialIconDos Pro_Buscar;
+    private javax.swing.JTextField Pro_Codigo;
+    private javax.swing.JTextField Pro_Descripcion;
+    private RSMaterialComponent.RSButtonMaterialIconDos Pro_Editar;
+    private RSMaterialComponent.RSButtonMaterialIconDos Pro_Eliminar;
+    private com.toedter.calendar.JDateChooser Pro_FechaCreacion;
+    private RSMaterialComponent.RSButtonMaterialIconDos Pro_Guardar;
+    private javax.swing.JTextField Pro_Nombre;
+    private javax.swing.JTextField Pro_Precio;
+    private javax.swing.JTextField Pro_Tipo;
+    private javax.swing.JTextField Pro_TipoProduccion;
+    private javax.swing.JTable Tabla_Producto;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
@@ -313,8 +324,8 @@ public class Intermedios extends javax.swing.JPanel {
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
+    private javax.swing.JLabel jLabel9;
     private javax.swing.JScrollPane jScrollPane1;
-    private RSMaterialComponent.RSButtonMaterialIconDos lnt_Buscar;
     private extra.PanelRound panelRound4;
     private extra.PanelRound panelRound5;
     private RSMaterialComponent.RSButtonMaterialIconDos rSButtonMaterialIconDos5;

@@ -1,6 +1,6 @@
 package dao;
 
-import Modelo.Empleado;
+import modelo.Empleado;
 import conf.conexion;
 import java.sql.*;
 import java.util.ArrayList;

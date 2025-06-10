@@ -1,11 +1,9 @@
-
-package Modelo;
-
+package modelo;
 /**
  *
  * @author Muaro
  */
-public class Empleado {
+public class Cliente {
     private int codigo;
     private String nombre;
     private String apellido;
@@ -13,14 +11,13 @@ public class Empleado {
     private String direccion;
     private String telefono;
     private String correo;
-    private String contraseña;
     
     //Algo para el polimorfismo
-    public Empleado() {
+    public Cliente() {
     }
     
-    //Constructor Empleado
-    public Empleado(int codigo, String nombre, String apellido, String dni, String direccion, String telefono, String correo, String contraseña) {
+    //Cliente Constructor
+    public Cliente(int codigo, String nombre, String apellido, String dni, String direccion, String telefono, String correo) {
         this.codigo = codigo;
         this.nombre = nombre;
         this.apellido = apellido;
@@ -28,9 +25,8 @@ public class Empleado {
         this.direccion = direccion;
         this.telefono = telefono;
         this.correo = correo;
-        this.contraseña = contraseña;
     }
-
+    
     //GETTERS Y SETTERS
     public int getCodigo() {
         return codigo;
@@ -86,14 +82,6 @@ public class Empleado {
 
     public void setCorreo(String correo) {
         this.correo = correo;
-    }
-
-    public String getContraseña() {
-        return contraseña;
-    }
-
-    public void setContraseña(String contraseña) {
-        this.contraseña = contraseña;
     }
     
 }

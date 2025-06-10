@@ -1,24 +1,27 @@
-package Vista;
+/*
+ * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
+ * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JPanel.java to edit this template
+ */
+package vista;
 
-import Controlador.ClienteControlador;
-import Modelo.Cliente;   
+import controlador.EmpleadoControlador;
+import modelo.Empleado;
 import java.util.List;
 import javax.swing.table.DefaultTableModel;
-
 
 /**
  *
  * @author brand
  */
-public class ClienteVista extends javax.swing.JPanel {
+public class EmpleadoVista extends javax.swing.JPanel {
 
     /**
      * Creates new form Cliente
      */
-    
-    public ClienteVista() {
+    public EmpleadoVista() {
+    //Se cargaran los empleados al abrir el frame
         initComponents();
-        mostrarClientesEnTabla();
+        mostrarEmpledosEnTabla();
     }
 
     /**
@@ -48,9 +51,11 @@ public class ClienteVista extends javax.swing.JPanel {
         Cl_Telefono = new javax.swing.JTextField();
         jLabel9 = new javax.swing.JLabel();
         Cl_Correo = new javax.swing.JTextField();
+        jLabel10 = new javax.swing.JLabel();
+        Cl_Contraseña = new javax.swing.JTextField();
         panelRound5 = new extra.PanelRound();
         jScrollPane1 = new javax.swing.JScrollPane();
-        Tabla_Clientes = new javax.swing.JTable();
+        Tabla_Empleados = new javax.swing.JTable();
         Cl_Guardar = new RSMaterialComponent.RSButtonMaterialIconDos();
         Cl_Eliminar = new RSMaterialComponent.RSButtonMaterialIconDos();
         Cl_Editar = new RSMaterialComponent.RSButtonMaterialIconDos();
@@ -64,11 +69,11 @@ public class ClienteVista extends javax.swing.JPanel {
         jLabel1.setBackground(new java.awt.Color(58, 42, 83));
         jLabel1.setFont(new java.awt.Font("Segoe UI Black", 0, 36)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(58, 42, 83));
-        jLabel1.setText("Registro de Clientes");
+        jLabel1.setText("Registro de Empleados");
 
         jLabel2.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         jLabel2.setForeground(new java.awt.Color(58, 42, 83));
-        jLabel2.setText("Complete la informacion de los clientes");
+        jLabel2.setText("Complete la informacion de los Empleados");
 
         panelRound4.setBackground(new java.awt.Color(255, 255, 255));
         panelRound4.setRoundBottomLeft(75);
@@ -78,6 +83,12 @@ public class ClienteVista extends javax.swing.JPanel {
 
         jLabel3.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         jLabel3.setText("Codigo:");
+
+        Cl_Codigo.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                Cl_CodigoActionPerformed(evt);
+            }
+        });
 
         jLabel4.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         jLabel4.setText("Nombres:");
@@ -95,7 +106,10 @@ public class ClienteVista extends javax.swing.JPanel {
         jLabel8.setText("Telefono:");
 
         jLabel9.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
-        jLabel9.setText("Correo:");
+        jLabel9.setText("Contraseña:");
+
+        jLabel10.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        jLabel10.setText("Correo:");
 
         javax.swing.GroupLayout panelRound4Layout = new javax.swing.GroupLayout(panelRound4);
         panelRound4.setLayout(panelRound4Layout);
@@ -104,6 +118,8 @@ public class ClienteVista extends javax.swing.JPanel {
             .addGroup(panelRound4Layout.createSequentialGroup()
                 .addGap(31, 31, 31)
                 .addGroup(panelRound4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(Cl_Contraseña, javax.swing.GroupLayout.PREFERRED_SIZE, 252, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel10)
                     .addComponent(Cl_Correo, javax.swing.GroupLayout.PREFERRED_SIZE, 252, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel9)
                     .addComponent(Cl_Telefono, javax.swing.GroupLayout.PREFERRED_SIZE, 252, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -141,17 +157,21 @@ public class ClienteVista extends javax.swing.JPanel {
                 .addComponent(Cl_Dni, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jLabel7)
-                .addGap(32, 32, 32)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(Cl_Direccion, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jLabel8)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(Cl_Telefono, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jLabel9)
+                .addComponent(jLabel10)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(Cl_Correo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(37, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jLabel9)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(Cl_Contraseña, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(19, Short.MAX_VALUE))
         );
 
         panelRound5.setBackground(new java.awt.Color(255, 255, 255));
@@ -160,15 +180,15 @@ public class ClienteVista extends javax.swing.JPanel {
         panelRound5.setRoundTopLeft(75);
         panelRound5.setRoundTopRight(75);
 
-        Tabla_Clientes.setModel(new javax.swing.table.DefaultTableModel(
+        Tabla_Empleados.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
             },
             new String [] {
-                "Codigo", "Nombres", "Apellidos", "Dni", "Direccion", "Telefono", "Correo"
+                "Codigo", "Nombres", "Apellidos", "Dni", "Direccion", "Telefono", "Correo", "Contraseña"
             }
         ));
-        jScrollPane1.setViewportView(Tabla_Clientes);
+        jScrollPane1.setViewportView(Tabla_Empleados);
 
         javax.swing.GroupLayout panelRound5Layout = new javax.swing.GroupLayout(panelRound5);
         panelRound5.setLayout(panelRound5Layout);
@@ -231,7 +251,7 @@ public class ClienteVista extends javax.swing.JPanel {
                 .addGap(24, 24, 24)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                             .addGroup(layout.createSequentialGroup()
                                 .addComponent(rSButtonMaterialIconDos1, javax.swing.GroupLayout.PREFERRED_SIZE, 77, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -239,20 +259,20 @@ public class ClienteVista extends javax.swing.JPanel {
                                     .addComponent(jLabel2)
                                     .addComponent(jLabel1)))
                             .addGroup(layout.createSequentialGroup()
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addGroup(layout.createSequentialGroup()
                                         .addComponent(Cl_Editar, javax.swing.GroupLayout.PREFERRED_SIZE, 151, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                         .addComponent(Cl_Buscar, javax.swing.GroupLayout.PREFERRED_SIZE, 151, javax.swing.GroupLayout.PREFERRED_SIZE))
                                     .addGroup(layout.createSequentialGroup()
                                         .addComponent(Cl_Guardar, javax.swing.GroupLayout.PREFERRED_SIZE, 151, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                        .addComponent(Cl_Eliminar, javax.swing.GroupLayout.PREFERRED_SIZE, 151, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                    .addComponent(panelRound4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addGap(89, 89, 89)))
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                        .addComponent(Cl_Eliminar, javax.swing.GroupLayout.PREFERRED_SIZE, 151, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                .addGap(161, 161, 161)))
                         .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(0, 380, Short.MAX_VALUE)
+                        .addComponent(panelRound4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 42, Short.MAX_VALUE)
                         .addComponent(panelRound5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(26, 26, 26))))
         );
@@ -271,11 +291,11 @@ public class ClienteVista extends javax.swing.JPanel {
                     .addComponent(panelRound5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(panelRound4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(26, 26, 26)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(Cl_Guardar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(Cl_Eliminar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(18, 18, 18)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(Cl_Editar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(Cl_Buscar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
@@ -298,18 +318,24 @@ public class ClienteVista extends javax.swing.JPanel {
     private void Cl_BuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Cl_BuscarActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_Cl_BuscarActionPerformed
-    
-    private void mostrarClientesEnTabla() {
-    //Instanciamos lel controlador y la lista
-        ClienteControlador controlador = new ClienteControlador();
-        List<Cliente> lista = controlador.obtenerClientes();
 
-    // Obtenemos el modelo de la tabla
-        DefaultTableModel modelo = (DefaultTableModel) Tabla_Clientes.getModel();
+    private void Cl_CodigoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Cl_CodigoActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_Cl_CodigoActionPerformed
+    /*
+    *Codigo by Mauro
+    *@author Mauro
+    */
+    private void mostrarEmpledosEnTabla() {
+        EmpleadoControlador controlador = new EmpleadoControlador();
+        List<Empleado> lista = controlador.obtenerEmpleados();
+
+        // Obtenemos el modelo de la tabla
+        DefaultTableModel modelo = (DefaultTableModel) Tabla_Empleados.getModel();
         modelo.setRowCount(0); // Limpiar filas anteriores
 
-    // Agregamos cada cliente al modelo
-        for (Cliente c : lista) {
+        // Agregamos cada cliente al modelo
+        for (Empleado c : lista) {
             modelo.addRow(new Object[]{
                 c.getCodigo(),
                 c.getNombre(),
@@ -317,7 +343,8 @@ public class ClienteVista extends javax.swing.JPanel {
                 c.getDni(),
                 c.getDireccion(),
                 c.getTelefono(),
-                c.getCorreo()
+                c.getCorreo(),
+                c.getContraseña()
             });
         }
     }
@@ -326,6 +353,7 @@ public class ClienteVista extends javax.swing.JPanel {
     private javax.swing.JTextField Cl_Apellidos;
     private RSMaterialComponent.RSButtonMaterialIconDos Cl_Buscar;
     private javax.swing.JTextField Cl_Codigo;
+    private javax.swing.JTextField Cl_Contraseña;
     private javax.swing.JTextField Cl_Correo;
     private javax.swing.JTextField Cl_Direccion;
     private javax.swing.JTextField Cl_Dni;
@@ -334,8 +362,9 @@ public class ClienteVista extends javax.swing.JPanel {
     private RSMaterialComponent.RSButtonMaterialIconDos Cl_Guardar;
     private javax.swing.JTextField Cl_Nombre;
     private javax.swing.JTextField Cl_Telefono;
-    private javax.swing.JTable Tabla_Clientes;
+    private javax.swing.JTable Tabla_Empleados;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
@@ -349,8 +378,4 @@ public class ClienteVista extends javax.swing.JPanel {
     private extra.PanelRound panelRound5;
     private RSMaterialComponent.RSButtonMaterialIconDos rSButtonMaterialIconDos1;
     // End of variables declaration//GEN-END:variables
-
-    public void setCodigo(int aInt) {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
-    }
 }

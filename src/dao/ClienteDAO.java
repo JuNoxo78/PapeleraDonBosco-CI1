@@ -3,7 +3,7 @@ package dao;
  *
  * @author Muaro
  */
-import Modelo.Cliente;
+import modelo.Cliente;
 import conf.conexion;
 import java.sql.*;
 import java.util.ArrayList;

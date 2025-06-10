@@ -1,9 +1,9 @@
-package Controlador;
+package controlador;
 /**
  *
  * @author Muaro
  */
-import Modelo.Empleado;
+import modelo.Empleado;
 import dao.EmpleadoDAO;
 import java.util.List;
 

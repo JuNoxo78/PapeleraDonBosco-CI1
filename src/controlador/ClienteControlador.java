@@ -1,9 +1,9 @@
-package Controlador;
+package controlador;
 /**
  *
  * @author Muaro
  */
-import Modelo.Cliente;
+import modelo.Cliente;
 import dao.ClienteDAO;
 import java.util.List;
 

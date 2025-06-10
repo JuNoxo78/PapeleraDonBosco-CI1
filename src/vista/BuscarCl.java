@@ -2,15 +2,15 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
  */
-package Vista;
+package vista;
 
 /**
  *
  * @author brand
  */
-public class BuscarPro extends javax.swing.JFrame {
+public class BuscarCl extends javax.swing.JFrame {
 
-    public BuscarPro() {
+    public BuscarCl() {
         initComponents();
         this.setLocationRelativeTo(null);
     }
@@ -27,14 +27,16 @@ public class BuscarPro extends javax.swing.JFrame {
         jPanel1 = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
         jTable1 = new javax.swing.JTable();
-        Pro_Close = new RSMaterialComponent.RSButtonMaterialIconDos();
-        Pro_Buscar = new RSMaterialComponent.RSButtonMaterialIconDos();
+        Cl_Close = new RSMaterialComponent.RSButtonMaterialIconDos();
+        Cl_Buscar = new RSMaterialComponent.RSButtonMaterialIconDos();
+        P_CodCl3 = new javax.swing.JTextField();
         P_CodCl2 = new javax.swing.JTextField();
         P_CodCl1 = new javax.swing.JTextField();
         P_CodCl = new javax.swing.JTextField();
         jLabel6 = new javax.swing.JLabel();
         jLabel7 = new javax.swing.JLabel();
         jLabel8 = new javax.swing.JLabel();
+        jLabel9 = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -46,26 +48,26 @@ public class BuscarPro extends javax.swing.JFrame {
 
             },
             new String [] {
-                "Codigo", "Stock", "Producto"
+                "Codigo", "Dni", "Nombres", "Apellidos"
             }
         ));
         jScrollPane1.setViewportView(jTable1);
 
-        Pro_Close.setBackground(new java.awt.Color(38, 7, 6));
-        Pro_Close.setText("Close");
-        Pro_Close.setIcons(rojeru_san.efectos.ValoresEnum.ICONS.CLOSE);
-        Pro_Close.addActionListener(new java.awt.event.ActionListener() {
+        Cl_Close.setBackground(new java.awt.Color(58, 42, 83));
+        Cl_Close.setText("Close");
+        Cl_Close.setIcons(rojeru_san.efectos.ValoresEnum.ICONS.CLOSE);
+        Cl_Close.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                Pro_CloseActionPerformed(evt);
+                Cl_CloseActionPerformed(evt);
             }
         });
 
-        Pro_Buscar.setBackground(new java.awt.Color(38, 7, 6));
-        Pro_Buscar.setText("Buscar");
-        Pro_Buscar.setIcons(rojeru_san.efectos.ValoresEnum.ICONS.SEARCH);
-        Pro_Buscar.addActionListener(new java.awt.event.ActionListener() {
+        Cl_Buscar.setBackground(new java.awt.Color(58, 42, 83));
+        Cl_Buscar.setText("Buscar");
+        Cl_Buscar.setIcons(rojeru_san.efectos.ValoresEnum.ICONS.SEARCH);
+        Cl_Buscar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                Pro_BuscarActionPerformed(evt);
+                Cl_BuscarActionPerformed(evt);
             }
         });
 
@@ -73,15 +75,18 @@ public class BuscarPro extends javax.swing.JFrame {
         jLabel6.setText("Codigo:");
 
         jLabel7.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
-        jLabel7.setText("Stock:");
+        jLabel7.setText("Dni:");
 
         jLabel8.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
-        jLabel8.setText("Producto:");
+        jLabel8.setText("Nombres:");
 
-        jLabel1.setBackground(new java.awt.Color(38, 7, 6));
+        jLabel9.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        jLabel9.setText("Apellidos:");
+
+        jLabel1.setBackground(new java.awt.Color(58, 42, 83));
         jLabel1.setFont(new java.awt.Font("Segoe UI Black", 0, 30)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(0, 12, 26));
-        jLabel1.setText("Datos del Producto");
+        jLabel1.setText("Datos del Cliente");
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -104,14 +109,18 @@ public class BuscarPro extends javax.swing.JFrame {
                                 .addGap(18, 18, 18)
                                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(jLabel8)
-                                    .addComponent(P_CodCl2, javax.swing.GroupLayout.PREFERRED_SIZE, 198, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                        .addContainerGap(341, Short.MAX_VALUE))
+                                    .addComponent(P_CodCl2, javax.swing.GroupLayout.PREFERRED_SIZE, 198, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addGap(18, 18, 18)
+                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(jLabel9)
+                                    .addComponent(P_CodCl3, javax.swing.GroupLayout.PREFERRED_SIZE, 198, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 766, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 29, Short.MAX_VALUE)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(Pro_Buscar, javax.swing.GroupLayout.PREFERRED_SIZE, 151, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(Pro_Close, javax.swing.GroupLayout.PREFERRED_SIZE, 151, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(Cl_Buscar, javax.swing.GroupLayout.PREFERRED_SIZE, 151, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(Cl_Close, javax.swing.GroupLayout.PREFERRED_SIZE, 151, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(25, 25, 25))))
         );
         jPanel1Layout.setVerticalGroup(
@@ -134,16 +143,20 @@ public class BuscarPro extends javax.swing.JFrame {
                             .addGroup(jPanel1Layout.createSequentialGroup()
                                 .addComponent(jLabel7)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(P_CodCl1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))))
+                                .addComponent(P_CodCl1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addComponent(jLabel9)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(P_CodCl3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(18, 18, 18)
                         .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 232, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(48, 48, 48)
-                        .addComponent(Pro_Buscar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(Cl_Buscar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
-                        .addComponent(Pro_Close, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addComponent(Cl_Close, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap(28, Short.MAX_VALUE))
         );
 
@@ -161,13 +174,13 @@ public class BuscarPro extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void Pro_CloseActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Pro_CloseActionPerformed
+    private void Cl_CloseActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Cl_CloseActionPerformed
         dispose();
-    }//GEN-LAST:event_Pro_CloseActionPerformed
+    }//GEN-LAST:event_Cl_CloseActionPerformed
 
-    private void Pro_BuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Pro_BuscarActionPerformed
+    private void Cl_BuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Cl_BuscarActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_Pro_BuscarActionPerformed
+    }//GEN-LAST:event_Cl_BuscarActionPerformed
 
     /**
      * @param args the command line arguments
@@ -186,35 +199,36 @@ public class BuscarPro extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(BuscarPro.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(BuscarCl.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(BuscarPro.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(BuscarCl.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(BuscarPro.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(BuscarCl.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(BuscarPro.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(BuscarCl.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
-        //</editor-fold>
         //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new BuscarPro().setVisible(true);
+                new BuscarCl().setVisible(true);
             }
         });
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private RSMaterialComponent.RSButtonMaterialIconDos Cl_Buscar;
+    private RSMaterialComponent.RSButtonMaterialIconDos Cl_Close;
     private javax.swing.JTextField P_CodCl;
     private javax.swing.JTextField P_CodCl1;
     private javax.swing.JTextField P_CodCl2;
-    private RSMaterialComponent.RSButtonMaterialIconDos Pro_Buscar;
-    private RSMaterialComponent.RSButtonMaterialIconDos Pro_Close;
+    private javax.swing.JTextField P_CodCl3;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
+    private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTable jTable1;
