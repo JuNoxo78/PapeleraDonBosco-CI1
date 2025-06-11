@@ -1,43 +1,54 @@
-
 package modelo;
 
-/**
- *
- * @author Muaro
- */
 public class Empleado {
-    private int codigo;
+    private String idEmpleado;
+    private String idDocIdentidad;
     private String nombre;
     private String apellido;
-    private String dni;
     private String direccion;
     private String telefono;
     private String correo;
     private String contraseña;
-    
-    //Algo para el polimorfismo
+    private String idRol;
+    private Boolean estado;
+    private String empleadocol; // No se especifica su propósito en el script, pero se respeta
+
+    // Constructor vacío
     public Empleado() {
     }
-    
-    //Constructor Empleado
-    public Empleado(int codigo, String nombre, String apellido, String dni, String direccion, String telefono, String correo, String contraseña) {
-        this.codigo = codigo;
+
+    // Constructor completo
+    public Empleado(String idEmpleado, String idDocIdentidad, String nombre, String apellido,
+                    String direccion, String telefono, String correo, String contraseña,
+                    String idRol, Boolean estado, String empleadocol) {
+        this.idEmpleado = idEmpleado;
+        this.idDocIdentidad = idDocIdentidad;
         this.nombre = nombre;
         this.apellido = apellido;
-        this.dni = dni;
         this.direccion = direccion;
         this.telefono = telefono;
         this.correo = correo;
         this.contraseña = contraseña;
+        this.idRol = idRol;
+        this.estado = estado;
+        this.empleadocol = empleadocol;
     }
 
-    //GETTERS Y SETTERS
-    public int getCodigo() {
-        return codigo;
+    // Getters y setters
+    public String getIdEmpleado() {
+        return idEmpleado;
     }
 
-    public void setCodigo(int codigo) {
-        this.codigo = codigo;
+    public void setIdEmpleado(String idEmpleado) {
+        this.idEmpleado = idEmpleado;
+    }
+
+    public String getIdDocIdentidad() {
+        return idDocIdentidad;
+    }
+
+    public void setIdDocIdentidad(String idDocIdentidad) {
+        this.idDocIdentidad = idDocIdentidad;
     }
 
     public String getNombre() {
@@ -54,14 +65,6 @@ public class Empleado {
 
     public void setApellido(String apellido) {
         this.apellido = apellido;
-    }
-
-    public String getDni() {
-        return dni;
-    }
-
-    public void setDni(String dni) {
-        this.dni = dni;
     }
 
     public String getDireccion() {
@@ -95,5 +98,52 @@ public class Empleado {
     public void setContraseña(String contraseña) {
         this.contraseña = contraseña;
     }
-    
+
+    public String getIdRol() {
+        return idRol;
+    }
+
+    public void setIdRol(String idRol) {
+        this.idRol = idRol;
+    }
+
+    public Boolean getEstado() {
+        return estado;
+    }
+
+    public void setEstado(Boolean estado) {
+        this.estado = estado;
+    }
+
+    public String getEmpleadocol() {
+        return empleadocol;
+    }
+
+    public void setEmpleadocol(String empleadocol) {
+        this.empleadocol = empleadocol;
+    }
+
+    // Validación básica
+    public boolean isValid() {
+        return idEmpleado != null && !idEmpleado.isBlank()
+            && idDocIdentidad != null && !idDocIdentidad.isBlank();
+    }
+
+    // Método toString
+    @Override
+    public String toString() {
+        return "Empleado{" +
+                "idEmpleado='" + idEmpleado + '\'' +
+                ", idDocIdentidad='" + idDocIdentidad + '\'' +
+                ", nombre='" + nombre + '\'' +
+                ", apellido='" + apellido + '\'' +
+                ", direccion='" + direccion + '\'' +
+                ", telefono='" + telefono + '\'' +
+                ", correo='" + correo + '\'' +
+                ", contraseña='" + contraseña + '\'' +
+                ", idRol='" + idRol + '\'' +
+                ", estado=" + estado +
+                ", empleadocol='" + empleadocol + '\'' +
+                '}';
+    }
 }

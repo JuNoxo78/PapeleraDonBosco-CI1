@@ -1,87 +1,129 @@
 package modelo;
-/**
- *
- * @author Muaro
- */
+
+import java.time.LocalDate;
+
 public class Cliente {
-    private int codigo;
-    private String nombre;
-    private String apellido;
-    private String dni;
-    private String direccion;
-    private String telefono;
-    private String correo;
-    
-    //Algo para el polimorfismo
-    public Cliente() {
-    }
-    
-    //Cliente Constructor
-    public Cliente(int codigo, String nombre, String apellido, String dni, String direccion, String telefono, String correo) {
-        this.codigo = codigo;
-        this.nombre = nombre;
-        this.apellido = apellido;
-        this.dni = dni;
-        this.direccion = direccion;
-        this.telefono = telefono;
-        this.correo = correo;
-    }
-    
-    //GETTERS Y SETTERS
-    public int getCodigo() {
-        return codigo;
-    }
 
-    public void setCodigo(int codigo) {
-        this.codigo = codigo;
-    }
+	private String idCliente;
+	private String idDocIdentidad;
+	private String nombre;
+	private String apellido;
+	private String direccion;
+	private String telefono;
+	private String correo;
+	private Boolean estado;
+	private LocalDate fechaRegistro;
 
-    public String getNombre() {
-        return nombre;
-    }
+	// Constructor vacío
+	public Cliente() {
+	}
 
-    public void setNombre(String nombre) {
-        this.nombre = nombre;
-    }
+	// Constructor con todos los campos
+	public Cliente(String idCliente, String idDocIdentidad, String nombre, String apellido,
+			String direccion, String telefono, String correo, Boolean estado, LocalDate fechaRegistro) {
+		this.idCliente = idCliente;
+		this.idDocIdentidad = idDocIdentidad;
+		this.nombre = nombre;
+		this.apellido = apellido;
+		this.direccion = direccion;
+		this.telefono = telefono;
+		this.correo = correo;
+		this.estado = estado;
+		this.fechaRegistro = fechaRegistro;
+	}
 
-    public String getApellido() {
-        return apellido;
-    }
+	// Getters y Setters
+	public String getIdCliente() {
+		return idCliente;
+	}
 
-    public void setApellido(String apellido) {
-        this.apellido = apellido;
-    }
+	public void setIdCliente(String idCliente) {
+		this.idCliente = idCliente;
+	}
 
-    public String getDni() {
-        return dni;
-    }
+	public String getIdDocIdentidad() {
+		return idDocIdentidad;
+	}
 
-    public void setDni(String dni) {
-        this.dni = dni;
-    }
+	public void setIdDocIdentidad(String idDocIdentidad) {
+		this.idDocIdentidad = idDocIdentidad;
+	}
 
-    public String getDireccion() {
-        return direccion;
-    }
+	public String getNombre() {
+		return nombre;
+	}
 
-    public void setDireccion(String direccion) {
-        this.direccion = direccion;
-    }
+	public void setNombre(String nombre) {
+		this.nombre = nombre;
+	}
 
-    public String getTelefono() {
-        return telefono;
-    }
+	public String getApellido() {
+		return apellido;
+	}
 
-    public void setTelefono(String telefono) {
-        this.telefono = telefono;
-    }
+	public void setApellido(String apellido) {
+		this.apellido = apellido;
+	}
 
-    public String getCorreo() {
-        return correo;
-    }
+	public String getDireccion() {
+		return direccion;
+	}
 
-    public void setCorreo(String correo) {
-        this.correo = correo;
-    }
-    
+	public void setDireccion(String direccion) {
+		this.direccion = direccion;
+	}
+
+	public String getTelefono() {
+		return telefono;
+	}
+
+	public void setTelefono(String telefono) {
+		this.telefono = telefono;
+	}
+
+	public String getCorreo() {
+		return correo;
+	}
+
+	public void setCorreo(String correo) {
+		this.correo = correo;
+	}
+
+	public Boolean getEstado() {
+		return estado;
+	}
+
+	public void setEstado(Boolean estado) {
+		this.estado = estado;
+	}
+
+	public LocalDate getFechaRegistro() {
+		return fechaRegistro;
+	}
+
+	public void setFechaRegistro(LocalDate fechaRegistro) {
+		this.fechaRegistro = fechaRegistro;
+	}
+
+	// Método para validación básica (puedes ampliar según tus reglas de negocio)
+	public boolean isValid() {
+		return idCliente != null && !idCliente.isBlank()
+				&& idDocIdentidad != null && !idDocIdentidad.isBlank();
+	}
+
+	// toString para facilitar la depuración
+	@Override
+	public String toString() {
+		return "Cliente{"
+				+ "idCliente='" + idCliente + '\''
+				+ ", idDocIdentidad='" + idDocIdentidad + '\''
+				+ ", nombre='" + nombre + '\''
+				+ ", apellido='" + apellido + '\''
+				+ ", direccion='" + direccion + '\''
+				+ ", telefono='" + telefono + '\''
+				+ ", correo='" + correo + '\''
+				+ ", estado=" + estado
+				+ ", fechaRegistro=" + fechaRegistro
+				+ '}';
+	}
 }
