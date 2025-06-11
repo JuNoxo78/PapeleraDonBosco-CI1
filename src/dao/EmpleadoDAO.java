@@ -1,7 +1,7 @@
 package dao;
 
 import modelo.Empleado;
-import conf.conexion;
+import conf.Conexion;
 import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
@@ -19,7 +19,7 @@ public class EmpleadoDAO {
     //Codigo sql que se ejecutará en al base de datos para mostrar los datos de la tabla empleado
         String sql = "SELECT * FROM empleado";
 
-        try (Connection con = conexion.conectar();
+        try (Connection con = Conexion.conectar();
              PreparedStatement ps = con.prepareStatement(sql);
              ResultSet rs = ps.executeQuery()) {
             
@@ -41,7 +41,7 @@ public class EmpleadoDAO {
             }
 
         } catch (SQLException e) {
-            System.out.println("❌ Error al obtener los clientes");
+            System.out.println("Error al obtener los clientes");
             e.printStackTrace();
         }
 

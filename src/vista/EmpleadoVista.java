@@ -337,10 +337,10 @@ public class EmpleadoVista extends javax.swing.JPanel {
         // Agregamos cada cliente al modelo
         for (Empleado c : lista) {
             modelo.addRow(new Object[]{
-                c.getCodigo(),
+                //c.getCodigo(),
                 c.getNombre(),
                 c.getApellido(),
-                c.getDni(),
+                //c.getDni(),
                 c.getDireccion(),
                 c.getTelefono(),
                 c.getCorreo(),
