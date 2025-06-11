@@ -1,16 +1,12 @@
 package controlador;
-<<<<<<< Updated upstream
 /**
  *
  * @author Muaro
  */
 
-public class EmpleadoControlador {
-=======
 
 import dao.EmpleadoDAO;
 import modelo.Empleado;
-
 import java.util.List;
 
 public class EmpleadoControlador {
@@ -36,5 +32,4 @@ public class EmpleadoControlador {
 	}
 
 	// Agregar más métodos como registrarEmpleado, modificarEmpleado, eliminarEmpleado, etc.
->>>>>>> Stashed changes
 }
