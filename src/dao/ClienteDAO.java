@@ -42,7 +42,7 @@ public class ClienteDAO {
     public void insertar(Cliente cliente) {
         String sql = "INSERT INTO cliente (idCliente, idDocIdentidad, nombre, apellido, direccion, telefono, correo, estado, fechaRegistro) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)";
 
-        try (Connection con = conexion.conectar();
+        try (Connection con = Conexion.conectar();
              PreparedStatement ps = con.prepareStatement(sql)) {
 
             ps.setString(1, cliente.getIdCliente());
@@ -65,7 +65,7 @@ public class ClienteDAO {
     }
     public boolean actualizarCliente(Cliente cliente) throws SQLException {
         String sql = "UPDATE cliente SET nombre=?, apellido=?, correo=?, telefono=?, direccion=?, estado=? WHERE idCliente=?";
-            try (Connection conexion = new conexion().conectar();
+            try (Connection conexion = new Conexion().conectar();
                  PreparedStatement stmt = conexion.prepareStatement(sql)) {
 
                 stmt.setString(1, cliente.getNombre());

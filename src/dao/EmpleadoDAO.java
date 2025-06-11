@@ -8,16 +8,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class EmpleadoDAO {
-<<<<<<< Updated upstream
-<<<<<<< Updated upstream
-    public List<Empleado> obtenerEmpleados() {
-    //Lista donde se alamacenarán los datos de los empleados
-        List<Empleado> lista = new ArrayList<>();
-        
-    //Codigo sql que se ejecutará en al base de datos para mostrar los datos de la tabla empleado
-        String sql = "SELECT * FROM empleado";
-=======
->>>>>>> Stashed changes
 
 	// Método para obtener todos los empleados desde la base de datos
 	public List<Empleado> obtenerTodos() {
@@ -25,12 +15,6 @@ public class EmpleadoDAO {
 
 		String sql = "SELECT * FROM empleado";
 
-<<<<<<< Updated upstream
-        return lista;
-    }
-=======
->>>>>>> Stashed changes
-=======
 		try (Connection conn = Conexion.conectar(); PreparedStatement stmt = conn.prepareStatement(sql); ResultSet rs = stmt.executeQuery()) {
 
 			while (rs.next()) {
@@ -93,5 +77,4 @@ public class EmpleadoDAO {
 
 		return null;
 	}
->>>>>>> Stashed changes
 }

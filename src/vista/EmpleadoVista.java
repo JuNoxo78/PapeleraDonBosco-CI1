@@ -1,5 +1,10 @@
 package vista;
 
+import controlador.EmpleadoControlador;
+import java.util.List;
+import javax.swing.table.DefaultTableModel;
+import modelo.Empleado;
+
 /**
  *
  * @author brand
@@ -312,11 +317,7 @@ public class EmpleadoVista extends javax.swing.JPanel {
     private void Cl_CodigoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Cl_CodigoActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_Cl_CodigoActionPerformed
-<<<<<<< Updated upstream
-    /*
-    *Codigo by Mauro
-    *@author Mauro
-    */
+
     private void mostrarEmpledosEnTabla() {
         EmpleadoControlador controlador = new EmpleadoControlador();
         List<Empleado> lista = controlador.obtenerEmpleados();
@@ -339,8 +340,6 @@ public class EmpleadoVista extends javax.swing.JPanel {
             });
         }
     }
-=======
->>>>>>> Stashed changes
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JTextField Cl_Apellidos;
