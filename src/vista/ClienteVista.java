@@ -1,8 +1,12 @@
 package vista;
 
 import controlador.ClienteControlador;
+import java.time.LocalDate;
+import java.time.ZoneId;
+import java.util.Date;
 import modelo.Cliente;   
 import java.util.List;
+import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 
 
@@ -19,6 +23,13 @@ public class ClienteVista extends javax.swing.JPanel {
     public ClienteVista() {
         initComponents();
         mostrarClientesEnTabla();
+        //Evita mostrar fechas pasadas y futuras solo la fecha de hoy
+        Date hoy = new Date(); // fecha actual
+           CI_FechaRegistro.setMinSelectableDate(hoy);
+           CI_FechaRegistro.setMaxSelectableDate(hoy);
+           CI_FechaRegistro.setDate(hoy);
+        //Desactiva para modificar la fecha registro
+        CI_FechaRegistro.setEnabled(false);
     }
 
     /**
@@ -39,7 +50,7 @@ public class ClienteVista extends javax.swing.JPanel {
         jLabel4 = new javax.swing.JLabel();
         Cl_DocumentoIdentidad = new javax.swing.JTextField();
         jLabel5 = new javax.swing.JLabel();
-        Cl_Nombre = new javax.swing.JTextField();
+        CL_Nombre = new javax.swing.JTextField();
         jLabel6 = new javax.swing.JLabel();
         Cl_Apellido = new javax.swing.JTextField();
         jLabel7 = new javax.swing.JLabel();
@@ -49,9 +60,10 @@ public class ClienteVista extends javax.swing.JPanel {
         jLabel9 = new javax.swing.JLabel();
         Cl_Correo = new javax.swing.JTextField();
         jLabel10 = new javax.swing.JLabel();
-        Cl_FechaRegistro = new javax.swing.JTextField();
         jLabel11 = new javax.swing.JLabel();
-        Cl_Estado = new javax.swing.JTextField();
+        Cl_CrearDocIdentidad = new RSMaterialComponent.RSButtonMaterialIconDos();
+        ComboEstado = new javax.swing.JComboBox<>();
+        CI_FechaRegistro = new com.toedter.calendar.JDateChooser();
         panelRound5 = new extra.PanelRound();
         jScrollPane1 = new javax.swing.JScrollPane();
         Tabla_Clientes = new javax.swing.JTable();
@@ -104,20 +116,19 @@ public class ClienteVista extends javax.swing.JPanel {
         jLabel10.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         jLabel10.setText("Estado");
 
-        Cl_FechaRegistro.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                Cl_FechaRegistroActionPerformed(evt);
-            }
-        });
-
         jLabel11.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         jLabel11.setText("Fecha Registro:");
 
-        Cl_Estado.addActionListener(new java.awt.event.ActionListener() {
+        Cl_CrearDocIdentidad.setBackground(new java.awt.Color(58, 42, 83));
+        Cl_CrearDocIdentidad.setText("Crear");
+        Cl_CrearDocIdentidad.setIcons(rojeru_san.efectos.ValoresEnum.ICONS.SAVE);
+        Cl_CrearDocIdentidad.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                Cl_EstadoActionPerformed(evt);
+                Cl_CrearDocIdentidadActionPerformed(evt);
             }
         });
+
+        ComboEstado.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Activo", "Inactivo" }));
 
         javax.swing.GroupLayout panelRound4Layout = new javax.swing.GroupLayout(panelRound4);
         panelRound4.setLayout(panelRound4Layout);
@@ -126,11 +137,9 @@ public class ClienteVista extends javax.swing.JPanel {
             .addGroup(panelRound4Layout.createSequentialGroup()
                 .addGap(31, 31, 31)
                 .addGroup(panelRound4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(CI_FechaRegistro, javax.swing.GroupLayout.PREFERRED_SIZE, 252, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel11)
-                    .addComponent(Cl_Estado, javax.swing.GroupLayout.PREFERRED_SIZE, 252, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(Cl_FechaRegistro, javax.swing.GroupLayout.PREFERRED_SIZE, 252, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel10)
-                    .addComponent(Cl_Correo, javax.swing.GroupLayout.PREFERRED_SIZE, 252, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel9)
                     .addComponent(Cl_Telefono, javax.swing.GroupLayout.PREFERRED_SIZE, 252, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel8)
@@ -138,13 +147,20 @@ public class ClienteVista extends javax.swing.JPanel {
                     .addComponent(jLabel7)
                     .addComponent(Cl_Apellido, javax.swing.GroupLayout.PREFERRED_SIZE, 252, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel6)
-                    .addComponent(Cl_Nombre, javax.swing.GroupLayout.PREFERRED_SIZE, 252, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(CL_Nombre, javax.swing.GroupLayout.PREFERRED_SIZE, 252, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel5)
-                    .addComponent(Cl_DocumentoIdentidad, javax.swing.GroupLayout.PREFERRED_SIZE, 252, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel4)
                     .addComponent(jLabel3)
-                    .addComponent(Cl_Codigo, javax.swing.GroupLayout.PREFERRED_SIZE, 252, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(40, Short.MAX_VALUE))
+                    .addGroup(panelRound4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                        .addComponent(ComboEstado, javax.swing.GroupLayout.Alignment.LEADING, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(Cl_Correo, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 252, Short.MAX_VALUE))
+                    .addGroup(panelRound4Layout.createSequentialGroup()
+                        .addGroup(panelRound4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                            .addComponent(Cl_Codigo, javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(Cl_DocumentoIdentidad, javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel4, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(Cl_CrearDocIdentidad, javax.swing.GroupLayout.PREFERRED_SIZE, 91, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         panelRound4Layout.setVerticalGroup(
             panelRound4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -156,11 +172,13 @@ public class ClienteVista extends javax.swing.JPanel {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jLabel4)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(Cl_DocumentoIdentidad, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGroup(panelRound4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(Cl_DocumentoIdentidad, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(Cl_CrearDocIdentidad, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jLabel5)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(Cl_Nombre, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(CL_Nombre, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jLabel6)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -180,11 +198,11 @@ public class ClienteVista extends javax.swing.JPanel {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jLabel10)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(Cl_Estado, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(ComboEstado, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jLabel11)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(Cl_FechaRegistro, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(CI_FechaRegistro, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(18, Short.MAX_VALUE))
         );
 
@@ -270,63 +288,101 @@ public class ClienteVista extends javax.swing.JPanel {
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(24, 24, 24)
+                .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(0, 386, Short.MAX_VALUE)
+                        .addComponent(panelRound5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(26, 26, 26))
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                             .addGroup(layout.createSequentialGroup()
                                 .addComponent(rSButtonMaterialIconDos1, javax.swing.GroupLayout.PREFERRED_SIZE, 77, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jLabel2)
-                                    .addComponent(jLabel1)))
-                            .addGroup(layout.createSequentialGroup()
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                    .addGroup(layout.createSequentialGroup()
-                                        .addComponent(Cl_Editar, javax.swing.GroupLayout.PREFERRED_SIZE, 151, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                        .addComponent(Cl_Buscar, javax.swing.GroupLayout.PREFERRED_SIZE, 151, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                    .addGroup(layout.createSequentialGroup()
-                                        .addComponent(Cl_Guardar, javax.swing.GroupLayout.PREFERRED_SIZE, 151, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                        .addComponent(Cl_Eliminar, javax.swing.GroupLayout.PREFERRED_SIZE, 151, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                    .addComponent(panelRound4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addGap(89, 89, 89)))
-                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(0, 380, Short.MAX_VALUE)
-                        .addComponent(panelRound5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(26, 26, 26))))
+                                    .addComponent(jLabel1)
+                                    .addComponent(jLabel2)))
+                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                .addGroup(layout.createSequentialGroup()
+                                    .addComponent(Cl_Guardar, javax.swing.GroupLayout.PREFERRED_SIZE, 115, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                    .addComponent(Cl_Eliminar, javax.swing.GroupLayout.PREFERRED_SIZE, 108, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                    .addComponent(Cl_Editar, javax.swing.GroupLayout.PREFERRED_SIZE, 108, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                                    .addComponent(panelRound4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addGap(160, 160, 160))))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(Cl_Buscar, javax.swing.GroupLayout.PREFERRED_SIZE, 117, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(56, 56, 56))))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(16, 16, 16)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(jLabel1)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jLabel2))
-                    .addComponent(rSButtonMaterialIconDos1, javax.swing.GroupLayout.PREFERRED_SIZE, 77, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(panelRound5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGroup(layout.createSequentialGroup()
+                        .addGap(16, 16, 16)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(rSButtonMaterialIconDos1, javax.swing.GroupLayout.PREFERRED_SIZE, 77, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(jLabel1)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(jLabel2)))
+                        .addGap(18, 18, 18)
                         .addComponent(panelRound4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(Cl_Eliminar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(Cl_Guardar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(Cl_Eliminar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(18, 18, 18)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(Cl_Editar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(Cl_Buscar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                            .addComponent(Cl_Editar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(95, 95, 95)
+                        .addComponent(Cl_Buscar, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(panelRound5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(50, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
 
     private void Cl_GuardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Cl_GuardarActionPerformed
-        // TODO add your handling code here:
+    // Instanciamos con cliente
+    Cliente cliente = new Cliente();
+
+    // Setear con los datos de los Jtextfield
+    cliente.setIdCliente(Cl_Codigo.getText());
+    cliente.setIdDocIdentidad(Cl_DocumentoIdentidad.getText());
+    cliente.setNombre(CL_Nombre.getText());
+    cliente.setApellido(Cl_Apellido.getText());
+    cliente.setDireccion(Cl_Direccion.getText());
+    cliente.setTelefono(Cl_Telefono.getText());
+    cliente.setCorreo(Cl_Correo.getText());
+
+    // Convertir selección de ComboBox a booleano
+    String estadoSeleccionado = ComboEstado.getSelectedItem().toString();
+    boolean estadoBoolean = estadoSeleccionado.trim().equalsIgnoreCase("Activo");
+    cliente.setEstado(estadoBoolean);
+
+    // Para agregar los datos del jcalendar
+    Date fechaSeleccionada = CI_FechaRegistro.getDate();
+    if (fechaSeleccionada == null) {
+        JOptionPane.showMessageDialog(null, "Selecciona una fecha de registro.");
+        return;
+    }
+    LocalDate fechaRegistro = fechaSeleccionada.toInstant()
+            .atZone(ZoneId.systemDefault())
+            .toLocalDate();
+    if (fechaRegistro.isBefore(LocalDate.now())) {
+        JOptionPane.showMessageDialog(null, "No se permite una fecha de registro anterior a hoy.");
+        return;
+    }
+    cliente.setFechaRegistro(fechaRegistro);
+
+    // Registrar cliente
+    ClienteControlador controlador = new ClienteControlador();
+    controlador.registrarCliente(cliente);
+
+    // Actualizar la tabla después de guardar
+    mostrarClientesEnTabla();
     }//GEN-LAST:event_Cl_GuardarActionPerformed
 
     private void Cl_EliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Cl_EliminarActionPerformed
@@ -335,19 +391,70 @@ public class ClienteVista extends javax.swing.JPanel {
 
     private void Cl_EditarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Cl_EditarActionPerformed
         // TODO add your handling code here:
+        int fila = Tabla_Clientes.getSelectedRow();
+        if (fila == -1) {
+            JOptionPane.showMessageDialog(null, "⚠️ Debes seleccionar un cliente de la tabla.");
+            return;
+        }
+        try {
+            Cliente cliente = new Cliente();
+            cliente.setIdCliente(Tabla_Clientes.getValueAt(fila, 0).toString());
+            cliente.setIdDocIdentidad(Cl_DocumentoIdentidad.getText());
+            cliente.setNombre(CL_Nombre.getText());
+            cliente.setApellido(Cl_Apellido.getText());
+            cliente.setDireccion(Cl_Direccion.getText());
+            cliente.setTelefono(Cl_Telefono.getText());
+            cliente.setCorreo(Cl_Correo.getText());
+            
+            // Estado (desde el combo box)
+            String estadoTexto = ComboEstado.getSelectedItem().toString();
+            cliente.setEstado(estadoTexto.equals("Activo"));
+
+            // ⚠️ No se modifica la fecha de registro, así que la obtenemos de la tabla
+            LocalDate fechaRegistro = ((Date) Tabla_Clientes.getValueAt(fila, 8))
+                                        .toInstant()
+                                        .atZone(ZoneId.systemDefault())
+                                        .toLocalDate();
+            cliente.setFechaRegistro(fechaRegistro);
+
+            // Validación simple
+            if (cliente.getNombre().isEmpty() || cliente.getApellido().isEmpty()) {
+                JOptionPane.showMessageDialog(null, "⚠️ Nombre y Apellido son obligatorios.");
+                return;
+            }
+
+            // Modificamos usando el controlador
+            ClienteControlador controlador = new ClienteControlador();
+            boolean actualizado = controlador.modificarCliente(cliente);
+
+            if (actualizado) {
+                JOptionPane.showMessageDialog(null, "✅ Cliente actualizado correctamente.");
+                mostrarClientesEnTabla();
+            } else {
+                JOptionPane.showMessageDialog(null, "❌ No se pudo actualizar el cliente.");
+            }
+
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(null, "❌ Error al modificar: " + e.getMessage());
+            e.printStackTrace();
+        }
     }//GEN-LAST:event_Cl_EditarActionPerformed
 
     private void Cl_BuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Cl_BuscarActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_Cl_BuscarActionPerformed
 
-    private void Cl_FechaRegistroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Cl_FechaRegistroActionPerformed
+    private void Cl_CrearDocIdentidadActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Cl_CrearDocIdentidadActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_Cl_FechaRegistroActionPerformed
+        AgregarDocumentoIdentidadVista panel = new AgregarDocumentoIdentidadVista();
 
-    private void Cl_EstadoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Cl_EstadoActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_Cl_EstadoActionPerformed
+        javax.swing.JFrame frame = new javax.swing.JFrame("Registrar Documento de Identidad");
+        frame.setDefaultCloseOperation(javax.swing.JFrame.DISPOSE_ON_CLOSE);
+        frame.getContentPane().add(panel);
+        frame.pack();
+        frame.setLocationRelativeTo(null); // Centrar
+        frame.setVisible(true);
+    }//GEN-LAST:event_Cl_CrearDocIdentidadActionPerformed
     
     private void mostrarClientesEnTabla() {
     //Instanciamos lel controlador y la lista
@@ -375,19 +482,20 @@ public class ClienteVista extends javax.swing.JPanel {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private com.toedter.calendar.JDateChooser CI_FechaRegistro;
+    private javax.swing.JTextField CL_Nombre;
     private javax.swing.JTextField Cl_Apellido;
     private RSMaterialComponent.RSButtonMaterialIconDos Cl_Buscar;
     private javax.swing.JTextField Cl_Codigo;
     private javax.swing.JTextField Cl_Correo;
+    private RSMaterialComponent.RSButtonMaterialIconDos Cl_CrearDocIdentidad;
     private javax.swing.JTextField Cl_Direccion;
     private javax.swing.JTextField Cl_DocumentoIdentidad;
     private RSMaterialComponent.RSButtonMaterialIconDos Cl_Editar;
     private RSMaterialComponent.RSButtonMaterialIconDos Cl_Eliminar;
-    private javax.swing.JTextField Cl_Estado;
-    private javax.swing.JTextField Cl_FechaRegistro;
     private RSMaterialComponent.RSButtonMaterialIconDos Cl_Guardar;
-    private javax.swing.JTextField Cl_Nombre;
     private javax.swing.JTextField Cl_Telefono;
+    private javax.swing.JComboBox<String> ComboEstado;
     private javax.swing.JTable Tabla_Clientes;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;

@@ -12,6 +12,7 @@ import java.util.List;
  */
 
 public class EmpleadoDAO {
+<<<<<<< Updated upstream
     public List<Empleado> obtenerEmpleados() {
     //Lista donde se alamacenarán los datos de los empleados
         List<Empleado> lista = new ArrayList<>();
@@ -47,4 +48,6 @@ public class EmpleadoDAO {
 
         return lista;
     }
+=======
+>>>>>>> Stashed changes
 }
