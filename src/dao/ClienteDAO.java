@@ -19,13 +19,15 @@ public class ClienteDAO {
 
             while (rs.next()) {
                 Cliente c = new Cliente();
-                c.setIdCliente(rs.getInt("idCliente"));
+                c.setIdCliente(rs.getString("idCliente"));
+                c.setIdDocIdentidad(rs.getString("idDocIdentidad"));
                 c.setNombre(rs.getString("nombre"));
                 c.setApellido(rs.getString("apellido"));
-                c.setDni(rs.getString("dni"));
                 c.setDireccion(rs.getString("direccion"));
                 c.setTelefono(rs.getString("telefono"));
                 c.setCorreo(rs.getString("correo"));
+                c.setEstado(rs.getBoolean("estado"));
+                c.setFechaRegistro(rs.getDate("fechaRegistro").toLocalDate());
                 lista.add(c);
             }
 

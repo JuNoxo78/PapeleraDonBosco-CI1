@@ -13,7 +13,7 @@ public class conexion {
         Connection conexion = null;
         
         //Credenciales de la base de datos
-        String url = "jdbc:mysql://localhost:3306/papeleraDonBosco"; 
+        String url = "jdbc:mysql://localhost:3306/papeleraartesanal"; 
         String usuario = "root"; 
         String contraseña = "root";  
 

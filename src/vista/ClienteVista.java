@@ -37,17 +37,21 @@ public class ClienteVista extends javax.swing.JPanel {
         jLabel3 = new javax.swing.JLabel();
         Cl_Codigo = new javax.swing.JTextField();
         jLabel4 = new javax.swing.JLabel();
-        Cl_Nombre = new javax.swing.JTextField();
+        Cl_DocumentoIdentidad = new javax.swing.JTextField();
         jLabel5 = new javax.swing.JLabel();
-        Cl_Apellidos = new javax.swing.JTextField();
+        Cl_Nombre = new javax.swing.JTextField();
         jLabel6 = new javax.swing.JLabel();
-        Cl_Dni = new javax.swing.JTextField();
+        Cl_Apellido = new javax.swing.JTextField();
         jLabel7 = new javax.swing.JLabel();
         Cl_Direccion = new javax.swing.JTextField();
         jLabel8 = new javax.swing.JLabel();
         Cl_Telefono = new javax.swing.JTextField();
         jLabel9 = new javax.swing.JLabel();
         Cl_Correo = new javax.swing.JTextField();
+        jLabel10 = new javax.swing.JLabel();
+        Cl_FechaRegistro = new javax.swing.JTextField();
+        jLabel11 = new javax.swing.JLabel();
+        Cl_Estado = new javax.swing.JTextField();
         panelRound5 = new extra.PanelRound();
         jScrollPane1 = new javax.swing.JScrollPane();
         Tabla_Clientes = new javax.swing.JTable();
@@ -80,13 +84,13 @@ public class ClienteVista extends javax.swing.JPanel {
         jLabel3.setText("Codigo:");
 
         jLabel4.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
-        jLabel4.setText("Nombres:");
+        jLabel4.setText("Documento Identidad:");
 
         jLabel5.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
-        jLabel5.setText("Apellidos:");
+        jLabel5.setText("Nombre:");
 
         jLabel6.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
-        jLabel6.setText("Dni:");
+        jLabel6.setText("Apellido:");
 
         jLabel7.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         jLabel7.setText("Direccion:");
@@ -97,6 +101,24 @@ public class ClienteVista extends javax.swing.JPanel {
         jLabel9.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         jLabel9.setText("Correo:");
 
+        jLabel10.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        jLabel10.setText("Estado");
+
+        Cl_FechaRegistro.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                Cl_FechaRegistroActionPerformed(evt);
+            }
+        });
+
+        jLabel11.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        jLabel11.setText("Fecha Registro:");
+
+        Cl_Estado.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                Cl_EstadoActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout panelRound4Layout = new javax.swing.GroupLayout(panelRound4);
         panelRound4.setLayout(panelRound4Layout);
         panelRound4Layout.setHorizontalGroup(
@@ -104,17 +126,21 @@ public class ClienteVista extends javax.swing.JPanel {
             .addGroup(panelRound4Layout.createSequentialGroup()
                 .addGap(31, 31, 31)
                 .addGroup(panelRound4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel11)
+                    .addComponent(Cl_Estado, javax.swing.GroupLayout.PREFERRED_SIZE, 252, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(Cl_FechaRegistro, javax.swing.GroupLayout.PREFERRED_SIZE, 252, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel10)
                     .addComponent(Cl_Correo, javax.swing.GroupLayout.PREFERRED_SIZE, 252, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel9)
                     .addComponent(Cl_Telefono, javax.swing.GroupLayout.PREFERRED_SIZE, 252, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel8)
                     .addComponent(Cl_Direccion, javax.swing.GroupLayout.PREFERRED_SIZE, 252, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel7)
-                    .addComponent(Cl_Dni, javax.swing.GroupLayout.PREFERRED_SIZE, 252, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(Cl_Apellido, javax.swing.GroupLayout.PREFERRED_SIZE, 252, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel6)
-                    .addComponent(Cl_Apellidos, javax.swing.GroupLayout.PREFERRED_SIZE, 252, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel5)
                     .addComponent(Cl_Nombre, javax.swing.GroupLayout.PREFERRED_SIZE, 252, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel5)
+                    .addComponent(Cl_DocumentoIdentidad, javax.swing.GroupLayout.PREFERRED_SIZE, 252, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel4)
                     .addComponent(jLabel3)
                     .addComponent(Cl_Codigo, javax.swing.GroupLayout.PREFERRED_SIZE, 252, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -123,25 +149,25 @@ public class ClienteVista extends javax.swing.JPanel {
         panelRound4Layout.setVerticalGroup(
             panelRound4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(panelRound4Layout.createSequentialGroup()
-                .addGap(24, 24, 24)
+                .addGap(18, 18, 18)
                 .addComponent(jLabel3)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(Cl_Codigo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jLabel4)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(Cl_Nombre, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(Cl_DocumentoIdentidad, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jLabel5)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(Cl_Apellidos, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(Cl_Nombre, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jLabel6)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(Cl_Dni, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(Cl_Apellido, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jLabel7)
-                .addGap(32, 32, 32)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(Cl_Direccion, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jLabel8)
@@ -151,7 +177,15 @@ public class ClienteVista extends javax.swing.JPanel {
                 .addComponent(jLabel9)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(Cl_Correo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(37, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jLabel10)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(Cl_Estado, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jLabel11)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(Cl_FechaRegistro, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(18, Short.MAX_VALUE))
         );
 
         panelRound5.setBackground(new java.awt.Color(255, 255, 255));
@@ -165,9 +199,17 @@ public class ClienteVista extends javax.swing.JPanel {
 
             },
             new String [] {
-                "Codigo", "Nombres", "Apellidos", "Dni", "Direccion", "Telefono", "Correo"
+                "Codigo", "Doc Identidad", "Nombres", "Apellidos", "Direccion", "Telefono", "Correo", "Estado", "FechaRegistro"
             }
-        ));
+        ) {
+            Class[] types = new Class [] {
+                java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.Boolean.class, java.lang.Object.class
+            };
+
+            public Class getColumnClass(int columnIndex) {
+                return types [columnIndex];
+            }
+        });
         jScrollPane1.setViewportView(Tabla_Clientes);
 
         javax.swing.GroupLayout panelRound5Layout = new javax.swing.GroupLayout(panelRound5);
@@ -271,7 +313,7 @@ public class ClienteVista extends javax.swing.JPanel {
                     .addComponent(panelRound5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(panelRound4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(26, 26, 26)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(Cl_Guardar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(Cl_Eliminar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -279,7 +321,7 @@ public class ClienteVista extends javax.swing.JPanel {
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(Cl_Editar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(Cl_Buscar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                .addContainerGap(36, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
 
@@ -298,6 +340,14 @@ public class ClienteVista extends javax.swing.JPanel {
     private void Cl_BuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Cl_BuscarActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_Cl_BuscarActionPerformed
+
+    private void Cl_FechaRegistroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Cl_FechaRegistroActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_Cl_FechaRegistroActionPerformed
+
+    private void Cl_EstadoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Cl_EstadoActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_Cl_EstadoActionPerformed
     
     private void mostrarClientesEnTabla() {
     //Instanciamos lel controlador y la lista
@@ -311,31 +361,37 @@ public class ClienteVista extends javax.swing.JPanel {
     // Agregamos cada cliente al modelo
         for (Cliente c : lista) {
             modelo.addRow(new Object[]{
-                c.getCodigo(),
+                c.getIdCliente(),
+                c.getIdDocIdentidad(),
                 c.getNombre(),
                 c.getApellido(),
-                c.getDni(),
                 c.getDireccion(),
                 c.getTelefono(),
-                c.getCorreo()
+                c.getCorreo(),
+                c.getEstado(),
+                c.getFechaRegistro()
             });
         }
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JTextField Cl_Apellidos;
+    private javax.swing.JTextField Cl_Apellido;
     private RSMaterialComponent.RSButtonMaterialIconDos Cl_Buscar;
     private javax.swing.JTextField Cl_Codigo;
     private javax.swing.JTextField Cl_Correo;
     private javax.swing.JTextField Cl_Direccion;
-    private javax.swing.JTextField Cl_Dni;
+    private javax.swing.JTextField Cl_DocumentoIdentidad;
     private RSMaterialComponent.RSButtonMaterialIconDos Cl_Editar;
     private RSMaterialComponent.RSButtonMaterialIconDos Cl_Eliminar;
+    private javax.swing.JTextField Cl_Estado;
+    private javax.swing.JTextField Cl_FechaRegistro;
     private RSMaterialComponent.RSButtonMaterialIconDos Cl_Guardar;
     private javax.swing.JTextField Cl_Nombre;
     private javax.swing.JTextField Cl_Telefono;
     private javax.swing.JTable Tabla_Clientes;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel10;
+    private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
