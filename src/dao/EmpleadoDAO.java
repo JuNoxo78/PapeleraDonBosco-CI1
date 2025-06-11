@@ -1,7 +1,7 @@
 package dao;
 
 import modelo.Empleado;
-import conf.Conexionn;
+import conf.Conexion;
 
 import java.sql.*;
 import java.util.ArrayList;
@@ -15,7 +15,7 @@ public class EmpleadoDAO {
 
 		String sql = "SELECT * FROM empleado";
 
-		try (Connection conn = Conexionn.conectar(); PreparedStatement stmt = conn.prepareStatement(sql); ResultSet rs = stmt.executeQuery()) {
+		try (Connection conn = Conexion.conectar(); PreparedStatement stmt = conn.prepareStatement(sql); ResultSet rs = stmt.executeQuery()) {
 
 			while (rs.next()) {
 				Empleado empleado = new Empleado();
@@ -50,7 +50,7 @@ public class EmpleadoDAO {
 				+ "JOIN docidentidad d ON e.idDocIdentidad = d.idDocIdentidad "
 				+ "WHERE d.numeroDocumento = ? AND e.contraseña = ? AND e.estado = 1";
 
-		try (Connection conn = Conexionn.conectar(); PreparedStatement stmt = conn.prepareStatement(sql)) {
+		try (Connection conn = Conexion.conectar(); PreparedStatement stmt = conn.prepareStatement(sql)) {
 
 			stmt.setString(1, numeroDocumento);
 			stmt.setString(2, contraseña);
