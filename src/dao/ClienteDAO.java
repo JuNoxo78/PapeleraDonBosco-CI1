@@ -1,8 +1,5 @@
 package dao;
-/**
- *
- * @author Muaro
- */
+
 import modelo.Cliente;
 import conf.conexion;
 import java.sql.*;
@@ -22,7 +19,7 @@ public class ClienteDAO {
 
             while (rs.next()) {
                 Cliente c = new Cliente();
-                c.setCodigo(rs.getInt("codigo"));
+                c.setIdCliente(rs.getInt("idCliente"));
                 c.setNombre(rs.getString("nombre"));
                 c.setApellido(rs.getString("apellido"));
                 c.setDni(rs.getString("dni"));

@@ -11,7 +11,6 @@ public class Empleado {
     private String contraseña;
     private String idRol;
     private Boolean estado;
-    private String empleadocol; // No se especifica su propósito en el script, pero se respeta
 
     // Constructor vacío
     public Empleado() {
@@ -20,7 +19,7 @@ public class Empleado {
     // Constructor completo
     public Empleado(String idEmpleado, String idDocIdentidad, String nombre, String apellido,
                     String direccion, String telefono, String correo, String contraseña,
-                    String idRol, Boolean estado, String empleadocol) {
+                    String idRol, Boolean estado) {
         this.idEmpleado = idEmpleado;
         this.idDocIdentidad = idDocIdentidad;
         this.nombre = nombre;
@@ -31,7 +30,6 @@ public class Empleado {
         this.contraseña = contraseña;
         this.idRol = idRol;
         this.estado = estado;
-        this.empleadocol = empleadocol;
     }
 
     // Getters y setters
@@ -115,14 +113,6 @@ public class Empleado {
         this.estado = estado;
     }
 
-    public String getEmpleadocol() {
-        return empleadocol;
-    }
-
-    public void setEmpleadocol(String empleadocol) {
-        this.empleadocol = empleadocol;
-    }
-
     // Validación básica
     public boolean isValid() {
         return idEmpleado != null && !idEmpleado.isBlank()
@@ -143,7 +133,6 @@ public class Empleado {
                 ", contraseña='" + contraseña + '\'' +
                 ", idRol='" + idRol + '\'' +
                 ", estado=" + estado +
-                ", empleadocol='" + empleadocol + '\'' +
                 '}';
     }
 }
