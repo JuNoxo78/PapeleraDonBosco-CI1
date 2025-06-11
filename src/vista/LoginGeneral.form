@@ -28,8 +28,8 @@
     <DimensionLayout dim="0">
       <Group type="103" groupAlignment="0" attributes="0">
           <Group type="102" alignment="0" attributes="0">
-              <Component id="jPanel1" min="-2" max="-2" attributes="0"/>
-              <EmptySpace min="0" pref="39" max="32767" attributes="0"/>
+              <Component id="jPanel1" min="-2" pref="1004" max="-2" attributes="0"/>
+              <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
@@ -55,21 +55,23 @@
           <Group type="103" groupAlignment="0" attributes="0">
               <Group type="102" alignment="0" attributes="0">
                   <Component id="jPanel2" min="-2" max="-2" attributes="0"/>
-                  <EmptySpace min="-2" pref="30" max="-2" attributes="0"/>
-                  <Group type="103" groupAlignment="1" attributes="0">
-                      <Group type="102" attributes="0">
-                          <Component id="btn_login" min="-2" pref="150" max="-2" attributes="0"/>
-                          <EmptySpace min="-2" pref="115" max="-2" attributes="0"/>
-                          <Component id="btn_close" min="-2" pref="150" max="-2" attributes="0"/>
+                  <EmptySpace min="30" pref="30" max="-2" attributes="0"/>
+                  <Group type="103" groupAlignment="0" attributes="0">
+                      <Group type="103" groupAlignment="1" attributes="0">
+                          <Group type="102" attributes="0">
+                              <Component id="btn_login" min="-2" pref="150" max="-2" attributes="0"/>
+                              <EmptySpace min="-2" pref="115" max="-2" attributes="0"/>
+                              <Component id="btn_close" min="-2" pref="150" max="-2" attributes="0"/>
+                          </Group>
+                          <Group type="103" groupAlignment="0" attributes="0">
+                              <Component id="jLabel1" min="-2" max="-2" attributes="0"/>
+                              <Component id="txt_docNum" min="-2" pref="415" max="-2" attributes="0"/>
+                              <Component id="jLabel3" min="-2" max="-2" attributes="0"/>
+                          </Group>
                       </Group>
-                      <Group type="103" groupAlignment="0" attributes="0">
-                          <Component id="txt_contraseña" min="-2" pref="415" max="-2" attributes="0"/>
-                          <Component id="jLabel1" min="-2" max="-2" attributes="0"/>
-                          <Component id="txt_usuario" min="-2" pref="415" max="-2" attributes="0"/>
-                          <Component id="jLabel3" min="-2" max="-2" attributes="0"/>
-                      </Group>
+                      <Component id="txt_contraseña" alignment="1" min="-2" pref="415" max="-2" attributes="0"/>
                   </Group>
-                  <EmptySpace min="-2" pref="25" max="-2" attributes="0"/>
+                  <EmptySpace min="-2" pref="30" max="-2" attributes="0"/>
               </Group>
           </Group>
         </DimensionLayout>
@@ -79,12 +81,12 @@
                   <EmptySpace min="-2" pref="72" max="-2" attributes="0"/>
                   <Component id="jLabel3" min="-2" max="-2" attributes="0"/>
                   <EmptySpace max="-2" attributes="0"/>
-                  <Component id="txt_usuario" min="-2" pref="30" max="-2" attributes="0"/>
-                  <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                  <Component id="txt_docNum" min="-2" pref="36" max="-2" attributes="0"/>
+                  <EmptySpace max="-2" attributes="0"/>
                   <Component id="jLabel1" min="-2" max="-2" attributes="0"/>
                   <EmptySpace max="-2" attributes="0"/>
-                  <Component id="txt_contraseña" min="-2" pref="30" max="-2" attributes="0"/>
-                  <EmptySpace min="-2" pref="24" max="-2" attributes="0"/>
+                  <Component id="txt_contraseña" min="-2" pref="36" max="-2" attributes="0"/>
+                  <EmptySpace type="separate" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="3" attributes="0">
                       <Component id="btn_close" alignment="3" min="-2" max="-2" attributes="0"/>
                       <Component id="btn_login" alignment="3" min="-2" max="-2" attributes="0"/>
@@ -156,9 +158,9 @@
             <Property name="text" type="java.lang.String" value="CONTRASE&#xd1;A:"/>
           </Properties>
         </Component>
-        <Component class="javax.swing.JTextField" name="txt_usuario">
+        <Component class="javax.swing.JTextField" name="txt_docNum">
           <Events>
-            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="txt_usuarioActionPerformed"/>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="txt_docNumActionPerformed"/>
           </Events>
         </Component>
         <Component class="javax.swing.JLabel" name="jLabel3">
@@ -169,10 +171,8 @@
             <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
               <Color blue="ff" green="ff" red="ff" type="rgb"/>
             </Property>
-            <Property name="text" type="java.lang.String" value="USUARIO:"/>
+            <Property name="text" type="java.lang.String" value="N&#xda;MERO DOC IDENTIDAD:"/>
           </Properties>
-        </Component>
-        <Component class="javax.swing.JTextField" name="txt_contrase&#xf1;a">
         </Component>
         <Component class="RSMaterialComponent.RSButtonMaterialIconDos" name="btn_login">
           <Properties>
@@ -231,6 +231,11 @@
           <Events>
             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btn_closeActionPerformed"/>
           </Events>
+        </Component>
+        <Component class="javax.swing.JPasswordField" name="txt_contrase&#xf1;a">
+          <Properties>
+            <Property name="text" type="java.lang.String" value="jPasswordField1"/>
+          </Properties>
         </Component>
       </SubComponents>
     </Container>

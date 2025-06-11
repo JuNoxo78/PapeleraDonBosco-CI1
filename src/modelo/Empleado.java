@@ -9,7 +9,6 @@ public class Empleado {
     private String telefono;
     private String correo;
     private String contraseña;
-    private String idRol;
     private Boolean estado;
 
     // Constructor vacío
@@ -19,7 +18,7 @@ public class Empleado {
     // Constructor completo
     public Empleado(String idEmpleado, String idDocIdentidad, String nombre, String apellido,
                     String direccion, String telefono, String correo, String contraseña,
-                    String idRol, Boolean estado) {
+                    Boolean estado) {
         this.idEmpleado = idEmpleado;
         this.idDocIdentidad = idDocIdentidad;
         this.nombre = nombre;
@@ -28,7 +27,6 @@ public class Empleado {
         this.telefono = telefono;
         this.correo = correo;
         this.contraseña = contraseña;
-        this.idRol = idRol;
         this.estado = estado;
     }
 
@@ -97,14 +95,6 @@ public class Empleado {
         this.contraseña = contraseña;
     }
 
-    public String getIdRol() {
-        return idRol;
-    }
-
-    public void setIdRol(String idRol) {
-        this.idRol = idRol;
-    }
-
     public Boolean getEstado() {
         return estado;
     }
@@ -131,7 +121,6 @@ public class Empleado {
                 ", telefono='" + telefono + '\'' +
                 ", correo='" + correo + '\'' +
                 ", contraseña='" + contraseña + '\'' +
-                ", idRol='" + idRol + '\'' +
                 ", estado=" + estado +
                 '}';
     }
