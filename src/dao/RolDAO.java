@@ -1,7 +1,7 @@
 package dao;
 
 import modelo.Rol;
-import conf.Conexion;
+import conf.Conexionn;
 
 import java.sql.*;
 import java.util.ArrayList;
@@ -15,7 +15,7 @@ public class RolDAO {
 
         String sql = "SELECT * FROM rol";
 
-        try (Connection conn = Conexion.conectar();
+        try (Connection conn = Conexionn.conectar();
              PreparedStatement stmt = conn.prepareStatement(sql);
              ResultSet rs = stmt.executeQuery()) {
 

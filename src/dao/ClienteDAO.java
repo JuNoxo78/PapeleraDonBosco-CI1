@@ -1,7 +1,7 @@
 package dao;
 
 import modelo.Cliente;
-import conf.Conexion;
+import conf.Conexionn;
 import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
@@ -14,7 +14,7 @@ public class ClienteDAO {
 
         String sql = "SELECT * FROM cliente";
 
-        try (Connection con = Conexion.conectar();
+        try (Connection con = Conexionn.conectar();
              PreparedStatement ps = con.prepareStatement(sql);
              ResultSet rs = ps.executeQuery()) {
 
@@ -42,7 +42,7 @@ public class ClienteDAO {
     public void insertar(Cliente cliente) {
         String sql = "INSERT INTO cliente (idCliente, idDocIdentidad, nombre, apellido, direccion, telefono, correo, estado, fechaRegistro) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)";
 
-        try (Connection con = Conexion.conectar();
+        try (Connection con = Conexionn.conectar();
              PreparedStatement ps = con.prepareStatement(sql)) {
 
             ps.setString(1, cliente.getIdCliente());
@@ -65,7 +65,7 @@ public class ClienteDAO {
     }
     public boolean actualizarCliente(Cliente cliente) throws SQLException {
         String sql = "UPDATE cliente SET nombre=?, apellido=?, correo=?, telefono=?, direccion=?, estado=? WHERE idCliente=?";
-            try (Connection conexion = new Conexion().conectar();
+            try (Connection conexion = new Conexionn().conectar();
                  PreparedStatement stmt = conexion.prepareStatement(sql)) {
 
                 stmt.setString(1, cliente.getNombre());

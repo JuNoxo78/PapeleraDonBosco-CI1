@@ -1,6 +1,6 @@
 package dao;
 
-import conf.Conexion;
+import conf.Conexionn;
 import modelo.EmpleadoxRol;
 
 import java.sql.*;
@@ -16,7 +16,7 @@ public class EmpleadoxRolDAO {
 
         String sql = "SELECT * FROM empleadoxrol";
 
-        try (Connection conn = Conexion.conectar();
+        try (Connection conn = Conexionn.conectar();
              PreparedStatement stmt = conn.prepareStatement(sql);
              ResultSet rs = stmt.executeQuery()) {
 
@@ -45,7 +45,7 @@ public class EmpleadoxRolDAO {
     public boolean insertar(EmpleadoxRol er) {
         String sql = "INSERT INTO empleadoxrol (idEmpleado, idRol, fechaRolAñadido) VALUES (?, ?, ?)";
 
-        try (Connection conn = Conexion.conectar();
+        try (Connection conn = Conexionn.conectar();
              PreparedStatement stmt = conn.prepareStatement(sql)) {
 
             stmt.setString(1, er.getIdEmpleado());
@@ -70,7 +70,7 @@ public class EmpleadoxRolDAO {
     public boolean eliminar(String idEmpleado, String idRol) {
         String sql = "DELETE FROM empleadoxrol WHERE idEmpleado = ? AND idRol = ?";
 
-        try (Connection conn = Conexion.conectar();
+        try (Connection conn = Conexionn.conectar();
              PreparedStatement stmt = conn.prepareStatement(sql)) {
 
             stmt.setString(1, idEmpleado);

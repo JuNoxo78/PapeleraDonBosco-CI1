@@ -4,7 +4,7 @@ package dao;
  *
  * @author Muaro
  */
-import conf.Conexion;
+import conf.Conexionn;
 import modelo.DocIdentidad;
 import java.sql.*;
 import java.util.ArrayList;
@@ -16,7 +16,7 @@ public class DocIdentidadDAO {
     public void insertarDocumento(DocIdentidad doc) throws SQLException {
         String sql = "INSERT INTO docidentidad (idDocIdentidad, tipoDocumento, numeroDocumento) VALUES (?, ?, ?)";
     
-        try (Connection conn = Conexion.conectar();
+        try (Connection conn = Conexionn.conectar();
              PreparedStatement stmt = conn.prepareStatement(sql)) {
 
             stmt.setString(1, doc.getIdDocIdentidad());
@@ -35,7 +35,7 @@ public class DocIdentidadDAO {
         List<DocIdentidad> lista = new ArrayList<>();
         String sql = "SELECT * FROM docidentidad";
 
-        try (Connection con = Conexion.conectar();
+        try (Connection con = Conexionn.conectar();
              PreparedStatement ps = con.prepareStatement(sql);
              ResultSet rs = ps.executeQuery()) {
 
@@ -59,7 +59,7 @@ public class DocIdentidadDAO {
         
         String sql = "DELETE FROM docidentidad WHERE idDocIdentidad = ?";
     
-        try (Connection conn = Conexion.conectar();
+        try (Connection conn = Conexionn.conectar();
              PreparedStatement stmt = conn.prepareStatement(sql)) {
 
             stmt.setString(1, idDocIdentidad);
