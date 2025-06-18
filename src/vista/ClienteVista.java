@@ -2,6 +2,7 @@ package vista;
 
 import controlador.ClienteControlador;
 import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.time.ZoneId;
 import java.util.Date;
 import modelo.Cliente;   
@@ -367,10 +368,10 @@ public class ClienteVista extends javax.swing.JPanel {
         JOptionPane.showMessageDialog(null, "Selecciona una fecha de registro.");
         return;
     }
-    LocalDate fechaRegistro = fechaSeleccionada.toInstant()
+    LocalDateTime fechaRegistro = fechaSeleccionada.toInstant()
             .atZone(ZoneId.systemDefault())
-            .toLocalDate();
-    if (fechaRegistro.isBefore(LocalDate.now())) {
+            .toLocalDateTime();
+    if (fechaRegistro.isBefore(LocalDateTime.now())) {
         JOptionPane.showMessageDialog(null, "No se permite una fecha de registro anterior a hoy.");
         return;
     }
@@ -410,10 +411,10 @@ public class ClienteVista extends javax.swing.JPanel {
             cliente.setEstado(estadoTexto.equals("Activo"));
 
             // ⚠️ No se modifica la fecha de registro, así que la obtenemos de la tabla
-            LocalDate fechaRegistro = ((Date) Tabla_Clientes.getValueAt(fila, 8))
+            LocalDateTime fechaRegistro = ((Date) Tabla_Clientes.getValueAt(fila, 8))
                                         .toInstant()
                                         .atZone(ZoneId.systemDefault())
-                                        .toLocalDate();
+                                        .toLocalDateTime();
             cliente.setFechaRegistro(fechaRegistro);
 
             // Validación simple

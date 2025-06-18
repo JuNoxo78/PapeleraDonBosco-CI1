@@ -1,6 +1,6 @@
 package modelo;
 
-import java.time.LocalDate;
+import java.time.LocalDateTime;
 
 public class Cliente {
 
@@ -12,7 +12,7 @@ public class Cliente {
 	private String telefono;
 	private String correo;
 	private Boolean estado;
-	private LocalDate fechaRegistro;
+	private LocalDateTime fechaRegistro;
 
 	// Constructor vacío
 	public Cliente() {
@@ -20,7 +20,7 @@ public class Cliente {
 
 	// Constructor con todos los campos
 	public Cliente(String idCliente, String idDocIdentidad, String nombre, String apellido,
-			String direccion, String telefono, String correo, Boolean estado, LocalDate fechaRegistro) {
+			String direccion, String telefono, String correo, Boolean estado, LocalDateTime fechaRegistro) {
 		this.idCliente = idCliente;
 		this.idDocIdentidad = idDocIdentidad;
 		this.nombre = nombre;
@@ -97,11 +97,11 @@ public class Cliente {
 		this.estado = estado;
 	}
 
-	public LocalDate getFechaRegistro() {
+	public LocalDateTime getFechaRegistro() {
 		return fechaRegistro;
 	}
 
-	public void setFechaRegistro(LocalDate fechaRegistro) {
+	public void setFechaRegistro(LocalDateTime fechaRegistro) {
 		this.fechaRegistro = fechaRegistro;
 	}
 

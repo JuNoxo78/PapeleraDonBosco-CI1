@@ -1,19 +1,19 @@
 package modelo;
 
-import java.time.LocalDate;
+import java.time.LocalDateTime;
 
 public class EmpleadoxRol {
 
 	private String idEmpleado;
 	private String idRol;
-	private LocalDate fechaRolAñadido;
+	private LocalDateTime fechaRolAñadido;
 
 	// Constructor vacío
 	public EmpleadoxRol() {
 	}
 
 	// Constructor completo
-	public EmpleadoxRol(String idEmpleado, String idRol, LocalDate fechaRolAñadido) {
+	public EmpleadoxRol(String idEmpleado, String idRol, LocalDateTime fechaRolAñadido) {
 		this.idEmpleado = idEmpleado;
 		this.idRol = idRol;
 		this.fechaRolAñadido = fechaRolAñadido;
@@ -36,11 +36,11 @@ public class EmpleadoxRol {
 		this.idRol = idRol;
 	}
 
-	public LocalDate getFechaRolAñadido() {
+	public LocalDateTime getFechaRolAñadido() {
 		return fechaRolAñadido;
 	}
 
-	public void setFechaRolAñadido(LocalDate fechaRolAñadido) {
+	public void setFechaRolAñadido(LocalDateTime fechaRolAñadido) {
 		this.fechaRolAñadido = fechaRolAñadido;
 	}
 

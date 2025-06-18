@@ -1,19 +1,19 @@
 package modelo;
 
-import java.time.LocalDate;
+import java.time.LocalDateTime;
 
 public class ComprobanteCompra {
 
 	private String idComprobanteCompra;
 	private String docComprobante;
-	private LocalDate fechaEmision;
+	private LocalDateTime fechaEmision;
 
 	// Constructor vacío
 	public ComprobanteCompra() {
 	}
 
 	// Constructor completo
-	public ComprobanteCompra(String idComprobanteCompra, String docComprobante, LocalDate fechaEmision) {
+	public ComprobanteCompra(String idComprobanteCompra, String docComprobante, LocalDateTime fechaEmision) {
 		this.idComprobanteCompra = idComprobanteCompra;
 		this.docComprobante = docComprobante;
 		this.fechaEmision = fechaEmision;
@@ -36,11 +36,11 @@ public class ComprobanteCompra {
 		this.docComprobante = docComprobante;
 	}
 
-	public LocalDate getFechaEmision() {
+	public LocalDateTime getFechaEmision() {
 		return fechaEmision;
 	}
 
-	public void setFechaEmision(LocalDate fechaEmision) {
+	public void setFechaEmision(LocalDateTime fechaEmision) {
 		this.fechaEmision = fechaEmision;
 	}
 

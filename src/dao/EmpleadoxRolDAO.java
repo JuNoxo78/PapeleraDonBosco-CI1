@@ -4,7 +4,7 @@ import conf.Conexion;
 import modelo.EmpleadoxRol;
 
 import java.sql.*;
-import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -26,9 +26,9 @@ public class EmpleadoxRolDAO {
                 er.setIdEmpleado(rs.getString("idEmpleado"));
                 er.setIdRol(rs.getString("idRol"));
 
-                Date fechaSQL = rs.getDate("fechaRolAñadido");
+                Timestamp fechaSQL = rs.getTimestamp("fechaRolAñadido");
                 if (fechaSQL != null) {
-                    er.setFechaRolAñadido(fechaSQL.toLocalDate());
+                    er.setFechaRolAñadido(fechaSQL.toLocalDateTime());
                 }
 
                 lista.add(er);
@@ -52,9 +52,9 @@ public class EmpleadoxRolDAO {
             stmt.setString(2, er.getIdRol());
 
             if (er.getFechaRolAñadido() != null) {
-                stmt.setDate(3, Date.valueOf(er.getFechaRolAñadido()));
+                stmt.setTimestamp(3, Timestamp.valueOf(er.getFechaRolAñadido()));
             } else {
-                stmt.setNull(3, Types.DATE);
+                stmt.setNull(3, Types.TIMESTAMP);
             }
 
             int filas = stmt.executeUpdate();
