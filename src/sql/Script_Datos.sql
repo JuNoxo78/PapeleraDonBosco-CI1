@@ -20,4 +20,4 @@ VALUES
 INSERT INTO `papeleraartesanal`.`empleadoxrol`
 (`idEmpleado`, `idRol`, `fechaRolAñadido`)
 VALUES
-('EMP001', 'ROL001', '2024-06-01');
+('EMP001', 'ROL001', '2024-06-01 03:00:00');
