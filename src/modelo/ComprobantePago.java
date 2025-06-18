@@ -2,60 +2,117 @@ package modelo;
 
 import java.math.BigDecimal;
 import java.time.LocalDate;
+import java.time.LocalDateTime;
 
 public class ComprobantePago {
-    private String idCompPago;
-    private BigDecimal montoTotal;
-    private LocalDate fechaEmision;
 
-    // Constructor vacío
-    public ComprobantePago() {
-    }
+	private String idCompPago;
+	private String numeroComprobante;
+	private String tipoComprobante;
+	private LocalDate fechaEmision;
+	private BigDecimal montoTotal;
+	private String nombreArchivo;
+	private String rutaArchivo;
+	private LocalDateTime fechaSubida;
 
-    // Constructor completo
-    public ComprobantePago(String idCompPago, BigDecimal montoTotal, LocalDate fechaEmision) {
-        this.idCompPago = idCompPago;
-        this.montoTotal = montoTotal;
-        this.fechaEmision = fechaEmision;
-    }
+	// Constructor vacío
+	public ComprobantePago() {
+	}
 
-    // Getters y setters
-    public String getIdCompPago() {
-        return idCompPago;
-    }
+	// Constructor completo
+	public ComprobantePago(String idCompPago, String numeroComprobante, String tipoComprobante, LocalDate fechaEmision, BigDecimal montoTotal, String nombreArchivo, String rutaArchivo, LocalDateTime fechaSubida) {
+		this.idCompPago = idCompPago;
+		this.numeroComprobante = numeroComprobante;
+		this.tipoComprobante = tipoComprobante;
+		this.fechaEmision = fechaEmision;
+		this.montoTotal = montoTotal;
+		this.nombreArchivo = nombreArchivo;
+		this.rutaArchivo = rutaArchivo;
+		this.fechaSubida = fechaSubida;
+	}
 
-    public void setIdCompPago(String idCompPago) {
-        this.idCompPago = idCompPago;
-    }
+	// Getter and Setter
+	public String getIdCompPago() {
+		return idCompPago;
+	}
 
-    public BigDecimal getMontoTotal() {
-        return montoTotal;
-    }
+	public void setIdCompPago(String idCompPago) {
+		this.idCompPago = idCompPago;
+	}
 
-    public void setMontoTotal(BigDecimal montoTotal) {
-        this.montoTotal = montoTotal;
-    }
+	public String getNumeroComprobante() {
+		return numeroComprobante;
+	}
 
-    public LocalDate getFechaEmision() {
-        return fechaEmision;
-    }
+	public void setNumeroComprobante(String numeroComprobante) {
+		this.numeroComprobante = numeroComprobante;
+	}
 
-    public void setFechaEmision(LocalDate fechaEmision) {
-        this.fechaEmision = fechaEmision;
-    }
+	public String getTipoComprobante() {
+		return tipoComprobante;
+	}
 
-    // Validación básica
-    public boolean isValid() {
-        return idCompPago != null && !idCompPago.isBlank();
-    }
+	public void setTipoComprobante(String tipoComprobante) {
+		this.tipoComprobante = tipoComprobante;
+	}
 
-    // toString para depuración
-    @Override
-    public String toString() {
-        return "ComprobantePago{" +
-                "idCompPago='" + idCompPago + '\'' +
-                ", montoTotal=" + montoTotal +
-                ", fechaEmision=" + fechaEmision +
-                '}';
-    }
+	public LocalDate getFechaEmision() {
+		return fechaEmision;
+	}
+
+	public void setFechaEmision(LocalDate fechaEmision) {
+		this.fechaEmision = fechaEmision;
+	}
+
+	public BigDecimal getMontoTotal() {
+		return montoTotal;
+	}
+
+	public void setMontoTotal(BigDecimal montoTotal) {
+		this.montoTotal = montoTotal;
+	}
+
+	public String getNombreArchivo() {
+		return nombreArchivo;
+	}
+
+	public void setNombreArchivo(String nombreArchivo) {
+		this.nombreArchivo = nombreArchivo;
+	}
+
+	public String getRutaArchivo() {
+		return rutaArchivo;
+	}
+
+	public void setRutaArchivo(String rutaArchivo) {
+		this.rutaArchivo = rutaArchivo;
+	}
+
+	public LocalDateTime getFechaSubida() {
+		return fechaSubida;
+	}
+
+	public void setFechaSubida(LocalDateTime fechaSubida) {
+		this.fechaSubida = fechaSubida;
+	}
+
+	// Validación básica
+	public boolean isValid() {
+		return idCompPago != null && !idCompPago.isBlank();
+	}
+
+	// toString para depuración
+	@Override
+	public String toString() {
+		return "ComprobantePago{"
+				+ "idCompPago='" + idCompPago + '\''
+				+ ", numeroComprobante='" + numeroComprobante + '\''
+				+ ", tipoComprobante='" + tipoComprobante + '\''
+				+ ", fechaEmision=" + fechaEmision
+				+ ", montoTotal=" + montoTotal
+				+ ", nombreArchivo='" + nombreArchivo + '\''
+				+ ", rutaArchivo='" + rutaArchivo + '\''
+				+ ", fechaSubida=" + fechaSubida
+				+ '}';
+	}
 }
