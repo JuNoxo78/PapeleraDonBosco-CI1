@@ -6,7 +6,7 @@ import java.time.LocalDateTime;
 
 public class ComprobanteCompra {
 
-	private String idComprobanteCompra;
+	private String idCompCompra;
 	private String numeroComprobante;
 	private String tipoComprobante;
 	private LocalDate fechaEmision;
@@ -20,8 +20,8 @@ public class ComprobanteCompra {
 	}
 
 	// Constructor completo
-	public ComprobanteCompra(String idComprobanteCompra, String numeroComprobante, String tipoComprobante, LocalDate fechaEmision, BigDecimal montoTotal, String nombreArchivo, String rutaArchivo, LocalDateTime fechaSubida) {
-		this.idComprobanteCompra = idComprobanteCompra;
+	public ComprobanteCompra(String idComprCompra, String numeroComprobante, String tipoComprobante, LocalDate fechaEmision, BigDecimal montoTotal, String nombreArchivo, String rutaArchivo, LocalDateTime fechaSubida) {
+		this.idCompCompra = idCompCompra;
 		this.numeroComprobante = numeroComprobante;
 		this.tipoComprobante = tipoComprobante;
 		this.fechaEmision = fechaEmision;
@@ -33,11 +33,11 @@ public class ComprobanteCompra {
 
 	// Getters y setters
 	public String getIdComprobanteCompra() {
-		return idComprobanteCompra;
+		return idCompCompra;
 	}
 
-	public void setIdComprobanteCompra(String idComprobanteCompra) {
-		this.idComprobanteCompra = idComprobanteCompra;
+	public void setIdComprobanteCompra(String idCompCompra) {
+		this.idCompCompra = idCompCompra;
 	}
 
 	public String getNumeroComprobante() {
@@ -98,13 +98,13 @@ public class ComprobanteCompra {
 
 	// Validación básica
 	public boolean isValid() {
-		return idComprobanteCompra != null && !idComprobanteCompra.isBlank();
+		return idCompCompra != null && !idCompCompra.isBlank();
 	}
 
 	// toString para depuración
 	public String toString() {
 		return "ComprobanteCompra{"
-				+ "idComprobanteCompra='" + idComprobanteCompra + '\''
+				+ "idCompCompra='" + idCompCompra + '\''
 				+ ", numeroComprobante='" + numeroComprobante + '\''
 				+ ", tipoComprobante='" + tipoComprobante + '\''
 				+ ", fechaEmision=" + fechaEmision
