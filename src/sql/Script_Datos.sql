@@ -12,9 +12,9 @@ VALUES
 
 -- Empleado
 INSERT INTO `papeleraartesanal`.`empleado`
-(`idEmpleado`, `idDocIdentidad`, `nombre`, `apellido`, `direccion`, `telefono`, `correo`, `contraseña`, `estado`)
+(`idEmpleado`, `idDocIdentidad`, `nombre`, `apellido`, `direccion`, `telefono`, `correo`, `contraseña`, `activo`, `fechaRegistro`)
 VALUES
-('EMP001', 'DOC001', 'Carlos', 'Fernández', 'Av. La Marina 123, Lima', '987654321', 'carlos.fernandez@papelera.com', 'admin123', true);
+('EMP001', 'DOC001', 'Carlos', 'Fernández', 'Av. La Marina 123, Lima', '987654321', 'carlos.fernandez@papelera.com', 'admin123', true, '2025-06-20 15:00:00');
 
 -- Relación entre Empleado y Rol
 INSERT INTO `papeleraartesanal`.`empleadoxrol`
