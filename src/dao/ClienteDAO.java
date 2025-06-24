@@ -90,4 +90,18 @@ public class ClienteDAO {
             return stmt.executeUpdate() > 0;
         }
     }
+    public boolean eliminarCliente(String idCliente) throws SQLException {
+    // Consulta SQL para eliminar un cliente por su ID
+    String sql = "DELETE FROM cliente WHERE idCliente = ?";
+
+    try (Connection con = Conexion.conectar();
+         PreparedStatement ps = con.prepareStatement(sql)) {
+
+        // Establece el parámetro del ID
+        ps.setString(1, idCliente);
+
+        // Ejecuta la eliminación; devuelve true si se eliminó alguna fila
+        return ps.executeUpdate() > 0;
+    }
+}
 }

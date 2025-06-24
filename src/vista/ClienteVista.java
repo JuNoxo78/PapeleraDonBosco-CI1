@@ -1,15 +1,18 @@
 package vista;
 
 import controlador.ClienteControlador;
+import dao.ClienteDAO;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.ZoneId;
 import java.util.Date;
-import modelo.Cliente;   
+import modelo.Cliente;
 import java.util.List;
+import javax.swing.InputVerifier;
+import javax.swing.JComponent;
 import javax.swing.JOptionPane;
+import javax.swing.JTextField;
 import javax.swing.table.DefaultTableModel;
-
 
 /**
  *
@@ -20,15 +23,37 @@ public class ClienteVista extends javax.swing.JPanel {
     /**
      * Creates new form Cliente
      */
-    
     public ClienteVista() {
         initComponents();
         mostrarClientesEnTabla();
+
+        // Verificador de formato de correo para el campo Cl_Correo
+        Cl_Correo.setInputVerifier(new InputVerifier() {
+            @Override
+            public boolean verify(JComponent input) {
+                JTextField campo = (JTextField) input;
+                String correo = campo.getText().trim();
+                String regex = "^[\\w.-]+@[\\w.-]+\\.[a-zA-Z]{2,}$";
+                return correo.matches(regex);
+            }
+
+            @Override
+            public boolean shouldYieldFocus(JComponent input) {
+                if (!verify(input)) {
+                    JOptionPane.showMessageDialog(null,
+                            "⚠️ El correo no tiene un formato válido. Esto se validará al guardar.",
+                            "Correo inválido",
+                            JOptionPane.WARNING_MESSAGE);
+                    // ✅ AUN ASÍ permitimos cambiar de campo
+                }
+                return true;
+            }
+        });
         //Evita mostrar fechas pasadas y futuras solo la fecha de hoy
         Date hoy = new Date(); // fecha actual
-           CI_FechaRegistro.setMinSelectableDate(hoy);
-           CI_FechaRegistro.setMaxSelectableDate(hoy);
-           CI_FechaRegistro.setDate(hoy);
+        CI_FechaRegistro.setMinSelectableDate(hoy);
+        CI_FechaRegistro.setMaxSelectableDate(hoy);
+        CI_FechaRegistro.setDate(hoy);
         //Desactiva para modificar la fecha registro
         CI_FechaRegistro.setEnabled(false);
     }
@@ -63,8 +88,8 @@ public class ClienteVista extends javax.swing.JPanel {
         jLabel10 = new javax.swing.JLabel();
         jLabel11 = new javax.swing.JLabel();
         Cl_CrearDocIdentidad = new RSMaterialComponent.RSButtonMaterialIconDos();
-        ComboEstado = new javax.swing.JComboBox<>();
         CI_FechaRegistro = new com.toedter.calendar.JDateChooser();
+        ComboEstado = new javax.swing.JComboBox<>();
         panelRound5 = new extra.PanelRound();
         jScrollPane1 = new javax.swing.JScrollPane();
         Tabla_Clientes = new javax.swing.JTable();
@@ -147,7 +172,6 @@ public class ClienteVista extends javax.swing.JPanel {
                     .addComponent(jLabel5)
                     .addComponent(jLabel3)
                     .addComponent(jLabel4)
-                    .addComponent(ComboEstado, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(Cl_Correo)
                     .addComponent(Cl_Telefono)
                     .addComponent(Cl_Direccion)
@@ -158,7 +182,8 @@ public class ClienteVista extends javax.swing.JPanel {
                         .addComponent(Cl_DocumentoIdentidad, javax.swing.GroupLayout.PREFERRED_SIZE, 112, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(Cl_CrearDocIdentidad, javax.swing.GroupLayout.PREFERRED_SIZE, 91, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addComponent(CI_FechaRegistro, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(CI_FechaRegistro, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(ComboEstado, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap(36, Short.MAX_VALUE))
         );
         panelRound4Layout.setVerticalGroup(
@@ -309,8 +334,8 @@ public class ClienteVista extends javax.swing.JPanel {
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addComponent(jLabel1)))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(Cl_Buscar, javax.swing.GroupLayout.PREFERRED_SIZE, 117, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(Cl_Buscar, javax.swing.GroupLayout.PREFERRED_SIZE, 105, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
                         .addComponent(Cl_Editar, javax.swing.GroupLayout.PREFERRED_SIZE, 108, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(130, 130, 130))))
         );
@@ -329,7 +354,7 @@ public class ClienteVista extends javax.swing.JPanel {
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                         .addContainerGap()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(Cl_Buscar, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(Cl_Buscar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(Cl_Editar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -345,98 +370,169 @@ public class ClienteVista extends javax.swing.JPanel {
     }// </editor-fold>//GEN-END:initComponents
 
     private void Cl_GuardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Cl_GuardarActionPerformed
-    // Instanciamos con cliente
-    Cliente cliente = new Cliente();
+        // Instanciamos con cliente
+        Cliente cliente = new Cliente();
 
-    // Setear con los datos de los Jtextfield
-    cliente.setIdCliente(Cl_Codigo.getText());
-    cliente.setIdDocIdentidad(Cl_DocumentoIdentidad.getText());
-    cliente.setNombre(CL_Nombre.getText());
-    cliente.setApellido(Cl_Apellido.getText());
-    cliente.setDireccion(Cl_Direccion.getText());
-    cliente.setTelefono(Cl_Telefono.getText());
-    cliente.setCorreo(Cl_Correo.getText());
+        // Setear con los datos de los JTextField
+        cliente.setIdCliente(Cl_Codigo.getText());
+        cliente.setIdDocIdentidad(Cl_DocumentoIdentidad.getText());
+        cliente.setNombre(CL_Nombre.getText());
+        cliente.setApellido(Cl_Apellido.getText());
+        cliente.setDireccion(Cl_Direccion.getText());
+        cliente.setTelefono(Cl_Telefono.getText());
+        cliente.setCorreo(Cl_Correo.getText());
 
-    // Convertir selección de ComboBox a booleano
-    String estadoSeleccionado = ComboEstado.getSelectedItem().toString();
-    boolean estadoBoolean = estadoSeleccionado.trim().equalsIgnoreCase("Activo");
-    cliente.setEstado(estadoBoolean);
+        //Jalar del Combobox
+        String estadoSeleccionado = ComboEstado.getSelectedItem().toString();
+        boolean estadoBoolean = estadoSeleccionado.equalsIgnoreCase("Activo");
+        cliente.setEstado(estadoBoolean);
 
-    // Para agregar los datos del jcalendar
-    Date fechaSeleccionada = CI_FechaRegistro.getDate();
-    if (fechaSeleccionada == null) {
-        JOptionPane.showMessageDialog(null, "Selecciona una fecha de registro.");
-        return;
-    }
-    LocalDateTime fechaRegistro = fechaSeleccionada.toInstant()
-            .atZone(ZoneId.systemDefault())
-            .toLocalDateTime();
-    if (fechaRegistro.isBefore(LocalDateTime.now())) {
-        JOptionPane.showMessageDialog(null, "No se permite una fecha de registro anterior a hoy.");
-        return;
-    }
-    cliente.setFechaRegistro(fechaRegistro);
+        // Para agregar los datos del JDateChooser
+        Date fechaSeleccionada = CI_FechaRegistro.getDate();
+        if (fechaSeleccionada == null) {
+            JOptionPane.showMessageDialog(null, "Selecciona una fecha de registro.");
+            return;
+        }
 
-    // Registrar cliente
-    ClienteControlador controlador = new ClienteControlador();
-    controlador.registrarCliente(cliente);
+        // Convertimos a LocalDateTime
+        LocalDateTime fechaRegistro = fechaSeleccionada.toInstant()
+                .atZone(ZoneId.systemDefault())
+                .toLocalDateTime();
 
-    // Actualizar la tabla después de guardar
-    mostrarClientesEnTabla();
+        // ✅ Validar solo la fecha (sin considerar la hora)
+        if (fechaRegistro.toLocalDate().isBefore(LocalDate.now())) {
+            JOptionPane.showMessageDialog(null, "No se permite una fecha de registro anterior a hoy.");
+            return;
+        }
+
+        cliente.setFechaRegistro(fechaRegistro);
+
+        // Registrar cliente
+        ClienteControlador controlador = new ClienteControlador();
+        controlador.registrarCliente(cliente);
+
+        // Actualizar la tabla después de guardar
+        mostrarClientesEnTabla();
     }//GEN-LAST:event_Cl_GuardarActionPerformed
 
     private void Cl_EliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Cl_EliminarActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_Cl_EliminarActionPerformed
-
-    private void Cl_EditarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Cl_EditarActionPerformed
-        // TODO add your handling code here:
+        // Verifica si hay un cliente seleccionado
         int fila = Tabla_Clientes.getSelectedRow();
         if (fila == -1) {
-            JOptionPane.showMessageDialog(null, "⚠️ Debes seleccionar un cliente de la tabla.");
+            JOptionPane.showMessageDialog(null, "⚠️ Debes seleccionar un cliente de la tabla para eliminar.");
             return;
         }
+
+        // Confirmación con el usuario antes de eliminar
+        int confirmacion = JOptionPane.showConfirmDialog(null,
+                "¿Estás seguro de que deseas eliminar este cliente?",
+                "Confirmar eliminación", JOptionPane.YES_NO_OPTION);
+        if (confirmacion != JOptionPane.YES_OPTION) {
+            return;
+        }
+
         try {
-            Cliente cliente = new Cliente();
-            cliente.setIdCliente(Tabla_Clientes.getValueAt(fila, 0).toString());
-            cliente.setIdDocIdentidad(Cl_DocumentoIdentidad.getText());
-            cliente.setNombre(CL_Nombre.getText());
-            cliente.setApellido(Cl_Apellido.getText());
-            cliente.setDireccion(Cl_Direccion.getText());
-            cliente.setTelefono(Cl_Telefono.getText());
-            cliente.setCorreo(Cl_Correo.getText());
-            
-            // Estado (desde el combo box)
-            String estadoTexto = ComboEstado.getSelectedItem().toString();
-            cliente.setEstado(estadoTexto.equals("Activo"));
+            // Obtiene el ID del cliente seleccionado
+            String idCliente = Tabla_Clientes.getValueAt(fila, 0).toString();
 
-            // ⚠️ No se modifica la fecha de registro, así que la obtenemos de la tabla
-            LocalDateTime fechaRegistro = ((Date) Tabla_Clientes.getValueAt(fila, 8))
-                                        .toInstant()
-                                        .atZone(ZoneId.systemDefault())
-                                        .toLocalDateTime();
-            cliente.setFechaRegistro(fechaRegistro);
-
-            // Validación simple
-            if (cliente.getNombre().isEmpty() || cliente.getApellido().isEmpty()) {
-                JOptionPane.showMessageDialog(null, "⚠️ Nombre y Apellido son obligatorios.");
-                return;
-            }
-
-            // Modificamos usando el controlador
+            // Llama al controlador (no al DAO directamente)
             ClienteControlador controlador = new ClienteControlador();
-            boolean actualizado = controlador.modificarCliente(cliente);
+            boolean eliminado = controlador.eliminarCliente(idCliente);
 
-            if (actualizado) {
-                JOptionPane.showMessageDialog(null, "✅ Cliente actualizado correctamente.");
+            if (eliminado) {
+                JOptionPane.showMessageDialog(null, "✅ Cliente eliminado correctamente.");
                 mostrarClientesEnTabla();
             } else {
-                JOptionPane.showMessageDialog(null, "❌ No se pudo actualizar el cliente.");
+                JOptionPane.showMessageDialog(null, "❌ No se pudo eliminar el cliente. Verifica si tiene relaciones con otros datos.");
             }
 
         } catch (Exception e) {
-            JOptionPane.showMessageDialog(null, "❌ Error al modificar: " + e.getMessage());
-            e.printStackTrace();
+            // Manejo de errores para usuarios finales
+            String mensaje = e.getMessage().toLowerCase();
+            if (mensaje.contains("foreign key")) {
+                JOptionPane.showMessageDialog(null, "⚠️ Este cliente está relacionado con otros datos. No se puede eliminar.");
+            } else if (mensaje.contains("too long")) {
+                JOptionPane.showMessageDialog(null, "⚠️ Uno de los campos excede el límite permitido.");
+            } else {
+                JOptionPane.showMessageDialog(null, "❌ Error inesperado al eliminar el cliente. Intenta nuevamente.");
+            }
+            e.printStackTrace(); // Para el programador
+        }
+    }//GEN-LAST:event_Cl_EliminarActionPerformed
+
+    private void Cl_EditarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Cl_EditarActionPerformed
+        // Verifica si hay un cliente seleccionado en la tabla
+        int fila = Tabla_Clientes.getSelectedRow();
+        if (fila == -1) {
+            JOptionPane.showMessageDialog(null, "⚠️ Debes seleccionar un cliente de la tabla para modificar.");
+            return;
+        }
+
+        // Confirmación antes de modificar
+        int confirmacion = JOptionPane.showConfirmDialog(null,
+                "¿Estás seguro de que deseas modificar este cliente?",
+                "Confirmar modificación", JOptionPane.YES_NO_OPTION);
+        if (confirmacion != JOptionPane.YES_OPTION) {
+            return;
+        }
+
+        try {
+            // Se instancia un nuevo objeto Cliente con los datos actuales del formulario
+            Cliente cliente = new Cliente();
+            cliente.setIdCliente(Tabla_Clientes.getValueAt(fila, 0).toString()); // ID viene de la tabla (no se edita)
+            cliente.setIdDocIdentidad(Cl_DocumentoIdentidad.getText().trim());
+            cliente.setNombre(CL_Nombre.getText().trim());
+            cliente.setApellido(Cl_Apellido.getText().trim());
+            cliente.setDireccion(Cl_Direccion.getText().trim());
+            cliente.setTelefono(Cl_Telefono.getText().trim());
+            cliente.setCorreo(Cl_Correo.getText().trim());
+
+            // Se recupera la fecha original desde la tabla
+            LocalDateTime fechaRegistro = ((Date) Tabla_Clientes.getValueAt(fila, 8))
+                    .toInstant()
+                    .atZone(ZoneId.systemDefault())
+                    .toLocalDateTime();
+            cliente.setFechaRegistro(fechaRegistro);
+
+            // Validación: campos obligatorios
+            if (cliente.getNombre().isEmpty() || cliente.getApellido().isEmpty()) {
+                JOptionPane.showMessageDialog(null, "⚠️ El nombre y apellido no pueden estar vacíos.");
+                return;
+            }
+
+            // Validación: solo letras en nombre y apellido
+            if (!cliente.getNombre().matches("[a-zA-ZáéíóúÁÉÍÓÚñÑ ]+")
+                    || !cliente.getApellido().matches("[a-zA-ZáéíóúÁÉÍÓÚñÑ ]+")) {
+                JOptionPane.showMessageDialog(null, "⚠️ El nombre y apellido deben contener solo letras.");
+                return;
+            }
+
+            // Validación: límite de caracteres
+            if (cliente.getNombre().length() > 50 || cliente.getApellido().length() > 50) {
+                JOptionPane.showMessageDialog(null, "⚠️ El nombre o apellido exceden el límite de 50 caracteres.");
+                return;
+            }
+
+            // Llamada al controlador para aplicar la modificación
+            ClienteControlador controlador = new ClienteControlador();
+            boolean modificado = controlador.modificarCliente(cliente);
+
+            if (modificado) {
+                JOptionPane.showMessageDialog(null, "✅ Cliente modificado correctamente.");
+                mostrarClientesEnTabla();
+            } else {
+                JOptionPane.showMessageDialog(null, "❌ No se pudo modificar el cliente.");
+            }
+
+        } catch (Exception e) {
+            // Mensaje amigable para cualquier error inesperado
+            String msg = e.getMessage().toLowerCase();
+            if (msg.contains("too long")) {
+                JOptionPane.showMessageDialog(null, "⚠️ Uno de los campos excede el límite permitido.");
+            } else {
+                JOptionPane.showMessageDialog(null, "❌ Ocurrió un error al modificar el cliente. Verifica los datos ingresados.");
+            }
+            e.printStackTrace(); // Registro técnico para desarrolladores
         }
     }//GEN-LAST:event_Cl_EditarActionPerformed
 
@@ -455,17 +551,17 @@ public class ClienteVista extends javax.swing.JPanel {
         frame.setLocationRelativeTo(null); // Centrar
         frame.setVisible(true);
     }//GEN-LAST:event_Cl_CrearDocIdentidadActionPerformed
-    
+
     private void mostrarClientesEnTabla() {
-    //Instanciamos lel controlador y la lista
+        //Instanciamos lel controlador y la lista
         ClienteControlador controlador = new ClienteControlador();
         List<Cliente> lista = controlador.obtenerClientes();
 
-    // Obtenemos el modelo de la tabla
+        // Obtenemos el modelo de la tabla
         DefaultTableModel modelo = (DefaultTableModel) Tabla_Clientes.getModel();
         modelo.setRowCount(0); // Limpiar filas anteriores
 
-    // Agregamos cada cliente al modelo
+        // Agregamos cada cliente al modelo
         for (Cliente c : lista) {
             modelo.addRow(new Object[]{
                 c.getIdCliente(),
