@@ -4,10 +4,6 @@ import controlador.EmpleadoControlador;
 import javax.swing.JOptionPane;
 import modelo.Empleado;
 
-/**
- *
- * @author brand
- */
 public class LoginGeneral extends javax.swing.JFrame {
 
 	public LoginGeneral() {
@@ -167,6 +163,7 @@ public class LoginGeneral extends javax.swing.JFrame {
     }//GEN-LAST:event_txt_docNumActionPerformed
 
     private void btn_loginActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_loginActionPerformed
+		// Obtiene datos de vista
 		String numeroDoc = txt_docNum.getText().trim();
 		String contraseña = new String(txt_contraseña.getPassword());
 
@@ -182,7 +179,7 @@ public class LoginGeneral extends javax.swing.JFrame {
 			menu.setLocationRelativeTo(null); // Centrar
 
 			// Cerrar ventana de login
-			dispose(); // Solo si estás en JFrame. Si es JPanel usa: SwingUtilities.getWindowAncestor(this).dispose();
+			dispose();
 		} else {
             JOptionPane.showMessageDialog(null, "❌ Documento o contraseña inválidos.");
 		}
