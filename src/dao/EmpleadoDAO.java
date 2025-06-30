@@ -31,8 +31,8 @@ public class EmpleadoDAO {
 				empleado.setContraseña(rs.getString("contraseña"));
 
 				// Convertimos el TINYINT(1) a Boolean
-				boolean estado = rs.getBoolean("estado");
-				empleado.setEstado(estado);
+				boolean activo = rs.getBoolean("activo");
+				empleado.setActivo(activo);
 
 				empleados.add(empleado);
 			}
@@ -66,7 +66,7 @@ public class EmpleadoDAO {
 							rs.getString("telefono"),
 							rs.getString("correo"),
 							rs.getString("contraseña"),
-							rs.getBoolean("estado")
+							rs.getBoolean("activo")
 					);
 				}
 			}

@@ -1,5 +1,7 @@
 package modelo;
 
+import java.time.LocalDateTime;
+
 public class MateriaPrima {
 
 	private String idMateriaPrima;
@@ -8,20 +10,23 @@ public class MateriaPrima {
 	private String unidadMedida;
 	private int stockMinimo;
 	private String tipoMP;
+	private String rutaImagen;
+	private LocalDateTime fechaSubida;
 
 	// Constructor vacío
 	public MateriaPrima() {
 	}
 
 	// Constructor completo
-	public MateriaPrima(String idMateriaPrima, String nombre, String descripcion,
-			String unidadMedida, int stockMinimo, String tipoMP) {
+	public MateriaPrima(String idMateriaPrima, String nombre, String descripcion, String unidadMedida, int stockMinimo, String tipoMP, String rutaImagen, LocalDateTime fechaSubida) {
 		this.idMateriaPrima = idMateriaPrima;
 		this.nombre = nombre;
 		this.descripcion = descripcion;
 		this.unidadMedida = unidadMedida;
 		this.stockMinimo = stockMinimo;
 		this.tipoMP = tipoMP;
+		this.rutaImagen = rutaImagen;
+		this.fechaSubida = fechaSubida;
 	}
 
 	// Getters y setters
@@ -73,6 +78,22 @@ public class MateriaPrima {
 		this.tipoMP = tipoMP;
 	}
 
+	public String getRutaImagen() {
+		return rutaImagen;
+	}
+
+	public void setRutaImagen(String rutaImagen) {
+		this.rutaImagen = rutaImagen;
+	}
+
+	public LocalDateTime getFechaSubida() {
+		return fechaSubida;
+	}
+
+	public void setFechaSubida(LocalDateTime fechaSubida) {
+		this.fechaSubida = fechaSubida;
+	}
+
 	// Validación básica
 	public boolean isValid() {
 		return idMateriaPrima != null && !idMateriaPrima.isBlank()
@@ -89,6 +110,8 @@ public class MateriaPrima {
 				+ ", unidadMedida='" + unidadMedida + '\''
 				+ ", stockMinimo=" + stockMinimo
 				+ ", tipoMP='" + tipoMP + '\''
+				+ ", rutaImagen='" + rutaImagen + '\''
+				+ ", fechaSubida='" + fechaSubida + '\''
 				+ '}';
 	}
 }

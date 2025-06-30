@@ -2,33 +2,30 @@ package modelo;
 
 public class DetallePlantillaMI {
 
-	private String idDetallePlantillaMI;
+	private String idPlantillaMI;
 	private String idMaterialIntermedio;
 	private int cantidadRequerida;
 	private String comentarios;
-	private String idPlantillaMI;
 
 	// Constructor vacío
 	public DetallePlantillaMI() {
 	}
 
 	// Constructor completo
-	public DetallePlantillaMI(String idDetallePlantillaMI, String idMaterialIntermedio, int cantidadRequerida,
-			String comentarios, String idPlantillaMI) {
-		this.idDetallePlantillaMI = idDetallePlantillaMI;
+	public DetallePlantillaMI(String idPlantillaMI, String idMaterialIntermedio, int cantidadRequerida, String comentarios) {
+		this.idPlantillaMI = idPlantillaMI;
 		this.idMaterialIntermedio = idMaterialIntermedio;
 		this.cantidadRequerida = cantidadRequerida;
 		this.comentarios = comentarios;
-		this.idPlantillaMI = idPlantillaMI;
 	}
 
 	// Getters y setters
-	public String getIdDetallePlantillaMI() {
-		return idDetallePlantillaMI;
+	public String getIdPlantillaMI() {
+		return idPlantillaMI;
 	}
 
-	public void setIdDetallePlantillaMI(String idDetallePlantillaMI) {
-		this.idDetallePlantillaMI = idDetallePlantillaMI;
+	public void setIdPlantillaMI(String idPlantillaMI) {
+		this.idPlantillaMI = idPlantillaMI;
 	}
 
 	public String getIdMaterialIntermedio() {
@@ -55,31 +52,22 @@ public class DetallePlantillaMI {
 		this.comentarios = comentarios;
 	}
 
-	public String getIdPlantillaMI() {
-		return idPlantillaMI;
-	}
-
-	public void setIdPlantillaMI(String idPlantillaMI) {
-		this.idPlantillaMI = idPlantillaMI;
-	}
-
 	// Validación básica
 	public boolean isValid() {
-		return idDetallePlantillaMI != null && !idDetallePlantillaMI.isBlank()
+		return idPlantillaMI != null && !idPlantillaMI.isBlank()
 				&& idMaterialIntermedio != null && !idMaterialIntermedio.isBlank()
-				&& idPlantillaMI != null && !idPlantillaMI.isBlank()
-				&& cantidadRequerida > 0;
+				&& cantidadRequerida > 0
+				&& (comentarios == null || !comentarios.isBlank());
 	}
 
 	// toString para depuración
 	@Override
 	public String toString() {
-		return "DetallePlantillaMI{"
-				+ "idDetallePlantillaMI='" + idDetallePlantillaMI + '\''
+		return "DetallePlantillaMI"
+				+ "idPlantillaMI='" + idPlantillaMI + '\''
 				+ ", idMaterialIntermedio='" + idMaterialIntermedio + '\''
 				+ ", cantidadRequerida=" + cantidadRequerida
 				+ ", comentarios='" + comentarios + '\''
-				+ ", idPlantillaMI='" + idPlantillaMI + '\''
 				+ '}';
 	}
 }

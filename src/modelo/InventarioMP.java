@@ -1,20 +1,28 @@
 package modelo;
 
+import java.time.LocalDateTime;
+
 public class InventarioMP {
 
 	private String idInventarioMP;
 	private String idAlmacen;
-	private int stockActual;
+	private int stockLogico;
+	private int stockFisico;
+	private LocalDateTime fechaActualizacion;
+	private String periodo;
 
 	// Constructor vacío
 	public InventarioMP() {
 	}
 
 	// Constructor completo
-	public InventarioMP(String idInventarioMP, String idAlmacen, int stockActual) {
+	public InventarioMP(String idInventarioMP, String idAlmacen, int stockLogico, int stockFisico, LocalDateTime fechaActualizacion, String periodo) {
 		this.idInventarioMP = idInventarioMP;
 		this.idAlmacen = idAlmacen;
-		this.stockActual = stockActual;
+		this.stockLogico = stockLogico;
+		this.stockFisico = stockFisico;
+		this.fechaActualizacion = fechaActualizacion;
+		this.periodo = periodo;
 	}
 
 	// Getters y setters
@@ -34,19 +42,46 @@ public class InventarioMP {
 		this.idAlmacen = idAlmacen;
 	}
 
-	public int getStockActual() {
-		return stockActual;
+	public int getStockLogico() {
+		return stockLogico;
 	}
 
-	public void setStockActual(int stockActual) {
-		this.stockActual = stockActual;
+	public void setStockLogico(int stockLogico) {
+		this.stockLogico = stockLogico;
+	}
+
+	public int getStockFisico() {
+		return stockFisico;
+	}
+
+	public void setStockFisico(int stockFisico) {
+		this.stockFisico = stockFisico;
+	}
+
+	public LocalDateTime getFechaActualizacion() {
+		return fechaActualizacion;
+	}
+
+	public void setFechaActualizacion(LocalDateTime fechaActualizacion) {
+		this.fechaActualizacion = fechaActualizacion;
+	}
+
+	public String getPeriodo() {
+		return periodo;
+	}
+
+	public void setPeriodo(String periodo) {
+		this.periodo = periodo;
 	}
 
 	// Validación básica
 	public boolean isValid() {
 		return idInventarioMP != null && !idInventarioMP.isBlank()
 				&& idAlmacen != null && !idAlmacen.isBlank()
-				&& stockActual >= 0;
+				&& stockLogico >= 0
+				&& stockFisico >= 0
+				&& fechaActualizacion != null
+				&& periodo != null && !periodo.isBlank();
 	}
 
 	// toString para depuración
@@ -55,7 +90,10 @@ public class InventarioMP {
 		return "InventarioMP{"
 				+ "idInventarioMP='" + idInventarioMP + '\''
 				+ ", idAlmacen='" + idAlmacen + '\''
-				+ ", stockActual=" + stockActual
+				+ ", stockLogico=" + stockLogico
+				+ ", stockFisico=" + stockFisico
+				+ ", fechaActualizacion=" + fechaActualizacion
+				+ ", periodo='" + periodo + '\''
 				+ '}';
 	}
 }

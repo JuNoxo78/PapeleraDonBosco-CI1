@@ -3,6 +3,7 @@ package modelo;
 public class DetalleMIFabricado {
 
 	private String idDetalleMIFabricado;
+	private String idMaterialIntermedio;
 	private String dimensiones;
 	private String gramaje;
 	private String textura;
@@ -13,8 +14,9 @@ public class DetalleMIFabricado {
 	}
 
 	// Constructor completo
-	public DetalleMIFabricado(String idDetalleMIFabricado, String dimensiones, String gramaje, String textura, String remate) {
+	public DetalleMIFabricado(String idDetalleMIFabricado, String idMaterialIntermedio, String dimensiones, String gramaje, String textura, String remate) {
 		this.idDetalleMIFabricado = idDetalleMIFabricado;
+		this.idMaterialIntermedio = idMaterialIntermedio;
 		this.dimensiones = dimensiones;
 		this.gramaje = gramaje;
 		this.textura = textura;
@@ -28,6 +30,14 @@ public class DetalleMIFabricado {
 
 	public void setIdDetalleMIFabricado(String idDetalleMIFabricado) {
 		this.idDetalleMIFabricado = idDetalleMIFabricado;
+	}
+
+	public String getIdMaterialIntermedio() {
+		return idMaterialIntermedio;
+	}
+
+	public void setIdMaterialIntermedio(String idMaterialIntermedio) {
+		this.idMaterialIntermedio = idMaterialIntermedio;
 	}
 
 	public String getDimensiones() {
@@ -72,6 +82,7 @@ public class DetalleMIFabricado {
 	public String toString() {
 		return "DetalleMIFabricado{"
 				+ "idDetalleMIFabricado='" + idDetalleMIFabricado + '\''
+				+ ", idMaterialIntermedio='" + idMaterialIntermedio + '\''
 				+ ", dimensiones='" + dimensiones + '\''
 				+ ", gramaje='" + gramaje + '\''
 				+ ", textura='" + textura + '\''

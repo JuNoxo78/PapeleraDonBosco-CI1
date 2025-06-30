@@ -4,92 +4,92 @@ import java.math.BigDecimal;
 import java.time.LocalDate;
 
 public class Compra {
-    private String idCompra;
-    private LocalDate fechaCompra;
-    private BigDecimal totalPagado;
-    private String idProveedor;
-    private String idEmpleado;
-    private String idComprobanteCompra;
 
-    // Constructor vacío
-    public Compra() {
-    }
+	private String idCompra;
+	private LocalDate fechaCompra;
+	private BigDecimal totalPagado;
+	private String estadoCompra;
+	private String idProveedor;
+	private String idEmpleado;
 
-    // Constructor completo
-    public Compra(String idCompra, LocalDate fechaCompra, BigDecimal totalPagado,
-                  String idProveedor, String idEmpleado, String idComprobanteCompra) {
-        this.idCompra = idCompra;
-        this.fechaCompra = fechaCompra;
-        this.totalPagado = totalPagado;
-        this.idProveedor = idProveedor;
-        this.idEmpleado = idEmpleado;
-        this.idComprobanteCompra = idComprobanteCompra;
-    }
+	// Constructor vacío
+	public Compra() {
+	}
 
-    // Getters y setters
-    public String getIdCompra() {
-        return idCompra;
-    }
+	// Constructor completo
+	public Compra(String idCompra, LocalDate fechaCompra, BigDecimal totalPagado, String estadoCompra, String idProveedor, String idEmpleado) {
+		this.idCompra = idCompra;
+		this.fechaCompra = fechaCompra;
+		this.totalPagado = totalPagado;
+		this.estadoCompra = estadoCompra;
+		this.idProveedor = idProveedor;
+		this.idEmpleado = idEmpleado;
+	}
 
-    public void setIdCompra(String idCompra) {
-        this.idCompra = idCompra;
-    }
+	// Getters y Setters
+	public String getIdCompra() {
+		return idCompra;
+	}
 
-    public LocalDate getFechaCompra() {
-        return fechaCompra;
-    }
+	public void setIdCompra(String idCompra) {
+		this.idCompra = idCompra;
+	}
 
-    public void setFechaCompra(LocalDate fechaCompra) {
-        this.fechaCompra = fechaCompra;
-    }
+	public LocalDate getFechaCompra() {
+		return fechaCompra;
+	}
 
-    public BigDecimal getTotalPagado() {
-        return totalPagado;
-    }
+	public void setFechaCompra(LocalDate fechaCompra) {
+		this.fechaCompra = fechaCompra;
+	}
 
-    public void setTotalPagado(BigDecimal totalPagado) {
-        this.totalPagado = totalPagado;
-    }
+	public BigDecimal getTotalPagado() {
+		return totalPagado;
+	}
 
-    public String getIdProveedor() {
-        return idProveedor;
-    }
+	public void setTotalPagado(BigDecimal totalPagado) {
+		this.totalPagado = totalPagado;
+	}
 
-    public void setIdProveedor(String idProveedor) {
-        this.idProveedor = idProveedor;
-    }
+	public String getEstadoCompra() {
+		return estadoCompra;
+	}
 
-    public String getIdEmpleado() {
-        return idEmpleado;
-    }
+	public void setEstadoCompra(String estadoCompra) {
+		this.estadoCompra = estadoCompra;
+	}
 
-    public void setIdEmpleado(String idEmpleado) {
-        this.idEmpleado = idEmpleado;
-    }
+	public String getIdProveedor() {
+		return idProveedor;
+	}
 
-    public String getIdComprobanteCompra() {
-        return idComprobanteCompra;
-    }
+	public void setIdProveedor(String idProveedor) {
+		this.idProveedor = idProveedor;
+	}
 
-    public void setIdComprobanteCompra(String idComprobanteCompra) {
-        this.idComprobanteCompra = idComprobanteCompra;
-    }
+	public String getIdEmpleado() {
+		return idEmpleado;
+	}
 
-    // Validación básica
-    public boolean isValid() {
-        return idCompra != null && !idCompra.isBlank();
-    }
+	public void setIdEmpleado(String idEmpleado) {
+		this.idEmpleado = idEmpleado;
+	}
 
-    // toString para depuración
-    @Override
-    public String toString() {
-        return "Compra{" +
-                "idCompra='" + idCompra + '\'' +
-                ", fechaCompra=" + fechaCompra +
-                ", totalPagado=" + totalPagado +
-                ", idProveedor='" + idProveedor + '\'' +
-                ", idEmpleado='" + idEmpleado + '\'' +
-                ", idComprobanteCompra='" + idComprobanteCompra + '\'' +
-                '}';
-    }
+	// Validación básica
+	public boolean isValid() {
+		return idCompra != null && !idCompra.isBlank();
+	}
+
+	// toString para depuración
+	@Override
+	public String toString() {
+		return "Compra{"
+				+ "idCompra='" + idCompra + '\''
+				+ ", fechaCompra=" + fechaCompra
+				+ ", totalPagado=" + totalPagado
+				+ ", estadoCompra='" + estadoCompra + '\''
+				+ ", idProveedor='" + idProveedor + '\''
+				+ ", idEmpleado='" + idEmpleado + '\''
+				+ '}';
+	}
 }

@@ -11,16 +11,15 @@ public class Cliente {
 	private String direccion;
 	private String telefono;
 	private String correo;
-	private Boolean estado;
 	private LocalDateTime fechaRegistro;
 
 	// Constructor vacío
 	public Cliente() {
 	}
 
-	// Constructor con todos los campos
+	// Constructor completo
 	public Cliente(String idCliente, String idDocIdentidad, String nombre, String apellido,
-			String direccion, String telefono, String correo, Boolean estado, LocalDateTime fechaRegistro) {
+			String direccion, String telefono, String correo, LocalDateTime fechaRegistro) {
 		this.idCliente = idCliente;
 		this.idDocIdentidad = idDocIdentidad;
 		this.nombre = nombre;
@@ -28,7 +27,6 @@ public class Cliente {
 		this.direccion = direccion;
 		this.telefono = telefono;
 		this.correo = correo;
-		this.estado = estado;
 		this.fechaRegistro = fechaRegistro;
 	}
 
@@ -89,14 +87,6 @@ public class Cliente {
 		this.correo = correo;
 	}
 
-	public Boolean getEstado() {
-		return estado;
-	}
-
-	public void setEstado(Boolean estado) {
-		this.estado = estado;
-	}
-
 	public LocalDateTime getFechaRegistro() {
 		return fechaRegistro;
 	}
@@ -105,13 +95,13 @@ public class Cliente {
 		this.fechaRegistro = fechaRegistro;
 	}
 
-	// Método para validación básica (puedes ampliar según tus reglas de negocio)
+	// Validación básica
 	public boolean isValid() {
 		return idCliente != null && !idCliente.isBlank()
 				&& idDocIdentidad != null && !idDocIdentidad.isBlank();
 	}
 
-	// toString para facilitar la depuración
+	// toString para depuración
 	@Override
 	public String toString() {
 		return "Cliente{"
@@ -122,7 +112,6 @@ public class Cliente {
 				+ ", direccion='" + direccion + '\''
 				+ ", telefono='" + telefono + '\''
 				+ ", correo='" + correo + '\''
-				+ ", estado=" + estado
 				+ ", fechaRegistro=" + fechaRegistro
 				+ '}';
 	}

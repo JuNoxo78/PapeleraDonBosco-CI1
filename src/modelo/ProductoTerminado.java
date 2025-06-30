@@ -1,6 +1,7 @@
 package modelo;
 
 import java.math.BigDecimal;
+import java.time.LocalDateTime;
 
 public class ProductoTerminado {
 
@@ -11,14 +12,16 @@ public class ProductoTerminado {
 	private int stockMinimo;
 	private String tipoPT;
 	private String dimensiones;
+	private String idPlantillaMI;
+	private String rutaImagen;
+	private LocalDateTime fechaSubida;
 
 	// Constructor vacío
 	public ProductoTerminado() {
 	}
 
 	// Constructor completo
-	public ProductoTerminado(String idProductoTerminado, String nombre, String descripcion,
-			BigDecimal precio, int stockMinimo, String tipoPT, String dimensiones) {
+	public ProductoTerminado(String idProductoTerminado, String nombre, String descripcion, BigDecimal precio, int stockMinimo, String tipoPT, String dimensiones, String idPlantillaMI, String rutaImagen, LocalDateTime fechaSubida) {
 		this.idProductoTerminado = idProductoTerminado;
 		this.nombre = nombre;
 		this.descripcion = descripcion;
@@ -26,6 +29,9 @@ public class ProductoTerminado {
 		this.stockMinimo = stockMinimo;
 		this.tipoPT = tipoPT;
 		this.dimensiones = dimensiones;
+		this.idPlantillaMI = idPlantillaMI;
+		this.rutaImagen = rutaImagen;
+		this.fechaSubida = fechaSubida;
 	}
 
 	// Getters y setters
@@ -85,6 +91,30 @@ public class ProductoTerminado {
 		this.dimensiones = dimensiones;
 	}
 
+	public String getIdPlantillaMI() {
+		return idPlantillaMI;
+	}
+
+	public void setIdPlantillaMI(String idPlantillaMI) {
+		this.idPlantillaMI = idPlantillaMI;
+	}
+
+	public String getRutaImagen() {
+		return rutaImagen;
+	}
+
+	public void setRutaImagen(String rutaImagen) {
+		this.rutaImagen = rutaImagen;
+	}
+
+	public LocalDateTime getFechaSubida() {
+		return fechaSubida;
+	}
+
+	public void setFechaSubida(LocalDateTime fechaSubida) {
+		this.fechaSubida = fechaSubida;
+	}
+
 	// Validación básica
 	public boolean isValid() {
 		return idProductoTerminado != null && !idProductoTerminado.isBlank();
@@ -101,6 +131,9 @@ public class ProductoTerminado {
 				+ ", stockMinimo=" + stockMinimo
 				+ ", tipoPT='" + tipoPT + '\''
 				+ ", dimensiones='" + dimensiones + '\''
+				+ ", idPlantillaMI='" + idPlantillaMI + '\''
+				+ ", rutaImagen='" + rutaImagen + '\''
+				+ ", fechaSubida=" + fechaSubida
 				+ '}';
 	}
 }

@@ -17,7 +17,7 @@ public class Almacen {
 		this.ubicacionFisica = ubicacionFisica;
 	}
 
-	// Getters y setters
+	// Getters y Setters
 	public String getIdAlmacen() {
 		return idAlmacen;
 	}

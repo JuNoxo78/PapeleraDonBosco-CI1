@@ -1,24 +1,34 @@
 package modelo;
 
+import java.math.BigDecimal;
+
 public class DetalleCompra {
 
 	private String idDetalleCompra;
+	private String idCompra;
 	private String nombreElemento;
 	private String tipoElementoComprado;
 	private int cantidad;
-	private String idCompra;
+	private String idMateriaPrima;
+	private String idMaterialIntermedio;
+	private BigDecimal costoUnitario;
+	private BigDecimal costoTotal;
 
 	// Constructor vacío
 	public DetalleCompra() {
 	}
 
 	// Constructor completo
-	public DetalleCompra(String idDetalleCompra, String nombreElemento, String tipoElementoComprado, int cantidad, String idCompra) {
+	public DetalleCompra(String idDetalleCompra, String idCompra, String nombreElemento, String tipoElementoComprado, int cantidad, String idMateriaPrima, String idMaterialIntermedio, BigDecimal costoUnitario, BigDecimal costoTotal) {
 		this.idDetalleCompra = idDetalleCompra;
+		this.idCompra = idCompra;
 		this.nombreElemento = nombreElemento;
 		this.tipoElementoComprado = tipoElementoComprado;
 		this.cantidad = cantidad;
-		this.idCompra = idCompra;
+		this.idMateriaPrima = idMateriaPrima;
+		this.idMaterialIntermedio = idMaterialIntermedio;
+		this.costoUnitario = costoUnitario;
+		this.costoTotal = costoTotal;
 	}
 
 	// Getters y setters
@@ -28,6 +38,14 @@ public class DetalleCompra {
 
 	public void setIdDetalleCompra(String idDetalleCompra) {
 		this.idDetalleCompra = idDetalleCompra;
+	}
+
+	public String getIdCompra() {
+		return idCompra;
+	}
+
+	public void setIdCompra(String idCompra) {
+		this.idCompra = idCompra;
 	}
 
 	public String getNombreElemento() {
@@ -54,12 +72,36 @@ public class DetalleCompra {
 		this.cantidad = cantidad;
 	}
 
-	public String getIdCompra() {
-		return idCompra;
+	public String getIdMateriaPrima() {
+		return idMateriaPrima;
 	}
 
-	public void setIdCompra(String idCompra) {
-		this.idCompra = idCompra;
+	public void setIdMateriaPrima(String idMateriaPrima) {
+		this.idMateriaPrima = idMateriaPrima;
+	}
+
+	public String getIdMaterialIntermedio() {
+		return idMaterialIntermedio;
+	}
+
+	public void setIdMaterialIntermedio(String idMaterialIntermedio) {
+		this.idMaterialIntermedio = idMaterialIntermedio;
+	}
+
+	public BigDecimal getCostoUnitario() {
+		return costoUnitario;
+	}
+
+	public void setCostoUnitario(BigDecimal costoUnitario) {
+		this.costoUnitario = costoUnitario;
+	}
+
+	public BigDecimal getCostoTotal() {
+		return costoTotal;
+	}
+
+	public void setCostoTotal(BigDecimal costoTotal) {
+		this.costoTotal = costoTotal;
 	}
 
 	// Validación básica
@@ -74,10 +116,14 @@ public class DetalleCompra {
 	public String toString() {
 		return "DetalleCompra{"
 				+ "idDetalleCompra='" + idDetalleCompra + '\''
+				+ ", idCompra='" + idCompra + '\''
 				+ ", nombreElemento='" + nombreElemento + '\''
 				+ ", tipoElementoComprado='" + tipoElementoComprado + '\''
 				+ ", cantidad=" + cantidad
-				+ ", idCompra='" + idCompra + '\''
+				+ ", idMateriaPrima='" + idMateriaPrima + '\''
+				+ ", idMaterialIntermedio='" + idMaterialIntermedio + '\''
+				+ ", costoUnitario=" + costoUnitario
+				+ ", costoTotal=" + costoTotal
 				+ '}';
 	}
 }

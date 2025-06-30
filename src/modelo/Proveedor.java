@@ -7,20 +7,20 @@ public class Proveedor {
 	private String ruc;
 	private String direccion;
 	private String telefono;
-	private Boolean estado;
+	private Boolean activo;
 
 	// Constructor vacío
 	public Proveedor() {
 	}
 
 	// Constructor completo
-	public Proveedor(String idProveedor, String nombre, String ruc, String direccion, String telefono, Boolean estado) {
+	public Proveedor(String idProveedor, String nombre, String ruc, String direccion, String telefono, Boolean activo) {
 		this.idProveedor = idProveedor;
 		this.nombre = nombre;
 		this.ruc = ruc;
 		this.direccion = direccion;
 		this.telefono = telefono;
-		this.estado = estado;
+		this.activo = activo;
 	}
 
 	// Getters y setters
@@ -64,12 +64,12 @@ public class Proveedor {
 		this.telefono = telefono;
 	}
 
-	public Boolean getEstado() {
-		return estado;
+	public Boolean getActivo() {
+		return activo;
 	}
 
-	public void setEstado(Boolean estado) {
-		this.estado = estado;
+	public void setActivo(Boolean activo) {
+		this.activo = activo;
 	}
 
 	// Validación básica
@@ -87,7 +87,7 @@ public class Proveedor {
 				+ ", ruc='" + ruc + '\''
 				+ ", direccion='" + direccion + '\''
 				+ ", telefono='" + telefono + '\''
-				+ ", estado=" + estado
+				+ ", activo=" + activo
 				+ '}';
 	}
 }

@@ -1,29 +1,32 @@
 package modelo;
 
+import java.time.LocalDateTime;
+
 public class MaterialIntermedio {
 
 	private String idMaterialIntermedio;
-	private String idDetalleMIFabricado;
 	private String nombre;
 	private String descripcion;
 	private String unidadMedida;
 	private int stockMinimo;
 	private String tipoMI;
+	private String rutaImagen;
+	private LocalDateTime fechaSubida;
 
 	// Constructor vacío
 	public MaterialIntermedio() {
 	}
 
 	// Constructor completo
-	public MaterialIntermedio(String idMaterialIntermedio, String idDetalleMIFabricado, String nombre,
-			String descripcion, String unidadMedida, int stockMinimo, String tipoMI) {
+	public MaterialIntermedio(String idMaterialIntermedio, String nombre, String descripcion, String unidadMedida, int stockMinimo, String tipoMI, String rutaImagen, LocalDateTime fechaSubida) {
 		this.idMaterialIntermedio = idMaterialIntermedio;
-		this.idDetalleMIFabricado = idDetalleMIFabricado;
 		this.nombre = nombre;
 		this.descripcion = descripcion;
 		this.unidadMedida = unidadMedida;
 		this.stockMinimo = stockMinimo;
 		this.tipoMI = tipoMI;
+		this.rutaImagen = rutaImagen;
+		this.fechaSubida = fechaSubida;
 	}
 
 	// Getters y setters
@@ -33,14 +36,6 @@ public class MaterialIntermedio {
 
 	public void setIdMaterialIntermedio(String idMaterialIntermedio) {
 		this.idMaterialIntermedio = idMaterialIntermedio;
-	}
-
-	public String getIdDetalleMIFabricado() {
-		return idDetalleMIFabricado;
-	}
-
-	public void setIdDetalleMIFabricado(String idDetalleMIFabricado) {
-		this.idDetalleMIFabricado = idDetalleMIFabricado;
 	}
 
 	public String getNombre() {
@@ -83,6 +78,22 @@ public class MaterialIntermedio {
 		this.tipoMI = tipoMI;
 	}
 
+	public String getRutaImagen() {
+		return rutaImagen;
+	}
+
+	public void setRutaImagen(String rutaImagen) {
+		this.rutaImagen = rutaImagen;
+	}
+
+	public LocalDateTime getFechaSubida() {
+		return fechaSubida;
+	}
+
+	public void setFechaSubida(LocalDateTime fechaSubida) {
+		this.fechaSubida = fechaSubida;
+	}
+
 	// Validación básica
 	public boolean isValid() {
 		return idMaterialIntermedio != null && !idMaterialIntermedio.isBlank()
@@ -94,12 +105,13 @@ public class MaterialIntermedio {
 	public String toString() {
 		return "MaterialIntermedio{"
 				+ "idMaterialIntermedio='" + idMaterialIntermedio + '\''
-				+ ", idDetalleMIFabricado='" + idDetalleMIFabricado + '\''
 				+ ", nombre='" + nombre + '\''
 				+ ", descripcion='" + descripcion + '\''
 				+ ", unidadMedida='" + unidadMedida + '\''
 				+ ", stockMinimo=" + stockMinimo
 				+ ", tipoMI='" + tipoMI + '\''
+				+ ", rutaImagen='" + rutaImagen + '\''
+				+ ", fechaSubida='" + fechaSubida + '\''
 				+ '}';
 	}
 }

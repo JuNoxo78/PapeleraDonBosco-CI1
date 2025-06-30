@@ -1,127 +1,139 @@
 package modelo;
 
+import java.time.LocalDateTime;
+
 public class Empleado {
-    private String idEmpleado;
-    private String idDocIdentidad;
-    private String nombre;
-    private String apellido;
-    private String direccion;
-    private String telefono;
-    private String correo;
-    private String contraseña;
-    private Boolean estado;
 
-    // Constructor vacío
-    public Empleado() {
-    }
+	private String idEmpleado;
+	private String idDocIdentidad;
+	private String nombre;
+	private String apellido;
+	private String direccion;
+	private String telefono;
+	private String correo;
+	private String contraseña;
+	private Boolean activo;
+	private LocalDateTime fechaRegistro;
 
-    // Constructor completo
-    public Empleado(String idEmpleado, String idDocIdentidad, String nombre, String apellido,
-                    String direccion, String telefono, String correo, String contraseña,
-                    Boolean estado) {
-        this.idEmpleado = idEmpleado;
-        this.idDocIdentidad = idDocIdentidad;
-        this.nombre = nombre;
-        this.apellido = apellido;
-        this.direccion = direccion;
-        this.telefono = telefono;
-        this.correo = correo;
-        this.contraseña = contraseña;
-        this.estado = estado;
-    }
+	// Constructor vacío
+	public Empleado() {
+	}
 
-    // Getters y setters
-    public String getIdEmpleado() {
-        return idEmpleado;
-    }
+	// Constructor completo
+	public Empleado(String idEmpleado, String idDocIdentidad, String nombre, String apellido, String direccion, String telefono, String correo, String contraseña, Boolean activo, LocalDateTime fechaRegistro) {
+		this.idEmpleado = idEmpleado;
+		this.idDocIdentidad = idDocIdentidad;
+		this.nombre = nombre;
+		this.apellido = apellido;
+		this.direccion = direccion;
+		this.telefono = telefono;
+		this.correo = correo;
+		this.contraseña = contraseña;
+		this.activo = activo;
+		this.fechaRegistro = fechaRegistro;
+	}
 
-    public void setIdEmpleado(String idEmpleado) {
-        this.idEmpleado = idEmpleado;
-    }
+	// Getters y setters
+	public String getIdEmpleado() {
+		return idEmpleado;
+	}
 
-    public String getIdDocIdentidad() {
-        return idDocIdentidad;
-    }
+	public void setIdEmpleado(String idEmpleado) {
+		this.idEmpleado = idEmpleado;
+	}
 
-    public void setIdDocIdentidad(String idDocIdentidad) {
-        this.idDocIdentidad = idDocIdentidad;
-    }
+	public String getIdDocIdentidad() {
+		return idDocIdentidad;
+	}
 
-    public String getNombre() {
-        return nombre;
-    }
+	public void setIdDocIdentidad(String idDocIdentidad) {
+		this.idDocIdentidad = idDocIdentidad;
+	}
 
-    public void setNombre(String nombre) {
-        this.nombre = nombre;
-    }
+	public String getNombre() {
+		return nombre;
+	}
 
-    public String getApellido() {
-        return apellido;
-    }
+	public void setNombre(String nombre) {
+		this.nombre = nombre;
+	}
 
-    public void setApellido(String apellido) {
-        this.apellido = apellido;
-    }
+	public String getApellido() {
+		return apellido;
+	}
 
-    public String getDireccion() {
-        return direccion;
-    }
+	public void setApellido(String apellido) {
+		this.apellido = apellido;
+	}
 
-    public void setDireccion(String direccion) {
-        this.direccion = direccion;
-    }
+	public String getDireccion() {
+		return direccion;
+	}
 
-    public String getTelefono() {
-        return telefono;
-    }
+	public void setDireccion(String direccion) {
+		this.direccion = direccion;
+	}
 
-    public void setTelefono(String telefono) {
-        this.telefono = telefono;
-    }
+	public String getTelefono() {
+		return telefono;
+	}
 
-    public String getCorreo() {
-        return correo;
-    }
+	public void setTelefono(String telefono) {
+		this.telefono = telefono;
+	}
 
-    public void setCorreo(String correo) {
-        this.correo = correo;
-    }
+	public String getCorreo() {
+		return correo;
+	}
 
-    public String getContraseña() {
-        return contraseña;
-    }
+	public void setCorreo(String correo) {
+		this.correo = correo;
+	}
 
-    public void setContraseña(String contraseña) {
-        this.contraseña = contraseña;
-    }
+	public String getContraseña() {
+		return contraseña;
+	}
 
-    public Boolean getEstado() {
-        return estado;
-    }
+	public void setContraseña(String contraseña) {
+		this.contraseña = contraseña;
+	}
 
-    public void setEstado(Boolean estado) {
-        this.estado = estado;
-    }
+	public Boolean getActivo() {
+		return activo;
+	}
 
-    // Validación básica
-    public boolean isValid() {
-        return idEmpleado != null && !idEmpleado.isBlank()
-            && idDocIdentidad != null && !idDocIdentidad.isBlank();
-    }
+	public void setActivo(Boolean activo) {
+		this.activo = activo;
+	}
 
-    // Método toString
-    @Override
-    public String toString() {
-        return "Empleado{" +
-                "idEmpleado='" + idEmpleado + '\'' +
-                ", idDocIdentidad='" + idDocIdentidad + '\'' +
-                ", nombre='" + nombre + '\'' +
-                ", apellido='" + apellido + '\'' +
-                ", direccion='" + direccion + '\'' +
-                ", telefono='" + telefono + '\'' +
-                ", correo='" + correo + '\'' +
-                ", contraseña='" + contraseña + '\'' +
-                ", estado=" + estado +
-                '}';
-    }
+	public LocalDateTime getFechaRegistro() {
+		return fechaRegistro;
+	}
+
+	public void setFechaRegistro(LocalDateTime fechaRegistro) {
+		this.fechaRegistro = fechaRegistro;
+	}
+
+	// Validación básica
+	public boolean isValid() {
+		return idEmpleado != null && !idEmpleado.isBlank()
+				&& idDocIdentidad != null && !idDocIdentidad.isBlank();
+	}
+
+	// Método toString
+	@Override
+	public String toString() {
+		return "Empleado{"
+				+ "idEmpleado='" + idEmpleado + '\''
+				+ ", idDocIdentidad='" + idDocIdentidad + '\''
+				+ ", nombre='" + nombre + '\''
+				+ ", apellido='" + apellido + '\''
+				+ ", direccion='" + direccion + '\''
+				+ ", telefono='" + telefono + '\''
+				+ ", correo='" + correo + '\''
+				+ ", contraseña='" + contraseña + '\''
+				+ ", activo=" + activo
+				+ ", fechaRegistro=" + fechaRegistro
+				+ '}';
+	}
 }

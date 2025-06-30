@@ -28,7 +28,6 @@ public class ClienteDAO {
                 c.setDireccion(rs.getString("direccion"));
                 c.setTelefono(rs.getString("telefono"));
                 c.setCorreo(rs.getString("correo"));
-                c.setEstado(rs.getBoolean("estado"));
                 
                 Timestamp fechaSQL = rs.getTimestamp("fechaRegistro");
                 c.setFechaRegistro(fechaSQL != null ? fechaSQL.toLocalDateTime() : null);
@@ -57,7 +56,6 @@ public class ClienteDAO {
             ps.setString(5, cliente.getDireccion());
             ps.setString(6, cliente.getTelefono());
             ps.setString(7, cliente.getCorreo());
-            ps.setBoolean(8, cliente.getEstado());
             
             if (cliente.getFechaRegistro() != null) {
                 ps.setTimestamp(9, Timestamp.valueOf(cliente.getFechaRegistro()));
@@ -84,8 +82,7 @@ public class ClienteDAO {
             stmt.setString(3, cliente.getCorreo());
             stmt.setString(4, cliente.getTelefono());
             stmt.setString(5, cliente.getDireccion());
-            stmt.setBoolean(6, cliente.getEstado());
-            stmt.setString(7, cliente.getIdCliente());
+            stmt.setString(6, cliente.getIdCliente());
 
             return stmt.executeUpdate() > 0;
         }

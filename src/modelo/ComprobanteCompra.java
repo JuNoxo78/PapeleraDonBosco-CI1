@@ -7,10 +7,10 @@ import java.time.LocalDateTime;
 public class ComprobanteCompra {
 
 	private String idCompCompra;
-	private String numeroComprobante;
+	private String idCompra;
+	private String codigoComprobante;
 	private String tipoComprobante;
 	private LocalDate fechaEmision;
-	private BigDecimal montoTotal;
 	private String nombreArchivo;
 	private String rutaArchivo;
 	private LocalDateTime fechaSubida;
@@ -20,32 +20,40 @@ public class ComprobanteCompra {
 	}
 
 	// Constructor completo
-	public ComprobanteCompra(String idComprCompra, String numeroComprobante, String tipoComprobante, LocalDate fechaEmision, BigDecimal montoTotal, String nombreArchivo, String rutaArchivo, LocalDateTime fechaSubida) {
+	public ComprobanteCompra(String idCompCompra, String idCompra, String codigoComprobante, String tipoComprobante, LocalDate fechaEmision, String nombreArchivo, String rutaArchivo, LocalDateTime fechaSubida) {
 		this.idCompCompra = idCompCompra;
-		this.numeroComprobante = numeroComprobante;
+		this.idCompra = idCompra;
+		this.codigoComprobante = codigoComprobante;
 		this.tipoComprobante = tipoComprobante;
 		this.fechaEmision = fechaEmision;
-		this.montoTotal = montoTotal;
 		this.nombreArchivo = nombreArchivo;
 		this.rutaArchivo = rutaArchivo;
 		this.fechaSubida = fechaSubida;
 	}
 
 	// Getters y setters
-	public String getIdComprobanteCompra() {
+	public String getIdCompCompra() {
 		return idCompCompra;
 	}
 
-	public void setIdComprobanteCompra(String idCompCompra) {
+	public void setIdCompCompra(String idCompCompra) {
 		this.idCompCompra = idCompCompra;
 	}
 
-	public String getNumeroComprobante() {
-		return numeroComprobante;
+	public String getIdCompra() {
+		return idCompra;
 	}
 
-	public void setNumeroComprobante(String numeroComprobante) {
-		this.numeroComprobante = numeroComprobante;
+	public void setIdCompra(String idCompra) {
+		this.idCompra = idCompra;
+	}
+
+	public String getCodigoComprobante() {
+		return codigoComprobante;
+	}
+
+	public void setCodigoComprobante(String codigoComprobante) {
+		this.codigoComprobante = codigoComprobante;
 	}
 
 	public String getTipoComprobante() {
@@ -62,14 +70,6 @@ public class ComprobanteCompra {
 
 	public void setFechaEmision(LocalDate fechaEmision) {
 		this.fechaEmision = fechaEmision;
-	}
-
-	public BigDecimal getMontoTotal() {
-		return montoTotal;
-	}
-
-	public void setMontoTotal(BigDecimal montoTotal) {
-		this.montoTotal = montoTotal;
 	}
 
 	public String getNombreArchivo() {
@@ -102,13 +102,14 @@ public class ComprobanteCompra {
 	}
 
 	// toString para depuración
+	@Override
 	public String toString() {
 		return "ComprobanteCompra{"
 				+ "idCompCompra='" + idCompCompra + '\''
-				+ ", numeroComprobante='" + numeroComprobante + '\''
+				+ ", idCompra='" + idCompra + '\''
+				+ ", codigoComprobante='" + codigoComprobante + '\''
 				+ ", tipoComprobante='" + tipoComprobante + '\''
 				+ ", fechaEmision=" + fechaEmision
-				+ ", montoTotal=" + montoTotal
 				+ ", nombreArchivo='" + nombreArchivo + '\''
 				+ ", rutaArchivo='" + rutaArchivo + '\''
 				+ ", fechaSubida=" + fechaSubida
