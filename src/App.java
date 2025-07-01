@@ -7,6 +7,5 @@ public class App {
 		LoginGeneral loginGeneral = new LoginGeneral();
 		loginGeneral.setVisible(true);
 		loginGeneral.setLocationRelativeTo(null);
-
 	}
 }
