@@ -5,7 +5,7 @@ package controlador;
  */
 import dao.DocIdentidadDAO;
 import java.sql.SQLException;
-import modelo.DocIdentidad;
+import modelo.autenticacion.DocIdentidad;
 import java.util.List;
 
 public class DocIdentidadControlador {

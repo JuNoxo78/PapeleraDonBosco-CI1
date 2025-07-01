@@ -1,7 +1,7 @@
 package dao;
 
 import conf.Conexion;
-import modelo.EmpleadoxRol;
+import modelo.autenticacion.EmpleadoxRol;
 
 import java.sql.*;
 import java.time.LocalDateTime;

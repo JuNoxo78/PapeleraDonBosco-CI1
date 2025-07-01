@@ -4,7 +4,7 @@ package controlador;
  *
  * @author Muaro
  */
-import modelo.Cliente;
+import modelo.clientes.Cliente;
 import java.sql.SQLException;
 import dao.ClienteDAO;
 import java.util.List;

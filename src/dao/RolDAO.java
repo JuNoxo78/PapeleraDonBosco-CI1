@@ -1,6 +1,6 @@
 package dao;
 
-import modelo.Rol;
+import modelo.autenticacion.Rol;
 import conf.Conexion;
 
 import java.sql.*;

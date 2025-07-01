@@ -3,7 +3,7 @@ package vista;
 import controlador.EmpleadoControlador;
 import java.util.List;
 import javax.swing.table.DefaultTableModel;
-import modelo.Empleado;
+import modelo.autenticacion.Empleado;
 
 /**
  *

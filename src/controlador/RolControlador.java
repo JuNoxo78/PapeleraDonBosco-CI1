@@ -1,7 +1,7 @@
 package controlador;
 
 import dao.RolDAO;
-import modelo.Rol;
+import modelo.autenticacion.Rol;
 
 import java.util.List;
 

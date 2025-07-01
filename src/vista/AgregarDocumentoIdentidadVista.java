@@ -4,7 +4,7 @@ import controlador.DocIdentidadControlador;
 import java.awt.HeadlessException;
 import java.util.List;
 import javax.swing.table.DefaultTableModel;
-import modelo.DocIdentidad;
+import modelo.autenticacion.DocIdentidad;
 
 /**
  *

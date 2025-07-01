@@ -6,7 +6,7 @@ package controlador;
 
 
 import dao.EmpleadoDAO;
-import modelo.Empleado;
+import modelo.autenticacion.Empleado;
 import java.util.List;
 
 public class EmpleadoControlador {

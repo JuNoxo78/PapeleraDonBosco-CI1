@@ -1,6 +1,6 @@
 package dao;
 
-import modelo.Empleado;
+import modelo.autenticacion.Empleado;
 import conf.Conexion;
 
 import java.sql.*;

@@ -1,12 +1,12 @@
 package dao;
 
-import modelo.Cliente;
+import modelo.clientes.Cliente;
 import conf.Conexion;
 import java.sql.*;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
-import modelo.DocIdentidad;
+import modelo.autenticacion.DocIdentidad;
 
 public class ClienteDAO {
 

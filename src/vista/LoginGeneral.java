@@ -2,7 +2,7 @@ package vista;
 
 import controlador.EmpleadoControlador;
 import javax.swing.JOptionPane;
-import modelo.Empleado;
+import modelo.autenticacion.Empleado;
 
 public class LoginGeneral extends javax.swing.JFrame {
 
@@ -27,7 +27,6 @@ public class LoginGeneral extends javax.swing.JFrame {
         txt_contraseña = new javax.swing.JPasswordField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setPreferredSize(new java.awt.Dimension(1020, 400));
         setResizable(false);
 
         jPanel1.setBackground(new java.awt.Color(62, 39, 35));

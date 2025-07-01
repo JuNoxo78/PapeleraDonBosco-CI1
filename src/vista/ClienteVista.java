@@ -6,7 +6,7 @@ import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.ZoneId;
 import java.util.Date;
-import modelo.Cliente;
+import modelo.clientes.Cliente;
 import java.util.List;
 import javax.swing.InputVerifier;
 import javax.swing.JComponent;

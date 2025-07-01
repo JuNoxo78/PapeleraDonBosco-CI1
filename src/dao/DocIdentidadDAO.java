@@ -5,7 +5,7 @@ package dao;
  * @author Muaro
  */
 import conf.Conexion;
-import modelo.DocIdentidad;
+import modelo.autenticacion.DocIdentidad;
 import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;

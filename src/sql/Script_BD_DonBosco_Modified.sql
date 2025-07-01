@@ -679,6 +679,28 @@ ENGINE = InnoDB
 DEFAULT CHARACTER SET = utf8mb4
 COLLATE = utf8mb4_0900_ai_ci;
 
+-- -----------------------------------------------------
+-- Table `papeleraartesanal`.`reporte`
+-- -----------------------------------------------------
+CREATE TABLE IF NOT EXISTS `papeleraartesanal`.`reporte` (
+  `idReporte` VARCHAR(10) NOT NULL,
+  `tipo_reporte` VARCHAR(50) NOT NULL,
+  `nombre` VARCHAR(50) NOT NULL,
+  `fecha_generacion` DATETIME NOT NULL,
+  `idEmpleado` VARCHAR(10) NOT NULL,
+  `filtros_aplicados` VARCHAR(500) NOT NULL,
+  `descripcion` TEXT NULL,
+  `estado` VARCHAR(50) NOT NULL,
+  PRIMARY KEY (`idReporte`),
+  INDEX `reporte_fk_1_idx` (`idEmpleado` ASC) VISIBLE,
+  CONSTRAINT `reporte_fk_1`
+    FOREIGN KEY (`idEmpleado`)
+    REFERENCES `papeleraartesanal`.`empleado` (`idEmpleado`)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION)
+ENGINE = InnoDB
+DEFAULT CHARACTER SET = utf8mb4
+COLLATE = utf8mb4_0900_ai_ci;
 
 SET SQL_MODE=@OLD_SQL_MODE;
 SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS;
