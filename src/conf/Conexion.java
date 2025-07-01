@@ -6,40 +6,26 @@ import java.sql.SQLException;
 
 public class Conexion {
 
-    public static Connection conectar() {
-        Connection conexion = null;
+	public static Connection conectar() {
+		Connection conexion = null;
 
-        // Configuración de conexión
-        String url = "jdbc:mysql://localhost:3306/papeleraartesanal";
-        String usuario = "root";
+		String url = "jdbc:mysql://localhost:3306/papeleraartesanal";
+		String usuario = "root";
+		String contraseña = "root";
 
-        // Lista de contraseñas a probar
-        String[] posiblesContraseñas = {
-            "root",
-        };
+		try {
+			Class.forName("com.mysql.cj.jdbc.Driver");
+			try {
+				conexion = DriverManager.getConnection(url, usuario, contraseña);
+				System.out.println("Conexion exitosa");
+			} catch (SQLException e) {
+				System.out.println("Error: " + e.getMessage());
+			}
+		} catch (ClassNotFoundException e) {
+			System.out.println("Error: No se encontro el driver JDBC");
+			e.printStackTrace();
+		}
 
-        try {
-            Class.forName("com.mysql.cj.jdbc.Driver");
-
-            for (String contraseña : posiblesContraseñas) {
-                try {
-                    conexion = DriverManager.getConnection(url, usuario, contraseña);
-                    System.out.println("Conexion exitosa con password: " + contraseña);
-                    break; // Salir del bucle si la conexión fue exitosa
-                } catch (SQLException e) {
-                    System.out.println("Fallo con password: " + contraseña);
-                }
-            }
-
-            if (conexion == null) {
-                System.out.println("No se pudo conectar con ninguna de las passwords.");
-            }
-
-        } catch (ClassNotFoundException e) {
-            System.out.println("Error: No se encontro el driver JDBC");
-            e.printStackTrace();
-        }
-
-        return conexion;
-    }
+		return conexion;
+	}
 }
