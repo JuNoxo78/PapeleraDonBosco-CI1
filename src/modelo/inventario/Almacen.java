@@ -1,4 +1,4 @@
-package modelo.inventario;
+    package modelo.inventario;
 
 public class Almacen {
 

@@ -486,7 +486,7 @@ public class MenuPrincipal extends javax.swing.JFrame {
         btn_documentacion.setSelected(false);
         btn_informacion.setSelected(false);
         
-        Registro_MPVista Pro = new Registro_MPVista();
+        Registro_PTVista Pro = new Registro_PTVista();
         Pro.setSize(1269, 837);
         Pro.setLocation(0,0);
         
