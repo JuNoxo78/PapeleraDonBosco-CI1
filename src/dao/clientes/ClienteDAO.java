@@ -160,10 +160,7 @@ public class ClienteDAO {
         }
     }
 
-<<<<<<< HEAD
     // Eliminar Cliente
-=======
->>>>>>> 5015909 (-- funicionabilidad de los botone de MT y PT)
     public boolean eliminarCliente(String idCliente) throws SQLException {
         // Consulta SQL para eliminar un cliente por su ID
         String sql = "DELETE FROM cliente WHERE idCliente = ?";
