@@ -36,7 +36,7 @@ public class LoginGeneral extends javax.swing.JFrame {
         jPanel2.setBackground(new java.awt.Color(239, 235, 233));
         jPanel2.setAutoscrolls(true);
 
-        jLabel6.setIcon(new javax.swing.ImageIcon("C:\\Users\\user\\Projects\\JavaProjects\\PapeleraDonBosco-CI1\\src\\assets\\Icono_IS.jpg")); // NOI18N
+        jLabel6.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/Icono_IS.jpg"))); // NOI18N
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
