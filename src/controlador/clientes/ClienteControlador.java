@@ -12,8 +12,8 @@ import java.util.List;
 public class ClienteControlador {
 
     private ClienteDAO dao = new ClienteDAO();
-//Obtener Cliente
 
+//Obtener Cliente
     public List<Cliente> obtenerClientes() {
         return dao.obtenerTodos();
     }
@@ -41,5 +41,10 @@ public class ClienteControlador {
             System.err.println("Error al modificar cliente: " + ex.getMessage());
             return false;
         }
+    }
+//Buscar Clientes
+
+    public List<Cliente> buscarClientes(String id, String docId, String nombre, String apellido) {
+        return dao.buscarClientes(id, docId, nombre, apellido);
     }
 }

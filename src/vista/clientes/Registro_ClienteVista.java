@@ -2,15 +2,16 @@ package vista.clientes;
 
 import vista.autenticacion.Registro_DocIdentidadVista;
 import controlador.clientes.ClienteControlador;
-import dao.clientes.ClienteDAO;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.ZoneId;
+import java.time.format.DateTimeFormatter;
 import java.util.Date;
 import modelo.clientes.Cliente;
 import java.util.List;
 import javax.swing.InputVerifier;
 import javax.swing.JComponent;
+import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 import javax.swing.JTextField;
 import javax.swing.table.DefaultTableModel;
@@ -71,6 +72,10 @@ public class Registro_ClienteVista extends javax.swing.JPanel {
         rSButtonMaterialIconDos1 = new RSMaterialComponent.RSButtonMaterialIconDos();
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
+        Cl_Guardar = new RSMaterialComponent.RSButtonMaterialIconDos();
+        Cl_Eliminar = new RSMaterialComponent.RSButtonMaterialIconDos();
+        Cl_Editar = new RSMaterialComponent.RSButtonMaterialIconDos();
+        Cl_Buscar = new RSMaterialComponent.RSButtonMaterialIconDos();
         panelRound4 = new extra.PanelRound();
         jLabel3 = new javax.swing.JLabel();
         Cl_Codigo = new javax.swing.JTextField();
@@ -86,18 +91,13 @@ public class Registro_ClienteVista extends javax.swing.JPanel {
         Cl_Telefono = new javax.swing.JTextField();
         jLabel9 = new javax.swing.JLabel();
         Cl_Correo = new javax.swing.JTextField();
-        jLabel10 = new javax.swing.JLabel();
         jLabel11 = new javax.swing.JLabel();
         Cl_CrearDocIdentidad = new RSMaterialComponent.RSButtonMaterialIconDos();
         CI_FechaRegistro = new com.toedter.calendar.JDateChooser();
-        ComboEstado = new javax.swing.JComboBox<>();
         panelRound5 = new extra.PanelRound();
         jScrollPane1 = new javax.swing.JScrollPane();
         Tabla_Clientes = new javax.swing.JTable();
-        Cl_Guardar = new RSMaterialComponent.RSButtonMaterialIconDos();
-        Cl_Eliminar = new RSMaterialComponent.RSButtonMaterialIconDos();
-        Cl_Editar = new RSMaterialComponent.RSButtonMaterialIconDos();
-        Cl_Buscar = new RSMaterialComponent.RSButtonMaterialIconDos();
+        Cl_QuitarFiltro = new RSMaterialComponent.RSButtonMaterialIconDos();
 
         setBackground(new java.awt.Color(239, 235, 233));
 
@@ -112,165 +112,6 @@ public class Registro_ClienteVista extends javax.swing.JPanel {
         jLabel2.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         jLabel2.setForeground(new java.awt.Color(58, 42, 83));
         jLabel2.setText("Complete la informacion de los clientes");
-
-        panelRound4.setBackground(new java.awt.Color(255, 255, 255));
-        panelRound4.setRoundBottomLeft(75);
-        panelRound4.setRoundBottomRight(75);
-        panelRound4.setRoundTopLeft(75);
-        panelRound4.setRoundTopRight(75);
-
-        jLabel3.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
-        jLabel3.setText("Codigo:");
-
-        jLabel4.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
-        jLabel4.setText("Documento Identidad:");
-
-        jLabel5.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
-        jLabel5.setText("Nombre:");
-
-        jLabel6.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
-        jLabel6.setText("Apellido:");
-
-        jLabel7.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
-        jLabel7.setText("Direccion:");
-
-        jLabel8.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
-        jLabel8.setText("Telefono:");
-
-        jLabel9.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
-        jLabel9.setText("Correo:");
-
-        jLabel10.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
-        jLabel10.setText("Estado");
-
-        jLabel11.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
-        jLabel11.setText("Fecha Registro:");
-
-        Cl_CrearDocIdentidad.setBackground(new java.awt.Color(58, 42, 83));
-        Cl_CrearDocIdentidad.setText("Crear");
-        Cl_CrearDocIdentidad.setIcons(rojeru_san.efectos.ValoresEnum.ICONS.SAVE);
-        Cl_CrearDocIdentidad.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                Cl_CrearDocIdentidadActionPerformed(evt);
-            }
-        });
-
-        ComboEstado.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Activo", "Inactivo" }));
-
-        javax.swing.GroupLayout panelRound4Layout = new javax.swing.GroupLayout(panelRound4);
-        panelRound4.setLayout(panelRound4Layout);
-        panelRound4Layout.setHorizontalGroup(
-            panelRound4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(panelRound4Layout.createSequentialGroup()
-                .addGap(31, 31, 31)
-                .addGroup(panelRound4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(jLabel11)
-                    .addComponent(jLabel10)
-                    .addComponent(jLabel9)
-                    .addComponent(jLabel8)
-                    .addComponent(jLabel7)
-                    .addComponent(jLabel6)
-                    .addComponent(jLabel5)
-                    .addComponent(jLabel3)
-                    .addComponent(jLabel4)
-                    .addComponent(Cl_Correo)
-                    .addComponent(Cl_Telefono)
-                    .addComponent(Cl_Direccion)
-                    .addComponent(Cl_Apellido)
-                    .addComponent(CL_Nombre)
-                    .addComponent(Cl_Codigo)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelRound4Layout.createSequentialGroup()
-                        .addComponent(Cl_DocumentoIdentidad, javax.swing.GroupLayout.PREFERRED_SIZE, 112, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(Cl_CrearDocIdentidad, javax.swing.GroupLayout.PREFERRED_SIZE, 91, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addComponent(CI_FechaRegistro, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(ComboEstado, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addContainerGap(36, Short.MAX_VALUE))
-        );
-        panelRound4Layout.setVerticalGroup(
-            panelRound4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(panelRound4Layout.createSequentialGroup()
-                .addGap(18, 18, 18)
-                .addComponent(jLabel3)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(Cl_Codigo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jLabel4)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(panelRound4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(Cl_DocumentoIdentidad, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(Cl_CrearDocIdentidad, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jLabel5)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(CL_Nombre, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jLabel6)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(Cl_Apellido, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jLabel7)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(Cl_Direccion, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jLabel8)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(Cl_Telefono, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jLabel9)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(Cl_Correo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jLabel10)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(ComboEstado, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jLabel11)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(CI_FechaRegistro, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(18, Short.MAX_VALUE))
-        );
-
-        panelRound5.setBackground(new java.awt.Color(255, 255, 255));
-        panelRound5.setRoundBottomLeft(75);
-        panelRound5.setRoundBottomRight(75);
-        panelRound5.setRoundTopLeft(75);
-        panelRound5.setRoundTopRight(75);
-
-        Tabla_Clientes.setModel(new javax.swing.table.DefaultTableModel(
-            new Object [][] {
-
-            },
-            new String [] {
-                "Codigo", "Doc Identidad", "Nombres", "Apellidos", "Direccion", "Telefono", "Correo", "Estado", "FechaRegistro"
-            }
-        ) {
-            Class[] types = new Class [] {
-                java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.Boolean.class, java.lang.Object.class
-            };
-
-            public Class getColumnClass(int columnIndex) {
-                return types [columnIndex];
-            }
-        });
-        jScrollPane1.setViewportView(Tabla_Clientes);
-
-        javax.swing.GroupLayout panelRound5Layout = new javax.swing.GroupLayout(panelRound5);
-        panelRound5.setLayout(panelRound5Layout);
-        panelRound5Layout.setHorizontalGroup(
-            panelRound5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(panelRound5Layout.createSequentialGroup()
-                .addGap(36, 36, 36)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 635, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(46, Short.MAX_VALUE))
-        );
-        panelRound5Layout.setVerticalGroup(
-            panelRound5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(panelRound5Layout.createSequentialGroup()
-                .addGap(32, 32, 32)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 518, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(44, Short.MAX_VALUE))
-        );
 
         Cl_Guardar.setBackground(new java.awt.Color(58, 42, 83));
         Cl_Guardar.setText("Guardar");
@@ -308,6 +149,163 @@ public class Registro_ClienteVista extends javax.swing.JPanel {
             }
         });
 
+        panelRound4.setBackground(new java.awt.Color(255, 255, 255));
+        panelRound4.setRoundBottomLeft(75);
+        panelRound4.setRoundBottomRight(75);
+        panelRound4.setRoundTopLeft(75);
+        panelRound4.setRoundTopRight(75);
+
+        jLabel3.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        jLabel3.setText("Codigo:");
+
+        jLabel4.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        jLabel4.setText("Documento Identidad:");
+
+        jLabel5.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        jLabel5.setText("Nombre:");
+
+        jLabel6.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        jLabel6.setText("Apellido:");
+
+        jLabel7.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        jLabel7.setText("Direccion:");
+
+        jLabel8.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        jLabel8.setText("Telefono:");
+
+        jLabel9.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        jLabel9.setText("Correo:");
+
+        jLabel11.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        jLabel11.setText("Fecha Registro:");
+
+        Cl_CrearDocIdentidad.setBackground(new java.awt.Color(58, 42, 83));
+        Cl_CrearDocIdentidad.setText("Crear");
+        Cl_CrearDocIdentidad.setIcons(rojeru_san.efectos.ValoresEnum.ICONS.SAVE);
+        Cl_CrearDocIdentidad.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                Cl_CrearDocIdentidadActionPerformed(evt);
+            }
+        });
+
+        javax.swing.GroupLayout panelRound4Layout = new javax.swing.GroupLayout(panelRound4);
+        panelRound4.setLayout(panelRound4Layout);
+        panelRound4Layout.setHorizontalGroup(
+            panelRound4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(panelRound4Layout.createSequentialGroup()
+                .addGap(31, 31, 31)
+                .addGroup(panelRound4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(jLabel11)
+                    .addComponent(jLabel9)
+                    .addComponent(jLabel8)
+                    .addComponent(jLabel7)
+                    .addComponent(jLabel6)
+                    .addComponent(jLabel5)
+                    .addComponent(jLabel3)
+                    .addComponent(jLabel4)
+                    .addComponent(Cl_Correo)
+                    .addComponent(Cl_Telefono)
+                    .addComponent(Cl_Direccion)
+                    .addComponent(Cl_Apellido)
+                    .addComponent(CL_Nombre)
+                    .addComponent(Cl_Codigo)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelRound4Layout.createSequentialGroup()
+                        .addComponent(Cl_DocumentoIdentidad, javax.swing.GroupLayout.PREFERRED_SIZE, 112, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(Cl_CrearDocIdentidad, javax.swing.GroupLayout.PREFERRED_SIZE, 91, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(CI_FechaRegistro, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(18, Short.MAX_VALUE))
+        );
+        panelRound4Layout.setVerticalGroup(
+            panelRound4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(panelRound4Layout.createSequentialGroup()
+                .addGap(18, 18, 18)
+                .addComponent(jLabel3)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(Cl_Codigo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jLabel4)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(panelRound4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(Cl_DocumentoIdentidad, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(Cl_CrearDocIdentidad, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jLabel5)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(CL_Nombre, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jLabel6)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(Cl_Apellido, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jLabel7)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(Cl_Direccion, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jLabel8)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(Cl_Telefono, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jLabel9)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(Cl_Correo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jLabel11)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(CI_FechaRegistro, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(25, Short.MAX_VALUE))
+        );
+
+        panelRound5.setBackground(new java.awt.Color(255, 255, 255));
+        panelRound5.setRoundBottomLeft(75);
+        panelRound5.setRoundBottomRight(75);
+        panelRound5.setRoundTopLeft(75);
+        panelRound5.setRoundTopRight(75);
+
+        Tabla_Clientes.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+
+            },
+            new String [] {
+                "Codigo", "Doc Identidad", "Nombres", "Apellidos", "Direccion", "Telefono", "Correo", "FechaRegistro"
+            }
+        ) {
+            Class[] types = new Class [] {
+                java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.Object.class
+            };
+
+            public Class getColumnClass(int columnIndex) {
+                return types [columnIndex];
+            }
+        });
+        jScrollPane1.setViewportView(Tabla_Clientes);
+
+        javax.swing.GroupLayout panelRound5Layout = new javax.swing.GroupLayout(panelRound5);
+        panelRound5.setLayout(panelRound5Layout);
+        panelRound5Layout.setHorizontalGroup(
+            panelRound5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(panelRound5Layout.createSequentialGroup()
+                .addGap(20, 20, 20)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 752, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(18, Short.MAX_VALUE))
+        );
+        panelRound5Layout.setVerticalGroup(
+            panelRound5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(panelRound5Layout.createSequentialGroup()
+                .addGap(31, 31, 31)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 518, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(31, Short.MAX_VALUE))
+        );
+
+        Cl_QuitarFiltro.setBackground(new java.awt.Color(58, 42, 83));
+        Cl_QuitarFiltro.setText("Refrescar");
+        Cl_QuitarFiltro.setIcons(rojeru_san.efectos.ValoresEnum.ICONS.REPLAY);
+        Cl_QuitarFiltro.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                Cl_QuitarFiltroActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
@@ -317,14 +315,15 @@ public class Registro_ClienteVista extends javax.swing.JPanel {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(panelRound4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addGroup(layout.createSequentialGroup()
+                                .addGap(6, 6, 6)
                                 .addComponent(Cl_Guardar, javax.swing.GroupLayout.PREFERRED_SIZE, 115, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(Cl_Eliminar, javax.swing.GroupLayout.PREFERRED_SIZE, 108, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                        .addGap(18, 18, 18)
+                                .addComponent(Cl_Eliminar, javax.swing.GroupLayout.PREFERRED_SIZE, 108, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(panelRound4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(panelRound5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addContainerGap(28, Short.MAX_VALUE))
+                        .addContainerGap(19, Short.MAX_VALUE))
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(rSButtonMaterialIconDos1, javax.swing.GroupLayout.PREFERRED_SIZE, 48, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -335,6 +334,8 @@ public class Registro_ClienteVista extends javax.swing.JPanel {
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addComponent(jLabel1)))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(Cl_QuitarFiltro, javax.swing.GroupLayout.PREFERRED_SIZE, 123, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
                         .addComponent(Cl_Buscar, javax.swing.GroupLayout.PREFERRED_SIZE, 105, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
                         .addComponent(Cl_Editar, javax.swing.GroupLayout.PREFERRED_SIZE, 108, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -354,52 +355,46 @@ public class Registro_ClienteVista extends javax.swing.JPanel {
                             .addComponent(rSButtonMaterialIconDos1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                         .addContainerGap()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(Cl_Buscar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(Cl_Editar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(Cl_QuitarFiltro, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                .addComponent(Cl_Buscar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(Cl_Editar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))))
+                .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(panelRound4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)
+                        .addGap(20, 20, 20)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(Cl_Guardar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(Cl_Eliminar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                     .addComponent(panelRound5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(15, Short.MAX_VALUE))
+                .addContainerGap(42, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
 
     private void Cl_GuardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Cl_GuardarActionPerformed
-        // Instanciamos con cliente
         Cliente cliente = new Cliente();
 
-        // Setear con los datos de los JTextField
-        cliente.setIdCliente(Cl_Codigo.getText());
-        cliente.setIdDocIdentidad(Cl_DocumentoIdentidad.getText());
-        cliente.setNombre(CL_Nombre.getText());
-        cliente.setApellido(Cl_Apellido.getText());
-        cliente.setDireccion(Cl_Direccion.getText());
-        cliente.setTelefono(Cl_Telefono.getText());
-        cliente.setCorreo(Cl_Correo.getText());
+        cliente.setIdCliente(Cl_Codigo.getText().trim());
+        cliente.setIdDocIdentidad(Cl_DocumentoIdentidad.getText().trim());
+        cliente.setNombre(CL_Nombre.getText().trim());
+        cliente.setApellido(Cl_Apellido.getText().trim());
+        cliente.setDireccion(Cl_Direccion.getText().trim());
+        cliente.setTelefono(Cl_Telefono.getText().trim());
+        cliente.setCorreo(Cl_Correo.getText().trim());
 
-        //Jalar del Combobox
-        String estadoSeleccionado = ComboEstado.getSelectedItem().toString();
-        boolean estadoBoolean = estadoSeleccionado.equalsIgnoreCase("Activo");
-
-        // Para agregar los datos del JDateChooser
+        // Fecha
         Date fechaSeleccionada = CI_FechaRegistro.getDate();
         if (fechaSeleccionada == null) {
             JOptionPane.showMessageDialog(null, "Selecciona una fecha de registro.");
             return;
         }
 
-        // Convertimos a LocalDateTime
         LocalDateTime fechaRegistro = fechaSeleccionada.toInstant()
                 .atZone(ZoneId.systemDefault())
                 .toLocalDateTime();
 
-        // ✅ Validar solo la fecha (sin considerar la hora)
         if (fechaRegistro.toLocalDate().isBefore(LocalDate.now())) {
             JOptionPane.showMessageDialog(null, "No se permite una fecha de registro anterior a hoy.");
             return;
@@ -407,12 +402,20 @@ public class Registro_ClienteVista extends javax.swing.JPanel {
 
         cliente.setFechaRegistro(fechaRegistro);
 
-        // Registrar cliente
-        ClienteControlador controlador = new ClienteControlador();
-        controlador.registrarCliente(cliente);
+        try {
+            ClienteControlador controlador = new ClienteControlador();
+            controlador.registrarCliente(cliente);
 
-        // Actualizar la tabla después de guardar
-        mostrarClientesEnTabla();
+            JOptionPane.showMessageDialog(null, "✅ Cliente registrado correctamente.");
+            mostrarClientesEnTabla();
+        } catch (RuntimeException ex) {
+            // Este bloque captura los errores personalizados que lanza ClienteDAO
+            JOptionPane.showMessageDialog(null, "❌ " + ex.getMessage(), "Error al registrar", JOptionPane.ERROR_MESSAGE);
+        } catch (Exception ex) {
+            // Para cualquier otro error inesperado
+            JOptionPane.showMessageDialog(null, "❌ Error inesperado al registrar el cliente.");
+            ex.printStackTrace();
+        }
     }//GEN-LAST:event_Cl_GuardarActionPerformed
 
     private void Cl_EliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Cl_EliminarActionPerformed
@@ -461,83 +464,63 @@ public class Registro_ClienteVista extends javax.swing.JPanel {
     }//GEN-LAST:event_Cl_EliminarActionPerformed
 
     private void Cl_EditarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Cl_EditarActionPerformed
-        // Verifica si hay un cliente seleccionado en la tabla
+        // Verifica si hay un cliente seleccionado
         int fila = Tabla_Clientes.getSelectedRow();
         if (fila == -1) {
-            JOptionPane.showMessageDialog(null, "⚠️ Debes seleccionar un cliente de la tabla para modificar.");
-            return;
-        }
-
-        // Confirmación antes de modificar
-        int confirmacion = JOptionPane.showConfirmDialog(null,
-                "¿Estás seguro de que deseas modificar este cliente?",
-                "Confirmar modificación", JOptionPane.YES_NO_OPTION);
-        if (confirmacion != JOptionPane.YES_OPTION) {
+            JOptionPane.showMessageDialog(this, "⚠️ Seleccione un cliente de la tabla para editar.", "Error", JOptionPane.WARNING_MESSAGE);
             return;
         }
 
         try {
-            // Se instancia un nuevo objeto Cliente con los datos actuales del formulario
+            // Obtener datos del cliente seleccionado desde la tabla
+            String idCliente = Tabla_Clientes.getValueAt(fila, 0).toString();
+            String docIdentidad = Tabla_Clientes.getValueAt(fila, 1).toString();
+            String nombre = Tabla_Clientes.getValueAt(fila, 2).toString();
+            String apellido = Tabla_Clientes.getValueAt(fila, 3).toString();
+            String direccion = Tabla_Clientes.getValueAt(fila, 4).toString();
+            String telefono = Tabla_Clientes.getValueAt(fila, 5).toString();
+            String correo = Tabla_Clientes.getValueAt(fila, 6).toString();
+
+            // Crear objeto Cliente con los datos
             Cliente cliente = new Cliente();
-            cliente.setIdCliente(Tabla_Clientes.getValueAt(fila, 0).toString()); // ID viene de la tabla (no se edita)
-            cliente.setIdDocIdentidad(Cl_DocumentoIdentidad.getText().trim());
-            cliente.setNombre(CL_Nombre.getText().trim());
-            cliente.setApellido(Cl_Apellido.getText().trim());
-            cliente.setDireccion(Cl_Direccion.getText().trim());
-            cliente.setTelefono(Cl_Telefono.getText().trim());
-            cliente.setCorreo(Cl_Correo.getText().trim());
+            cliente.setIdCliente(idCliente);
+            cliente.setIdDocIdentidad(docIdentidad);
+            cliente.setNombre(nombre);
+            cliente.setApellido(apellido);
+            cliente.setDireccion(direccion);
+            cliente.setTelefono(telefono);
+            cliente.setCorreo(correo);
 
-            // Se recupera la fecha original desde la tabla
-            LocalDateTime fechaRegistro = ((Date) Tabla_Clientes.getValueAt(fila, 8))
-                    .toInstant()
-                    .atZone(ZoneId.systemDefault())
-                    .toLocalDateTime();
-            cliente.setFechaRegistro(fechaRegistro);
+            // Crear el panel EditarCliente
+            EditarCliente panelEditar = new EditarCliente(); // Constructor sin parámetros
+            panelEditar.setDatosCliente(cliente);
 
-            // Validación: campos obligatorios
-            if (cliente.getNombre().isEmpty() || cliente.getApellido().isEmpty()) {
-                JOptionPane.showMessageDialog(null, "⚠️ El nombre y apellido no pueden estar vacíos.");
-                return;
+            // Crear una nueva ventana (JFrame) para el panel EditarCliente
+            JFrame frame = new JFrame("Editar Cliente");
+            frame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+            if (panelEditar.getParent() != null) {
+                panelEditar.getParent().remove(panelEditar);
             }
-
-            // Validación: solo letras en nombre y apellido
-            if (!cliente.getNombre().matches("[a-zA-ZáéíóúÁÉÍÓÚñÑ ]+")
-                    || !cliente.getApellido().matches("[a-zA-ZáéíóúÁÉÍÓÚñÑ ]+")) {
-                JOptionPane.showMessageDialog(null, "⚠️ El nombre y apellido deben contener solo letras.");
-                return;
-            }
-
-            // Validación: límite de caracteres
-            if (cliente.getNombre().length() > 50 || cliente.getApellido().length() > 50) {
-                JOptionPane.showMessageDialog(null, "⚠️ El nombre o apellido exceden el límite de 50 caracteres.");
-                return;
-            }
-
-            // Llamada al controlador para aplicar la modificación
-            ClienteControlador controlador = new ClienteControlador();
-            boolean modificado = controlador.modificarCliente(cliente);
-
-            if (modificado) {
-                JOptionPane.showMessageDialog(null, "✅ Cliente modificado correctamente.");
-                mostrarClientesEnTabla();
-            } else {
-                JOptionPane.showMessageDialog(null, "❌ No se pudo modificar el cliente.");
-            }
+            frame.getContentPane().add(panelEditar);
+            frame.pack();
+            frame.setLocationRelativeTo(null); // Centrar la ventana
+            frame.setVisible(true);
 
         } catch (Exception e) {
-            // Mensaje amigable para cualquier error inesperado
-            String msg = e.getMessage().toLowerCase();
-            if (msg.contains("too long")) {
-                JOptionPane.showMessageDialog(null, "⚠️ Uno de los campos excede el límite permitido.");
-            } else {
-                JOptionPane.showMessageDialog(null, "❌ Ocurrió un error al modificar el cliente. Verifica los datos ingresados.");
-            }
-            e.printStackTrace(); // Registro técnico para desarrolladores
+            JOptionPane.showMessageDialog(this, "❌ Error inesperado al abrir el formulario de edición: " + e.getMessage(), "Error", JOptionPane.ERROR_MESSAGE);
+            e.printStackTrace();
         }
     }//GEN-LAST:event_Cl_EditarActionPerformed
 
     private void Cl_BuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Cl_BuscarActionPerformed
         // TODO add your handling code here:
+        BuscarClientes panel = new BuscarClientes(this);
+        javax.swing.JFrame frame = new javax.swing.JFrame("Buscar Clientes");
+        frame.setDefaultCloseOperation(javax.swing.JFrame.DISPOSE_ON_CLOSE);
+        frame.getContentPane().add(panel);
+        frame.pack();
+        frame.setLocationRelativeTo(null); // Centrar
+        frame.setVisible(true);
     }//GEN-LAST:event_Cl_BuscarActionPerformed
 
     private void Cl_CrearDocIdentidadActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Cl_CrearDocIdentidadActionPerformed
@@ -552,7 +535,12 @@ public class Registro_ClienteVista extends javax.swing.JPanel {
         frame.setVisible(true);
     }//GEN-LAST:event_Cl_CrearDocIdentidadActionPerformed
 
-    private void mostrarClientesEnTabla() {
+    private void Cl_QuitarFiltroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Cl_QuitarFiltroActionPerformed
+        // TODO add your handling code here:
+        mostrarClientesEnTabla();
+    }//GEN-LAST:event_Cl_QuitarFiltroActionPerformed
+
+    public void mostrarClientesEnTabla() {
         //Instanciamos lel controlador y la lista
         ClienteControlador controlador = new ClienteControlador();
         List<Cliente> lista = controlador.obtenerClientes();
@@ -563,6 +551,24 @@ public class Registro_ClienteVista extends javax.swing.JPanel {
 
         // Agregamos cada cliente al modelo
         for (Cliente c : lista) {
+            modelo.addRow(new Object[]{
+                c.getIdCliente(),
+                c.getIdDocIdentidad(),
+                c.getNombre(),
+                c.getApellido(),
+                c.getDireccion(),
+                c.getTelefono(),
+                c.getCorreo(),
+                c.getFechaRegistro().toString()
+            });
+        }
+    }
+
+    public void actualizarTablaConResultados(List<Cliente> resultados) {
+        DefaultTableModel modelo = (DefaultTableModel) Tabla_Clientes.getModel();
+        modelo.setRowCount(0); // Limpiar tabla actual
+
+        for (Cliente c : resultados) {
             modelo.addRow(new Object[]{
                 c.getIdCliente(),
                 c.getIdDocIdentidad(),
@@ -589,11 +595,10 @@ public class Registro_ClienteVista extends javax.swing.JPanel {
     private RSMaterialComponent.RSButtonMaterialIconDos Cl_Editar;
     private RSMaterialComponent.RSButtonMaterialIconDos Cl_Eliminar;
     private RSMaterialComponent.RSButtonMaterialIconDos Cl_Guardar;
+    private RSMaterialComponent.RSButtonMaterialIconDos Cl_QuitarFiltro;
     private javax.swing.JTextField Cl_Telefono;
-    private javax.swing.JComboBox<String> ComboEstado;
     private javax.swing.JTable Tabla_Clientes;
     private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
