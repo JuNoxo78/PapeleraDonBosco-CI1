@@ -4,7 +4,7 @@ import controlador.autenticacion.EmpleadoControlador;
 import java.awt.Color;
 import javax.swing.JOptionPane;
 import modelo.autenticacion.Empleado;
-import vista.menu_principal.MenuPrincipal;
+import vista.menu_principal.*;
 
 public class LoginGeneral extends javax.swing.JFrame {
 
@@ -210,9 +210,8 @@ public class LoginGeneral extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(null, "✅ Bienvenido " + empleado.getNombre());
 
 			// Abrir la ventana Menu_Principal
-			MenuPrincipal menu = new MenuPrincipal();
+			MenuPrincipal_2 menu = new MenuPrincipal_2();
 			menu.setVisible(true);
-			menu.setLocationRelativeTo(null); // Centrar
 
 			// Cerrar ventana de login
 			dispose();
