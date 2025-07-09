@@ -6,7 +6,10 @@ INSERT INTO papeleraartesanal.almacen (idAlmacen, nombre, ubicacionFisica) VALUE
 -- Llenando la tabla docidentidad
 INSERT INTO papeleraartesanal.docidentidad (idDocIdentidad, tipoDocumento, numeroDocumento) VALUES
 ('DOC001', 'DNI', '72134465'),
-('DOC002', 'Pasaporte', 'AB123456');
+('DOC002', 'Pasaporte', 'AB123456'),
+('DOC003', 'Carné de Extranjería', '12345678'),
+('DOC004', 'Pasaporte', '87654321');
+
 
 -- Llenando la tabla cliente
 INSERT INTO papeleraartesanal.cliente (idCliente, idDocIdentidad, nombre, apellido, direccion, telefono, correo, fechaRegistro) VALUES
@@ -21,7 +24,9 @@ INSERT INTO papeleraartesanal.proveedor (idProveedor, nombre, ruc, direccion, te
 -- Llenando la tabla empleado
 INSERT INTO papeleraartesanal.empleado (idEmpleado, idDocIdentidad, nombre, apellido, direccion, telefono, correo, contraseña, activo, fechaRegistro) VALUES
 ('EMP001', 'DOC002', 'María', 'Gómez', 'Jr. Los Pinos 321', '987123456', 'maria.gomez@empresa.com', '1234', 1, '2025-03-25 09:00:00'),
-('EMP002', 'DOC001', 'Carlos', 'Ramírez', 'Av. Central 654', '912345679', 'carlos.ramirez@empresa.com', '4321', 1, '2025-03-26 10:00:00');
+('EMP002', 'DOC001', 'Carlos', 'Ramírez', 'Av. Central 654', '912345679', 'carlos.ramirez@empresa.com', '4321', 1, '2025-03-26 10:00:00'),
+('EMP003', 'DOC003', 'Juanjo', 'Silas', 'Av. Central 656', '912142329', 'juanjo.silas@empresa.com', 'abcd', 1, '2025-03-26 11:00:00'),
+('EMP004', 'DOC004', 'Akana', 'Toki', 'Av. Central 655', '983839835', 'akana.toki@empresa.com', 'dcba', 1, '2025-03-26 14:00:00');
 
 -- Llenando la tabla compra
 INSERT INTO papeleraartesanal.compra (idCompra, fechaCompra, totalPagado, estadoCompra, idProveedor, idEmpleado) VALUES
@@ -91,12 +96,16 @@ INSERT INTO papeleraartesanal.detalleplantillami (idPlantillaMI, idMaterialInter
 -- Llenando la tabla rol
 INSERT INTO papeleraartesanal.rol (idRol, nombreRol, descripcion) VALUES
 ('ROL001', 'Administrador de Sistema', 'Gestiona todo el sistema, incluidos el resto de usuarios.'),
-('ROL002', 'Supervisor de Inventario', 'Supervisa el inventario de materiales y productos.');
+('ROL002', 'Supervisor de Inventario', 'Supervisa el inventario de materiales y productos.'),
+('ROL003', 'Administrador', 'Supervisa las operaciones generales de la planta. Se encarga de las compras.'),
+('ROL004', 'Artesano de PT', 'Se encarga de la fabricación e inventario de productos terminados, así como de los materiales intermedios.');
 
 -- Llenando la tabla empleadoxrol
 INSERT INTO papeleraartesanal.empleadoxrol (idEmpleado, idRol, fechaRolAñadido) VALUES
 ('EMP001', 'ROL001', '2025-03-25 08:00:00'),
-('EMP002', 'ROL002', '2025-03-26 09:00:00');
+('EMP002', 'ROL002', '2025-03-26 09:00:00'),
+('EMP003', 'ROL003', '2025-05-26 10:00:00'),
+('EMP004', 'ROL004', '2025-05-26 11:00:00');
 
 -- Llenando la tabla inventariomi
 INSERT INTO papeleraartesanal.inventariomi (idInventarioMI, idAlmacen, stockLogico, stockFisico, fechaActualizacion, periodo) VALUES

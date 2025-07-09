@@ -4,16 +4,19 @@ import conf.Conexion;
 import modelo.autenticacion.EmpleadoxRol;
 
 import java.sql.*;
-import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
 
 public class EmpleadoxRolDAO {
+    private final List<EmpleadoxRol> listaEmxRol = new ArrayList<>();
+
+	public List<EmpleadoxRol> getListaEmxRol() {
+		obtenerTodos();
+		return listaEmxRol;
+	}
 
     // Obtener todos los registros de la tabla empleadoxrol
     public List<EmpleadoxRol> obtenerTodos() {
-        List<EmpleadoxRol> lista = new ArrayList<>();
-
         String sql = "SELECT * FROM empleadoxrol";
 
         try (Connection conn = Conexion.conectar();
@@ -31,14 +34,14 @@ public class EmpleadoxRolDAO {
                     er.setFechaRolAñadido(fechaSQL.toLocalDateTime());
                 }
 
-                lista.add(er);
+                listaEmxRol.add(er);
             }
 
         } catch (SQLException e) {
-            System.err.println("❌ Error al obtener empleadoxrol: " + e.getMessage());
+            System.err.println("Error al obtener empleadoxrol: " + e.getMessage());
         }
 
-        return lista;
+        return listaEmxRol;
     }
 
     // Insertar nuevo registro

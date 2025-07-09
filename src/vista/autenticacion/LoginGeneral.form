@@ -277,7 +277,7 @@
         </Component>
       </SubComponents>
     </Container>
-    <Component class="javax.swing.JButton" name="jButton2">
+    <Component class="javax.swing.JButton" name="jb_loginAdministrador">
       <Properties>
         <Property name="text" type="java.lang.String" value="Administrador del Sistema"/>
       </Properties>

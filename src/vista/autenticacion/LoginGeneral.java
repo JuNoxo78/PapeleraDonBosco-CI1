@@ -2,9 +2,10 @@ package vista.autenticacion;
 
 import controlador.autenticacion.EmpleadoControlador;
 import java.awt.Color;
+import java.awt.event.ActionListener;
 import javax.swing.JOptionPane;
 import modelo.autenticacion.Empleado;
-import vista.menu_principal.MenuPrincipal;
+import vista.menu_principal.*;
 
 public class LoginGeneral extends javax.swing.JFrame {
 
@@ -29,7 +30,7 @@ public class LoginGeneral extends javax.swing.JFrame {
         btn_close = new RSMaterialComponent.RSButtonMaterialIconDos();
         txt_contraseña = new javax.swing.JPasswordField();
         jButton1 = new javax.swing.JButton();
-        jButton2 = new javax.swing.JButton();
+        jb_loginAdministrador = new javax.swing.JButton();
         JLBackground = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -185,8 +186,8 @@ public class LoginGeneral extends javax.swing.JFrame {
 
         getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 100, 800, 450));
 
-        jButton2.setText("Administrador del Sistema");
-        getContentPane().add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(800, 600, -1, -1));
+        jb_loginAdministrador.setText("Administrador del Sistema");
+        getContentPane().add(jb_loginAdministrador, new org.netbeans.lib.awtextra.AbsoluteConstraints(800, 600, -1, -1));
 
         JLBackground.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/bk_1_blur.jpg"))); // NOI18N
         getContentPane().add(JLBackground, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1000, 650));
@@ -194,31 +195,30 @@ public class LoginGeneral extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+	public void setLoginListener(ActionListener listener) {
+		btn_login.addActionListener(listener);
+		txt_docNum.addActionListener(listener);
+		txt_contraseña.addActionListener(listener);
+	}
+
+	public void setLoginAdminListener(ActionListener listener) {
+		jb_loginAdministrador.addActionListener(listener);
+	}
+
+	public String[] getDatosUsuario() {
+		String[] datosUsuario = {txt_docNum.getText().trim(), new String(txt_contraseña.getPassword())};
+		return datosUsuario;
+	}
+	
+    public void mostrarMensaje(String mensaje) {
+        JOptionPane.showMessageDialog(this, mensaje);
+    }
+
     private void txt_docNumActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txt_docNumActionPerformed
 		// TODO add your handling code here:
     }//GEN-LAST:event_txt_docNumActionPerformed
 
     private void btn_loginActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_loginActionPerformed
-		// Obtiene datos de vista
-		String numeroDoc = txt_docNum.getText().trim();
-		String contraseña = new String(txt_contraseña.getPassword());
-
-		EmpleadoControlador controlador = new EmpleadoControlador();
-		Empleado empleado = controlador.verificarLogin(numeroDoc, contraseña);
-
-		if (empleado != null) {
-            JOptionPane.showMessageDialog(null, "✅ Bienvenido " + empleado.getNombre());
-
-			// Abrir la ventana Menu_Principal
-			MenuPrincipal menu = new MenuPrincipal();
-			menu.setVisible(true);
-			menu.setLocationRelativeTo(null); // Centrar
-
-			// Cerrar ventana de login
-			dispose();
-		} else {
-            JOptionPane.showMessageDialog(null, "❌ Documento o contraseña inválidos.");
-		}
     }//GEN-LAST:event_btn_loginActionPerformed
 
     private void btn_closeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_closeActionPerformed
@@ -272,7 +272,6 @@ public class LoginGeneral extends javax.swing.JFrame {
     private RSMaterialComponent.RSButtonMaterialIconDos btn_close;
     private RSMaterialComponent.RSButtonMaterialIconDos btn_login;
     private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
@@ -280,6 +279,7 @@ public class LoginGeneral extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel6;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
+    private javax.swing.JButton jb_loginAdministrador;
     private javax.swing.JPasswordField txt_contraseña;
     private javax.swing.JTextField txt_docNum;
     // End of variables declaration//GEN-END:variables
