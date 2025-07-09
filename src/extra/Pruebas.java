@@ -1,20 +1,12 @@
 package extra;
 
-import dao.autenticacion.EmpleadoDAO;
-import java.util.ArrayList;
-import java.util.List;
-import modelo.autenticacion.Empleado;
+import javax.naming.Context;
+import org.usb4java.javax.*;
+import java.util.*;
 
 public class Pruebas {
 
 	public static void main(String[] args) {
-		List<Empleado> listaEmpleados = new ArrayList<Empleado>();
-
-		EmpleadoDAO empleado_dao = new EmpleadoDAO();
-
-		listaEmpleados = empleado_dao.obtenerTodos();
-
-		System.out.println(empleado_dao.buscarPorDocumentoYContraseña("72134465", "admin123"));
+		System.out.println("hola mundo");
 	}
-
 }

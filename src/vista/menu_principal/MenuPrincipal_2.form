@@ -3,6 +3,9 @@
 <Form version="1.5" maxVersion="1.9" type="org.netbeans.modules.form.forminfo.JFrameFormInfo">
   <Properties>
     <Property name="defaultCloseOperation" type="int" value="3"/>
+    <Property name="minimumSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
+      <Dimension value="[950, 700]"/>
+    </Property>
   </Properties>
   <SyntheticProperties>
     <SyntheticProperty name="formSizePolicy" type="int" value="1"/>
@@ -62,9 +65,8 @@
                           <Component id="jLabel3" min="-2" max="-2" attributes="0"/>
                           <EmptySpace max="32767" attributes="0"/>
                       </Group>
-                      <Group type="102" alignment="1" attributes="0">
-                          <Group type="103" groupAlignment="1" attributes="0">
-                              <Component id="panelRound1" alignment="0" max="32767" attributes="0"/>
+                      <Group type="102" attributes="0">
+                          <Group type="103" groupAlignment="0" attributes="0">
                               <Component id="jSeparator1" alignment="0" max="32767" attributes="0"/>
                               <Component id="btn_empleado" alignment="0" pref="0" max="32767" attributes="0"/>
                               <Component id="btn_cliente" alignment="1" pref="0" max="32767" attributes="0"/>
@@ -78,6 +80,7 @@
                               <Component id="jSeparator2" alignment="0" max="32767" attributes="0"/>
                               <Component id="btn_informacion" alignment="0" pref="0" max="32767" attributes="0"/>
                               <Component id="btn_close" alignment="0" pref="0" max="32767" attributes="0"/>
+                              <Component id="panelRound1" alignment="0" max="32767" attributes="0"/>
                           </Group>
                           <EmptySpace max="-2" attributes="0"/>
                       </Group>
@@ -173,8 +176,8 @@
                   <Group type="102" alignment="0" attributes="0">
                       <EmptySpace min="-2" pref="15" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="0" attributes="0">
-                          <Component id="jLabel5" min="-2" max="-2" attributes="0"/>
-                          <Component id="jLabel4" min="-2" max="-2" attributes="0"/>
+                          <Component id="jl_nombre" min="-2" max="-2" attributes="0"/>
+                          <Component id="jl_cargo" min="-2" max="-2" attributes="0"/>
                       </Group>
                       <EmptySpace max="32767" attributes="0"/>
                   </Group>
@@ -184,16 +187,16 @@
               <Group type="103" groupAlignment="0" attributes="0">
                   <Group type="102" alignment="0" attributes="0">
                       <EmptySpace min="-2" pref="12" max="-2" attributes="0"/>
-                      <Component id="jLabel4" min="-2" max="-2" attributes="0"/>
+                      <Component id="jl_cargo" min="-2" max="-2" attributes="0"/>
                       <EmptySpace max="-2" attributes="0"/>
-                      <Component id="jLabel5" min="-2" max="-2" attributes="0"/>
+                      <Component id="jl_nombre" min="-2" max="-2" attributes="0"/>
                       <EmptySpace min="-2" pref="12" max="-2" attributes="0"/>
                   </Group>
               </Group>
             </DimensionLayout>
           </Layout>
           <SubComponents>
-            <Component class="javax.swing.JLabel" name="jLabel4">
+            <Component class="javax.swing.JLabel" name="jl_cargo">
               <Properties>
                 <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                   <Color blue="fd" green="f7" red="f9" type="rgb"/>
@@ -207,7 +210,7 @@
                 <Property name="text" type="java.lang.String" value="Cargo de Empleado"/>
               </Properties>
             </Component>
-            <Component class="javax.swing.JLabel" name="jLabel5">
+            <Component class="javax.swing.JLabel" name="jl_nombre">
               <Properties>
                 <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                   <Color blue="fd" green="f7" red="f9" type="rgb"/>
@@ -240,10 +243,14 @@
             <Property name="backgroundHover" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
               <Color blue="14" green="e" red="11" type="rgb"/>
             </Property>
+            <Property name="doubleBuffered" type="boolean" value="true"/>
             <Property name="horizontalAlignment" type="int" value="10"/>
             <Property name="horizontalTextPosition" type="int" value="0"/>
             <Property name="icons" type="rojeru_san.efectos.ValoresEnum$ICONS" editor="org.netbeans.modules.form.editors.EnumEditor">
               <Value id="HOME"/>
+            </Property>
+            <Property name="rippleColor" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+              <Color blue="f2" green="f2" red="f2" type="rgb"/>
             </Property>
           </Properties>
           <Events>
@@ -259,6 +266,7 @@
             <Property name="backgroundHover" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
               <Color blue="14" green="e" red="11" type="rgb"/>
             </Property>
+            <Property name="doubleBuffered" type="boolean" value="true"/>
             <Property name="horizontalAlignment" type="int" value="10"/>
             <Property name="icons" type="rojeru_san.efectos.ValoresEnum$ICONS" editor="org.netbeans.modules.form.editors.EnumEditor">
               <Value id="GROUP"/>
@@ -277,6 +285,7 @@
             <Property name="backgroundHover" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
               <Color blue="14" green="e" red="11" type="rgb"/>
             </Property>
+            <Property name="doubleBuffered" type="boolean" value="true"/>
             <Property name="horizontalAlignment" type="int" value="10"/>
           </Properties>
           <Events>
@@ -292,6 +301,7 @@
             <Property name="backgroundHover" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
               <Color blue="14" green="e" red="11" type="rgb"/>
             </Property>
+            <Property name="doubleBuffered" type="boolean" value="true"/>
             <Property name="horizontalAlignment" type="int" value="10"/>
           </Properties>
           <Events>
@@ -307,6 +317,7 @@
             <Property name="backgroundHover" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
               <Color blue="14" green="e" red="11" type="rgb"/>
             </Property>
+            <Property name="doubleBuffered" type="boolean" value="true"/>
             <Property name="horizontalAlignment" type="int" value="10"/>
             <Property name="icons" type="rojeru_san.efectos.ValoresEnum$ICONS" editor="org.netbeans.modules.form.editors.EnumEditor">
               <Value id="LOCAL_SHIPPING"/>
@@ -325,6 +336,7 @@
             <Property name="backgroundHover" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
               <Color blue="14" green="e" red="11" type="rgb"/>
             </Property>
+            <Property name="doubleBuffered" type="boolean" value="true"/>
             <Property name="horizontalAlignment" type="int" value="10"/>
             <Property name="icons" type="rojeru_san.efectos.ValoresEnum$ICONS" editor="org.netbeans.modules.form.editors.EnumEditor">
               <Value id="DASHBOARD"/>
@@ -343,6 +355,7 @@
             <Property name="backgroundHover" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
               <Color blue="14" green="e" red="11" type="rgb"/>
             </Property>
+            <Property name="doubleBuffered" type="boolean" value="true"/>
             <Property name="horizontalAlignment" type="int" value="10"/>
             <Property name="icons" type="rojeru_san.efectos.ValoresEnum$ICONS" editor="org.netbeans.modules.form.editors.EnumEditor">
               <Value id="FILTER_HDR"/>
@@ -361,6 +374,7 @@
             <Property name="backgroundHover" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
               <Color blue="14" green="e" red="11" type="rgb"/>
             </Property>
+            <Property name="doubleBuffered" type="boolean" value="true"/>
             <Property name="horizontalAlignment" type="int" value="10"/>
             <Property name="icons" type="rojeru_san.efectos.ValoresEnum$ICONS" editor="org.netbeans.modules.form.editors.EnumEditor">
               <Value id="GROUP_ADD"/>
@@ -379,6 +393,7 @@
             <Property name="backgroundHover" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
               <Color blue="14" green="e" red="11" type="rgb"/>
             </Property>
+            <Property name="doubleBuffered" type="boolean" value="true"/>
             <Property name="horizontalAlignment" type="int" value="10"/>
             <Property name="icons" type="rojeru_san.efectos.ValoresEnum$ICONS" editor="org.netbeans.modules.form.editors.EnumEditor">
               <Value id="LIST"/>
@@ -408,6 +423,7 @@
             <Property name="backgroundHover" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
               <Color blue="14" green="e" red="11" type="rgb"/>
             </Property>
+            <Property name="doubleBuffered" type="boolean" value="true"/>
             <Property name="horizontalAlignment" type="int" value="10"/>
             <Property name="icons" type="rojeru_san.efectos.ValoresEnum$ICONS" editor="org.netbeans.modules.form.editors.EnumEditor">
               <Value id="HELP_OUTLINE"/>
@@ -426,6 +442,7 @@
             <Property name="backgroundHover" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
               <Color blue="14" green="e" red="11" type="rgb"/>
             </Property>
+            <Property name="doubleBuffered" type="boolean" value="true"/>
             <Property name="horizontalAlignment" type="int" value="10"/>
             <Property name="icons" type="rojeru_san.efectos.ValoresEnum$ICONS" editor="org.netbeans.modules.form.editors.EnumEditor">
               <Value id="EXIT_TO_APP"/>
