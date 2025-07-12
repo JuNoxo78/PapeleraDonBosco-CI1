@@ -34,7 +34,6 @@ public class AuthGeneralControlador {
 		List<EmpleadoxRol> listaEmxRol = empleadoxrolDAO.getListaEmxRol();
 		List<Rol> roles = rolDAO.getRoles();
 
-		loginVista.setVisible(true);
 
 		loginVista.setLoginListener((ActionEvent e) -> {
 			String[] datosUsuario = loginVista.getDatosUsuario();
@@ -72,10 +71,12 @@ public class AuthGeneralControlador {
 			}
 		});
 
-		loginVista.setLoginAdminListener((ActionEvent e) -> {
+		loginVista.setLoginAdminButtonListener((ActionEvent e) -> {
 			LoginAdmin loginAdmin = new LoginAdmin(loginVista, true);
 
-			AuthAdminControlador authAdminControlador = new AuthAdminControlador(loginAdmin);
+			new AuthAdminControlador(loginAdmin);
 		});
+
+		loginVista.setVisible(true);
 	}
 }

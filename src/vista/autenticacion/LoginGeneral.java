@@ -201,7 +201,7 @@ public class LoginGeneral extends javax.swing.JFrame {
 		txt_contraseña.addActionListener(listener);
 	}
 
-	public void setLoginAdminListener(ActionListener listener) {
+	public void setLoginAdminButtonListener(ActionListener listener) {
 		jb_loginAdministrador.addActionListener(listener);
 	}
 

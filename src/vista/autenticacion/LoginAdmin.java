@@ -1,22 +1,56 @@
 package vista.autenticacion;
 
+import java.awt.event.ActionListener;
+import java.awt.event.WindowAdapter;
+import java.awt.event.WindowEvent;
+import java.awt.event.WindowFocusListener;
+import java.awt.event.WindowListener;
+import javax.swing.JOptionPane;
+
 public class LoginAdmin extends javax.swing.JDialog {
+    private Runnable usbTask;
 
 	public LoginAdmin(java.awt.Frame parent, boolean modal) {
 		super(parent, modal);
 		initComponents();
 		this.setLocationRelativeTo(null);
+
+        this.addWindowListener(new WindowAdapter() {
+            @Override
+            public void windowOpened(WindowEvent e) {
+                if (usbTask != null) {
+                    usbTask.run(); // 🔄 Ejecutar detección desde el controlador
+                }
+            }
+        });
+	}
+
+    public void setTareaUSB(Runnable tareaUSB) {
+        this.usbTask = tareaUSB;
+    }
+
+	public void setJLText(String text) {
+		jl_text.setText(text);
+	}
+
+	public void mostrarMensaje(String mensaje) {
+		JOptionPane.showMessageDialog(this, mensaje);
+	}
+
+	public void setWindowFocusListener(WindowFocusListener listener) {
+		this.addWindowFocusListener(listener);
 	}
 
 	@SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jLabel2 = new javax.swing.JLabel();
+        jl_text = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
-        jLabel2.setText("Ingrese su llave de seguridad");
+        jl_text.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jl_text.setText("Ingrese su llave de seguridad");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -24,14 +58,14 @@ public class LoginAdmin extends javax.swing.JDialog {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addGap(125, 125, 125)
-                .addComponent(jLabel2)
+                .addComponent(jl_text)
                 .addContainerGap(125, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addGap(142, 142, 142)
-                .addComponent(jLabel2)
+                .addComponent(jl_text)
                 .addContainerGap(142, Short.MAX_VALUE))
         );
 
@@ -79,6 +113,6 @@ public class LoginAdmin extends javax.swing.JDialog {
 	}
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jl_text;
     // End of variables declaration//GEN-END:variables
 }
