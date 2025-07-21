@@ -2,9 +2,10 @@
 
 <Form version="1.5" maxVersion="1.9" type="org.netbeans.modules.form.forminfo.JFrameFormInfo">
   <Properties>
-    <Property name="defaultCloseOperation" type="int" value="3"/>
+    <Property name="defaultCloseOperation" type="int" value="0"/>
+    <Property name="title" type="java.lang.String" value="Men&#xfa; Principal"/>
     <Property name="minimumSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
-      <Dimension value="[950, 700]"/>
+      <Dimension value="[1153, 700]"/>
     </Property>
   </Properties>
   <SyntheticProperties>
@@ -21,7 +22,7 @@
     <AuxValue name="FormSettings_listenerGenerationStyle" type="java.lang.Integer" value="0"/>
     <AuxValue name="FormSettings_variablesLocal" type="java.lang.Boolean" value="false"/>
     <AuxValue name="FormSettings_variablesModifier" type="java.lang.Integer" value="2"/>
-    <AuxValue name="designerSize" type="java.awt.Dimension" value="-84,-19,0,5,115,114,0,18,106,97,118,97,46,97,119,116,46,68,105,109,101,110,115,105,111,110,65,-114,-39,-41,-84,95,68,20,2,0,2,73,0,6,104,101,105,103,104,116,73,0,5,119,105,100,116,104,120,112,0,0,2,-71,0,0,4,-118"/>
+    <AuxValue name="designerSize" type="java.awt.Dimension" value="-84,-19,0,5,115,114,0,18,106,97,118,97,46,97,119,116,46,68,105,109,101,110,115,105,111,110,65,-114,-39,-41,-84,95,68,20,2,0,2,73,0,6,104,101,105,103,104,116,73,0,5,119,105,100,116,104,120,112,0,0,2,-71,0,0,1,80"/>
   </AuxValues>
 
   <Layout class="org.netbeans.modules.form.compat2.layouts.DesignBorderLayout"/>
@@ -33,7 +34,7 @@
         </Property>
       </Properties>
       <AuxValues>
-        <AuxValue name="JavaCodeGenerator_AddingCodePost" type="java.lang.String" value="LateralPanel.setPreferredSize(new Dimension(201, 0));"/>
+        <AuxValue name="JavaCodeGenerator_AddingCodePost" type="java.lang.String" value="LateralPanel.setPreferredSize(new Dimension(220, 0));"/>
       </AuxValues>
       <Constraints>
         <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignBorderLayout" value="org.netbeans.modules.form.compat2.layouts.DesignBorderLayout$BorderConstraintsDescription">
@@ -44,47 +45,31 @@
       <Layout>
         <DimensionLayout dim="0">
           <Group type="103" groupAlignment="0" attributes="0">
-              <Group type="102" attributes="0">
-                  <Group type="103" groupAlignment="0" attributes="0">
-                      <Group type="102" attributes="0">
-                          <EmptySpace min="-2" pref="47" max="-2" attributes="0"/>
-                          <Component id="jLabel1" min="-2" max="-2" attributes="0"/>
-                      </Group>
-                      <Group type="102" alignment="0" attributes="0">
-                          <EmptySpace min="-2" pref="15" max="-2" attributes="0"/>
-                          <Component id="jLabel2" min="-2" max="-2" attributes="0"/>
-                      </Group>
-                  </Group>
-                  <EmptySpace pref="1006" max="32767" attributes="0"/>
-              </Group>
-              <Group type="102" attributes="0">
+              <Group type="102" alignment="1" attributes="0">
                   <EmptySpace max="-2" attributes="0"/>
-                  <Group type="103" groupAlignment="0" attributes="0">
-                      <Group type="102" attributes="0">
-                          <EmptySpace min="6" pref="6" max="-2" attributes="0"/>
-                          <Component id="jLabel3" min="-2" max="-2" attributes="0"/>
-                          <EmptySpace max="32767" attributes="0"/>
+                  <Group type="103" groupAlignment="1" attributes="0">
+                      <Component id="jLabel1" max="32767" attributes="0"/>
+                      <Component id="jLabel3" alignment="1" max="32767" attributes="0"/>
+                      <Component id="btn_prima" alignment="0" pref="324" max="32767" attributes="0"/>
+                      <Component id="btn_cliente" alignment="0" max="32767" attributes="0"/>
+                      <Component id="btn_home" alignment="0" max="32767" attributes="0"/>
+                      <Group type="102" alignment="0" attributes="0">
+                          <Component id="jLabel2" max="32767" attributes="0"/>
+                          <EmptySpace min="10" pref="10" max="-2" attributes="0"/>
                       </Group>
-                      <Group type="102" attributes="0">
-                          <Group type="103" groupAlignment="0" attributes="0">
-                              <Component id="jSeparator1" alignment="0" max="32767" attributes="0"/>
-                              <Component id="btn_empleado" alignment="0" pref="0" max="32767" attributes="0"/>
-                              <Component id="btn_cliente" alignment="1" pref="0" max="32767" attributes="0"/>
-                              <Component id="btn_home" alignment="1" pref="0" max="32767" attributes="0"/>
-                              <Component id="btn_proveedor" alignment="0" pref="0" max="32767" attributes="0"/>
-                              <Component id="btn_pedido" alignment="0" pref="0" max="32767" attributes="0"/>
-                              <Component id="btn_producto" alignment="0" pref="0" max="32767" attributes="0"/>
-                              <Component id="btn_prima" alignment="0" pref="0" max="32767" attributes="0"/>
-                              <Component id="btn_intermediario" alignment="0" pref="0" max="32767" attributes="0"/>
-                              <Component id="btn_documentacion" alignment="0" pref="0" max="32767" attributes="0"/>
-                              <Component id="jSeparator2" alignment="0" max="32767" attributes="0"/>
-                              <Component id="btn_informacion" alignment="0" pref="0" max="32767" attributes="0"/>
-                              <Component id="btn_close" alignment="0" pref="0" max="32767" attributes="0"/>
-                              <Component id="panelRound1" alignment="0" max="32767" attributes="0"/>
-                          </Group>
-                          <EmptySpace max="-2" attributes="0"/>
-                      </Group>
+                      <Component id="btn_empleado" alignment="0" max="32767" attributes="0"/>
+                      <Component id="jSeparator1" alignment="0" max="32767" attributes="0"/>
+                      <Component id="btn_proveedor" alignment="0" max="32767" attributes="0"/>
+                      <Component id="btn_pedido" alignment="0" max="32767" attributes="0"/>
+                      <Component id="btn_producto" alignment="0" max="32767" attributes="0"/>
+                      <Component id="btn_materialIntermedio" alignment="0" max="32767" attributes="0"/>
+                      <Component id="btn_compras" alignment="0" max="32767" attributes="0"/>
+                      <Component id="jSeparator2" alignment="0" max="32767" attributes="0"/>
+                      <Component id="btn_informacion" alignment="0" max="32767" attributes="0"/>
+                      <Component id="btn_close" alignment="0" max="32767" attributes="0"/>
+                      <Component id="panelRound1" max="32767" attributes="0"/>
                   </Group>
+                  <EmptySpace min="-2" pref="10" max="-2" attributes="0"/>
               </Group>
           </Group>
         </DimensionLayout>
@@ -98,34 +83,34 @@
                   <EmptySpace max="-2" attributes="0"/>
                   <Component id="jLabel2" min="-2" max="-2" attributes="0"/>
                   <EmptySpace max="-2" attributes="0"/>
-                  <Component id="btn_home" min="-2" pref="35" max="-2" attributes="0"/>
+                  <Component id="btn_home" min="-2" pref="30" max="-2" attributes="0"/>
                   <EmptySpace max="-2" attributes="0"/>
-                  <Component id="btn_cliente" min="-2" pref="35" max="-2" attributes="0"/>
+                  <Component id="btn_cliente" min="-2" pref="30" max="-2" attributes="0"/>
                   <EmptySpace max="-2" attributes="0"/>
-                  <Component id="btn_empleado" min="-2" pref="35" max="-2" attributes="0"/>
+                  <Component id="btn_empleado" min="-2" pref="30" max="-2" attributes="0"/>
                   <EmptySpace max="-2" attributes="0"/>
-                  <Component id="btn_proveedor" min="-2" pref="35" max="-2" attributes="0"/>
+                  <Component id="btn_proveedor" min="-2" pref="30" max="-2" attributes="0"/>
                   <EmptySpace max="-2" attributes="0"/>
-                  <Component id="btn_pedido" min="-2" pref="35" max="-2" attributes="0"/>
+                  <Component id="btn_pedido" min="-2" pref="30" max="-2" attributes="0"/>
                   <EmptySpace max="-2" attributes="0"/>
-                  <Component id="btn_producto" min="-2" pref="35" max="-2" attributes="0"/>
+                  <Component id="btn_producto" min="-2" pref="30" max="-2" attributes="0"/>
                   <EmptySpace max="-2" attributes="0"/>
-                  <Component id="btn_prima" min="-2" pref="35" max="-2" attributes="0"/>
+                  <Component id="btn_prima" min="-2" pref="30" max="-2" attributes="0"/>
                   <EmptySpace max="-2" attributes="0"/>
-                  <Component id="btn_intermediario" min="-2" pref="35" max="-2" attributes="0"/>
+                  <Component id="btn_materialIntermedio" min="-2" pref="30" max="-2" attributes="0"/>
                   <EmptySpace max="-2" attributes="0"/>
-                  <Component id="btn_documentacion" min="-2" pref="35" max="-2" attributes="0"/>
+                  <Component id="btn_compras" min="-2" pref="30" max="-2" attributes="0"/>
                   <EmptySpace max="-2" attributes="0"/>
-                  <Component id="jSeparator2" min="-2" max="-2" attributes="0"/>
+                  <Component id="jSeparator2" min="-2" pref="3" max="-2" attributes="0"/>
                   <EmptySpace max="-2" attributes="0"/>
                   <Component id="jLabel3" min="-2" max="-2" attributes="0"/>
                   <EmptySpace max="-2" attributes="0"/>
-                  <Component id="btn_informacion" min="-2" pref="35" max="-2" attributes="0"/>
+                  <Component id="btn_informacion" min="-2" pref="30" max="-2" attributes="0"/>
                   <EmptySpace max="-2" attributes="0"/>
-                  <Component id="btn_close" min="-2" pref="35" max="-2" attributes="0"/>
+                  <Component id="btn_close" min="-2" pref="30" max="-2" attributes="0"/>
                   <EmptySpace max="-2" attributes="0"/>
                   <Component id="panelRound1" max="32767" attributes="0"/>
-                  <EmptySpace pref="58" max="32767" attributes="0"/>
+                  <EmptySpace pref="112" max="32767" attributes="0"/>
               </Group>
           </Group>
         </DimensionLayout>
@@ -142,6 +127,7 @@
             <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
               <Color blue="fd" green="f7" red="f9" type="rgb"/>
             </Property>
+            <Property name="horizontalAlignment" type="int" value="0"/>
             <Property name="text" type="java.lang.String" value="Don Bosco"/>
           </Properties>
         </Component>
@@ -234,172 +220,6 @@
             <Property name="text" type="java.lang.String" value="Navegaci&#xf3;n"/>
           </Properties>
         </Component>
-        <Component class="RSMaterialComponent.RSButtonMaterialIconDos" name="btn_home">
-          <Properties>
-            <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-              <Color blue="20" green="1b" red="1c" type="rgb"/>
-            </Property>
-            <Property name="text" type="java.lang.String" value="Home"/>
-            <Property name="backgroundHover" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-              <Color blue="14" green="e" red="11" type="rgb"/>
-            </Property>
-            <Property name="doubleBuffered" type="boolean" value="true"/>
-            <Property name="horizontalAlignment" type="int" value="10"/>
-            <Property name="horizontalTextPosition" type="int" value="0"/>
-            <Property name="icons" type="rojeru_san.efectos.ValoresEnum$ICONS" editor="org.netbeans.modules.form.editors.EnumEditor">
-              <Value id="HOME"/>
-            </Property>
-            <Property name="rippleColor" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-              <Color blue="f2" green="f2" red="f2" type="rgb"/>
-            </Property>
-          </Properties>
-          <Events>
-            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btn_homeActionPerformed"/>
-          </Events>
-        </Component>
-        <Component class="RSMaterialComponent.RSButtonMaterialIconDos" name="btn_cliente">
-          <Properties>
-            <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-              <Color blue="20" green="1b" red="1c" type="rgb"/>
-            </Property>
-            <Property name="text" type="java.lang.String" value="Cliente"/>
-            <Property name="backgroundHover" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-              <Color blue="14" green="e" red="11" type="rgb"/>
-            </Property>
-            <Property name="doubleBuffered" type="boolean" value="true"/>
-            <Property name="horizontalAlignment" type="int" value="10"/>
-            <Property name="icons" type="rojeru_san.efectos.ValoresEnum$ICONS" editor="org.netbeans.modules.form.editors.EnumEditor">
-              <Value id="GROUP"/>
-            </Property>
-          </Properties>
-          <Events>
-            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btn_clienteActionPerformed"/>
-          </Events>
-        </Component>
-        <Component class="RSMaterialComponent.RSButtonMaterialIconDos" name="btn_empleado">
-          <Properties>
-            <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-              <Color blue="20" green="1b" red="1c" type="rgb"/>
-            </Property>
-            <Property name="text" type="java.lang.String" value="Empleado"/>
-            <Property name="backgroundHover" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-              <Color blue="14" green="e" red="11" type="rgb"/>
-            </Property>
-            <Property name="doubleBuffered" type="boolean" value="true"/>
-            <Property name="horizontalAlignment" type="int" value="10"/>
-          </Properties>
-          <Events>
-            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btn_empleadoActionPerformed"/>
-          </Events>
-        </Component>
-        <Component class="RSMaterialComponent.RSButtonMaterialIconDos" name="btn_proveedor">
-          <Properties>
-            <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-              <Color blue="20" green="1b" red="1c" type="rgb"/>
-            </Property>
-            <Property name="text" type="java.lang.String" value="Proveedor"/>
-            <Property name="backgroundHover" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-              <Color blue="14" green="e" red="11" type="rgb"/>
-            </Property>
-            <Property name="doubleBuffered" type="boolean" value="true"/>
-            <Property name="horizontalAlignment" type="int" value="10"/>
-          </Properties>
-          <Events>
-            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btn_proveedorActionPerformed"/>
-          </Events>
-        </Component>
-        <Component class="RSMaterialComponent.RSButtonMaterialIconDos" name="btn_pedido">
-          <Properties>
-            <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-              <Color blue="20" green="1b" red="1c" type="rgb"/>
-            </Property>
-            <Property name="text" type="java.lang.String" value="Pedido"/>
-            <Property name="backgroundHover" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-              <Color blue="14" green="e" red="11" type="rgb"/>
-            </Property>
-            <Property name="doubleBuffered" type="boolean" value="true"/>
-            <Property name="horizontalAlignment" type="int" value="10"/>
-            <Property name="icons" type="rojeru_san.efectos.ValoresEnum$ICONS" editor="org.netbeans.modules.form.editors.EnumEditor">
-              <Value id="LOCAL_SHIPPING"/>
-            </Property>
-          </Properties>
-          <Events>
-            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btn_pedidoActionPerformed"/>
-          </Events>
-        </Component>
-        <Component class="RSMaterialComponent.RSButtonMaterialIconDos" name="btn_producto">
-          <Properties>
-            <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-              <Color blue="20" green="1b" red="1c" type="rgb"/>
-            </Property>
-            <Property name="text" type="java.lang.String" value="Producto"/>
-            <Property name="backgroundHover" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-              <Color blue="14" green="e" red="11" type="rgb"/>
-            </Property>
-            <Property name="doubleBuffered" type="boolean" value="true"/>
-            <Property name="horizontalAlignment" type="int" value="10"/>
-            <Property name="icons" type="rojeru_san.efectos.ValoresEnum$ICONS" editor="org.netbeans.modules.form.editors.EnumEditor">
-              <Value id="DASHBOARD"/>
-            </Property>
-          </Properties>
-          <Events>
-            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btn_productoActionPerformed"/>
-          </Events>
-        </Component>
-        <Component class="RSMaterialComponent.RSButtonMaterialIconDos" name="btn_prima">
-          <Properties>
-            <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-              <Color blue="20" green="1b" red="1c" type="rgb"/>
-            </Property>
-            <Property name="text" type="java.lang.String" value="Primas"/>
-            <Property name="backgroundHover" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-              <Color blue="14" green="e" red="11" type="rgb"/>
-            </Property>
-            <Property name="doubleBuffered" type="boolean" value="true"/>
-            <Property name="horizontalAlignment" type="int" value="10"/>
-            <Property name="icons" type="rojeru_san.efectos.ValoresEnum$ICONS" editor="org.netbeans.modules.form.editors.EnumEditor">
-              <Value id="FILTER_HDR"/>
-            </Property>
-          </Properties>
-          <Events>
-            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btn_primaActionPerformed"/>
-          </Events>
-        </Component>
-        <Component class="RSMaterialComponent.RSButtonMaterialIconDos" name="btn_intermediario">
-          <Properties>
-            <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-              <Color blue="20" green="1b" red="1c" type="rgb"/>
-            </Property>
-            <Property name="text" type="java.lang.String" value="Intermediarios"/>
-            <Property name="backgroundHover" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-              <Color blue="14" green="e" red="11" type="rgb"/>
-            </Property>
-            <Property name="doubleBuffered" type="boolean" value="true"/>
-            <Property name="horizontalAlignment" type="int" value="10"/>
-            <Property name="icons" type="rojeru_san.efectos.ValoresEnum$ICONS" editor="org.netbeans.modules.form.editors.EnumEditor">
-              <Value id="GROUP_ADD"/>
-            </Property>
-          </Properties>
-          <Events>
-            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btn_intermediarioActionPerformed"/>
-          </Events>
-        </Component>
-        <Component class="RSMaterialComponent.RSButtonMaterialIconDos" name="btn_documentacion">
-          <Properties>
-            <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-              <Color blue="20" green="1b" red="1c" type="rgb"/>
-            </Property>
-            <Property name="text" type="java.lang.String" value="Documentacion"/>
-            <Property name="backgroundHover" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-              <Color blue="14" green="e" red="11" type="rgb"/>
-            </Property>
-            <Property name="doubleBuffered" type="boolean" value="true"/>
-            <Property name="horizontalAlignment" type="int" value="10"/>
-            <Property name="icons" type="rojeru_san.efectos.ValoresEnum$ICONS" editor="org.netbeans.modules.form.editors.EnumEditor">
-              <Value id="LIST"/>
-            </Property>
-          </Properties>
-        </Component>
         <Component class="javax.swing.JSeparator" name="jSeparator2">
           <Properties>
             <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
@@ -414,44 +234,6 @@
             </Property>
           </Properties>
         </Component>
-        <Component class="RSMaterialComponent.RSButtonMaterialIconDos" name="btn_informacion">
-          <Properties>
-            <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-              <Color blue="20" green="1b" red="1c" type="rgb"/>
-            </Property>
-            <Property name="text" type="java.lang.String" value="Informacion"/>
-            <Property name="backgroundHover" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-              <Color blue="14" green="e" red="11" type="rgb"/>
-            </Property>
-            <Property name="doubleBuffered" type="boolean" value="true"/>
-            <Property name="horizontalAlignment" type="int" value="10"/>
-            <Property name="icons" type="rojeru_san.efectos.ValoresEnum$ICONS" editor="org.netbeans.modules.form.editors.EnumEditor">
-              <Value id="HELP_OUTLINE"/>
-            </Property>
-          </Properties>
-          <Events>
-            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btn_informacionActionPerformed"/>
-          </Events>
-        </Component>
-        <Component class="RSMaterialComponent.RSButtonMaterialIconDos" name="btn_close">
-          <Properties>
-            <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-              <Color blue="20" green="1b" red="1c" type="rgb"/>
-            </Property>
-            <Property name="text" type="java.lang.String" value="Cerrar"/>
-            <Property name="backgroundHover" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-              <Color blue="14" green="e" red="11" type="rgb"/>
-            </Property>
-            <Property name="doubleBuffered" type="boolean" value="true"/>
-            <Property name="horizontalAlignment" type="int" value="10"/>
-            <Property name="icons" type="rojeru_san.efectos.ValoresEnum$ICONS" editor="org.netbeans.modules.form.editors.EnumEditor">
-              <Value id="EXIT_TO_APP"/>
-            </Property>
-          </Properties>
-          <Events>
-            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btn_closeActionPerformed"/>
-          </Events>
-        </Component>
         <Component class="javax.swing.JLabel" name="jLabel3">
           <Properties>
             <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
@@ -459,6 +241,277 @@
             </Property>
             <Property name="text" type="java.lang.String" value="Control de Acceso"/>
           </Properties>
+        </Component>
+        <Component class="RSMaterialComponent.RSButtonFormaIcon" name="btn_home">
+          <Properties>
+            <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+              <Color blue="20" green="1b" red="1c" type="rgb"/>
+            </Property>
+            <Property name="text" type="java.lang.String" value="  Home"/>
+            <Property name="backgroundHover" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+              <Color blue="14" green="e" red="11" type="rgb"/>
+            </Property>
+            <Property name="forma" type="RSMaterialComponent.RSButtonFormaIcon$FORMA" editor="org.netbeans.modules.form.editors.EnumEditor">
+              <Value id="RECT"/>
+            </Property>
+            <Property name="icons" type="rojeru_san.efectos.ValoresEnum$ICONS" editor="org.netbeans.modules.form.editors.EnumEditor">
+              <Value id="HOME"/>
+            </Property>
+            <Property name="positionIcon" type="rojeru_san.efectos.ValoresEnum$POSITIONICON" editor="org.netbeans.modules.form.editors.EnumEditor">
+              <Value id="LEFT"/>
+            </Property>
+          </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btn_homeActionPerformed"/>
+          </Events>
+          <AuxValues>
+            <AuxValue name="JavaCodeGenerator_AddingCodePost" type="java.lang.String" value="btn_home.setFocusPainted(false);"/>
+          </AuxValues>
+        </Component>
+        <Component class="RSMaterialComponent.RSButtonFormaIcon" name="btn_cliente">
+          <Properties>
+            <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+              <Color blue="20" green="1b" red="1c" type="rgb"/>
+            </Property>
+            <Property name="text" type="java.lang.String" value="  Clientes"/>
+            <Property name="backgroundHover" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+              <Color blue="14" green="e" red="11" type="rgb"/>
+            </Property>
+            <Property name="forma" type="RSMaterialComponent.RSButtonFormaIcon$FORMA" editor="org.netbeans.modules.form.editors.EnumEditor">
+              <Value id="RECT"/>
+            </Property>
+            <Property name="icons" type="rojeru_san.efectos.ValoresEnum$ICONS" editor="org.netbeans.modules.form.editors.EnumEditor">
+              <Value id="GROUP"/>
+            </Property>
+            <Property name="positionIcon" type="rojeru_san.efectos.ValoresEnum$POSITIONICON" editor="org.netbeans.modules.form.editors.EnumEditor">
+              <Value id="LEFT"/>
+            </Property>
+          </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btn_clienteActionPerformed"/>
+          </Events>
+          <AuxValues>
+            <AuxValue name="JavaCodeGenerator_AddingCodePost" type="java.lang.String" value="btn_cliente.setFocusPainted(false);"/>
+          </AuxValues>
+        </Component>
+        <Component class="RSMaterialComponent.RSButtonFormaIcon" name="btn_empleado">
+          <Properties>
+            <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+              <Color blue="20" green="1b" red="1c" type="rgb"/>
+            </Property>
+            <Property name="text" type="java.lang.String" value="  Empleados"/>
+            <Property name="backgroundHover" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+              <Color blue="14" green="e" red="11" type="rgb"/>
+            </Property>
+            <Property name="forma" type="RSMaterialComponent.RSButtonFormaIcon$FORMA" editor="org.netbeans.modules.form.editors.EnumEditor">
+              <Value id="RECT"/>
+            </Property>
+            <Property name="positionIcon" type="rojeru_san.efectos.ValoresEnum$POSITIONICON" editor="org.netbeans.modules.form.editors.EnumEditor">
+              <Value id="LEFT"/>
+            </Property>
+          </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btn_empleadoActionPerformed"/>
+          </Events>
+          <AuxValues>
+            <AuxValue name="JavaCodeGenerator_AddingCodePost" type="java.lang.String" value="btn_empleado.setFocusPainted(false);"/>
+          </AuxValues>
+        </Component>
+        <Component class="RSMaterialComponent.RSButtonFormaIcon" name="btn_proveedor">
+          <Properties>
+            <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+              <Color blue="20" green="1b" red="1c" type="rgb"/>
+            </Property>
+            <Property name="text" type="java.lang.String" value="  Proveedores"/>
+            <Property name="backgroundHover" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+              <Color blue="14" green="e" red="11" type="rgb"/>
+            </Property>
+            <Property name="forma" type="RSMaterialComponent.RSButtonFormaIcon$FORMA" editor="org.netbeans.modules.form.editors.EnumEditor">
+              <Value id="RECT"/>
+            </Property>
+            <Property name="positionIcon" type="rojeru_san.efectos.ValoresEnum$POSITIONICON" editor="org.netbeans.modules.form.editors.EnumEditor">
+              <Value id="LEFT"/>
+            </Property>
+          </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btn_proveedorActionPerformed"/>
+          </Events>
+          <AuxValues>
+            <AuxValue name="JavaCodeGenerator_AddingCodePost" type="java.lang.String" value="btn_proveedor.setFocusPainted(false);"/>
+          </AuxValues>
+        </Component>
+        <Component class="RSMaterialComponent.RSButtonFormaIcon" name="btn_pedido">
+          <Properties>
+            <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+              <Color blue="20" green="1b" red="1c" type="rgb"/>
+            </Property>
+            <Property name="text" type="java.lang.String" value="  Pedidos"/>
+            <Property name="backgroundHover" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+              <Color blue="14" green="e" red="11" type="rgb"/>
+            </Property>
+            <Property name="forma" type="RSMaterialComponent.RSButtonFormaIcon$FORMA" editor="org.netbeans.modules.form.editors.EnumEditor">
+              <Value id="RECT"/>
+            </Property>
+            <Property name="icons" type="rojeru_san.efectos.ValoresEnum$ICONS" editor="org.netbeans.modules.form.editors.EnumEditor">
+              <Value id="LOCAL_SHIPPING"/>
+            </Property>
+            <Property name="positionIcon" type="rojeru_san.efectos.ValoresEnum$POSITIONICON" editor="org.netbeans.modules.form.editors.EnumEditor">
+              <Value id="LEFT"/>
+            </Property>
+          </Properties>
+          <AuxValues>
+            <AuxValue name="JavaCodeGenerator_AddingCodePost" type="java.lang.String" value="btn_pedido.setFocusPainted(false);"/>
+          </AuxValues>
+        </Component>
+        <Component class="RSMaterialComponent.RSButtonFormaIcon" name="btn_producto">
+          <Properties>
+            <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+              <Color blue="20" green="1b" red="1c" type="rgb"/>
+            </Property>
+            <Property name="text" type="java.lang.String" value="  P. Terminados"/>
+            <Property name="backgroundHover" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+              <Color blue="14" green="e" red="11" type="rgb"/>
+            </Property>
+            <Property name="forma" type="RSMaterialComponent.RSButtonFormaIcon$FORMA" editor="org.netbeans.modules.form.editors.EnumEditor">
+              <Value id="RECT"/>
+            </Property>
+            <Property name="icons" type="rojeru_san.efectos.ValoresEnum$ICONS" editor="org.netbeans.modules.form.editors.EnumEditor">
+              <Value id="DASHBOARD"/>
+            </Property>
+            <Property name="positionIcon" type="rojeru_san.efectos.ValoresEnum$POSITIONICON" editor="org.netbeans.modules.form.editors.EnumEditor">
+              <Value id="LEFT"/>
+            </Property>
+          </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btn_productoActionPerformed"/>
+          </Events>
+          <AuxValues>
+            <AuxValue name="JavaCodeGenerator_AddingCodePost" type="java.lang.String" value="btn_producto.setFocusPainted(false);"/>
+          </AuxValues>
+        </Component>
+        <Component class="RSMaterialComponent.RSButtonFormaIcon" name="btn_prima">
+          <Properties>
+            <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+              <Color blue="20" green="1b" red="1c" type="rgb"/>
+            </Property>
+            <Property name="text" type="java.lang.String" value="  M. Primas"/>
+            <Property name="backgroundHover" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+              <Color blue="14" green="e" red="11" type="rgb"/>
+            </Property>
+            <Property name="forma" type="RSMaterialComponent.RSButtonFormaIcon$FORMA" editor="org.netbeans.modules.form.editors.EnumEditor">
+              <Value id="RECT"/>
+            </Property>
+            <Property name="icons" type="rojeru_san.efectos.ValoresEnum$ICONS" editor="org.netbeans.modules.form.editors.EnumEditor">
+              <Value id="FILTER_HDR"/>
+            </Property>
+            <Property name="positionIcon" type="rojeru_san.efectos.ValoresEnum$POSITIONICON" editor="org.netbeans.modules.form.editors.EnumEditor">
+              <Value id="LEFT"/>
+            </Property>
+          </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btn_primaActionPerformed"/>
+          </Events>
+          <AuxValues>
+            <AuxValue name="JavaCodeGenerator_AddingCodePost" type="java.lang.String" value="btn_prima.setFocusPainted(false);"/>
+          </AuxValues>
+        </Component>
+        <Component class="RSMaterialComponent.RSButtonFormaIcon" name="btn_materialIntermedio">
+          <Properties>
+            <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+              <Color blue="20" green="1b" red="1c" type="rgb"/>
+            </Property>
+            <Property name="text" type="java.lang.String" value="  M. Intermedios"/>
+            <Property name="backgroundHover" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+              <Color blue="14" green="e" red="11" type="rgb"/>
+            </Property>
+            <Property name="forma" type="RSMaterialComponent.RSButtonFormaIcon$FORMA" editor="org.netbeans.modules.form.editors.EnumEditor">
+              <Value id="RECT"/>
+            </Property>
+            <Property name="icons" type="rojeru_san.efectos.ValoresEnum$ICONS" editor="org.netbeans.modules.form.editors.EnumEditor">
+              <Value id="HOT_TUB"/>
+            </Property>
+            <Property name="positionIcon" type="rojeru_san.efectos.ValoresEnum$POSITIONICON" editor="org.netbeans.modules.form.editors.EnumEditor">
+              <Value id="LEFT"/>
+            </Property>
+          </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btn_materialIntermedioActionPerformed"/>
+          </Events>
+          <AuxValues>
+            <AuxValue name="JavaCodeGenerator_AddingCodePost" type="java.lang.String" value="btn_materialIntermedio.setFocusPainted(false);"/>
+          </AuxValues>
+        </Component>
+        <Component class="RSMaterialComponent.RSButtonFormaIcon" name="btn_compras">
+          <Properties>
+            <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+              <Color blue="20" green="1b" red="1c" type="rgb"/>
+            </Property>
+            <Property name="text" type="java.lang.String" value="  Compras"/>
+            <Property name="backgroundHover" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+              <Color blue="14" green="e" red="11" type="rgb"/>
+            </Property>
+            <Property name="forma" type="RSMaterialComponent.RSButtonFormaIcon$FORMA" editor="org.netbeans.modules.form.editors.EnumEditor">
+              <Value id="RECT"/>
+            </Property>
+            <Property name="icons" type="rojeru_san.efectos.ValoresEnum$ICONS" editor="org.netbeans.modules.form.editors.EnumEditor">
+              <Value id="CREDIT_CARD"/>
+            </Property>
+            <Property name="positionIcon" type="rojeru_san.efectos.ValoresEnum$POSITIONICON" editor="org.netbeans.modules.form.editors.EnumEditor">
+              <Value id="LEFT"/>
+            </Property>
+          </Properties>
+          <AuxValues>
+            <AuxValue name="JavaCodeGenerator_AddingCodePost" type="java.lang.String" value="btn_compras.setFocusPainted(false);"/>
+          </AuxValues>
+        </Component>
+        <Component class="RSMaterialComponent.RSButtonFormaIcon" name="btn_informacion">
+          <Properties>
+            <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+              <Color blue="20" green="1b" red="1c" type="rgb"/>
+            </Property>
+            <Property name="text" type="java.lang.String" value="  Informaci&#xf3;n"/>
+            <Property name="backgroundHover" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+              <Color blue="14" green="e" red="11" type="rgb"/>
+            </Property>
+            <Property name="forma" type="RSMaterialComponent.RSButtonFormaIcon$FORMA" editor="org.netbeans.modules.form.editors.EnumEditor">
+              <Value id="RECT"/>
+            </Property>
+            <Property name="icons" type="rojeru_san.efectos.ValoresEnum$ICONS" editor="org.netbeans.modules.form.editors.EnumEditor">
+              <Value id="HELP_OUTLINE"/>
+            </Property>
+            <Property name="positionIcon" type="rojeru_san.efectos.ValoresEnum$POSITIONICON" editor="org.netbeans.modules.form.editors.EnumEditor">
+              <Value id="LEFT"/>
+            </Property>
+          </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btn_informacionActionPerformed"/>
+          </Events>
+          <AuxValues>
+            <AuxValue name="JavaCodeGenerator_AddingCodePost" type="java.lang.String" value="btn_informacion.setFocusPainted(false);"/>
+          </AuxValues>
+        </Component>
+        <Component class="RSMaterialComponent.RSButtonFormaIcon" name="btn_close">
+          <Properties>
+            <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+              <Color blue="20" green="1b" red="1c" type="rgb"/>
+            </Property>
+            <Property name="text" type="java.lang.String" value="  Cerrar"/>
+            <Property name="backgroundHover" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+              <Color blue="14" green="e" red="11" type="rgb"/>
+            </Property>
+            <Property name="forma" type="RSMaterialComponent.RSButtonFormaIcon$FORMA" editor="org.netbeans.modules.form.editors.EnumEditor">
+              <Value id="RECT"/>
+            </Property>
+            <Property name="icons" type="rojeru_san.efectos.ValoresEnum$ICONS" editor="org.netbeans.modules.form.editors.EnumEditor">
+              <Value id="EXIT_TO_APP"/>
+            </Property>
+            <Property name="positionIcon" type="rojeru_san.efectos.ValoresEnum$POSITIONICON" editor="org.netbeans.modules.form.editors.EnumEditor">
+              <Value id="LEFT"/>
+            </Property>
+          </Properties>
+          <AuxValues>
+            <AuxValue name="JavaCodeGenerator_AddingCodePost" type="java.lang.String" value="btn_close.setFocusPainted(false);"/>
+          </AuxValues>
         </Component>
       </SubComponents>
     </Container>

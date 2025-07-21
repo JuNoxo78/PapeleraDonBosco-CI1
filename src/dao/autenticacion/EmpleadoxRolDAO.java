@@ -8,83 +8,71 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class EmpleadoxRolDAO {
-    private final List<EmpleadoxRol> listaEmxRol = new ArrayList<>();
 
-	public List<EmpleadoxRol> getListaEmxRol() {
-		obtenerTodos();
+	public List<EmpleadoxRol> obtenerTodos() {
+		List<EmpleadoxRol> listaEmxRol = new ArrayList<>();
+		String sql = "SELECT * FROM empleadoxrol";
+
+		try (Connection conn = Conexion.conectar(); PreparedStatement stmt = conn.prepareStatement(sql); ResultSet rs = stmt.executeQuery()) {
+
+			while (rs.next()) {
+				EmpleadoxRol er = new EmpleadoxRol();
+
+				er.setIdEmpleado(rs.getString("idEmpleado"));
+				er.setIdRol(rs.getString("idRol"));
+
+				Timestamp fechaSQL = rs.getTimestamp("fechaRolAñadido");
+				if (fechaSQL != null) {
+					er.setFechaRolAñadido(fechaSQL.toLocalDateTime());
+				}
+
+				listaEmxRol.add(er);
+			}
+
+		} catch (SQLException e) {
+			System.err.println("Error al obtener empleadoxrol: " + e.getMessage());
+		}
+
 		return listaEmxRol;
 	}
 
-    // Obtener todos los registros de la tabla empleadoxrol
-    public List<EmpleadoxRol> obtenerTodos() {
-        String sql = "SELECT * FROM empleadoxrol";
+	public boolean insertar(EmpleadoxRol er) {
+		String sql = "INSERT INTO empleadoxrol (idEmpleado, idRol, fechaRolAñadido) VALUES (?, ?, ?)";
 
-        try (Connection conn = Conexion.conectar();
-             PreparedStatement stmt = conn.prepareStatement(sql);
-             ResultSet rs = stmt.executeQuery()) {
+		try (Connection conn = Conexion.conectar(); PreparedStatement stmt = conn.prepareStatement(sql)) {
 
-            while (rs.next()) {
-                EmpleadoxRol er = new EmpleadoxRol();
+			stmt.setString(1, er.getIdEmpleado());
+			stmt.setString(2, er.getIdRol());
 
-                er.setIdEmpleado(rs.getString("idEmpleado"));
-                er.setIdRol(rs.getString("idRol"));
+			if (er.getFechaRolAñadido() != null) {
+				stmt.setTimestamp(3, Timestamp.valueOf(er.getFechaRolAñadido()));
+			} else {
+				stmt.setNull(3, Types.TIMESTAMP);
+			}
 
-                Timestamp fechaSQL = rs.getTimestamp("fechaRolAñadido");
-                if (fechaSQL != null) {
-                    er.setFechaRolAñadido(fechaSQL.toLocalDateTime());
-                }
+			int filas = stmt.executeUpdate();
+			return filas > 0;
 
-                listaEmxRol.add(er);
-            }
+		} catch (SQLException e) {
+			System.err.println("❌ Error al insertar empleadoxrol: " + e.getMessage());
+			return false;
+		}
+	}
 
-        } catch (SQLException e) {
-            System.err.println("Error al obtener empleadoxrol: " + e.getMessage());
-        }
+	public boolean eliminar(String idEmpleado, String idRol) {
+		String sql = "DELETE FROM empleadoxrol WHERE idEmpleado = ? AND idRol = ?";
 
-        return listaEmxRol;
-    }
+		try (Connection conn = Conexion.conectar(); PreparedStatement stmt = conn.prepareStatement(sql)) {
 
-    // Insertar nuevo registro
-    public boolean insertar(EmpleadoxRol er) {
-        String sql = "INSERT INTO empleadoxrol (idEmpleado, idRol, fechaRolAñadido) VALUES (?, ?, ?)";
+			stmt.setString(1, idEmpleado);
+			stmt.setString(2, idRol);
 
-        try (Connection conn = Conexion.conectar();
-             PreparedStatement stmt = conn.prepareStatement(sql)) {
+			int filas = stmt.executeUpdate();
+			return filas > 0;
 
-            stmt.setString(1, er.getIdEmpleado());
-            stmt.setString(2, er.getIdRol());
-
-            if (er.getFechaRolAñadido() != null) {
-                stmt.setTimestamp(3, Timestamp.valueOf(er.getFechaRolAñadido()));
-            } else {
-                stmt.setNull(3, Types.TIMESTAMP);
-            }
-
-            int filas = stmt.executeUpdate();
-            return filas > 0;
-
-        } catch (SQLException e) {
-            System.err.println("❌ Error al insertar empleadoxrol: " + e.getMessage());
-            return false;
-        }
-    }
-
-    // Eliminar asignación de rol
-    public boolean eliminar(String idEmpleado, String idRol) {
-        String sql = "DELETE FROM empleadoxrol WHERE idEmpleado = ? AND idRol = ?";
-
-        try (Connection conn = Conexion.conectar();
-             PreparedStatement stmt = conn.prepareStatement(sql)) {
-
-            stmt.setString(1, idEmpleado);
-            stmt.setString(2, idRol);
-
-            int filas = stmt.executeUpdate();
-            return filas > 0;
-
-        } catch (SQLException e) {
-            System.err.println("❌ Error al eliminar empleadoxrol: " + e.getMessage());
-            return false;
-        }
-    }
+		} catch (SQLException e) {
+			System.err.println("❌ Error al eliminar empleadoxrol: " + e.getMessage());
+			return false;
+		}
+	}
 }

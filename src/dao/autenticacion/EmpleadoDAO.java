@@ -8,14 +8,9 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class EmpleadoDAO {
-	private List<Empleado> empleados = new ArrayList<>();
-
-	public List<Empleado> getEmpleados() {
-		obtenerTodos();
-		return empleados;
-	}
 
 	public List<Empleado> obtenerTodos() {
+		List<Empleado> empleados = new ArrayList<>();
 		String sql = "SELECT * FROM empleado";
 
 		try (Connection conn = Conexion.conectar(); PreparedStatement stmt = conn.prepareStatement(sql); ResultSet rs = stmt.executeQuery()) {

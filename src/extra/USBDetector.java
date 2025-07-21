@@ -1,20 +1,47 @@
 package extra;
 
-import java.util.ArrayList;
+import java.io.BufferedReader;
 import org.usb4java.*;
 
-import java.util.HashSet;
-import java.util.Set;
+import java.util.*;
+import java.io.File;
+import java.io.FileReader;
+import java.io.IOException;
+import java.nio.charset.StandardCharsets;
+import java.security.MessageDigest;
+import oshi.SystemInfo;
+import oshi.hardware.UsbDevice;
+import oshi.software.os.FileSystem;
+import oshi.software.os.OSFileStore;
 
 public class USBDetector {
 
 	private static final Context context = new Context();
 	private static Set<String> dispositivosPrevios = new HashSet<>();
 	private static ArrayList<String> listaUsbIds = new ArrayList<>();
+	private static boolean inicializado = false;
 
 	public static boolean inicializar() {
+		if (inicializado) {
+			return true;
+		}
+
 		int resultado = LibUsb.init(context);
-		return resultado == LibUsb.SUCCESS;
+		if (resultado == LibUsb.SUCCESS) {
+			inicializado = true;
+			return true;
+		} else {
+			System.err.println("Error al inicializar LibUsb: " + LibUsb.strError(resultado));
+			return false;
+		}
+	}
+
+	public static void cerrar() {
+		if (inicializado) {
+			LibUsb.exit(context);
+			inicializado = false;
+			System.out.println("LibUsb cerrado correctamente.");
+		}
 	}
 
 	public static ArrayList<String> getListaUsbIds() {
@@ -40,6 +67,7 @@ public class USBDetector {
 			}
 
 			String id = String.format("%04x:%04x", descriptor.idVendor(), descriptor.idProduct());
+
 			dispositivosActuales.add(id);
 
 			if (!dispositivosPrevios.contains(id)) {
@@ -57,5 +85,45 @@ public class USBDetector {
 
 		dispositivosPrevios = dispositivosActuales;
 		LibUsb.freeDeviceList(lista, true);
+	}
+
+	public static ArrayList<String> obtenerLetraEtiquetaVolumen() {
+		ArrayList<String> letraEtiqueta = new ArrayList<>();
+		SystemInfo si = new SystemInfo();
+
+		// Obtener dispositivos USB
+		List<UsbDevice> dispositivos = si.getHardware().getUsbDevices(true);
+
+		for (UsbDevice dev : dispositivos) {
+			if (dev.getVendorId() != null && dev.getProductId() != null) {
+				// Buscar volumen montado
+				FileSystem fs = si.getOperatingSystem().getFileSystem();
+				for (OSFileStore store : fs.getFileStores()) {
+					if (store.getDescription().toLowerCase().contains("removable")) {
+						letraEtiqueta.add(store.getMount());
+						letraEtiqueta.add(store.getLabel());
+					}
+				}
+			}
+		}
+		return letraEtiqueta;
+	}
+
+	public static boolean verificarClavePorHash(File archivo, String keyAuthAdminHash) {
+		try (BufferedReader br = new BufferedReader(new FileReader(archivo))) {
+			String claveLeida = br.readLine(); // Leer solo la primera línea
+			if (claveLeida == null) {
+				return false;
+			}
+
+			MessageDigest digest = MessageDigest.getInstance("SHA-256");
+			byte[] hashBytes = digest.digest(claveLeida.getBytes(StandardCharsets.UTF_8));
+			String hashHex = HexFormat.of().formatHex(hashBytes).toLowerCase();
+
+			return hashHex.equals(keyAuthAdminHash);
+		} catch (Exception e) {
+			System.err.println("Error al verificar clave: " + e.getMessage());
+			return false;
+		}
 	}
 }

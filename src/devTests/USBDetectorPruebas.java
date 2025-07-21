@@ -1,9 +1,10 @@
-package extra;
+package devTests;
 
+import extra.USBDetector;
 import java.util.ArrayList;
 import java.util.concurrent.*;
 
-public class Pruebas {
+public class USBDetectorPruebas {
 
     public static void main(String[] args) {
         if (!USBDetector.inicializar()) {
@@ -19,12 +20,12 @@ public class Pruebas {
     	 	ArrayList<String> listaUsbIds = USBDetector.getListaUsbIds();
             try {
                 USBDetector.escanearDispositivos();
-				int lastIndex = listaUsbIds.size() - 1;
 				int lastConUSBIndex = listaUsbIds.lastIndexOf("*03f0:2d40");
 				int lastDisUSBIndex = listaUsbIds.lastIndexOf("X03f0:2d40");
 
 				if (lastConUSBIndex > lastDisUSBIndex) {
-					System.out.println(listaUsbIds.get(lastConUSBIndex));
+					ArrayList<String> letraEtiqueta = USBDetector.obtenerLetraEtiquetaVolumen();
+					System.out.println(">> Unidad: " + letraEtiqueta.get(0) + " | Etiqueta: " + letraEtiqueta.get(1));
 				}
             } catch (Exception e) {
                 System.err.println("Error durante el escaneo: " + e.getMessage());

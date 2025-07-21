@@ -13,11 +13,16 @@ public class Conexion {
 		String usuario = "root";
 		String contraseña = "root";
 
+		int nPrints = 0;
+
 		try {
 			Class.forName("com.mysql.cj.jdbc.Driver");
 			try {
 				conexion = DriverManager.getConnection(url, usuario, contraseña);
-				System.out.println("Conexion exitosa");
+//				if (nPrints == 0) {
+//					System.out.println("Conexion exitosa");
+//					nPrints++;
+//				}
 			} catch (SQLException e) {
 				System.out.println("Error: " + e.getMessage());
 			}

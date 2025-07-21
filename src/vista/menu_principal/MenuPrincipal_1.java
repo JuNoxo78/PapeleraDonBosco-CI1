@@ -6,7 +6,7 @@ import vista.inventario.materiales_intermedios.Registro_MIVista;
 import vista.inventario.materias_primas.Registro_MPVista;
 import vista.proveedores.Registro_ProveedorVista;
 import vista.inventario.productos_terminados.Registro_PTVista;
-import vista.pedidos_ventas.Registro_PedidoVista;
+import vista.pedidos_ventas.PedidosVista;
 import vista.autenticacion.Registro_EmpleadoVista;
 import vista.clientes.Registro_ClienteVista;
 import java.awt.BorderLayout;
@@ -454,7 +454,7 @@ public class MenuPrincipal_1 extends javax.swing.JFrame {
         btn_documentacion.setSelected(false);
         btn_informacion.setSelected(false);
         
-        Registro_PedidoVista P = new Registro_PedidoVista();
+        PedidosVista P = new PedidosVista();
         P.setSize(1269, 837);
         P.setLocation(0,0);
         

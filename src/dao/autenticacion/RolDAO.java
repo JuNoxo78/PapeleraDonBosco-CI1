@@ -12,14 +12,8 @@ import java.util.List;
 
 public class RolDAO {
 
-	private final List<Rol> roles = new ArrayList<>();
-
-	public List<Rol> getRoles() {
-		obtenerTodos();
-		return roles;
-	}
-
 	public List<Rol> obtenerTodos() {
+		List<Rol> roles = new ArrayList<>();
 		String sql = "SELECT idRol, nombreRol, descripcion FROM papeleraartesanal.rol ORDER BY idRol";
 
 		try (Connection conn = Conexion.conectar(); PreparedStatement stmt = conn.prepareStatement(sql); ResultSet rs = stmt.executeQuery()) {

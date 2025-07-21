@@ -65,13 +65,17 @@ INSERT INTO papeleraartesanal.detallemifabricado (idDetalleMIFabricado, idMateri
 
 -- Llenando la tabla venta
 INSERT INTO papeleraartesanal.venta (idVenta, idCompPago, fechaVenta, metodoPago, estadoPago) VALUES
-('VEN001', 'CP001', '2025-04-02', 'Efectivo', 'Pagado'),
-('VEN002', 'CP002', '2025-04-03', 'Tarjeta', 'Pendiente');
+('VEN001', 'CP001', '2025-04-02', 'Efectivo', 'Pagado Parcialmente'),
+('VEN002', 'CP002', '2025-04-03', 'Tarjeta', 'Pagado Parcialmente'),
+('VEN003', 'CP002', '2025-04-03', 'Tarjeta', 'Pagado'),
+('VEN004', 'CP002', '2025-04-03', 'Tarjeta', 'Pagado');
 
 -- Llenando la tabla pedido
 INSERT INTO papeleraartesanal.pedido (idPedido, idCliente, idEmpleado, observaciones, fechaEntrega, estadoPedido, idVenta, fechaRegistro) VALUES
-('PED001', 'CLI001', 'EMP001', 'Pedido de blocs de papel artesanal, con incrustaciones de camote.', '2025-04-10', 'Pendiente', 'VEN001', '2025-04-01 12:00:00'),
-('PED002', 'CLI002', 'EMP002', 'Pedido de agendas personalizadas.', '2025-04-12', 'Completado', 'VEN002', '2025-04-02 13:00:00');
+('PED001', 'CLI001', 'EMP001', 'Pedido de blocs de papel artesanal, con incrustaciones de camote.', '2025-04-10', 'Iniciar Producción', 'VEN001', '2025-04-01 12:00:00'),
+('PED002', 'CLI002', 'EMP002', 'Pedido de agendas personalizadas.', '2025-04-12', 'En Producción', 'VEN002', '2025-04-02 13:00:00'),
+('PED003', 'CLI002', 'EMP002', 'Pedido de agendas personalizadas.', '2025-05-12', 'Listo Para Entrega', 'VEN003', '2025-05-06 13:00:00'),
+('PED004', 'CLI002', 'EMP002', 'Pedido de agendas personalizadas.', '2025-03-12', 'Entregado', 'VEN004', '2025-05-06 13:00:00');
 
 -- Llenando la tabla plantillami
 INSERT INTO papeleraartesanal.plantillami (idPlantillaMI, observaciones, cantidadObtenidaPT) VALUES
@@ -86,7 +90,9 @@ INSERT INTO papeleraartesanal.productoterminado (idProductoTerminado, nombre, de
 -- Llenando la tabla detallepedido
 INSERT INTO papeleraartesanal.detallepedido (idPedido, idProductoTerminado, cantidad, precioUnitario) VALUES
 ('PED001', 'PT001', 10, 25.00),
-('PED002', 'PT002', 5, 30.00);
+('PED002', 'PT002', 5, 30.00),
+('PED003', 'PT001', 5, 20.00),
+('PED004', 'PT002', 5, 10.00);
 
 -- Llenando la tabla detalleplantillami
 INSERT INTO papeleraartesanal.detalleplantillami (idPlantillaMI, idMaterialIntermedio, cantidadRequerida, comentarios) VALUES
@@ -150,7 +156,9 @@ INSERT INTO papeleraartesanal.proveedorxmateriaprima (idProveedor, idMateriaPrim
 -- Llenando la tabla listapedidomi
 INSERT INTO papeleraartesanal.listapedidomi (idMaterialIntermedio, idPedido, cantidad, idProductoTerminado) VALUES
 ('MI001', 'PED001', 5, 'PT001'),
-('MI002', 'PED002', 3, 'PT002');
+('MI002', 'PED002', 3, 'PT002'),
+('MI001', 'PED003', 6, 'PT001'),
+('MI002', 'PED004', 4, 'PT002');
 
 -- Llenando la tabla reporte
 INSERT INTO papeleraartesanal.reporte (idReporte, tipo_reporte, nombre, fecha_generacion, idEmpleado, filtros_aplicados, descripcion, estado) VALUES
