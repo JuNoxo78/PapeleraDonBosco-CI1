@@ -8,19 +8,28 @@ import java.awt.Image;
 import java.awt.Toolkit;
 import java.awt.event.ActionListener;
 import java.awt.event.FocusListener;
+import javax.swing.JButton;
 import javax.swing.JComboBox;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
+import javax.swing.JTextArea;
 import javax.swing.JTextField;
 import javax.swing.event.DocumentListener;
 import modelo.autenticacion.DocIdentidad;
 import modelo.clientes.Cliente;
+import modelo.pedidos_ventas.ComprobantePago;
+import modelo.pedidos_ventas.Pedido;
+import modelo.pedidos_ventas.Venta;
 
-public class AddPedidoVista extends javax.swing.JFrame {
+public class AddPedidoVista extends javax.swing.JDialog {
 	private Cliente clienteCreado = new Cliente();
 	private DocIdentidad docIdentidadCreado = new DocIdentidad();
+	private Pedido pedidoCreado = new Pedido();
+	private Venta ventaCreada = new Venta();
+	private ComprobantePago comprobantePago = new ComprobantePago();
 
-	public AddPedidoVista() {
+	public AddPedidoVista(java.awt.Frame parent, boolean modal) {
+		super(parent, modal);
 		initComponents();
 		this.setLocationRelativeTo(null);
 		Image icono = Toolkit.getDefaultToolkit().getImage(getClass().getResource("/assets/icon32x32.png"));
@@ -47,6 +56,94 @@ public class AddPedidoVista extends javax.swing.JFrame {
 		jp_contenido.add(scrollPane, BorderLayout.CENTER);
 		jp_contenido.revalidate();
 		jp_contenido.repaint();
+	}
+
+	public JComboBox<String> getJcb_metodoPago() {
+		return jcb_metodoPago;
+	}
+
+	public void setRsb_verDocumento(ActionListener listener) {
+		rsb_verDocumento.addActionListener(listener);
+	}
+
+	public ComprobantePago getComprobantePago() {
+		return comprobantePago;
+	}
+
+	public JTextField getJt_rutaArchivo() {
+		return jt_rutaArchivo;
+	}
+
+	public JButton getJb_addComprobante() {
+		return jb_addComprobante;
+	}
+
+	public JDateChooser getJdatec_fechaEmision() {
+		return jdatec_fechaEmision;
+	}
+
+	public JTextField getJt_idCompPago() {
+		return jt_idCompPago;
+	}
+
+	public JTextField getJt_numComprobante() {
+		return jt_numComprobante;
+	}
+
+	public JTextField getJt_montoTotal() {
+		return jt_montoTotal;
+	}
+
+	public JComboBox<String> getJcb_tipoComprobante() {
+		return jcb_tipoComprobante;
+	}
+
+	public RSButtonFormaIcon getRsb_verDocumento() {
+		return rsb_verDocumento;
+	}
+
+	public JComboBox<String> getJcb_estadoPago() {
+		return jcb_estadoPago;
+	}
+
+	public void setJcb_estadoPagoEvent(ActionListener listener) {
+		jcb_estadoPago.addActionListener(listener);
+	}
+
+	public Venta getVentaCreada() {
+		return ventaCreada;
+	}
+
+	public void setVentaCreada(Venta ventaCreada) {
+		this.ventaCreada = ventaCreada;
+	}
+
+	public JTextField getJt_idVenta() {
+		return jt_idVenta;
+	}
+
+	public JTextArea getJta_observaciones() {
+		return jta_observaciones;
+	}
+
+	public Pedido getPedidoCreado() {
+		return pedidoCreado;
+	}
+
+	public void setPedidoCreado(Pedido pedidoCreado) {
+		this.pedidoCreado = pedidoCreado;
+	}
+
+	public void setJb_cancelar(ActionListener listener) {
+		jb_cancelar.addActionListener(listener);
+	}
+
+	public void setJb_addPedidoEvent(ActionListener listener) {
+		jb_addPedido.addActionListener(listener);
+	}
+
+	public JTextField getJt_idPedido() {
+		return jt_idPedido;
 	}
 
 	public DocIdentidad getDocIdentidadCreado() {
@@ -77,16 +174,29 @@ public class AddPedidoVista extends javax.swing.JFrame {
 		jcb_estadoPedido.addActionListener(listener);
 	}
 
-	public RSButtonFormaIcon getJb_warningAdvice() {
-		return jb_warningAdvice;
+	public RSButtonFormaIcon getJb_warningAdvicePedido() {
+		return jb_warningAdvicePedido;
+	}
+
+	public RSButtonFormaIcon getJb_warningAdviceVenta() {
+		return jb_warningAdviceVenta;
 	}
 
 	public void setJdatec_fechaEntregaFocusLost(FocusListener listener) {
 		((JTextField) jdatec_fechaEntrega.getDateEditor().getUiComponent()).addFocusListener(listener);
 	}
 
-	public void setEventoCambioTextoFecha(DocumentListener listener) {
+	public void setJdatec_fechaEmisionFocusLost(FocusListener listener) {
+		((JTextField) jdatec_fechaEmision.getDateEditor().getUiComponent()).addFocusListener(listener);
+	}
+
+	public void setEventoCambioFechaEntrega(DocumentListener listener) {
 		JTextField campoFecha = (JTextField) jdatec_fechaEntrega.getDateEditor().getUiComponent();
+		campoFecha.getDocument().addDocumentListener(listener);
+	}
+
+	public void setEventoCambioFechaEmision(DocumentListener listener) {
+		JTextField campoFecha = (JTextField) jdatec_fechaEmision.getDateEditor().getUiComponent();
 		campoFecha.getDocument().addDocumentListener(listener);
 	}
 
@@ -95,7 +205,7 @@ public class AddPedidoVista extends javax.swing.JFrame {
 	}
 
 	public void setJb_addFileComprobanteEvent(ActionListener listener) {
-		jb_addFileComprobante.addActionListener(listener);
+		jb_addComprobante.addActionListener(listener);
 	}
 
 	public void setJb_pedidoAddPT(ActionListener listener) {
@@ -110,46 +220,47 @@ public class AddPedidoVista extends javax.swing.JFrame {
         jLabel1 = new javax.swing.JLabel();
         jp_pedido = new javax.swing.JPanel();
         jLabel2 = new javax.swing.JLabel();
-        jTextField1 = new javax.swing.JTextField();
+        jt_idPedido = new javax.swing.JTextField();
         jLabel5 = new javax.swing.JLabel();
         jdatec_fechaEntrega = new com.toedter.calendar.JDateChooser();
         jLabel6 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
-        jTextArea1 = new javax.swing.JTextArea();
+        jta_observaciones = new javax.swing.JTextArea();
         jcb_estadoPedido = new javax.swing.JComboBox<>();
         jt_idCliente = new javax.swing.JTextField();
         rsb_addCliente = new RSMaterialComponent.RSButtonFormaIcon();
-        jb_warningAdvice = new RSMaterialComponent.RSButtonFormaIcon();
+        jb_warningAdvicePedido = new RSMaterialComponent.RSButtonFormaIcon();
         jPanel2 = new javax.swing.JPanel();
-        jTextField2 = new javax.swing.JTextField();
+        jt_idVenta = new javax.swing.JTextField();
         jLabel9 = new javax.swing.JLabel();
         jLabel10 = new javax.swing.JLabel();
-        jComboBox3 = new javax.swing.JComboBox<>();
+        jcb_metodoPago = new javax.swing.JComboBox<>();
         jLabel11 = new javax.swing.JLabel();
-        jComboBox4 = new javax.swing.JComboBox<>();
+        jcb_estadoPago = new javax.swing.JComboBox<>();
         jPanel3 = new javax.swing.JPanel();
         jLabel12 = new javax.swing.JLabel();
-        jb_addFileComprobante = new javax.swing.JButton();
-        jTextField3 = new javax.swing.JTextField();
-        rSButtonFormaIcon1 = new RSMaterialComponent.RSButtonFormaIcon();
+        jb_addComprobante = new javax.swing.JButton();
+        jt_rutaArchivo = new javax.swing.JTextField();
+        rsb_verDocumento = new RSMaterialComponent.RSButtonFormaIcon();
         jLabel14 = new javax.swing.JLabel();
-        jTextField6 = new javax.swing.JTextField();
+        jt_idCompPago = new javax.swing.JTextField();
         jLabel15 = new javax.swing.JLabel();
         jLabel16 = new javax.swing.JLabel();
-        jComboBox5 = new javax.swing.JComboBox<>();
-        jTextField7 = new javax.swing.JTextField();
-        jTextField8 = new javax.swing.JTextField();
+        jcb_tipoComprobante = new javax.swing.JComboBox<>();
+        jt_numComprobante = new javax.swing.JTextField();
+        jt_montoTotal = new javax.swing.JTextField();
         jLabel18 = new javax.swing.JLabel();
         jLabel19 = new javax.swing.JLabel();
-        jDateChooser2 = new com.toedter.calendar.JDateChooser();
+        jdatec_fechaEmision = new com.toedter.calendar.JDateChooser();
+        jb_warningAdviceVenta = new RSMaterialComponent.RSButtonFormaIcon();
         jPanel4 = new javax.swing.JPanel();
         jb_pedidoAddPT = new javax.swing.JButton();
         jSeparator1 = new javax.swing.JSeparator();
         jp_contenido = new javax.swing.JPanel();
-        jButton3 = new javax.swing.JButton();
-        jButton4 = new javax.swing.JButton();
+        jb_addPedido = new javax.swing.JButton();
+        jb_cancelar = new javax.swing.JButton();
 
         jLabel8.setText("jLabel8");
 
@@ -165,7 +276,7 @@ public class AddPedidoVista extends javax.swing.JFrame {
 
         jLabel2.setText("Id Pedido:");
 
-        jTextField1.setEditable(false);
+        jt_idPedido.setEditable(false);
 
         jLabel5.setText("Fecha Entrega:");
         jLabel5.setVerticalTextPosition(javax.swing.SwingConstants.TOP);
@@ -176,13 +287,12 @@ public class AddPedidoVista extends javax.swing.JFrame {
 
         jLabel4.setText("Observaciones:");
 
-        jTextArea1.setColumns(20);
-        jTextArea1.setLineWrap(true);
-        jTextArea1.setRows(5);
-        jScrollPane1.setViewportView(jTextArea1);
+        jta_observaciones.setColumns(20);
+        jta_observaciones.setLineWrap(true);
+        jta_observaciones.setRows(5);
+        jScrollPane1.setViewportView(jta_observaciones);
 
-        jcb_estadoPedido.setBackground(new java.awt.Color(255, 203, 203));
-        jcb_estadoPedido.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Iniciar Producción", "En Producción", "Listo para Entregar" }));
+        jcb_estadoPedido.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Iniciar Producción", "En Producción", "Listo para Entrega" }));
 
         jt_idCliente.setEditable(false);
 
@@ -191,11 +301,12 @@ public class AddPedidoVista extends javax.swing.JFrame {
         rsb_addCliente.setForma(RSMaterialComponent.RSButtonFormaIcon.FORMA.RECT);
         rsb_addCliente.setIcons(rojeru_san.efectos.ValoresEnum.ICONS.PERSON_ADD);
 
-        jb_warningAdvice.setBackground(new java.awt.Color(255, 255, 255));
-        jb_warningAdvice.setBackgroundHover(new java.awt.Color(255, 0, 0));
-        jb_warningAdvice.setForegroundIcon(new java.awt.Color(255, 0, 0));
-        jb_warningAdvice.setForma(RSMaterialComponent.RSButtonFormaIcon.FORMA.RECT);
-        jb_warningAdvice.setIcons(rojeru_san.efectos.ValoresEnum.ICONS.WARNING);
+        jb_warningAdvicePedido.setBackground(new java.awt.Color(255, 255, 255));
+        jb_warningAdvicePedido.setToolTipText("");
+        jb_warningAdvicePedido.setBackgroundHover(new java.awt.Color(255, 0, 0));
+        jb_warningAdvicePedido.setForegroundIcon(new java.awt.Color(255, 0, 0));
+        jb_warningAdvicePedido.setForma(RSMaterialComponent.RSButtonFormaIcon.FORMA.RECT);
+        jb_warningAdvicePedido.setIcons(rojeru_san.efectos.ValoresEnum.ICONS.WARNING);
 
         javax.swing.GroupLayout jp_pedidoLayout = new javax.swing.GroupLayout(jp_pedido);
         jp_pedido.setLayout(jp_pedidoLayout);
@@ -213,18 +324,18 @@ public class AddPedidoVista extends javax.swing.JFrame {
                         .addGroup(jp_pedidoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jcb_estadoPedido, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jp_pedidoLayout.createSequentialGroup()
-                                .addGroup(jp_pedidoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                    .addComponent(jdatec_fechaEntrega, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addGroup(jp_pedidoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addGroup(jp_pedidoLayout.createSequentialGroup()
-                                        .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 102, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addComponent(jt_idPedido, javax.swing.GroupLayout.PREFERRED_SIZE, 102, javax.swing.GroupLayout.PREFERRED_SIZE)
                                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                                         .addComponent(jLabel3)
                                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                        .addComponent(jt_idCliente)))
+                                        .addComponent(jt_idCliente))
+                                    .addComponent(jdatec_fechaEntrega, javax.swing.GroupLayout.PREFERRED_SIZE, 299, javax.swing.GroupLayout.PREFERRED_SIZE))
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addGroup(jp_pedidoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(rsb_addCliente, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(jb_warningAdvice, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)))))
+                                    .addComponent(jb_warningAdvicePedido, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)))))
                     .addComponent(jScrollPane1)
                     .addGroup(jp_pedidoLayout.createSequentialGroup()
                         .addComponent(jLabel4)
@@ -241,14 +352,14 @@ public class AddPedidoVista extends javax.swing.JFrame {
                         .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jp_pedidoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jt_idCliente, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(jt_idPedido, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addComponent(rsb_addCliente, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jp_pedidoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jp_pedidoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                         .addComponent(jdatec_fechaEntrega, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addComponent(jb_warningAdvice, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jb_warningAdvicePedido, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jp_pedidoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel6, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -261,43 +372,56 @@ public class AddPedidoVista extends javax.swing.JFrame {
         );
 
         rsb_addCliente.setFocusPainted(false);
-        jb_warningAdvice.setFocusPainted(false);
-        jb_warningAdvice.setVisible(false);
+        jb_warningAdvicePedido.setFocusPainted(false);
+        jb_warningAdvicePedido.setVisible(false);
 
         jPanel2.setBorder(javax.swing.BorderFactory.createTitledBorder("Venta Asociada"));
+
+        jt_idVenta.setEditable(false);
 
         jLabel9.setText("Id Venta:");
 
         jLabel10.setText("Método Pago:");
 
-        jComboBox3.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        jcb_metodoPago.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Tarjeta", "Efectivo", "Transferencia Bancaria", "Yape/Plin" }));
 
         jLabel11.setText("Estado Pago:");
 
-        jComboBox4.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        jcb_estadoPago.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Pagado Parcialmente", "Pagado" }));
 
         jPanel3.setBorder(javax.swing.BorderFactory.createTitledBorder("Comprobante de Pago"));
 
-        jLabel12.setText("Nombre Archivo:");
+        jLabel12.setText("Ruta Archivo:");
 
-        jb_addFileComprobante.setText("Añadir Comprobante");
+        jb_addComprobante.setText("Añadir Comprobante");
 
-        rSButtonFormaIcon1.setBackground(new java.awt.Color(255, 255, 255));
-        rSButtonFormaIcon1.setForegroundIcon(new java.awt.Color(0, 112, 192));
-        rSButtonFormaIcon1.setForma(RSMaterialComponent.RSButtonFormaIcon.FORMA.RECT);
-        rSButtonFormaIcon1.setIcons(rojeru_san.efectos.ValoresEnum.ICONS.LIBRARY_BOOKS);
+        jt_rutaArchivo.setEditable(false);
+
+        rsb_verDocumento.setBackground(new java.awt.Color(255, 255, 255));
+        rsb_verDocumento.setForegroundIcon(new java.awt.Color(0, 112, 192));
+        rsb_verDocumento.setForma(RSMaterialComponent.RSButtonFormaIcon.FORMA.RECT);
+        rsb_verDocumento.setIcons(rojeru_san.efectos.ValoresEnum.ICONS.LIBRARY_BOOKS);
 
         jLabel14.setText("Id Comp. Pago:");
+
+        jt_idCompPago.setEditable(false);
 
         jLabel15.setText("Tipo Comprobante:");
 
         jLabel16.setText("N° Comprobante:");
 
-        jComboBox5.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        jcb_tipoComprobante.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Factura", "Boleta" }));
 
         jLabel18.setText("MontoTotal");
 
         jLabel19.setText("Fecha Emisión:");
+
+        jb_warningAdviceVenta.setBackground(new java.awt.Color(255, 255, 255));
+        jb_warningAdviceVenta.setToolTipText("");
+        jb_warningAdviceVenta.setBackgroundHover(new java.awt.Color(255, 0, 0));
+        jb_warningAdviceVenta.setForegroundIcon(new java.awt.Color(255, 0, 0));
+        jb_warningAdviceVenta.setForma(RSMaterialComponent.RSButtonFormaIcon.FORMA.RECT);
+        jb_warningAdviceVenta.setIcons(rojeru_san.efectos.ValoresEnum.ICONS.WARNING);
 
         javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
         jPanel3.setLayout(jPanel3Layout);
@@ -307,20 +431,20 @@ public class AddPedidoVista extends javax.swing.JFrame {
                 .addContainerGap()
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel3Layout.createSequentialGroup()
-                        .addComponent(jLabel12)
-                        .addGap(18, 18, 18)
-                        .addComponent(jTextField3)
+                        .addComponent(jLabel12, javax.swing.GroupLayout.PREFERRED_SIZE, 83, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(rSButtonFormaIcon1, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(jt_rutaArchivo)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(rsb_verDocumento, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel3Layout.createSequentialGroup()
                         .addComponent(jLabel15)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(jComboBox5, 0, 128, Short.MAX_VALUE)
+                        .addComponent(jcb_tipoComprobante, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(jLabel18)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jTextField8, javax.swing.GroupLayout.PREFERRED_SIZE, 68, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addComponent(jb_addFileComprobante, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(jt_montoTotal, javax.swing.GroupLayout.PREFERRED_SIZE, 68, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jb_addComprobante, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addGroup(jPanel3Layout.createSequentialGroup()
                         .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jLabel16)
@@ -328,10 +452,13 @@ public class AddPedidoVista extends javax.swing.JFrame {
                             .addComponent(jLabel19))
                         .addGap(21, 21, 21)
                         .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jDateChooser2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(jTextField6)
-                            .addComponent(jTextField7))))
-                .addContainerGap())
+                            .addComponent(jt_idCompPago)
+                            .addComponent(jt_numComprobante)
+                            .addGroup(jPanel3Layout.createSequentialGroup()
+                                .addComponent(jdatec_fechaEmision, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(jb_warningAdviceVenta, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)))))
+                .addGap(10, 10, 10))
         );
         jPanel3Layout.setVerticalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -340,32 +467,35 @@ public class AddPedidoVista extends javax.swing.JFrame {
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                         .addComponent(jLabel12, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(jTextField3, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addComponent(rSButtonFormaIcon1, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(jt_rutaArchivo, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(rsb_verDocumento, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jb_addFileComprobante)
+                .addComponent(jb_addComprobante)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(jLabel19, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jDateChooser2, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel19, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jdatec_fechaEmision, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jb_warningAdviceVenta, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel14, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jTextField6, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jt_idCompPago, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(6, 6, 6)
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel16, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jTextField7, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jt_numComprobante, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(6, 6, 6)
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel15, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jComboBox5, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jcb_tipoComprobante, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel18, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jTextField8, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jt_montoTotal, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
-        rSButtonFormaIcon1.setFocusPainted(false);
+        rsb_verDocumento.setFocusPainted(false);
+        jb_warningAdviceVenta.setFocusPainted(false);
+        jb_warningAdviceVenta.setVisible(false);
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
@@ -382,12 +512,12 @@ public class AddPedidoVista extends javax.swing.JFrame {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(jPanel2Layout.createSequentialGroup()
-                                .addComponent(jComboBox4, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(jcb_estadoPago, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addComponent(jLabel10)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(jComboBox3, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                            .addComponent(jTextField2))))
+                                .addComponent(jcb_metodoPago, 0, 0, Short.MAX_VALUE))
+                            .addComponent(jt_idVenta))))
                 .addContainerGap())
         );
         jPanel2Layout.setVerticalGroup(
@@ -396,18 +526,16 @@ public class AddPedidoVista extends javax.swing.JFrame {
                 .addGap(6, 6, 6)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel9, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jt_idVenta, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(6, 6, 6)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel11, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jComboBox4, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jLabel11, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jcb_estadoPago, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel10, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jComboBox3, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(6, 6, 6))
+                    .addComponent(jcb_metodoPago, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap())
         );
 
         jPanel4.setBorder(javax.swing.BorderFactory.createTitledBorder("Productos Terminados y Materiales Intermedios:"));
@@ -444,9 +572,9 @@ public class AddPedidoVista extends javax.swing.JFrame {
                 .addContainerGap())
         );
 
-        jButton3.setText("Agregar Pedido");
+        jb_addPedido.setText("Agregar Pedido");
 
-        jButton4.setText("Cancelar");
+        jb_cancelar.setText("Cancelar");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -458,9 +586,9 @@ public class AddPedidoVista extends javax.swing.JFrame {
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 294, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(10, 10, 10)
-                        .addComponent(jButton3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(jb_addPedido, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jButton4, javax.swing.GroupLayout.PREFERRED_SIZE, 301, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(jb_cancelar, javax.swing.GroupLayout.PREFERRED_SIZE, 301, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jp_pedido, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -475,8 +603,8 @@ public class AddPedidoVista extends javax.swing.JFrame {
                 .addGap(10, 10, 10)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel1)
-                    .addComponent(jButton3)
-                    .addComponent(jButton4))
+                    .addComponent(jb_addPedido)
+                    .addComponent(jb_cancelar))
                 .addGap(10, 10, 10)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
@@ -518,18 +646,19 @@ public class AddPedidoVista extends javax.swing.JFrame {
 		/* Create and display the form */
 		java.awt.EventQueue.invokeLater(new Runnable() {
 			public void run() {
-				new AddPedidoVista().setVisible(true);
+				AddPedidoVista dialog = new AddPedidoVista(new javax.swing.JFrame(), true);
+				dialog.addWindowListener(new java.awt.event.WindowAdapter() {
+					@Override
+					public void windowClosing(java.awt.event.WindowEvent e) {
+						System.exit(0);
+					}
+				});
+				dialog.setVisible(true);
 			}
 		});
 	}
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton3;
-    private javax.swing.JButton jButton4;
-    private javax.swing.JComboBox<String> jComboBox3;
-    private javax.swing.JComboBox<String> jComboBox4;
-    private javax.swing.JComboBox<String> jComboBox5;
-    private com.toedter.calendar.JDateChooser jDateChooser2;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
@@ -551,22 +680,29 @@ public class AddPedidoVista extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel4;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JSeparator jSeparator1;
-    private javax.swing.JTextArea jTextArea1;
-    private javax.swing.JTextField jTextField1;
-    private javax.swing.JTextField jTextField2;
-    private javax.swing.JTextField jTextField3;
-    private javax.swing.JTextField jTextField6;
-    private javax.swing.JTextField jTextField7;
-    private javax.swing.JTextField jTextField8;
-    private javax.swing.JButton jb_addFileComprobante;
+    private javax.swing.JButton jb_addComprobante;
+    private javax.swing.JButton jb_addPedido;
+    private javax.swing.JButton jb_cancelar;
     private javax.swing.JButton jb_pedidoAddPT;
-    private RSMaterialComponent.RSButtonFormaIcon jb_warningAdvice;
+    private RSMaterialComponent.RSButtonFormaIcon jb_warningAdvicePedido;
+    private RSMaterialComponent.RSButtonFormaIcon jb_warningAdviceVenta;
+    private javax.swing.JComboBox<String> jcb_estadoPago;
     private javax.swing.JComboBox<String> jcb_estadoPedido;
+    private javax.swing.JComboBox<String> jcb_metodoPago;
+    private javax.swing.JComboBox<String> jcb_tipoComprobante;
+    private com.toedter.calendar.JDateChooser jdatec_fechaEmision;
     private com.toedter.calendar.JDateChooser jdatec_fechaEntrega;
     private javax.swing.JPanel jp_contenido;
     private javax.swing.JPanel jp_pedido;
     private javax.swing.JTextField jt_idCliente;
-    private RSMaterialComponent.RSButtonFormaIcon rSButtonFormaIcon1;
+    private javax.swing.JTextField jt_idCompPago;
+    private javax.swing.JTextField jt_idPedido;
+    private javax.swing.JTextField jt_idVenta;
+    private javax.swing.JTextField jt_montoTotal;
+    private javax.swing.JTextField jt_numComprobante;
+    private javax.swing.JTextField jt_rutaArchivo;
+    private javax.swing.JTextArea jta_observaciones;
     private RSMaterialComponent.RSButtonFormaIcon rsb_addCliente;
+    private RSMaterialComponent.RSButtonFormaIcon rsb_verDocumento;
     // End of variables declaration//GEN-END:variables
 }

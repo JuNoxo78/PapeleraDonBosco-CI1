@@ -14,6 +14,7 @@ import java.util.List;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
+import modelo.autenticacion.Empleado;
 import vista.autenticacion.LoginGeneral;
 import vista.menu_principal.MenuPrincipal_2;
 import vista.pedidos_ventas.PedidosVista;
@@ -23,14 +24,17 @@ public class MenuPControlador {
 	private final MenuPrincipal_2 menuPrincipal;
 	private final ArrayList<String> empleadoDatos;
 	private static List<JFrame> openChildren = new ArrayList<>();
+	private Empleado empleado;
 
-	public MenuPControlador(MenuPrincipal_2 menuPrincipal, ArrayList<String> empleadoDatos) {
+	public MenuPControlador(MenuPrincipal_2 menuPrincipal, ArrayList<String> empleadoDatos, Empleado empleado) {
 		this.menuPrincipal = menuPrincipal;
 		this.empleadoDatos = empleadoDatos;
+		this.empleado = empleado;
 		initController();
 	}
 
 	private void initController() {
+		menuPrincipal.setEmpleadoLogeado(empleado);
 		menuPrincipal.setRolNombre(empleadoDatos.get(0), empleadoDatos.get(1) + " " + empleadoDatos.get(2));
 
 		menuPrincipal.setCloseButtonEvent((ActionEvent e) -> manejarCierre());
@@ -56,12 +60,6 @@ public class MenuPControlador {
 		);
 
 		if (opcion == JOptionPane.YES_OPTION) {
-			// Cerrar hijos
-			for (JFrame hijo : openChildren) {
-				hijo.dispose();
-			}
-			openChildren.clear();
-
 			menuPrincipal.dispose();
 
 			LoginGeneral loginVista = new LoginGeneral();
@@ -93,7 +91,7 @@ public class MenuPControlador {
 		contentPanel.add(P, BorderLayout.CENTER);
 		contentPanel.revalidate();
 
-		new PedidosControlador(P);
+		new PedidosControlador(P, menuPrincipal);
 	}
 
 	public static void addChild(JFrame child) {

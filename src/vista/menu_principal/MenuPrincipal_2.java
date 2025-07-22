@@ -9,6 +9,7 @@ import java.awt.Toolkit;
 import java.awt.event.ActionListener;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
+import modelo.autenticacion.Empleado;
 import vista.autenticacion.Registro_EmpleadoVista;
 import vista.clientes.Registro_ClienteVista;
 import vista.informacion.InformacionVista;
@@ -19,6 +20,8 @@ import vista.pedidos_ventas.PedidosVista;
 import vista.proveedores.Registro_ProveedorVista;
 
 public class MenuPrincipal_2 extends javax.swing.JFrame {
+
+	private Empleado empleadoLogeado;
 
 	public MenuPrincipal_2() {
 		System.setProperty("sun.java2d.opengl", "true");
@@ -330,6 +333,14 @@ public class MenuPrincipal_2 extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+	public void setEmpleadoLogeado(Empleado empleadoLogeado) {
+		this.empleadoLogeado = empleadoLogeado;
+	}
+
+	public Empleado getEmpleadoLogeado() {
+		return empleadoLogeado;
+	}
 
 	public void setRolNombre(String rol, String nombre) {
 		jl_cargo.setText(rol);

@@ -35,11 +35,15 @@ public class HoverToolTip {
 			@Override
 			public void mouseEntered(MouseEvent e) {
 				if (tooltipWindow != null) {
-					Point location = componente.getLocationOnScreen();
-					int x = location.x;
-					int y = location.y - tooltipWindow.getHeight() - 5;
-					tooltipWindow.setLocation(x, y);
-					tooltipWindow.setVisible(true);
+					Point locationOnScreen = SwingUtilities.convertPoint(
+							componente, new Point(0, 0), componente.getTopLevelAncestor());
+					if (locationOnScreen != null) {
+						SwingUtilities.convertPointToScreen(locationOnScreen, componente.getTopLevelAncestor());
+						int x = locationOnScreen.x;
+						int y = locationOnScreen.y - tooltipWindow.getHeight() - 5;
+						tooltipWindow.setLocation(x, y);
+						tooltipWindow.setVisible(true);
+					}
 				}
 			}
 
@@ -52,17 +56,4 @@ public class HoverToolTip {
 		};
 		componente.addMouseListener(hoverListener);
 	}
-//	public void disociar() {
-//		if (componenteAsociado != null && hoverListener != null) {
-//			componenteAsociado.removeMouseListener(hoverListener);
-//		}
-//		if (tooltipWindow != null) {
-//			tooltipWindow.setVisible(false);
-//			tooltipWindow.getContentPane().removeAll(); // elimina el JLabel
-//			tooltipWindow.dispose(); // destruye completamente la ventana
-//			tooltipWindow = null;
-//			tooltipLabel = null;
-//		}
-//		componenteAsociado = null;
-//	}
 }

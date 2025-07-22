@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 
-<Form version="1.9" maxVersion="1.9" type="org.netbeans.modules.form.forminfo.JFrameFormInfo">
+<Form version="1.9" maxVersion="1.9" type="org.netbeans.modules.form.forminfo.JDialogFormInfo">
   <NonVisualComponents>
     <Component class="javax.swing.JLabel" name="jLabel8">
       <Properties>
@@ -38,9 +38,9 @@
                   <Group type="102" attributes="0">
                       <Component id="jLabel1" min="-2" pref="294" max="-2" attributes="0"/>
                       <EmptySpace min="-2" pref="10" max="-2" attributes="0"/>
-                      <Component id="jButton3" max="32767" attributes="0"/>
+                      <Component id="jb_addPedido" max="32767" attributes="0"/>
                       <EmptySpace max="-2" attributes="0"/>
-                      <Component id="jButton4" min="-2" pref="301" max="-2" attributes="0"/>
+                      <Component id="jb_cancelar" min="-2" pref="301" max="-2" attributes="0"/>
                   </Group>
                   <Group type="102" alignment="1" attributes="0">
                       <Group type="103" groupAlignment="0" attributes="0">
@@ -61,8 +61,8 @@
               <EmptySpace min="-2" pref="10" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
                   <Component id="jLabel1" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="jButton3" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="jButton4" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="jb_addPedido" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="jb_cancelar" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
               <EmptySpace min="-2" pref="10" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="0" attributes="0">
@@ -113,20 +113,20 @@
                           <Group type="103" groupAlignment="0" attributes="0">
                               <Component id="jcb_estadoPedido" alignment="0" max="32767" attributes="0"/>
                               <Group type="102" alignment="1" attributes="0">
-                                  <Group type="103" groupAlignment="1" attributes="0">
-                                      <Component id="jdatec_fechaEntrega" alignment="0" max="32767" attributes="0"/>
+                                  <Group type="103" groupAlignment="0" attributes="0">
                                       <Group type="102" attributes="0">
-                                          <Component id="jTextField1" min="-2" pref="102" max="-2" attributes="0"/>
+                                          <Component id="jt_idPedido" min="-2" pref="102" max="-2" attributes="0"/>
                                           <EmptySpace type="unrelated" max="-2" attributes="0"/>
                                           <Component id="jLabel3" min="-2" max="-2" attributes="0"/>
                                           <EmptySpace max="-2" attributes="0"/>
                                           <Component id="jt_idCliente" max="32767" attributes="0"/>
                                       </Group>
+                                      <Component id="jdatec_fechaEntrega" min="-2" pref="299" max="-2" attributes="0"/>
                                   </Group>
                                   <EmptySpace max="-2" attributes="0"/>
                                   <Group type="103" groupAlignment="0" attributes="0">
                                       <Component id="rsb_addCliente" min="-2" pref="25" max="-2" attributes="0"/>
-                                      <Component id="jb_warningAdvice" min="-2" pref="25" max="-2" attributes="0"/>
+                                      <Component id="jb_warningAdvicePedido" min="-2" pref="25" max="-2" attributes="0"/>
                                   </Group>
                               </Group>
                           </Group>
@@ -152,7 +152,7 @@
                               <Component id="jLabel3" alignment="3" min="-2" pref="25" max="-2" attributes="0"/>
                               <Component id="jt_idCliente" alignment="3" min="-2" pref="25" max="-2" attributes="0"/>
                           </Group>
-                          <Component id="jTextField1" min="-2" pref="25" max="-2" attributes="0"/>
+                          <Component id="jt_idPedido" min="-2" pref="25" max="-2" attributes="0"/>
                       </Group>
                       <Component id="rsb_addCliente" min="-2" pref="25" max="-2" attributes="0"/>
                   </Group>
@@ -162,7 +162,7 @@
                           <Component id="jdatec_fechaEntrega" max="32767" attributes="0"/>
                           <Component id="jLabel5" min="-2" pref="25" max="-2" attributes="0"/>
                       </Group>
-                      <Component id="jb_warningAdvice" min="-2" pref="25" max="-2" attributes="0"/>
+                      <Component id="jb_warningAdvicePedido" min="-2" pref="25" max="-2" attributes="0"/>
                   </Group>
                   <EmptySpace max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="3" attributes="0">
@@ -184,7 +184,7 @@
             <Property name="text" type="java.lang.String" value="Id Pedido:"/>
           </Properties>
         </Component>
-        <Component class="javax.swing.JTextField" name="jTextField1">
+        <Component class="javax.swing.JTextField" name="jt_idPedido">
           <Properties>
             <Property name="editable" type="boolean" value="false"/>
           </Properties>
@@ -219,7 +219,7 @@
 
           <Layout class="org.netbeans.modules.form.compat2.layouts.support.JScrollPaneSupportLayout"/>
           <SubComponents>
-            <Component class="javax.swing.JTextArea" name="jTextArea1">
+            <Component class="javax.swing.JTextArea" name="jta_observaciones">
               <Properties>
                 <Property name="columns" type="int" value="20"/>
                 <Property name="lineWrap" type="boolean" value="true"/>
@@ -230,14 +230,11 @@
         </Container>
         <Component class="javax.swing.JComboBox" name="jcb_estadoPedido">
           <Properties>
-            <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-              <Color blue="cb" green="cb" red="ff" type="rgb"/>
-            </Property>
             <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
               <StringArray count="3">
                 <StringItem index="0" value="Iniciar Producci&#xf3;n"/>
                 <StringItem index="1" value="En Producci&#xf3;n"/>
-                <StringItem index="2" value="Listo para Entregar"/>
+                <StringItem index="2" value="Listo para Entrega"/>
               </StringArray>
             </Property>
           </Properties>
@@ -269,11 +266,12 @@
             <AuxValue name="JavaCodeGenerator_AddingCodePost" type="java.lang.String" value="rsb_addCliente.setFocusPainted(false);"/>
           </AuxValues>
         </Component>
-        <Component class="RSMaterialComponent.RSButtonFormaIcon" name="jb_warningAdvice">
+        <Component class="RSMaterialComponent.RSButtonFormaIcon" name="jb_warningAdvicePedido">
           <Properties>
             <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
               <Color blue="ff" green="ff" red="ff" type="rgb"/>
             </Property>
+            <Property name="toolTipText" type="java.lang.String" value=""/>
             <Property name="backgroundHover" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
               <Color blue="0" green="0" red="ff" type="rgb"/>
             </Property>
@@ -288,7 +286,7 @@
             </Property>
           </Properties>
           <AuxValues>
-            <AuxValue name="JavaCodeGenerator_AddingCodePost" type="java.lang.String" value="jb_warningAdvice.setFocusPainted(false);&#xa;jb_warningAdvice.setVisible(false);"/>
+            <AuxValue name="JavaCodeGenerator_AddingCodePost" type="java.lang.String" value="jb_warningAdvicePedido.setFocusPainted(false);&#xa;jb_warningAdvicePedido.setVisible(false);"/>
           </AuxValues>
         </Component>
       </SubComponents>
@@ -309,7 +307,7 @@
                   <EmptySpace min="6" pref="6" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="0" attributes="0">
                       <Component id="jPanel3" max="32767" attributes="0"/>
-                      <Group type="102" alignment="0" attributes="0">
+                      <Group type="102" attributes="0">
                           <Group type="103" groupAlignment="0" attributes="0">
                               <Component id="jLabel11" alignment="0" min="-2" max="-2" attributes="0"/>
                               <Component id="jLabel9" alignment="0" min="-2" max="-2" attributes="0"/>
@@ -317,13 +315,13 @@
                           <EmptySpace max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="0" attributes="0">
                               <Group type="102" attributes="0">
-                                  <Component id="jComboBox4" min="-2" pref="90" max="-2" attributes="0"/>
-                                  <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                                  <Component id="jcb_estadoPago" min="-2" max="-2" attributes="0"/>
+                                  <EmptySpace max="-2" attributes="0"/>
                                   <Component id="jLabel10" min="-2" max="-2" attributes="0"/>
                                   <EmptySpace max="-2" attributes="0"/>
-                                  <Component id="jComboBox3" max="32767" attributes="0"/>
+                                  <Component id="jcb_metodoPago" pref="0" max="32767" attributes="0"/>
                               </Group>
-                              <Component id="jTextField2" max="32767" attributes="0"/>
+                              <Component id="jt_idVenta" max="32767" attributes="0"/>
                           </Group>
                       </Group>
                   </Group>
@@ -337,28 +335,27 @@
                   <EmptySpace min="6" pref="6" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="0" attributes="0">
                       <Component id="jLabel9" min="-2" pref="25" max="-2" attributes="0"/>
-                      <Component id="jTextField2" min="-2" pref="25" max="-2" attributes="0"/>
+                      <Component id="jt_idVenta" min="-2" pref="25" max="-2" attributes="0"/>
                   </Group>
                   <EmptySpace min="6" pref="6" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="0" attributes="0">
-                      <Group type="102" attributes="0">
-                          <Group type="103" groupAlignment="0" attributes="0">
-                              <Component id="jLabel11" min="-2" pref="25" max="-2" attributes="0"/>
-                              <Component id="jComboBox4" min="-2" pref="25" max="-2" attributes="0"/>
-                          </Group>
-                          <EmptySpace max="-2" attributes="0"/>
-                          <Component id="jPanel3" min="-2" max="-2" attributes="0"/>
-                      </Group>
+                      <Component id="jLabel11" min="-2" pref="25" max="-2" attributes="0"/>
+                      <Component id="jcb_estadoPago" min="-2" pref="25" max="-2" attributes="0"/>
                       <Component id="jLabel10" min="-2" pref="25" max="-2" attributes="0"/>
-                      <Component id="jComboBox3" min="-2" pref="25" max="-2" attributes="0"/>
+                      <Component id="jcb_metodoPago" min="-2" pref="25" max="-2" attributes="0"/>
                   </Group>
-                  <EmptySpace min="-2" pref="6" max="-2" attributes="0"/>
+                  <EmptySpace max="-2" attributes="0"/>
+                  <Component id="jPanel3" min="-2" max="-2" attributes="0"/>
+                  <EmptySpace max="-2" attributes="0"/>
               </Group>
           </Group>
         </DimensionLayout>
       </Layout>
       <SubComponents>
-        <Component class="javax.swing.JTextField" name="jTextField2">
+        <Component class="javax.swing.JTextField" name="jt_idVenta">
+          <Properties>
+            <Property name="editable" type="boolean" value="false"/>
+          </Properties>
         </Component>
         <Component class="javax.swing.JLabel" name="jLabel9">
           <Properties>
@@ -370,14 +367,14 @@
             <Property name="text" type="java.lang.String" value="M&#xe9;todo Pago:"/>
           </Properties>
         </Component>
-        <Component class="javax.swing.JComboBox" name="jComboBox3">
+        <Component class="javax.swing.JComboBox" name="jcb_metodoPago">
           <Properties>
             <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
               <StringArray count="4">
-                <StringItem index="0" value="Item 1"/>
-                <StringItem index="1" value="Item 2"/>
-                <StringItem index="2" value="Item 3"/>
-                <StringItem index="3" value="Item 4"/>
+                <StringItem index="0" value="Tarjeta"/>
+                <StringItem index="1" value="Efectivo"/>
+                <StringItem index="2" value="Transferencia Bancaria"/>
+                <StringItem index="3" value="Yape/Plin"/>
               </StringArray>
             </Property>
           </Properties>
@@ -390,14 +387,12 @@
             <Property name="text" type="java.lang.String" value="Estado Pago:"/>
           </Properties>
         </Component>
-        <Component class="javax.swing.JComboBox" name="jComboBox4">
+        <Component class="javax.swing.JComboBox" name="jcb_estadoPago">
           <Properties>
             <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
-              <StringArray count="4">
-                <StringItem index="0" value="Item 1"/>
-                <StringItem index="1" value="Item 2"/>
-                <StringItem index="2" value="Item 3"/>
-                <StringItem index="3" value="Item 4"/>
+              <StringArray count="2">
+                <StringItem index="0" value="Pagado Parcialmente"/>
+                <StringItem index="1" value="Pagado"/>
               </StringArray>
             </Property>
           </Properties>
@@ -421,22 +416,22 @@
                       <EmptySpace max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="0" attributes="0">
                           <Group type="102" attributes="0">
-                              <Component id="jLabel12" min="-2" max="-2" attributes="0"/>
-                              <EmptySpace min="-2" pref="18" max="-2" attributes="0"/>
-                              <Component id="jTextField3" max="32767" attributes="0"/>
+                              <Component id="jLabel12" min="-2" pref="83" max="-2" attributes="0"/>
                               <EmptySpace max="-2" attributes="0"/>
-                              <Component id="rSButtonFormaIcon1" min="-2" pref="25" max="-2" attributes="0"/>
+                              <Component id="jt_rutaArchivo" max="32767" attributes="0"/>
+                              <EmptySpace max="-2" attributes="0"/>
+                              <Component id="rsb_verDocumento" min="-2" pref="25" max="-2" attributes="0"/>
                           </Group>
                           <Group type="102" alignment="1" attributes="0">
                               <Component id="jLabel15" min="-2" max="-2" attributes="0"/>
                               <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                              <Component id="jComboBox5" pref="128" max="32767" attributes="0"/>
+                              <Component id="jcb_tipoComprobante" max="32767" attributes="0"/>
                               <EmptySpace type="unrelated" max="-2" attributes="0"/>
                               <Component id="jLabel18" min="-2" max="-2" attributes="0"/>
                               <EmptySpace max="-2" attributes="0"/>
-                              <Component id="jTextField8" min="-2" pref="68" max="-2" attributes="0"/>
+                              <Component id="jt_montoTotal" min="-2" pref="68" max="-2" attributes="0"/>
                           </Group>
-                          <Component id="jb_addFileComprobante" max="32767" attributes="0"/>
+                          <Component id="jb_addComprobante" max="32767" attributes="0"/>
                           <Group type="102" alignment="0" attributes="0">
                               <Group type="103" groupAlignment="0" attributes="0">
                                   <Component id="jLabel16" alignment="0" min="-2" max="-2" attributes="0"/>
@@ -445,13 +440,17 @@
                               </Group>
                               <EmptySpace min="-2" pref="21" max="-2" attributes="0"/>
                               <Group type="103" groupAlignment="0" attributes="0">
-                                  <Component id="jDateChooser2" max="32767" attributes="0"/>
-                                  <Component id="jTextField6" max="32767" attributes="0"/>
-                                  <Component id="jTextField7" max="32767" attributes="0"/>
+                                  <Component id="jt_idCompPago" max="32767" attributes="0"/>
+                                  <Component id="jt_numComprobante" max="32767" attributes="0"/>
+                                  <Group type="102" alignment="0" attributes="0">
+                                      <Component id="jdatec_fechaEmision" max="32767" attributes="0"/>
+                                      <EmptySpace max="-2" attributes="0"/>
+                                      <Component id="jb_warningAdviceVenta" min="-2" pref="25" max="-2" attributes="0"/>
+                                  </Group>
                               </Group>
                           </Group>
                       </Group>
-                      <EmptySpace max="-2" attributes="0"/>
+                      <EmptySpace min="-2" pref="10" max="-2" attributes="0"/>
                   </Group>
               </Group>
             </DimensionLayout>
@@ -462,33 +461,34 @@
                       <Group type="103" groupAlignment="0" attributes="0">
                           <Group type="103" groupAlignment="3" attributes="0">
                               <Component id="jLabel12" alignment="3" min="-2" pref="25" max="-2" attributes="0"/>
-                              <Component id="jTextField3" alignment="3" min="-2" pref="25" max="-2" attributes="0"/>
+                              <Component id="jt_rutaArchivo" alignment="3" min="-2" pref="25" max="-2" attributes="0"/>
                           </Group>
-                          <Component id="rSButtonFormaIcon1" min="-2" pref="25" max="-2" attributes="0"/>
+                          <Component id="rsb_verDocumento" min="-2" pref="25" max="-2" attributes="0"/>
                       </Group>
                       <EmptySpace max="-2" attributes="0"/>
-                      <Component id="jb_addFileComprobante" max="-2" attributes="0"/>
+                      <Component id="jb_addComprobante" max="-2" attributes="0"/>
                       <EmptySpace max="32767" attributes="0"/>
-                      <Group type="103" groupAlignment="1" attributes="0">
-                          <Component id="jLabel19" min="-2" pref="25" max="-2" attributes="0"/>
-                          <Component id="jDateChooser2" min="-2" pref="25" max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="0" attributes="0">
+                          <Component id="jLabel19" alignment="1" min="-2" pref="25" max="-2" attributes="0"/>
+                          <Component id="jdatec_fechaEmision" alignment="1" min="-2" pref="25" max="-2" attributes="0"/>
+                          <Component id="jb_warningAdviceVenta" alignment="1" min="-2" pref="25" max="-2" attributes="0"/>
                       </Group>
                       <EmptySpace max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="0" attributes="0">
                           <Component id="jLabel14" alignment="0" min="-2" pref="25" max="-2" attributes="0"/>
-                          <Component id="jTextField6" alignment="0" min="-2" pref="25" max="-2" attributes="0"/>
+                          <Component id="jt_idCompPago" alignment="0" min="-2" pref="25" max="-2" attributes="0"/>
                       </Group>
                       <EmptySpace min="-2" pref="6" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="0" attributes="0">
                           <Component id="jLabel16" alignment="0" min="-2" pref="25" max="-2" attributes="0"/>
-                          <Component id="jTextField7" min="-2" pref="25" max="-2" attributes="0"/>
+                          <Component id="jt_numComprobante" min="-2" pref="25" max="-2" attributes="0"/>
                       </Group>
                       <EmptySpace min="-2" pref="6" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="3" attributes="0">
                           <Component id="jLabel15" alignment="3" min="-2" pref="25" max="-2" attributes="0"/>
-                          <Component id="jComboBox5" alignment="3" min="-2" pref="25" max="-2" attributes="0"/>
+                          <Component id="jcb_tipoComprobante" alignment="3" min="-2" pref="25" max="-2" attributes="0"/>
                           <Component id="jLabel18" alignment="3" min="-2" pref="25" max="-2" attributes="0"/>
-                          <Component id="jTextField8" alignment="3" min="-2" pref="25" max="-2" attributes="0"/>
+                          <Component id="jt_montoTotal" alignment="3" min="-2" pref="25" max="-2" attributes="0"/>
                       </Group>
                       <EmptySpace max="32767" attributes="0"/>
                   </Group>
@@ -498,17 +498,20 @@
           <SubComponents>
             <Component class="javax.swing.JLabel" name="jLabel12">
               <Properties>
-                <Property name="text" type="java.lang.String" value="Nombre Archivo:"/>
+                <Property name="text" type="java.lang.String" value="Ruta Archivo:"/>
               </Properties>
             </Component>
-            <Component class="javax.swing.JButton" name="jb_addFileComprobante">
+            <Component class="javax.swing.JButton" name="jb_addComprobante">
               <Properties>
                 <Property name="text" type="java.lang.String" value="A&#xf1;adir Comprobante"/>
               </Properties>
             </Component>
-            <Component class="javax.swing.JTextField" name="jTextField3">
+            <Component class="javax.swing.JTextField" name="jt_rutaArchivo">
+              <Properties>
+                <Property name="editable" type="boolean" value="false"/>
+              </Properties>
             </Component>
-            <Component class="RSMaterialComponent.RSButtonFormaIcon" name="rSButtonFormaIcon1">
+            <Component class="RSMaterialComponent.RSButtonFormaIcon" name="rsb_verDocumento">
               <Properties>
                 <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                   <Color blue="ff" green="ff" red="ff" type="rgb"/>
@@ -524,7 +527,7 @@
                 </Property>
               </Properties>
               <AuxValues>
-                <AuxValue name="JavaCodeGenerator_AddingCodePost" type="java.lang.String" value="rSButtonFormaIcon1.setFocusPainted(false);"/>
+                <AuxValue name="JavaCodeGenerator_AddingCodePost" type="java.lang.String" value="rsb_verDocumento.setFocusPainted(false);"/>
               </AuxValues>
             </Component>
             <Component class="javax.swing.JLabel" name="jLabel14">
@@ -532,7 +535,10 @@
                 <Property name="text" type="java.lang.String" value="Id Comp. Pago:"/>
               </Properties>
             </Component>
-            <Component class="javax.swing.JTextField" name="jTextField6">
+            <Component class="javax.swing.JTextField" name="jt_idCompPago">
+              <Properties>
+                <Property name="editable" type="boolean" value="false"/>
+              </Properties>
             </Component>
             <Component class="javax.swing.JLabel" name="jLabel15">
               <Properties>
@@ -544,14 +550,12 @@
                 <Property name="text" type="java.lang.String" value="N&#xb0; Comprobante:"/>
               </Properties>
             </Component>
-            <Component class="javax.swing.JComboBox" name="jComboBox5">
+            <Component class="javax.swing.JComboBox" name="jcb_tipoComprobante">
               <Properties>
                 <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
-                  <StringArray count="4">
-                    <StringItem index="0" value="Item 1"/>
-                    <StringItem index="1" value="Item 2"/>
-                    <StringItem index="2" value="Item 3"/>
-                    <StringItem index="3" value="Item 4"/>
+                  <StringArray count="2">
+                    <StringItem index="0" value="Factura"/>
+                    <StringItem index="1" value="Boleta"/>
                   </StringArray>
                 </Property>
               </Properties>
@@ -559,9 +563,9 @@
                 <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;String&gt;"/>
               </AuxValues>
             </Component>
-            <Component class="javax.swing.JTextField" name="jTextField7">
+            <Component class="javax.swing.JTextField" name="jt_numComprobante">
             </Component>
-            <Component class="javax.swing.JTextField" name="jTextField8">
+            <Component class="javax.swing.JTextField" name="jt_montoTotal">
             </Component>
             <Component class="javax.swing.JLabel" name="jLabel18">
               <Properties>
@@ -573,7 +577,30 @@
                 <Property name="text" type="java.lang.String" value="Fecha Emisi&#xf3;n:"/>
               </Properties>
             </Component>
-            <Component class="com.toedter.calendar.JDateChooser" name="jDateChooser2">
+            <Component class="com.toedter.calendar.JDateChooser" name="jdatec_fechaEmision">
+            </Component>
+            <Component class="RSMaterialComponent.RSButtonFormaIcon" name="jb_warningAdviceVenta">
+              <Properties>
+                <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+                  <Color blue="ff" green="ff" red="ff" type="rgb"/>
+                </Property>
+                <Property name="toolTipText" type="java.lang.String" value=""/>
+                <Property name="backgroundHover" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+                  <Color blue="0" green="0" red="ff" type="rgb"/>
+                </Property>
+                <Property name="foregroundIcon" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+                  <Color blue="0" green="0" red="ff" type="rgb"/>
+                </Property>
+                <Property name="forma" type="RSMaterialComponent.RSButtonFormaIcon$FORMA" editor="org.netbeans.modules.form.editors.EnumEditor">
+                  <Value id="RECT"/>
+                </Property>
+                <Property name="icons" type="rojeru_san.efectos.ValoresEnum$ICONS" editor="org.netbeans.modules.form.editors.EnumEditor">
+                  <Value id="WARNING"/>
+                </Property>
+              </Properties>
+              <AuxValues>
+                <AuxValue name="JavaCodeGenerator_AddingCodePost" type="java.lang.String" value="jb_warningAdviceVenta.setFocusPainted(false);&#xa;jb_warningAdviceVenta.setVisible(false);"/>
+              </AuxValues>
             </Component>
           </SubComponents>
         </Container>
@@ -644,12 +671,12 @@
         </Container>
       </SubComponents>
     </Container>
-    <Component class="javax.swing.JButton" name="jButton3">
+    <Component class="javax.swing.JButton" name="jb_addPedido">
       <Properties>
         <Property name="text" type="java.lang.String" value="Agregar Pedido"/>
       </Properties>
     </Component>
-    <Component class="javax.swing.JButton" name="jButton4">
+    <Component class="javax.swing.JButton" name="jb_cancelar">
       <Properties>
         <Property name="text" type="java.lang.String" value="Cancelar"/>
       </Properties>

@@ -24,9 +24,11 @@ public final class AddPedidoVista_AddDocIdentControlador {
 
 	private final AddPedidoVista_AddDocIdent addDocIdentVista;
 	private final DocIdentidadDAO docIdentidadDAO = new DocIdentidadDAO();
+	private final AddPedidoVista agregarPedidoVista;
 
-	public AddPedidoVista_AddDocIdentControlador(AddPedidoVista_AddDocIdent addDocIdentVista) {
+	public AddPedidoVista_AddDocIdentControlador(AddPedidoVista_AddDocIdent addDocIdentVista, AddPedidoVista agregarPedidoVista) {
 		this.addDocIdentVista = addDocIdentVista;
+		this.agregarPedidoVista = agregarPedidoVista;
 		initController();
 	}
 
@@ -58,8 +60,8 @@ public final class AddPedidoVista_AddDocIdentControlador {
 
 		if (idDocIdentidad != null && tipoDocIdentidad != null && numDocIdentidad != null && colorActual.equals(Color.GREEN)) {
 			DocIdentidad doc = new DocIdentidad(idDocIdentidad, tipoDocIdentidad, numDocIdentidad);
-			((AddPedidoVista) addDocIdentVista.getOwner()).getClienteCreado().setIdDocIdentidad(idDocIdentidad);
-			((AddPedidoVista) addDocIdentVista.getOwner()).setDocIdentidadCreado(doc);
+			agregarPedidoVista.getClienteCreado().setIdDocIdentidad(idDocIdentidad);
+			agregarPedidoVista.setDocIdentidadCreado(doc);
 			addDocIdentVista.dispose();
 		} else {
 			JOptionPane.showMessageDialog(null,

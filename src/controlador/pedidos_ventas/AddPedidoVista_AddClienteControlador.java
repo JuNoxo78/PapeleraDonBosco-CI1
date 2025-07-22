@@ -3,7 +3,9 @@ package controlador.pedidos_ventas;
 import dao.autenticacion.DocIdentidadDAO;
 import dao.autenticacion.EmpleadoxRolDAO;
 import dao.clientes.ClienteDAO;
+import dao.pedidos_ventas.VentaDAO;
 import java.awt.Color;
+import java.awt.Frame;
 import java.awt.event.ActionEvent;
 import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
@@ -30,9 +32,11 @@ public class AddPedidoVista_AddClienteControlador {
 	private final ClienteDAO clienteDAO = new ClienteDAO();
 	private final DocIdentidadDAO docIdentidadDAO = new DocIdentidadDAO();
 	private final EmpleadoxRolDAO empleadoxRolDAO = new EmpleadoxRolDAO();
+	private final AddPedidoVista agregarPedidoVista;
 
-	public AddPedidoVista_AddClienteControlador(AddPedidoVista_AddCliente addClienteVista) {
+	public AddPedidoVista_AddClienteControlador(AddPedidoVista_AddCliente addClienteVista, AddPedidoVista agregarPedidoVista) {
 		this.addClienteVista = addClienteVista;
+		this.agregarPedidoVista = agregarPedidoVista;
 		initController();
 	}
 
@@ -63,18 +67,20 @@ public class AddPedidoVista_AddClienteControlador {
 		String txtApellido = addClienteVista.getJt_apellido().getText();
 		String txtDireccion = addClienteVista.getJt_direccion().getText();
 		String idDocIdentidad = addClienteVista.getJt_docIdentidad().getText();
-		System.out.println(idDocIdentidad);
 
 		if (esCorreoValido(txtCorreo) && esTelefonoInternacionalValido(txtTelefono) && txtNombre != null && txtApellido != null && txtDireccion != null && !idDocIdentidad.isEmpty()) {
-			((AddPedidoVista) addClienteVista.getOwner()).getClienteCreado().setNombre(txtNombre);
-			((AddPedidoVista) addClienteVista.getOwner()).getClienteCreado().setApellido(txtApellido);
-			((AddPedidoVista) addClienteVista.getOwner()).getClienteCreado().setTelefono(txtTelefono);
-			((AddPedidoVista) addClienteVista.getOwner()).getClienteCreado().setCorreo(txtCorreo);
-			((AddPedidoVista) addClienteVista.getOwner()).getClienteCreado().setDireccion(txtDireccion);
-			((AddPedidoVista) addClienteVista.getOwner()).getClienteCreado().setFechaRegistro(LocalDateTime.now().withNano(0));
+			agregarPedidoVista.getClienteCreado().setNombre(txtNombre);
+			agregarPedidoVista.getClienteCreado().setApellido(txtApellido);
+			agregarPedidoVista.getClienteCreado().setTelefono(txtTelefono);
+			agregarPedidoVista.getClienteCreado().setCorreo(txtCorreo);
+			agregarPedidoVista.getClienteCreado().setDireccion(txtDireccion);
+			agregarPedidoVista.getClienteCreado().setFechaRegistro(LocalDateTime.now().withNano(0));
 
-			Cliente clienteNuevo = ((AddPedidoVista) addClienteVista.getOwner()).getClienteCreado();
-			DocIdentidad docIdentidadNuevo = ((AddPedidoVista) addClienteVista.getOwner()).getDocIdentidadCreado();
+			Cliente clienteNuevo = agregarPedidoVista.getClienteCreado();
+			DocIdentidad docIdentidadNuevo = agregarPedidoVista.getDocIdentidadCreado();
+
+			System.out.println(clienteNuevo);
+			System.out.println(docIdentidadNuevo);
 
 			docIdentidadDAO.insertarDocumento(docIdentidadNuevo);
 			clienteDAO.insertar(clienteNuevo);
@@ -184,14 +190,14 @@ public class AddPedidoVista_AddClienteControlador {
 
 	public void generarIdCliente(JTextField jt_idCliente) {
 		String ultimoId = clienteDAO.obtenerUltimoId();
-		String nuevoId = generarNuevoId(ultimoId);
+		String nuevoId = generarNuevoIdCliente(ultimoId);
 
-		((AddPedidoVista) addClienteVista.getOwner()).getClienteCreado().setIdCliente(nuevoId);
+		agregarPedidoVista.getClienteCreado().setIdCliente(nuevoId);
 
 		addClienteVista.getJt_addIdCliente().setText(nuevoId);
 	}
 
-	public String generarNuevoId(String ultimoId) {
+	public String generarNuevoIdCliente(String ultimoId) {
 		if (ultimoId == null) {
 			return "CLI001";
 		}
@@ -204,14 +210,12 @@ public class AddPedidoVista_AddClienteControlador {
 	}
 
 	public void addDocIdentidadButtonEvent() {
-		AddPedidoVista addPedidoVista = (AddPedidoVista) addClienteVista.getOwner();
-
-		AddPedidoVista_AddDocIdent addDocIdentVista = new AddPedidoVista_AddDocIdent(addPedidoVista, true);
+		AddPedidoVista_AddDocIdent addDocIdentVista = new AddPedidoVista_AddDocIdent(((Frame) addClienteVista.getOwner()), true);
 
 		addDocIdentVista.addWindowListener(new WindowAdapter() {
 			@Override
 			public void windowClosed(WindowEvent e) {
-				DocIdentidad docIdentidad = addPedidoVista.getDocIdentidadCreado();
+				DocIdentidad docIdentidad = agregarPedidoVista.getDocIdentidadCreado();
 				String idDocIdentidad = docIdentidad.getIdDocIdentidad();
 				String numDoc = docIdentidad.getNumeroDocumento();
 				if (numDoc != null && idDocIdentidad != null) {
@@ -220,6 +224,6 @@ public class AddPedidoVista_AddClienteControlador {
 			}
 		});
 
-		new AddPedidoVista_AddDocIdentControlador(addDocIdentVista);
+		new AddPedidoVista_AddDocIdentControlador(addDocIdentVista, agregarPedidoVista);
 	}
 }

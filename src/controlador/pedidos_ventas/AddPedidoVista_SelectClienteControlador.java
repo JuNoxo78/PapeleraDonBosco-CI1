@@ -23,9 +23,11 @@ public final class AddPedidoVista_SelectClienteControlador {
 
 	private final AddPedidoVista_SelectCliente selectCliente;
 	private final ClienteDAO clienteDAO = new ClienteDAO();
+	private final AddPedidoVista agregarPedidoVista;
 
-	public AddPedidoVista_SelectClienteControlador(AddPedidoVista_SelectCliente selectCliente) {
+	public AddPedidoVista_SelectClienteControlador(AddPedidoVista_SelectCliente selectCliente, AddPedidoVista agregarPedidoVista) {
 		this.selectCliente = selectCliente;
+		this.agregarPedidoVista = agregarPedidoVista;
 		initController();
 	}
 
@@ -46,7 +48,7 @@ public final class AddPedidoVista_SelectClienteControlador {
 
 		if (filaSeleccionada != -1) {
 			String idCliente = tablaDatosClientes.getValueAt(filaSeleccionada, 0).toString();
-			((AddPedidoVista) selectCliente.getOwner()).getClienteCreado().setIdCliente(idCliente);
+			agregarPedidoVista.getClienteCreado().setIdCliente(idCliente);
 			selectCliente.dispose();
 		} else {
 			JOptionPane.showMessageDialog(null, "Por favor, seleccione una fila.");
@@ -111,7 +113,7 @@ public final class AddPedidoVista_SelectClienteControlador {
 			@Override
 			public void windowClosed(WindowEvent e) {
 				cargarClientesEnTabla();
-				String idCliente = ((AddPedidoVista) selectCliente.getOwner()).getClienteCreado().getIdCliente();
+				String idCliente = agregarPedidoVista.getClienteCreado().getIdCliente();
 				JTable jtable_datosClientes = selectCliente.getJtable_datosClientes();
 				TableRowSorter<TableModel> sorter = new TableRowSorter<>(jtable_datosClientes.getModel());
 				jtable_datosClientes.setRowSorter(sorter);
@@ -123,6 +125,6 @@ public final class AddPedidoVista_SelectClienteControlador {
 			}
 		});
 
-		new AddPedidoVista_AddClienteControlador(addClienteVista);
+		new AddPedidoVista_AddClienteControlador(addClienteVista, agregarPedidoVista);
 	}
 }
