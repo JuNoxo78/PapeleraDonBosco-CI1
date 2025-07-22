@@ -4,33 +4,25 @@ public class MenuPrincipalAdmin extends javax.swing.JFrame {
 
 	public MenuPrincipalAdmin() {
 		initComponents();
+		this.setLocationRelativeTo(null);
 	}
 
 	@SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jl_text = new javax.swing.JLabel();
-
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-
-        jl_text.setText("hola admin");
+        setTitle("Menú Principal - Administrdor");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(295, Short.MAX_VALUE)
-                .addComponent(jl_text)
-                .addGap(193, 193, 193))
+            .addGap(0, 548, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(133, 133, 133)
-                .addComponent(jl_text)
-                .addContainerGap(179, Short.MAX_VALUE))
+            .addGap(0, 328, Short.MAX_VALUE)
         );
 
         pack();
@@ -69,6 +61,5 @@ public class MenuPrincipalAdmin extends javax.swing.JFrame {
 	}
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JLabel jl_text;
     // End of variables declaration//GEN-END:variables
 }
