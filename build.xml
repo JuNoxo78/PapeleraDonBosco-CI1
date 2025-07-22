@@ -10,6 +10,25 @@
 <project name="PapeleraDonBosco-CI1" default="default" basedir=".">
     <description>Builds, tests, and runs the project PapeleraDonBosco-CI1.</description>
     <import file="nbproject/build-impl.xml"/>
+    <!-- Post-compile: Copiar JARs de lib al build -->
+    <target name="-post-compile">
+        <!-- Asegura que la carpeta lib existe -->
+        <mkdir dir="build/lib"/>
+        <!-- Copia todos los JARs de lib al directorio de compilación -->
+        <copy todir="build/lib">
+            <fileset dir="lib" includes="*.jar"/>
+        </copy>
+    </target>
+
+    <!-- Ejecutar la app con el classpath que incluye mysql-connector -->
+    <target name="run-with-mysql" depends="jar">
+        <java jar="${dist.jar}" fork="true">
+            <classpath>
+                <pathelement path="/lib/mysql-connector-j-9.3.0.jar"/>
+                <pathelement path="${dist.jar}"/>
+            </classpath>
+        </java>
+    </target>
     <!--
 
     There exist several targets which are by default empty and which can be 

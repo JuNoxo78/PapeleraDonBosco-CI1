@@ -11,12 +11,15 @@ import java.awt.Dimension;
 import java.awt.event.ActionEvent;
 import java.awt.event.ComponentAdapter;
 import java.awt.event.ComponentEvent;
+import java.awt.event.WindowAdapter;
+import java.awt.event.WindowEvent;
 import java.time.format.DateTimeFormatter;
 import java.util.List;
 import javax.swing.JPanel;
 import modelo.clientes.Cliente;
 import modelo.pedidos_ventas.Pedido;
 import rojeru_san.rspanel.RSPanelImage;
+import vista.menu_principal.MenuPrincipal_2;
 import vista.pedidos_ventas.AddPedidoVista;
 import vista.pedidos_ventas.Pedidos_Card;
 import vista.pedidos_ventas.PedidosVista;
@@ -28,9 +31,11 @@ public class PedidosControlador {
 	private final ClienteDAO clienteDAO = new ClienteDAO();
 	private List<Pedido> listaPedidos;
 	private final DateTimeFormatter formatoLocalDate = DateTimeFormatter.ofPattern("dd-MM-yy");
+	private final MenuPrincipal_2 menuPrincipal;
 
-	public PedidosControlador(PedidosVista pedidosPanel) {
+	public PedidosControlador(PedidosVista pedidosPanel, MenuPrincipal_2 menuPrincipal) {
 		this.pedidosPanel = pedidosPanel;
+		this.menuPrincipal = menuPrincipal;
 		initController();
 	}
 
@@ -43,6 +48,9 @@ public class PedidosControlador {
 	private void cargarPedidos() {
 		listaPedidos = pedidoDAO.obtenerPedidos();
 		JPanel jp_pedidos = pedidosPanel.getJp_pedidos();
+		jp_pedidos.removeAll();
+		jp_pedidos.revalidate();
+		jp_pedidos.repaint();
 		jp_pedidos.setLayout(new MultiColumnLayout(2, 10, 10));
 
 		for (int i = 0; i < listaPedidos.size(); i++) {
@@ -187,8 +195,15 @@ public class PedidosControlador {
 	}
 
 	private void CrearPedidoButtonEvent() {
-		AddPedidoVista agregarPedidosVista = new AddPedidoVista();
-		AddPedidoControlador pedidoControlador = new AddPedidoControlador(agregarPedidosVista);
-		MenuPControlador.addChild(agregarPedidosVista);
+		AddPedidoVista agregarPedidosVista = new AddPedidoVista(menuPrincipal, true);
+
+		agregarPedidosVista.addWindowListener(new WindowAdapter() {
+			@Override
+			public void windowClosed(WindowEvent e) {
+				cargarPedidos();
+			}
+		});
+
+		new AddPedidoControlador(agregarPedidosVista);
 	}
 }

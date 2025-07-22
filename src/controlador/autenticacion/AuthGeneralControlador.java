@@ -73,7 +73,7 @@ public class AuthGeneralControlador {
 				empleadoDatos.add(empleado.getApellido());
 
 				MenuPrincipal_2 menuPrincipal = new MenuPrincipal_2();
-				new MenuPControlador(menuPrincipal, empleadoDatos);
+				new MenuPControlador(menuPrincipal, empleadoDatos, empleado);
 
 				loginVista.dispose();
 			} else {

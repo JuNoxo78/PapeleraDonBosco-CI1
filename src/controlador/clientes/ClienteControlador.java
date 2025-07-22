@@ -1,29 +1,30 @@
 package controlador.clientes;
 
-/**
- *
- * @author Muaro
- */
 import modelo.clientes.Cliente;
-import java.sql.SQLException;
 import dao.clientes.ClienteDAO;
+import java.sql.SQLException;
+import java.time.LocalDateTime;
 import java.util.List;
 
 public class ClienteControlador {
 
     private ClienteDAO dao = new ClienteDAO();
 
-//Obtener Cliente
     public List<Cliente> obtenerClientes() {
         return dao.obtenerTodos();
     }
 
-//Agregar Clientes
     public void registrarCliente(Cliente cliente) {
+        // Asignar ID automáticamente
+        String nuevoId = dao.generarNuevoId();
+        cliente.setIdCliente(nuevoId);
+        // Asignar fecha de registro actual si no está establecida
+        if (cliente.getFechaRegistro() == null) {
+            cliente.setFechaRegistro(LocalDateTime.now());
+        }
         dao.insertar(cliente);
     }
 
-//Eliminar Clientes
     public boolean eliminarCliente(String idCliente) {
         try {
             return dao.eliminarCliente(idCliente);
@@ -33,7 +34,6 @@ public class ClienteControlador {
         }
     }
 
-//Modificar clientes
     public boolean modificarCliente(Cliente cliente) {
         try {
             return dao.actualizarCliente(cliente);
@@ -42,9 +42,13 @@ public class ClienteControlador {
             return false;
         }
     }
-//Buscar Clientes
 
     public List<Cliente> buscarClientes(String id, String docId, String nombre, String apellido) {
         return dao.buscarClientes(id, docId, nombre, apellido);
+    }
+
+    // Nuevo método para obtener el siguiente ID (usado por la vista)
+    public String obtenerSiguienteId() {
+        return dao.generarNuevoId();
     }
 }

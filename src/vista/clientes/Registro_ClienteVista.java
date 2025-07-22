@@ -27,6 +27,14 @@ public class Registro_ClienteVista extends javax.swing.JPanel {
      */
     public Registro_ClienteVista() {
         initComponents();
+        ClienteControlador controlador = new ClienteControlador(); // Inicializamos el controlador
+        // Deshabilitar el campo Cl_Codigo para que no sea editable
+        Cl_Codigo.setEditable(false);
+        Cl_Codigo.setEnabled(false);
+        Cl_DocumentoIdentidad.setEditable(false);
+        Cl_DocumentoIdentidad.setEnabled(false);
+        // Establecer el ID generado automáticamente
+        Cl_Codigo.setText(controlador.obtenerSiguienteId());
         mostrarClientesEnTabla();
 
         // Verificador de formato de correo para el campo Cl_Correo
@@ -46,18 +54,17 @@ public class Registro_ClienteVista extends javax.swing.JPanel {
                             "⚠️ El correo no tiene un formato válido. Esto se validará al guardar.",
                             "Correo inválido",
                             JOptionPane.WARNING_MESSAGE);
-                    // ✅ AUN ASÍ permitimos cambiar de campo
                 }
                 return true;
             }
         });
-        
-        //Evita mostrar fechas pasadas y futuras solo la fecha de hoy
+
+        // Evita mostrar fechas pasadas y futuras solo la fecha de hoy
         Date hoy = new Date(); // fecha actual
         CI_FechaRegistro.setMinSelectableDate(hoy);
         CI_FechaRegistro.setMaxSelectableDate(hoy);
         CI_FechaRegistro.setDate(hoy);
-        //Desactiva para modificar la fecha registro
+        // Desactiva para modificar la fecha registro
         CI_FechaRegistro.setEnabled(false);
     }
 
@@ -81,7 +88,6 @@ public class Registro_ClienteVista extends javax.swing.JPanel {
         jLabel3 = new javax.swing.JLabel();
         Cl_Codigo = new javax.swing.JTextField();
         jLabel4 = new javax.swing.JLabel();
-        Cl_DocumentoIdentidad = new javax.swing.JTextField();
         jLabel5 = new javax.swing.JLabel();
         CL_Nombre = new javax.swing.JTextField();
         jLabel6 = new javax.swing.JLabel();
@@ -95,6 +101,7 @@ public class Registro_ClienteVista extends javax.swing.JPanel {
         jLabel11 = new javax.swing.JLabel();
         Cl_CrearDocIdentidad = new RSMaterialComponent.RSButtonMaterialIconDos();
         CI_FechaRegistro = new com.toedter.calendar.JDateChooser();
+        Cl_DocumentoIdentidad = new javax.swing.JTextField();
         panelRound5 = new extra.PanelRound();
         jScrollPane1 = new javax.swing.JScrollPane();
         Tabla_Clientes = new javax.swing.JTable();
@@ -211,10 +218,10 @@ public class Registro_ClienteVista extends javax.swing.JPanel {
                     .addComponent(CL_Nombre)
                     .addComponent(Cl_Codigo)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelRound4Layout.createSequentialGroup()
-                        .addComponent(Cl_DocumentoIdentidad, javax.swing.GroupLayout.PREFERRED_SIZE, 112, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(Cl_DocumentoIdentidad)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(Cl_CrearDocIdentidad, javax.swing.GroupLayout.PREFERRED_SIZE, 91, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addComponent(CI_FechaRegistro, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(CI_FechaRegistro, javax.swing.GroupLayout.DEFAULT_SIZE, 209, Short.MAX_VALUE))
                 .addContainerGap(18, Short.MAX_VALUE))
         );
         panelRound4Layout.setVerticalGroup(
@@ -228,8 +235,8 @@ public class Registro_ClienteVista extends javax.swing.JPanel {
                 .addComponent(jLabel4)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(panelRound4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(Cl_DocumentoIdentidad, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(Cl_CrearDocIdentidad, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(Cl_CrearDocIdentidad, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(Cl_DocumentoIdentidad, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jLabel5)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -277,6 +284,16 @@ public class Registro_ClienteVista extends javax.swing.JPanel {
 
             public Class getColumnClass(int columnIndex) {
                 return types [columnIndex];
+            }
+        });
+        Tabla_Clientes.addMouseMotionListener(new java.awt.event.MouseMotionAdapter() {
+            public void mouseDragged(java.awt.event.MouseEvent evt) {
+                Tabla_ClientesMouseDragged(evt);
+            }
+        });
+        Tabla_Clientes.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                Tabla_ClientesMouseClicked(evt);
             }
         });
         jScrollPane1.setViewportView(Tabla_Clientes);
@@ -376,7 +393,9 @@ public class Registro_ClienteVista extends javax.swing.JPanel {
 
     private void Cl_GuardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Cl_GuardarActionPerformed
         Cliente cliente = new Cliente();
+        ClienteControlador controlador = new ClienteControlador();
 
+        // Usar el ID generado automáticamente
         cliente.setIdCliente(Cl_Codigo.getText().trim());
         cliente.setIdDocIdentidad(Cl_DocumentoIdentidad.getText().trim());
         cliente.setNombre(CL_Nombre.getText().trim());
@@ -403,17 +422,35 @@ public class Registro_ClienteVista extends javax.swing.JPanel {
 
         cliente.setFechaRegistro(fechaRegistro);
 
-        try {
-            ClienteControlador controlador = new ClienteControlador();
-            controlador.registrarCliente(cliente);
+        // Validar que los campos obligatorios no estén vacíos
+        if (cliente.getIdCliente().isEmpty() || cliente.getIdDocIdentidad().isEmpty()) {
+            JOptionPane.showMessageDialog(null, "El ID del cliente y el documento de identidad son obligatorios.", "Error", JOptionPane.ERROR_MESSAGE);
+            return;
+        }
 
+        // Validar el formato del correo si no está vacío
+        if (!cliente.getCorreo().isEmpty() && !cliente.getCorreo().matches("^[\\w.-]+@[\\w.-]+\\.[a-zA-Z]{2,}$")) {
+            JOptionPane.showMessageDialog(null, "El correo no tiene un formato válido.", "Error", JOptionPane.ERROR_MESSAGE);
+            return;
+        }
+
+        try {
+            controlador.registrarCliente(cliente);
             JOptionPane.showMessageDialog(null, "✅ Cliente registrado correctamente.");
+            // Actualizar el campo Cl_Codigo con el siguiente ID
+            Cl_Codigo.setText(controlador.obtenerSiguienteId());
+            // Limpiar los demás campos
+            Cl_DocumentoIdentidad.setText("");
+            CL_Nombre.setText("");
+            Cl_Apellido.setText("");
+            Cl_Direccion.setText("");
+            Cl_Telefono.setText("");
+            Cl_Correo.setText("");
+            CI_FechaRegistro.setDate(new Date()); // Restablecer a hoy
             mostrarClientesEnTabla();
         } catch (RuntimeException ex) {
-            // Este bloque captura los errores personalizados que lanza ClienteDAO
             JOptionPane.showMessageDialog(null, "❌ " + ex.getMessage(), "Error al registrar", JOptionPane.ERROR_MESSAGE);
         } catch (Exception ex) {
-            // Para cualquier otro error inesperado
             JOptionPane.showMessageDialog(null, "❌ Error inesperado al registrar el cliente.");
             ex.printStackTrace();
         }
@@ -514,7 +551,7 @@ public class Registro_ClienteVista extends javax.swing.JPanel {
     }//GEN-LAST:event_Cl_EditarActionPerformed
 
     private void Cl_BuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Cl_BuscarActionPerformed
-        // TODO add your handling code here:
+// TODO add your handling code here:
         BuscarClientes panel = new BuscarClientes(this);
         javax.swing.JFrame frame = new javax.swing.JFrame("Buscar Clientes");
         frame.setDefaultCloseOperation(javax.swing.JFrame.DISPOSE_ON_CLOSE);
@@ -525,21 +562,51 @@ public class Registro_ClienteVista extends javax.swing.JPanel {
     }//GEN-LAST:event_Cl_BuscarActionPerformed
 
     private void Cl_CrearDocIdentidadActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Cl_CrearDocIdentidadActionPerformed
-        // TODO add your handling code here:
-        Registro_DocIdentidadVista panel = new Registro_DocIdentidadVista();
-
-        javax.swing.JFrame frame = new javax.swing.JFrame("Registrar Documento de Identidad");
+        // Crear el JFrame primero
+        javax.swing.JFrame frame = new javax.swing.JFrame("Registro de Documentos de Identidad");
         frame.setDefaultCloseOperation(javax.swing.JFrame.DISPOSE_ON_CLOSE);
+
+        // Crear una nueva instancia de Registro_DocIdentidadVista pasándole el frame
+        Registro_DocIdentidadVista panel = new Registro_DocIdentidadVista(frame);
+
+        // Asegurarse de que el panel no tenga un padre previo
+        if (panel.getParent() != null) {
+            panel.getParent().remove(panel);
+        }
         frame.getContentPane().add(panel);
+
+        // Ajustar tamaño y centrar
         frame.pack();
-        frame.setLocationRelativeTo(null); // Centrar
+        frame.setLocationRelativeTo(this);
         frame.setVisible(true);
+
+        // Agregar listener para capturar el ID al cerrar la ventana
+        frame.addWindowListener(new java.awt.event.WindowAdapter() {
+            @Override
+            public void windowClosed(java.awt.event.WindowEvent e) {
+                String nuevoIdDoc = panel.getNuevoIdDocIdentidad();
+                if (nuevoIdDoc != null && !nuevoIdDoc.isEmpty()) {
+                    Cl_DocumentoIdentidad.setText(nuevoIdDoc);
+                    System.out.println("ID asignado a Cl_DocumentoIdentidad: " + nuevoIdDoc); // Depuración
+                } else {
+                    System.out.println("No se obtuvo un ID válido."); // Depuración
+                }
+            }
+        });
     }//GEN-LAST:event_Cl_CrearDocIdentidadActionPerformed
 
     private void Cl_QuitarFiltroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Cl_QuitarFiltroActionPerformed
         // TODO add your handling code here:
         mostrarClientesEnTabla();
     }//GEN-LAST:event_Cl_QuitarFiltroActionPerformed
+
+    private void Tabla_ClientesMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_Tabla_ClientesMouseClicked
+        // TODO add your handling code here:
+    }//GEN-LAST:event_Tabla_ClientesMouseClicked
+
+    private void Tabla_ClientesMouseDragged(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_Tabla_ClientesMouseDragged
+        // TODO add your handling code here:
+    }//GEN-LAST:event_Tabla_ClientesMouseDragged
 
     public void mostrarClientesEnTabla() {
         //Instanciamos lel controlador y la lista

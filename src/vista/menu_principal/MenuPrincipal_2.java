@@ -1,7 +1,6 @@
 package vista.menu_principal;
 
 import RSMaterialComponent.RSButtonFormaIcon;
-import RSMaterialComponent.RSButtonMaterialIconDos;
 import java.awt.BorderLayout;
 import java.awt.Dimension;
 import java.awt.Image;
@@ -9,6 +8,8 @@ import java.awt.Toolkit;
 import java.awt.event.ActionListener;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
+import vista.autenticacion.Registro_DocIdentidadVista;
+import modelo.autenticacion.Empleado;
 import vista.autenticacion.Registro_EmpleadoVista;
 import vista.clientes.Registro_ClienteVista;
 import vista.informacion.InformacionVista;
@@ -20,22 +21,28 @@ import vista.proveedores.Registro_ProveedorVista;
 
 public class MenuPrincipal_2 extends javax.swing.JFrame {
 
-	public MenuPrincipal_2() {
-		System.setProperty("sun.java2d.opengl", "true");
-		initComponents();
-		this.setExtendedState(JFrame.MAXIMIZED_BOTH);
-		Image icono = Toolkit.getDefaultToolkit().getImage(getClass().getResource("/assets/icon32x32.png"));
-		this.setIconImage(icono);
-		this.setLocationRelativeTo(null);
+   private Empleado empleadoLogeado; 
 
-		HomeVista h = new HomeVista();
-		h.setLocation(0, 0);
-		ContentPanel.add(h, BorderLayout.CENTER);
-		ContentPanel.revalidate();
-		ContentPanel.repaint();
-	}
+    /**
+     *
+     */
 
-	@SuppressWarnings("unchecked")
+    public MenuPrincipal_2() {
+        System.setProperty("sun.java2d.opengl", "true");
+        initComponents();
+        this.setExtendedState(JFrame.MAXIMIZED_BOTH);
+        Image icono = Toolkit.getDefaultToolkit().getImage(getClass().getResource("/assets/icon32x32.png"));
+        this.setIconImage(icono);
+        this.setLocationRelativeTo(null);
+
+        HomeVista h = new HomeVista();
+        h.setLocation(0, 0);
+        ContentPanel.add(h, BorderLayout.CENTER);
+        ContentPanel.revalidate();
+        ContentPanel.repaint();
+    }
+
+    @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
@@ -250,7 +257,7 @@ public class MenuPrincipal_2 extends javax.swing.JFrame {
                 .addGroup(LateralPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(jLabel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(btn_prima, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 324, Short.MAX_VALUE)
+                    .addComponent(btn_prima, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 320, Short.MAX_VALUE)
                     .addComponent(btn_cliente, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(btn_home, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addGroup(javax.swing.GroupLayout.Alignment.LEADING, LateralPanelLayout.createSequentialGroup()
@@ -331,166 +338,174 @@ public class MenuPrincipal_2 extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-	public void setRolNombre(String rol, String nombre) {
-		jl_cargo.setText(rol);
-		jl_nombre.setText(nombre);
-	}
+    public void setRolNombre(String rol, String nombre) {
+        jl_cargo.setText(rol);
+        jl_nombre.setText(nombre);
+    }
 
-	public void setCloseButtonEvent(ActionListener listener) {
-		btn_close.addActionListener(listener);
-	}
+    public void setEmpleadoLogeado(Empleado empleadoLogeado) {
+        this.empleadoLogeado = empleadoLogeado;
+    }
 
-	public void setPedidoButtonEvent(ActionListener listener) {
-		btn_pedido.addActionListener(listener);
-	}
+    public Empleado getEmpleadoLogeado() {
+        return empleadoLogeado;
+    }
 
-	public JPanel getContentPanel() {
-		return ContentPanel;
-	}
+    public void setCloseButtonEvent(ActionListener listener) {
+        btn_close.addActionListener(listener);
+    }
 
-	public RSButtonFormaIcon getBtn_cliente() {
-		return btn_cliente;
-	}
+    public void setPedidoButtonEvent(ActionListener listener) {
+        btn_pedido.addActionListener(listener);
+    }
 
-	public RSButtonFormaIcon getBtn_empleado() {
-		return btn_empleado;
-	}
+    public JPanel getContentPanel() {
+        return ContentPanel;
+    }
 
-	public RSButtonFormaIcon getBtn_home() {
-		return btn_home;
-	}
+    public RSButtonFormaIcon getBtn_cliente() {
+        return btn_cliente;
+    }
 
-	public RSButtonFormaIcon getBtn_informacion() {
-		return btn_informacion;
-	}
+    public RSButtonFormaIcon getBtn_empleado() {
+        return btn_empleado;
+    }
 
-	public RSButtonFormaIcon getBtn_materialIntermedio() {
-		return btn_materialIntermedio;
-	}
+    public RSButtonFormaIcon getBtn_home() {
+        return btn_home;
+    }
 
-	public RSButtonFormaIcon getBtn_pedido() {
-		return btn_pedido;
-	}
+    public RSButtonFormaIcon getBtn_informacion() {
+        return btn_informacion;
+    }
 
-	public RSButtonFormaIcon getBtn_prima() {
-		return btn_prima;
-	}
+    public RSButtonFormaIcon getBtn_materialIntermedio() {
+        return btn_materialIntermedio;
+    }
 
-	public RSButtonFormaIcon getBtn_producto() {
-		return btn_producto;
-	}
+    public RSButtonFormaIcon getBtn_pedido() {
+        return btn_pedido;
+    }
 
-	public RSButtonFormaIcon getBtn_proveedor() {
-		return btn_proveedor;
-	}
+    public RSButtonFormaIcon getBtn_prima() {
+        return btn_prima;
+    }
 
-	public RSButtonFormaIcon getBtn_compras() {
-		return btn_compras;
-	}
+    public RSButtonFormaIcon getBtn_producto() {
+        return btn_producto;
+    }
+
+    public RSButtonFormaIcon getBtn_proveedor() {
+        return btn_proveedor;
+    }
+
+    public RSButtonFormaIcon getBtn_compras() {
+        return btn_compras;
+    }
 
     private void btn_homeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_homeActionPerformed
-		btn_home.setSelected(true);
-		btn_cliente.setSelected(false);
-		btn_empleado.setSelected(false);
-		btn_proveedor.setSelected(false);
-		btn_pedido.setSelected(false);
-		btn_producto.setSelected(false);
-		btn_prima.setSelected(false);
-		btn_materialIntermedio.setSelected(false);
-		btn_compras.setSelected(false);
-		btn_informacion.setSelected(false);
+        btn_home.setSelected(true);
+        btn_cliente.setSelected(false);
+        btn_empleado.setSelected(false);
+        btn_proveedor.setSelected(false);
+        btn_pedido.setSelected(false);
+        btn_producto.setSelected(false);
+        btn_prima.setSelected(false);
+        btn_materialIntermedio.setSelected(false);
+        btn_compras.setSelected(false);
+        btn_informacion.setSelected(false);
 
-		HomeVista h = new HomeVista();
-		h.setLocation(0, 0);
+        HomeVista h = new HomeVista();
+        h.setLocation(0, 0);
 
-		ContentPanel.removeAll();
-		ContentPanel.add(h, BorderLayout.CENTER);
-		ContentPanel.revalidate();
-		ContentPanel.repaint();
+        ContentPanel.removeAll();
+        ContentPanel.add(h, BorderLayout.CENTER);
+        ContentPanel.revalidate();
+        ContentPanel.repaint();
     }//GEN-LAST:event_btn_homeActionPerformed
 
     private void btn_clienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_clienteActionPerformed
-		btn_home.setSelected(false);
-		btn_cliente.setSelected(true);
-		btn_empleado.setSelected(false);
-		btn_proveedor.setSelected(false);
-		btn_pedido.setSelected(false);
-		btn_producto.setSelected(false);
-		btn_prima.setSelected(false);
-		btn_materialIntermedio.setSelected(false);
-		btn_compras.setSelected(false);
-		btn_informacion.setSelected(false);
+        btn_home.setSelected(false);
+        btn_cliente.setSelected(true);
+        btn_empleado.setSelected(false);
+        btn_proveedor.setSelected(false);
+        btn_pedido.setSelected(false);
+        btn_producto.setSelected(false);
+        btn_prima.setSelected(false);
+        btn_materialIntermedio.setSelected(false);
+        btn_compras.setSelected(false);
+        btn_informacion.setSelected(false);
 
-		Registro_ClienteVista Cl = new Registro_ClienteVista();
-		Cl.setLocation(0, 0);
+        Registro_ClienteVista Cl = new Registro_ClienteVista();
+        Cl.setLocation(0, 0);
 
-		ContentPanel.removeAll();
-		ContentPanel.add(Cl, BorderLayout.CENTER);
-		ContentPanel.revalidate();
-		ContentPanel.repaint();
+        ContentPanel.removeAll();
+        ContentPanel.add(Cl, BorderLayout.CENTER);
+        ContentPanel.revalidate();
+        ContentPanel.repaint();
     }//GEN-LAST:event_btn_clienteActionPerformed
 
     private void btn_empleadoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_empleadoActionPerformed
-		btn_home.setSelected(false);
-		btn_cliente.setSelected(false);
-		btn_empleado.setSelected(true);
-		btn_proveedor.setSelected(false);
-		btn_pedido.setSelected(false);
-		btn_producto.setSelected(false);
-		btn_prima.setSelected(false);
-		btn_materialIntermedio.setSelected(false);
-		btn_compras.setSelected(false);
-		btn_informacion.setSelected(false);
+        btn_home.setSelected(false);
+        btn_cliente.setSelected(false);
+        btn_empleado.setSelected(true);
+        btn_proveedor.setSelected(false);
+        btn_pedido.setSelected(false);
+        btn_producto.setSelected(false);
+        btn_prima.setSelected(false);
+        btn_materialIntermedio.setSelected(false);
+        btn_compras.setSelected(false);
+        btn_informacion.setSelected(false);
 
-		Registro_EmpleadoVista empleado = new Registro_EmpleadoVista();
-		empleado.setLocation(0, 0);
+        Registro_EmpleadoVista empleado = new Registro_EmpleadoVista();
+        empleado.setLocation(0, 0);
 
-		ContentPanel.removeAll();
-		ContentPanel.add(empleado, BorderLayout.CENTER);
-		ContentPanel.revalidate();
-		ContentPanel.repaint();
+        ContentPanel.removeAll();
+        ContentPanel.add(empleado, BorderLayout.CENTER);
+        ContentPanel.revalidate();
+        ContentPanel.repaint();
     }//GEN-LAST:event_btn_empleadoActionPerformed
 
     private void btn_proveedorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_proveedorActionPerformed
-		btn_home.setSelected(false);
-		btn_cliente.setSelected(false);
-		btn_empleado.setSelected(false);
-		btn_proveedor.setSelected(true);
-		btn_pedido.setSelected(false);
-		btn_producto.setSelected(false);
-		btn_prima.setSelected(false);
-		btn_materialIntermedio.setSelected(false);
-		btn_compras.setSelected(false);
-		btn_informacion.setSelected(false);
+        btn_home.setSelected(false);
+        btn_cliente.setSelected(false);
+        btn_empleado.setSelected(false);
+        btn_proveedor.setSelected(true);
+        btn_pedido.setSelected(false);
+        btn_producto.setSelected(false);
+        btn_prima.setSelected(false);
+        btn_materialIntermedio.setSelected(false);
+        btn_compras.setSelected(false);
+        btn_informacion.setSelected(false);
 
-		Registro_ProveedorVista Pr = new Registro_ProveedorVista();
-		Pr.setLocation(0, 0);
+        Registro_ProveedorVista Pr = new Registro_ProveedorVista();
+        Pr.setLocation(0, 0);
 
-		ContentPanel.removeAll();
-		ContentPanel.add(Pr, BorderLayout.CENTER);
-		ContentPanel.revalidate();
-		ContentPanel.repaint();
+        ContentPanel.removeAll();
+        ContentPanel.add(Pr, BorderLayout.CENTER);
+        ContentPanel.revalidate();
+        ContentPanel.repaint();
     }//GEN-LAST:event_btn_proveedorActionPerformed
 
     private void btn_productoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_productoActionPerformed
-		btn_home.setSelected(false);
-		btn_cliente.setSelected(false);
-		btn_empleado.setSelected(false);
-		btn_proveedor.setSelected(false);
-		btn_pedido.setSelected(false);
-		btn_producto.setSelected(true);
-		btn_prima.setSelected(false);
-		btn_materialIntermedio.setSelected(false);
-		btn_compras.setSelected(false);
-		btn_informacion.setSelected(false);
+        btn_home.setSelected(false);
+        btn_cliente.setSelected(false);
+        btn_empleado.setSelected(false);
+        btn_proveedor.setSelected(false);
+        btn_pedido.setSelected(false);
+        btn_producto.setSelected(true);
+        btn_prima.setSelected(false);
+        btn_materialIntermedio.setSelected(false);
+        btn_compras.setSelected(false);
+        btn_informacion.setSelected(false);
 
-		Registro_PTVista Pro = new Registro_PTVista();
-		Pro.setLocation(0, 0);
+        Registro_PTVista Pro = new Registro_PTVista();
+        Pro.setLocation(0, 0);
 
-		ContentPanel.removeAll();
-		ContentPanel.add(Pro, BorderLayout.CENTER);
-		ContentPanel.revalidate();
-		ContentPanel.repaint();        // TODO add your handling code here:
+        ContentPanel.removeAll();
+        ContentPanel.add(Pro, BorderLayout.CENTER);
+        ContentPanel.revalidate();
+        ContentPanel.repaint();        // TODO add your handling code here:
     }//GEN-LAST:event_btn_productoActionPerformed
 
     private void btn_primaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_primaActionPerformed
@@ -515,85 +530,85 @@ public class MenuPrincipal_2 extends javax.swing.JFrame {
     }//GEN-LAST:event_btn_primaActionPerformed
 
     private void btn_materialIntermedioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_materialIntermedioActionPerformed
-		btn_home.setSelected(false);
-		btn_cliente.setSelected(false);
-		btn_empleado.setSelected(false);
-		btn_proveedor.setSelected(false);
-		btn_pedido.setSelected(false);
-		btn_producto.setSelected(false);
-		btn_prima.setSelected(false);
-		btn_materialIntermedio.setSelected(true);
-		btn_compras.setSelected(false);
-		btn_informacion.setSelected(false);
+        btn_home.setSelected(false);
+        btn_cliente.setSelected(false);
+        btn_empleado.setSelected(false);
+        btn_proveedor.setSelected(false);
+        btn_pedido.setSelected(false);
+        btn_producto.setSelected(false);
+        btn_prima.setSelected(false);
+        btn_materialIntermedio.setSelected(true);
+        btn_compras.setSelected(false);
+        btn_informacion.setSelected(false);
 
-		Registro_MIVista Int = new Registro_MIVista();
-		Int.setLocation(0, 0);
+        Registro_MIVista Int = new Registro_MIVista();
+        Int.setLocation(0, 0);
 
-		ContentPanel.removeAll();
-		ContentPanel.add(Int, BorderLayout.CENTER);
-		ContentPanel.revalidate();
-		ContentPanel.repaint();        // TODO add your handling code here:
+        ContentPanel.removeAll();
+        ContentPanel.add(Int, BorderLayout.CENTER);
+        ContentPanel.revalidate();
+        ContentPanel.repaint();        // TODO add your handling code here:
     }//GEN-LAST:event_btn_materialIntermedioActionPerformed
 
     private void btn_informacionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_informacionActionPerformed
-		btn_home.setSelected(false);
-		btn_cliente.setSelected(false);
-		btn_empleado.setSelected(false);
-		btn_proveedor.setSelected(false);
-		btn_pedido.setSelected(false);
-		btn_producto.setSelected(false);
-		btn_prima.setSelected(false);
-		btn_materialIntermedio.setSelected(false);
-		btn_compras.setSelected(false);
-		btn_informacion.setSelected(true);
+        btn_home.setSelected(false);
+        btn_cliente.setSelected(false);
+        btn_empleado.setSelected(false);
+        btn_proveedor.setSelected(false);
+        btn_pedido.setSelected(false);
+        btn_producto.setSelected(false);
+        btn_prima.setSelected(false);
+        btn_materialIntermedio.setSelected(false);
+        btn_compras.setSelected(false);
+        btn_informacion.setSelected(true);
 
-		InformacionVista Info = new InformacionVista();
-		Info.setLocation(0, 0);
+        InformacionVista Info = new InformacionVista();
+        Info.setLocation(0, 0);
 
-		ContentPanel.removeAll();
-		ContentPanel.add(Info, BorderLayout.CENTER);
-		ContentPanel.revalidate();
-		ContentPanel.repaint();        // TODO add your handling code here:
+        ContentPanel.removeAll();
+        ContentPanel.add(Info, BorderLayout.CENTER);
+        ContentPanel.revalidate();
+        ContentPanel.repaint();        // TODO add your handling code here:
     }//GEN-LAST:event_btn_informacionActionPerformed
 
-	public static void main(String args[]) {
-		/* Set the Nimbus look and feel */
-		//<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
-		/* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
+    public static void main(String args[]) {
+        /* Set the Nimbus look and feel */
+        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
+        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
          * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
-		 */
-		try {
-			for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-				if ("Nimbus".equals(info.getName())) {
-					javax.swing.UIManager.setLookAndFeel(info.getClassName());
-					break;
-				}
-			}
-		} catch (ClassNotFoundException ex) {
-			java.util.logging.Logger.getLogger(MenuPrincipal_2.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-		} catch (InstantiationException ex) {
-			java.util.logging.Logger.getLogger(MenuPrincipal_2.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-		} catch (IllegalAccessException ex) {
-			java.util.logging.Logger.getLogger(MenuPrincipal_2.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-		} catch (javax.swing.UnsupportedLookAndFeelException ex) {
-			java.util.logging.Logger.getLogger(MenuPrincipal_2.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-		}
-		//</editor-fold>
-		//</editor-fold>
-		//</editor-fold>
-		//</editor-fold>
-		//</editor-fold>
-		//</editor-fold>
-		//</editor-fold>
-		//</editor-fold>
+         */
+        try {
+            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
+                if ("Nimbus".equals(info.getName())) {
+                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
+                    break;
+                }
+            }
+        } catch (ClassNotFoundException ex) {
+            java.util.logging.Logger.getLogger(MenuPrincipal_2.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+        } catch (InstantiationException ex) {
+            java.util.logging.Logger.getLogger(MenuPrincipal_2.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+        } catch (IllegalAccessException ex) {
+            java.util.logging.Logger.getLogger(MenuPrincipal_2.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
+            java.util.logging.Logger.getLogger(MenuPrincipal_2.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+        }
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
 
-		/* Create and display the form */
-		java.awt.EventQueue.invokeLater(new Runnable() {
-			public void run() {
-				new MenuPrincipal_2().setVisible(true);
-			}
-		});
-	}
+        /* Create and display the form */
+        java.awt.EventQueue.invokeLater(new Runnable() {
+            public void run() {
+                new MenuPrincipal_2().setVisible(true);
+            }
+        });
+    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JPanel ContentPanel;

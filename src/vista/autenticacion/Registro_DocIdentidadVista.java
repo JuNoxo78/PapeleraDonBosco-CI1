@@ -3,6 +3,8 @@ package vista.autenticacion;
 import controlador.autenticacion.DocIdentidadControlador;
 import java.awt.HeadlessException;
 import java.util.List;
+import javax.swing.JFrame;
+import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 import modelo.autenticacion.DocIdentidad;
 
@@ -15,9 +17,23 @@ public class Registro_DocIdentidadVista extends javax.swing.JPanel {
     /**
      * Creates new form Cliente
      */
-    public Registro_DocIdentidadVista() {
+    private DocIdentidadControlador controlador;
+    private String nuevoIdDocIdentidad; // Para almacenar el ID recién creado
+    private JFrame parentFrame; // Para cerrar la ventana
+
+    public Registro_DocIdentidadVista(JFrame frame) {
+        this.parentFrame = frame; // Asignar el JFrame recibido
+        controlador = new DocIdentidadControlador();
         initComponents();
+        CI_CodigoDoc.setEditable(false); // Deshabilitar edición del ID
+        CI_CodigoDoc.setText(controlador.obtenerSiguienteId()); // Mostrar ID generado
         mostrarDocumentosEnTabla();
+        // Configurar ComboBox
+        jComboBox1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jComboBox1ActionPerformed(evt);
+            }
+        });
     }
 
     /**
@@ -35,17 +51,18 @@ public class Registro_DocIdentidadVista extends javax.swing.JPanel {
         jLabel3 = new javax.swing.JLabel();
         CI_CodigoDoc = new javax.swing.JTextField();
         jLabel4 = new javax.swing.JLabel();
-        CI_TipoDoc = new javax.swing.JTextField();
         jLabel5 = new javax.swing.JLabel();
         CI_NumeroDocumento = new javax.swing.JTextField();
+        jComboBox1 = new javax.swing.JComboBox<>();
         panelRound5 = new extra.PanelRound();
         jScrollPane1 = new javax.swing.JScrollPane();
         Tabla_Documentos = new javax.swing.JTable();
         Int_Guardar = new RSMaterialComponent.RSButtonMaterialIconDos();
         Int_Eliminar = new RSMaterialComponent.RSButtonMaterialIconDos();
         Int_Editar = new RSMaterialComponent.RSButtonMaterialIconDos();
-        lnt_Buscar = new RSMaterialComponent.RSButtonMaterialIconDos();
         rSButtonMaterialIconDos5 = new RSMaterialComponent.RSButtonMaterialIconDos();
+        Cl_QuitarFiltro = new RSMaterialComponent.RSButtonMaterialIconDos();
+        Cl_Buscar = new RSMaterialComponent.RSButtonMaterialIconDos();
 
         setBackground(new java.awt.Color(239, 235, 233));
 
@@ -73,6 +90,14 @@ public class Registro_DocIdentidadVista extends javax.swing.JPanel {
         jLabel5.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         jLabel5.setText("Numero de Documento:");
 
+        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "DNI", "Pasaporte", "RUC", "Carnet Extranjetía" }));
+        jComboBox1.setToolTipText("");
+        jComboBox1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jComboBox1ActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout panelRound4Layout = new javax.swing.GroupLayout(panelRound4);
         panelRound4.setLayout(panelRound4Layout);
         panelRound4Layout.setHorizontalGroup(
@@ -82,10 +107,10 @@ public class Registro_DocIdentidadVista extends javax.swing.JPanel {
                 .addGroup(panelRound4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(CI_NumeroDocumento, javax.swing.GroupLayout.DEFAULT_SIZE, 252, Short.MAX_VALUE)
                     .addComponent(jLabel5)
-                    .addComponent(CI_TipoDoc, javax.swing.GroupLayout.DEFAULT_SIZE, 252, Short.MAX_VALUE)
                     .addComponent(jLabel4)
                     .addComponent(jLabel3)
-                    .addComponent(CI_CodigoDoc, javax.swing.GroupLayout.DEFAULT_SIZE, 252, Short.MAX_VALUE))
+                    .addComponent(CI_CodigoDoc, javax.swing.GroupLayout.DEFAULT_SIZE, 252, Short.MAX_VALUE)
+                    .addComponent(jComboBox1, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap(40, Short.MAX_VALUE))
         );
         panelRound4Layout.setVerticalGroup(
@@ -98,13 +123,15 @@ public class Registro_DocIdentidadVista extends javax.swing.JPanel {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jLabel4)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(CI_TipoDoc, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jLabel5)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(CI_NumeroDocumento, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(32, Short.MAX_VALUE))
         );
+
+        jComboBox1.getAccessibleContext().setAccessibleName("");
 
         panelRound5.setBackground(new java.awt.Color(255, 255, 255));
         panelRound5.setRoundBottomLeft(75);
@@ -174,20 +201,29 @@ public class Registro_DocIdentidadVista extends javax.swing.JPanel {
             }
         });
 
-        lnt_Buscar.setBackground(new java.awt.Color(61, 77, 33));
-        lnt_Buscar.setText("Buscar");
-        lnt_Buscar.setIcons(rojeru_san.efectos.ValoresEnum.ICONS.SEARCH);
-        lnt_Buscar.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                lnt_BuscarActionPerformed(evt);
-            }
-        });
-
         rSButtonMaterialIconDos5.setBackground(new java.awt.Color(61, 77, 33));
         rSButtonMaterialIconDos5.setIcons(rojeru_san.efectos.ValoresEnum.ICONS.GROUP_ADD);
         rSButtonMaterialIconDos5.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 rSButtonMaterialIconDos5ActionPerformed(evt);
+            }
+        });
+
+        Cl_QuitarFiltro.setBackground(new java.awt.Color(61, 77, 33));
+        Cl_QuitarFiltro.setText("Refrescar");
+        Cl_QuitarFiltro.setIcons(rojeru_san.efectos.ValoresEnum.ICONS.REPLAY);
+        Cl_QuitarFiltro.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                Cl_QuitarFiltroActionPerformed(evt);
+            }
+        });
+
+        Cl_Buscar.setBackground(new java.awt.Color(61, 77, 33));
+        Cl_Buscar.setText("Buscar");
+        Cl_Buscar.setIcons(rojeru_san.efectos.ValoresEnum.ICONS.SEARCH);
+        Cl_Buscar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                Cl_BuscarActionPerformed(evt);
             }
         });
 
@@ -201,14 +237,15 @@ public class Registro_DocIdentidadVista extends javax.swing.JPanel {
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(panelRound4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(Int_Guardar, javax.swing.GroupLayout.PREFERRED_SIZE, 151, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(18, 18, 18)
-                                .addComponent(Int_Eliminar, javax.swing.GroupLayout.PREFERRED_SIZE, 151, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(Int_Editar, javax.swing.GroupLayout.PREFERRED_SIZE, 151, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(18, 18, 18)
-                                .addComponent(lnt_Buscar, javax.swing.GroupLayout.PREFERRED_SIZE, 151, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                                .addGroup(layout.createSequentialGroup()
+                                    .addComponent(Int_Editar, javax.swing.GroupLayout.PREFERRED_SIZE, 151, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addGap(18, 18, 18)
+                                    .addComponent(Cl_Buscar, javax.swing.GroupLayout.PREFERRED_SIZE, 1, Short.MAX_VALUE))
+                                .addGroup(layout.createSequentialGroup()
+                                    .addComponent(Int_Guardar, javax.swing.GroupLayout.PREFERRED_SIZE, 151, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addGap(18, 18, 18)
+                                    .addComponent(Int_Eliminar, javax.swing.GroupLayout.PREFERRED_SIZE, 151, javax.swing.GroupLayout.PREFERRED_SIZE))))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 60, Short.MAX_VALUE)
                         .addComponent(panelRound5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(26, 26, 26))
@@ -216,9 +253,14 @@ public class Registro_DocIdentidadVista extends javax.swing.JPanel {
                         .addComponent(rSButtonMaterialIconDos5, javax.swing.GroupLayout.PREFERRED_SIZE, 77, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel2)
-                            .addComponent(jLabel1))
-                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(jLabel2)
+                                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(jLabel1)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(Cl_QuitarFiltro, javax.swing.GroupLayout.PREFERRED_SIZE, 123, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(151, 151, 151))))))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -226,7 +268,9 @@ public class Registro_DocIdentidadVista extends javax.swing.JPanel {
                 .addGap(16, 16, 16)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(jLabel1)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabel1)
+                            .addComponent(Cl_QuitarFiltro, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jLabel2))
                     .addComponent(rSButtonMaterialIconDos5, javax.swing.GroupLayout.PREFERRED_SIZE, 77, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -243,52 +287,81 @@ public class Registro_DocIdentidadVista extends javax.swing.JPanel {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(Int_Editar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(lnt_Buscar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                .addContainerGap(36, Short.MAX_VALUE))
+                            .addComponent(Cl_Buscar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                .addContainerGap(28, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
 
     private void Int_GuardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Int_GuardarActionPerformed
-        // TODO add your handling code here:
         try {
-                // Crear el objeto con datos del formulario
-                DocIdentidad documento = new DocIdentidad();
-                documento.setIdDocIdentidad(CI_CodigoDoc.getText());
-                documento.setTipoDocumento(CI_TipoDoc.getText());
-                documento.setNumeroDocumento(CI_NumeroDocumento.getText());
+            // Crear el objeto con datos del formulario
+            DocIdentidad documento = new DocIdentidad();
+            documento.setIdDocIdentidad(CI_CodigoDoc.getText());
+            documento.setTipoDocumento((String) jComboBox1.getSelectedItem());
+            documento.setNumeroDocumento(CI_NumeroDocumento.getText().trim());
 
-                // Llamar al controlador
-                DocIdentidadControlador controlador = new DocIdentidadControlador();
-                controlador.registrarDocumento(documento);
+            // Validar el documento
+            if (!documento.isValid()) {
+                String tipo = documento.getTipoDocumento();
+                String mensaje = "El número de documento no cumple con el formato válido. ";
+                String ejemplo = "";
+                switch (tipo) {
+                    case "DNI" -> {
+                        mensaje += "Formato esperado: 8 dígitos.";
+                        ejemplo = "Ejemplo: 12345678";
+                    }
+                    case "Pasaporte" -> {
+                        mensaje += "Formato esperado: 9 dígitos.";
+                        ejemplo = "Ejemplo: 123456789";
+                    }
+                    case "RUC" -> {
+                        mensaje += "Formato esperado: 12 dígitos.";
+                        ejemplo = "Ejemplo: 123456789012";
+                    }
+                    case "Carnet Extranjetía" -> {
+                        mensaje += "Formato esperado: 12 dígitos.";
+                        ejemplo = "Ejemplo: 123456789012";
+                    }
+                    default ->
+                        mensaje += "Formato no especificado.";
+                }
+                JOptionPane.showMessageDialog(this, mensaje + "\n" + ejemplo, "Error de Formato", JOptionPane.ERROR_MESSAGE);
+                return;
+            }
 
-                // Mostrar mensaje solo si NO hay error
-                javax.swing.JOptionPane.showMessageDialog(this, "✅ Documento guardado correctamente");
+            // Llamar al controlador
+            controlador.registrarDocumento(documento);
 
-                // Actualizar tabla
-                mostrarDocumentosEnTabla();
+            // Almacenar el ID recién creado
+            nuevoIdDocIdentidad = documento.getIdDocIdentidad();
 
-                // Limpiar campos si deseas
-                CI_CodigoDoc.setText("");
-                CI_TipoDoc.setText("");
-                CI_NumeroDocumento.setText("");
+            // Mostrar mensaje y actualizar tabla
+            JOptionPane.showMessageDialog(this, "✅ Documento guardado correctamente");
+            mostrarDocumentosEnTabla();
+
+            // Limpiar campos y preparar nuevo ID
+            CI_NumeroDocumento.setText("");
+            jComboBox1.setSelectedIndex(0);
+            CI_CodigoDoc.setText(controlador.obtenerSiguienteId());
+
+            // Cerrar la ventana
+            if (parentFrame != null) {
+                parentFrame.dispose();
+            }
 
         } catch (Exception e) {
-                // Mostrar mensaje en caso de error (por ejemplo, longitud excesiva)
-                javax.swing.JOptionPane.showMessageDialog(this,
-                    "Error al guardar el documento:\n" + e.getMessage(),
-                    "Error", javax.swing.JOptionPane.ERROR_MESSAGE);
-            }
+            JOptionPane.showMessageDialog(this, "Error al guardar el documento:\n" + e.getMessage(), "Error", JOptionPane.ERROR_MESSAGE);
+        }
     }//GEN-LAST:event_Int_GuardarActionPerformed
 
     private void Int_EliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Int_EliminarActionPerformed
-        // TODO add your handling code here:
         try {
             int filaSeleccionada = Tabla_Documentos.getSelectedRow();
 
             if (filaSeleccionada == -1) {
                 javax.swing.JOptionPane.showMessageDialog(this,
-                    "Por favor selecciona una fila para eliminar",
-                    "Aviso", javax.swing.JOptionPane.WARNING_MESSAGE);
+                        "Por favor selecciona una fila para eliminar",
+                        "Aviso", javax.swing.JOptionPane.WARNING_MESSAGE);
                 return;
             }
 
@@ -297,8 +370,8 @@ public class Registro_DocIdentidadVista extends javax.swing.JPanel {
 
             // Confirmación
             int confirm = javax.swing.JOptionPane.showConfirmDialog(this,
-                "¿Estás seguro de eliminar el documento con código: " + idDoc + "?",
-                "Confirmar eliminación", javax.swing.JOptionPane.YES_NO_OPTION);
+                    "¿Estás seguro de eliminar el documento con código: " + idDoc + "?",
+                    "Confirmar eliminación", javax.swing.JOptionPane.YES_NO_OPTION);
 
             if (confirm == javax.swing.JOptionPane.YES_OPTION) {
                 DocIdentidadControlador controlador = new DocIdentidadControlador();
@@ -306,38 +379,103 @@ public class Registro_DocIdentidadVista extends javax.swing.JPanel {
                 mostrarDocumentosEnTabla(); // Actualizar tabla
 
                 javax.swing.JOptionPane.showMessageDialog(this,
-                    "Documento eliminado correctamente");
+                        "Documento eliminado correctamente");
             }
 
         } catch (Exception e) {
             javax.swing.JOptionPane.showMessageDialog(this,
-                "Error al eliminar el documento:\n" + e.getMessage(),
-                "Error", javax.swing.JOptionPane.ERROR_MESSAGE);
+                    "Error al eliminar el documento:\n" + e.getMessage(),
+                    "Error", javax.swing.JOptionPane.ERROR_MESSAGE);
         }
     }//GEN-LAST:event_Int_EliminarActionPerformed
 
     private void Int_EditarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Int_EditarActionPerformed
-        // TODO add your handling code here:
+        int fila = Tabla_Documentos.getSelectedRow();
+        if (fila == -1) {
+            JOptionPane.showMessageDialog(this, "⚠️ Debes seleccionar una fila de la tabla para editar.", "Error", JOptionPane.WARNING_MESSAGE);
+            return;
+        }
+
+        // Obtener el ID del documento seleccionado
+        String idDoc = Tabla_Documentos.getValueAt(fila, 0).toString();
+        DocIdentidad documento = controlador.obtenerDocumentoPorId(idDoc);
+
+        // Verificar si se obtuvo el documento
+        if (documento == null) {
+            JOptionPane.showMessageDialog(this, "⚠️ No se pudo obtener el documento con ID: " + idDoc, "Error", JOptionPane.ERROR_MESSAGE);
+            return;
+        }
+
+        // Abrir formulario de edición con datos prellenados
+        EditarDocumento panelEditar = new EditarDocumento(new JFrame());
+        panelEditar.setDatosDocumento(documento);
+        JFrame frame = new JFrame("Editar Documento");
+        frame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+        if (panelEditar.getParent() != null) {
+            panelEditar.getParent().remove(panelEditar);
+        }
+        frame.getContentPane().add(panelEditar);
+        frame.pack();
+        frame.setLocationRelativeTo(this);
+        frame.setVisible(true);
+
+        // Listener para actualizar la tabla al cerrar
+        frame.addWindowListener(new java.awt.event.WindowAdapter() {
+            @Override
+            public void windowClosed(java.awt.event.WindowEvent e) {
+                mostrarDocumentosEnTabla();
+            }
+        });
     }//GEN-LAST:event_Int_EditarActionPerformed
-
-    private void lnt_BuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_lnt_BuscarActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_lnt_BuscarActionPerformed
-
+    public void mostrarDocumentosEnTabla() {
+        List<DocIdentidad> lista = controlador.obtenerDocumentos();
+        DefaultTableModel modelo = (DefaultTableModel) Tabla_Documentos.getModel();
+        modelo.setRowCount(0);
+        for (DocIdentidad d : lista) {
+            modelo.addRow(new Object[]{d.getIdDocIdentidad(), d.getTipoDocumento(), d.getNumeroDocumento()});
+        }
+    }
     private void rSButtonMaterialIconDos5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rSButtonMaterialIconDos5ActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_rSButtonMaterialIconDos5ActionPerformed
 
-//MOSTRAR DOCUMENTOS EXISTENTES
-    private void mostrarDocumentosEnTabla() {
-    //Instanciamos con el controlador
-        DocIdentidadControlador controlador = new DocIdentidadControlador(); 
-        List<DocIdentidad> lista = controlador.obtenerDocumentos();
-        
+    private void jComboBox1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBox1ActionPerformed
+        // TODO add your handling code here:
+        CI_NumeroDocumento.setText("");
+    }//GEN-LAST:event_jComboBox1ActionPerformed
+
+    private void Cl_QuitarFiltroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Cl_QuitarFiltroActionPerformed
+        // TODO add your handling code here:
+        mostrarDocumentosEnTabla();
+    }//GEN-LAST:event_Cl_QuitarFiltroActionPerformed
+
+    private void Cl_BuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Cl_BuscarActionPerformed
+        System.out.println("Botón Buscar clicado"); // Depuración
+        try {
+            BuscarDocumento panel = new BuscarDocumento(this);
+            javax.swing.JFrame frame = new javax.swing.JFrame("Buscar Documentos");
+            frame.setDefaultCloseOperation(javax.swing.JFrame.DISPOSE_ON_CLOSE);
+            frame.getContentPane().add(panel);
+            frame.pack();
+            frame.setLocationRelativeTo(this);
+            frame.setVisible(true);
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(this, "Error al abrir el formulario de búsqueda: " + e.getMessage(), "Error", JOptionPane.ERROR_MESSAGE);
+            e.printStackTrace();
+        }
+    }//GEN-LAST:event_Cl_BuscarActionPerformed
+
+// Método para obtener el ID recién creado
+    public String getNuevoIdDocIdentidad() {
+        return nuevoIdDocIdentidad;
+    }
+
+    // En Registro_DocIdentidadVista.java
+    public void actualizarTablaConResultados(List<DocIdentidad> resultados) {
         DefaultTableModel modelo = (DefaultTableModel) Tabla_Documentos.getModel();
         modelo.setRowCount(0); // Limpiar tabla
 
-        for (DocIdentidad doc : lista) {
+        for (DocIdentidad doc : resultados) {
             modelo.addRow(new Object[]{
                 doc.getIdDocIdentidad(),
                 doc.getTipoDocumento(),
@@ -346,22 +484,22 @@ public class Registro_DocIdentidadVista extends javax.swing.JPanel {
         }
     }
 
-
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JTextField CI_CodigoDoc;
     private javax.swing.JTextField CI_NumeroDocumento;
-    private javax.swing.JTextField CI_TipoDoc;
+    private RSMaterialComponent.RSButtonMaterialIconDos Cl_Buscar;
+    private RSMaterialComponent.RSButtonMaterialIconDos Cl_QuitarFiltro;
     private RSMaterialComponent.RSButtonMaterialIconDos Int_Editar;
     private RSMaterialComponent.RSButtonMaterialIconDos Int_Eliminar;
     private RSMaterialComponent.RSButtonMaterialIconDos Int_Guardar;
     private javax.swing.JTable Tabla_Documentos;
+    private javax.swing.JComboBox<String> jComboBox1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JScrollPane jScrollPane1;
-    private RSMaterialComponent.RSButtonMaterialIconDos lnt_Buscar;
     private extra.PanelRound panelRound4;
     private extra.PanelRound panelRound5;
     private RSMaterialComponent.RSButtonMaterialIconDos rSButtonMaterialIconDos5;
