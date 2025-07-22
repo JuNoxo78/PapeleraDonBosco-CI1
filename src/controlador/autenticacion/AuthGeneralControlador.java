@@ -4,6 +4,7 @@ import controlador.menu_principal.MenuPControlador;
 import dao.autenticacion.EmpleadoDAO;
 import dao.autenticacion.EmpleadoxRolDAO;
 import dao.autenticacion.RolDAO;
+import extra.USBDetector;
 import java.awt.event.ActionEvent;
 import java.util.ArrayList;
 import java.util.List;
@@ -30,13 +31,13 @@ public class AuthGeneralControlador {
 		initController();
 	}
 
-	private void initController() {
+	void initController() {
 		loginVista.setLoginButtonListener((ActionEvent e) -> LoginGeneralButtonEvent());
 		loginVista.setLoginAdminButtonListener((ActionEvent e) -> LoginAdminButtonEvent());
 		loginVista.setVisible(true);
 	}
 
-	private void LoginGeneralButtonEvent() {
+	void LoginGeneralButtonEvent() {
 		empleadoDatos = new ArrayList<>();
 
 		List<EmpleadoxRol> listaEmxRol = empleadoxrolDAO.obtenerTodos();
@@ -86,9 +87,10 @@ public class AuthGeneralControlador {
 
 	}
 
-	private void LoginAdminButtonEvent() {
+	void LoginAdminButtonEvent() {
 		LoginAdmin loginAdmin = new LoginAdmin(loginVista, true);
+		USBDetector usbDetector = new USBDetector();
 
-		new AuthAdminControlador(loginAdmin);
+		new AuthAdminControlador(loginAdmin, usbDetector);
 	}
 }

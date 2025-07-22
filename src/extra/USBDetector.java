@@ -16,12 +16,12 @@ import oshi.software.os.OSFileStore;
 
 public class USBDetector {
 
-	private static final Context context = new Context();
-	private static Set<String> dispositivosPrevios = new HashSet<>();
-	private static ArrayList<String> listaUsbIds = new ArrayList<>();
-	private static boolean inicializado = false;
+	private final Context context = new Context();
+	private Set<String> dispositivosPrevios = new HashSet<>();
+	private ArrayList<String> listaUsbIds = new ArrayList<>();
+	private boolean inicializado = false;
 
-	public static boolean inicializar() {
+	public boolean inicializar() {
 		if (inicializado) {
 			return true;
 		}
@@ -36,7 +36,7 @@ public class USBDetector {
 		}
 	}
 
-	public static void cerrar() {
+	public void cerrar() {
 		if (inicializado) {
 			LibUsb.exit(context);
 			inicializado = false;
@@ -44,11 +44,11 @@ public class USBDetector {
 		}
 	}
 
-	public static ArrayList<String> getListaUsbIds() {
+	public ArrayList<String> getListaUsbIds() {
 		return listaUsbIds;
 	}
 
-	public static void escanearDispositivos() {
+	public void escanearDispositivos() {
 		DeviceList lista = new DeviceList();
 		int resultado = LibUsb.getDeviceList(context, lista);
 
@@ -87,7 +87,7 @@ public class USBDetector {
 		LibUsb.freeDeviceList(lista, true);
 	}
 
-	public static ArrayList<String> obtenerLetraEtiquetaVolumen() {
+	public ArrayList<String> obtenerLetraEtiquetaVolumen() {
 		ArrayList<String> letraEtiqueta = new ArrayList<>();
 		SystemInfo si = new SystemInfo();
 
@@ -109,7 +109,7 @@ public class USBDetector {
 		return letraEtiqueta;
 	}
 
-	public static boolean verificarClavePorHash(File archivo, String keyAuthAdminHash) {
+	public boolean verificarClavePorHash(File archivo, String keyAuthAdminHash) {
 		try (BufferedReader br = new BufferedReader(new FileReader(archivo))) {
 			String claveLeida = br.readLine(); // Leer solo la primera línea
 			if (claveLeida == null) {

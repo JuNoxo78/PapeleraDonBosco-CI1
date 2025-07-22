@@ -101,7 +101,6 @@ public final class AddPedidoVista_SelectClienteControlador {
 			datos[i][3] = c.getTelefono();
 			datos[i][4] = c.getCorreo();
 		}
-		System.out.println("");
 
 		return datos;
 	}

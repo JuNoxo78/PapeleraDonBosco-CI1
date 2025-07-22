@@ -1,21 +1,19 @@
 package vista.pedidos_ventas;
 
+import controlador.pedidos_ventas.AddMIDetalleControlador;
+import extra.AcordeonPanel;
 import extra.SingleColumnLayout;
 import java.awt.Dimension;
+import java.awt.event.ActionListener;
+import javax.swing.JButton;
 import javax.swing.JPanel;
+import javax.swing.JTextField;
 
 public class AddMIDetalle_PedidosVista extends javax.swing.JPanel {
 
-	public AddMIDetalle_PedidosVista() {
+	public AddMIDetalle_PedidosVista(String idPT, AcordeonPanel acordeon, AddPedido_SelectPTVista selectPTVista, AddPedidoVista agregarPedidoVista) {
 		initComponents();
-		jp_miDetalleContenedor.setLayout(new SingleColumnLayout(0));
-
-		for(int i = 0; i < 2; i++) {
-			AddMIDetalle_Card cardsMIPedidoDetalle = new AddMIDetalle_Card();
-			JPanel cardMIPedidoDetalle = cardsMIPedidoDetalle.getCard();
-			cardMIPedidoDetalle.setPreferredSize(new Dimension(80, cardMIPedidoDetalle.getPreferredSize().height));
-			jp_miDetalleContenedor.add(cardMIPedidoDetalle);
-		}
+		AddMIDetalleControlador addMIDetalleControlador = new AddMIDetalleControlador(this, idPT, acordeon, selectPTVista, agregarPedidoVista);
 	}
 
 	@SuppressWarnings("unchecked")
@@ -24,7 +22,11 @@ public class AddMIDetalle_PedidosVista extends javax.swing.JPanel {
 
         jp_miDetalleContenedor = new javax.swing.JPanel();
         jButton1 = new javax.swing.JButton();
-        jButton2 = new javax.swing.JButton();
+        jb_addManualmente = new javax.swing.JButton();
+        jLabel1 = new javax.swing.JLabel();
+        jLabel2 = new javax.swing.JLabel();
+        jt_precioUnitario = new javax.swing.JTextField();
+        jt_precioTotal = new javax.swing.JTextField();
 
         jp_miDetalleContenedor.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(153, 153, 153)));
 
@@ -36,17 +38,21 @@ public class AddMIDetalle_PedidosVista extends javax.swing.JPanel {
         );
         jp_miDetalleContenedorLayout.setVerticalGroup(
             jp_miDetalleContenedorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 261, Short.MAX_VALUE)
+            .addGap(0, 38, Short.MAX_VALUE)
         );
 
         jButton1.setText("Añadir mediante Plantillas");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
-            }
-        });
+        jButton1.setEnabled(false);
 
-        jButton2.setText("Añadir Manualmente");
+        jb_addManualmente.setText("Añadir Manualmente");
+
+        jLabel1.setText("Precio Unitario de PT:");
+
+        jLabel2.setText("Precio Total:");
+
+        jt_precioUnitario.setEditable(false);
+
+        jt_precioTotal.setEditable(false);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
@@ -59,7 +65,16 @@ public class AddMIDetalle_PedidosVista extends javax.swing.JPanel {
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(jButton1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jButton2, javax.swing.GroupLayout.DEFAULT_SIZE, 150, Short.MAX_VALUE)))
+                        .addComponent(jb_addManualmente, javax.swing.GroupLayout.DEFAULT_SIZE, 150, Short.MAX_VALUE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel1)
+                            .addComponent(jLabel2))
+                        .addGap(12, 12, 12)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(jt_precioUnitario, javax.swing.GroupLayout.DEFAULT_SIZE, 80, Short.MAX_VALUE)
+                            .addComponent(jt_precioTotal))
+                        .addGap(0, 0, Short.MAX_VALUE)))
                 .addContainerGap())
         );
         layout.setVerticalGroup(
@@ -68,21 +83,54 @@ public class AddMIDetalle_PedidosVista extends javax.swing.JPanel {
                 .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jButton1)
-                    .addComponent(jButton2))
+                    .addComponent(jb_addManualmente))
+                .addGap(10, 10, 10)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel1)
+                    .addComponent(jt_precioUnitario, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jp_miDetalleContenedor, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel2)
+                    .addComponent(jt_precioTotal, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(10, 10, 10)
+                .addComponent(jp_miDetalleContenedor, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addContainerGap())
         );
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jButton1ActionPerformed
 
+	// Getter
+	//// Objetos Lógicos
+
+	//// Objetos Visuales
+	public JPanel getJp_miDetalleContenedor() {
+		return jp_miDetalleContenedor;
+	}
+
+	public JTextField getJt_precioUnitario() {
+		return jt_precioUnitario;
+	}
+
+	public JTextField getJt_precioTotal() {
+		return jt_precioTotal;
+	}
+
+	public JButton getJb_addManualmente() {
+		return jb_addManualmente;
+	}
+
+	// Set Events
+	public void setJb_addManualmenteEvent(ActionListener listener) {
+		jb_addManualmente.addActionListener(listener);
+	}
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
+    private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
+    private javax.swing.JButton jb_addManualmente;
     private javax.swing.JPanel jp_miDetalleContenedor;
+    private javax.swing.JTextField jt_precioTotal;
+    private javax.swing.JTextField jt_precioUnitario;
     // End of variables declaration//GEN-END:variables
 }

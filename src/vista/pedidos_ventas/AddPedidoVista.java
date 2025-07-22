@@ -8,6 +8,8 @@ import java.awt.Image;
 import java.awt.Toolkit;
 import java.awt.event.ActionListener;
 import java.awt.event.FocusListener;
+import java.util.ArrayList;
+import java.util.List;
 import javax.swing.JButton;
 import javax.swing.JComboBox;
 import javax.swing.JPanel;
@@ -18,6 +20,8 @@ import javax.swing.event.DocumentListener;
 import modelo.autenticacion.DocIdentidad;
 import modelo.clientes.Cliente;
 import modelo.pedidos_ventas.ComprobantePago;
+import modelo.pedidos_ventas.DetallePedido;
+import modelo.pedidos_ventas.ListaPedidoMI;
 import modelo.pedidos_ventas.Pedido;
 import modelo.pedidos_ventas.Venta;
 
@@ -27,6 +31,10 @@ public class AddPedidoVista extends javax.swing.JDialog {
 	private Pedido pedidoCreado = new Pedido();
 	private Venta ventaCreada = new Venta();
 	private ComprobantePago comprobantePago = new ComprobantePago();
+	private ArrayList<DetallePedido> listDetallePedido = new ArrayList<>();
+	private ListaPedidoMI listaPedidoMI = new ListaPedidoMI();
+	private List<String> idsPTSeleccionados;
+	private List<String> idsMISeleccionados;
 
 	public AddPedidoVista(java.awt.Frame parent, boolean modal) {
 		super(parent, modal);
@@ -34,28 +42,42 @@ public class AddPedidoVista extends javax.swing.JDialog {
 		this.setLocationRelativeTo(null);
 		Image icono = Toolkit.getDefaultToolkit().getImage(getClass().getResource("/assets/icon32x32.png"));
 		this.setIconImage(icono);
+	}
 
-		AcordeonPanel acordeon = new AcordeonPanel();
-		acordeon.setEspacioEntreSecciones(0);
+	public ArrayList<DetallePedido> getListDetallePedido() {
+		return listDetallePedido;
+	}
 
-		acordeon.agregarSeccion("PT1 (idPT)", new AddMIDetalle_PedidosVista());
-		acordeon.agregarSeccion("PT2 (idPT)", new AddMIDetalle_PedidosVista());
-		acordeon.agregarSeccion("PT3 (idPT)", new AddMIDetalle_PedidosVista());
-		JPanel envoltorio = new JPanel(new BorderLayout());
-		envoltorio.add(acordeon, BorderLayout.NORTH);
+	public void setListDetallePedido(ArrayList<DetallePedido> listDetallePedido) {
+		this.listDetallePedido = listDetallePedido;
+	}
 
-		JScrollPane scrollPane = new JScrollPane(envoltorio);
-		scrollPane.setBorder(null);
-		scrollPane.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_AS_NEEDED);
-		scrollPane.setHorizontalScrollBarPolicy(JScrollPane.HORIZONTAL_SCROLLBAR_NEVER);
-		scrollPane.getVerticalScrollBar().setUnitIncrement(16); // Para scroll más fluido
+	public ListaPedidoMI getListaPedidoMI() {
+		return listaPedidoMI;
+	}
 
-		jp_contenido.setLayout(new BorderLayout()); // o BoxLayout si prefieres
+	public void setListaPedidoMI(ListaPedidoMI listaPedidoMI) {
+		this.listaPedidoMI = listaPedidoMI;
+	}
 
-		jp_contenido.removeAll(); // Opcional, si deseas limpiar antes
-		jp_contenido.add(scrollPane, BorderLayout.CENTER);
-		jp_contenido.revalidate();
-		jp_contenido.repaint();
+	public void setIdsPTSeleccionados(List<String> idsPTSeleccionados) {
+		this.idsPTSeleccionados = idsPTSeleccionados;
+	}
+
+	public void setIdsMISeleccionados(List<String> idsMISeleccionados) {
+		this.idsMISeleccionados = idsMISeleccionados;
+	}
+
+	public List<String> getIdsMISeleccionados() {
+		return idsMISeleccionados;
+	}
+
+	public List<String> getIdsPTSeleccionados() {
+		return idsPTSeleccionados;
+	}
+
+	public JPanel getJp_contenido() {
+		return jp_contenido;
 	}
 
 	public JComboBox<String> getJcb_metodoPago() {

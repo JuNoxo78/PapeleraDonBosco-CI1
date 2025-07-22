@@ -18,7 +18,6 @@ import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
 import java.math.BigDecimal;
 import java.nio.file.Path;
-import java.nio.file.Paths;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.ZoneId;
@@ -35,7 +34,7 @@ import modelo.pedidos_ventas.Pedido;
 import modelo.pedidos_ventas.Venta;
 import vista.menu_principal.MenuPrincipal_2;
 import vista.pedidos_ventas.AddPedidoVista;
-import vista.pedidos_ventas.AddPT_PedidosVista;
+import vista.pedidos_ventas.AddPedido_SelectPTVista;
 import vista.pedidos_ventas.AddPedidoVista_SelectCliente;
 
 public final class AddPedidoControlador {
@@ -446,8 +445,8 @@ public final class AddPedidoControlador {
 				break;
 			case "Listo para Entrega":
 				jcbEstadoPedido.setBackground(new Color(200, 255, 183)); // Verde claro
-			// Aparición de mensajes, depende si se ha agregado o no productos terminados al pedido
-			// Se verifica que estén en estock
+				// Aparición de mensajes, depende si se ha agregado o no productos terminados al pedido
+				// Se verifica que estén en estock
 //				JOptionPane.showMessageDialog(null,
 //						"El pedido está listo para entregar.",
 //						"Estado actualizado",
@@ -482,8 +481,8 @@ public final class AddPedidoControlador {
 	}
 
 	public void JbPedidoAddPT() {
-		AddPT_PedidosVista pedidoAddPT = new AddPT_PedidosVista(((Frame) agregarPedidosVista.getOwner()), true);
-		pedidoAddPT.setVisible(true);
+		AddPedido_SelectPTVista pedidoAddPT = new AddPedido_SelectPTVista(((Frame) agregarPedidosVista.getOwner()), true);
+		new AddPedido_SelectPTControlador(pedidoAddPT, agregarPedidosVista);
 	}
 
 	public void warningEventFechaEntrega() {
@@ -543,4 +542,5 @@ public final class AddPedidoControlador {
 
 		return (!fecha.isBefore(hoy)) && fecha.isBefore(limiteSuperior);
 	}
+
 }
