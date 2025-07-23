@@ -1,0 +1,9 @@
+<component name="libraryTable">
+  <library name="PapeleraDonBosco-CI1">
+    <CLASSES>
+      <root url="jar://$PROJECT_DIR$/dist/PapeleraDonBosco-CI1.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES />
+  </library>
+</component>
