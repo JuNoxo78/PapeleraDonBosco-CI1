@@ -2,8 +2,6 @@ package vista.pedidos_ventas;
 
 import RSMaterialComponent.RSButtonFormaIcon;
 import com.toedter.calendar.JDateChooser;
-import extra.AcordeonPanel;
-import java.awt.BorderLayout;
 import java.awt.Image;
 import java.awt.Toolkit;
 import java.awt.event.ActionListener;
@@ -13,7 +11,6 @@ import java.util.List;
 import javax.swing.JButton;
 import javax.swing.JComboBox;
 import javax.swing.JPanel;
-import javax.swing.JScrollPane;
 import javax.swing.JTextArea;
 import javax.swing.JTextField;
 import javax.swing.event.DocumentListener;
@@ -32,7 +29,7 @@ public class AddPedidoVista extends javax.swing.JDialog {
 	private Venta ventaCreada = new Venta();
 	private ComprobantePago comprobantePago = new ComprobantePago();
 	private ArrayList<DetallePedido> listDetallePedido = new ArrayList<>();
-	private ListaPedidoMI listaPedidoMI = new ListaPedidoMI();
+	private ArrayList<ListaPedidoMI> listaPedidoMI = new ArrayList<>();
 	private List<String> idsPTSeleccionados;
 	private List<String> idsMISeleccionados;
 
@@ -52,11 +49,11 @@ public class AddPedidoVista extends javax.swing.JDialog {
 		this.listDetallePedido = listDetallePedido;
 	}
 
-	public ListaPedidoMI getListaPedidoMI() {
+	public ArrayList<ListaPedidoMI> getListaPedidoMI() {
 		return listaPedidoMI;
 	}
 
-	public void setListaPedidoMI(ListaPedidoMI listaPedidoMI) {
+	public void setListaPedidoMI(ArrayList<ListaPedidoMI> listaPedidoMI) {
 		this.listaPedidoMI = listaPedidoMI;
 	}
 

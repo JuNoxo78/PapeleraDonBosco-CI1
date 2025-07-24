@@ -286,9 +286,9 @@ public class Registro_MPVista extends javax.swing.JPanel {
         setBackground(new java.awt.Color(239, 235, 233));
 
         jLabel3.setBackground(new java.awt.Color(16, 16, 16));
-        jLabel3.setFont(new java.awt.Font("Segoe UI Black", 0, 36)); // NOI18N
+        jLabel3.setFont(new java.awt.Font("Segoe UI Black", 0, 20)); // NOI18N
         jLabel3.setForeground(new java.awt.Color(16, 16, 16));
-        jLabel3.setText("Registro de Productos de materia Prima");
+        jLabel3.setText("Registro de Materias Primas");
 
         jLabel4.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         jLabel4.setForeground(new java.awt.Color(38, 7, 6));
@@ -303,30 +303,36 @@ public class Registro_MPVista extends javax.swing.JPanel {
         });
 
         panelRound1.setBackground(new java.awt.Color(255, 255, 255));
-        panelRound1.setRoundBottomLeft(75);
-        panelRound1.setRoundBottomRight(75);
-        panelRound1.setRoundTopLeft(75);
-        panelRound1.setRoundTopRight(75);
+        panelRound1.setRoundBottomLeft(30);
+        panelRound1.setRoundBottomRight(30);
+        panelRound1.setRoundTopLeft(30);
+        panelRound1.setRoundTopRight(30);
 
-        jLabel5.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        Pri_Codigo.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                Pri_CodigoActionPerformed(evt);
+            }
+        });
+
+        jLabel5.setFont(new java.awt.Font("Segoe UI", 1, 13)); // NOI18N
         jLabel5.setText("Codigo:");
 
-        jLabel6.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        jLabel6.setFont(new java.awt.Font("Segoe UI", 1, 13)); // NOI18N
         jLabel6.setText("Nombre:");
 
-        jLabel7.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        jLabel7.setFont(new java.awt.Font("Segoe UI", 1, 13)); // NOI18N
         jLabel7.setText("Stock:");
 
-        jLabel8.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        jLabel8.setFont(new java.awt.Font("Segoe UI", 1, 13)); // NOI18N
         jLabel8.setText("Fecha Entrada:");
 
-        jLabel10.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        jLabel10.setFont(new java.awt.Font("Segoe UI", 1, 13)); // NOI18N
         jLabel10.setText("Descripcion");
 
-        jLabel19.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        jLabel19.setFont(new java.awt.Font("Segoe UI", 1, 13)); // NOI18N
         jLabel19.setText("Medida");
 
-        jLabel21.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        jLabel21.setFont(new java.awt.Font("Segoe UI", 1, 13)); // NOI18N
         jLabel21.setText("Tipo MP");
 
         javax.swing.GroupLayout panelRound1Layout = new javax.swing.GroupLayout(panelRound1);
@@ -334,75 +340,75 @@ public class Registro_MPVista extends javax.swing.JPanel {
         panelRound1Layout.setHorizontalGroup(
             panelRound1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(panelRound1Layout.createSequentialGroup()
-                .addGap(49, 49, 49)
+                .addGap(30, 30, 30)
                 .addGroup(panelRound1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(jLabel21)
                     .addComponent(jLabel19)
                     .addComponent(jLabel10)
-                    .addComponent(Pri_Descripcion)
                     .addComponent(jLabel8)
                     .addComponent(jLabel7)
-                    .addComponent(Pri_Stock)
                     .addComponent(jLabel6)
-                    .addComponent(Pri_Nombre)
                     .addComponent(jLabel5)
                     .addComponent(Pri_Codigo)
-                    .addComponent(Pri_Fecha, javax.swing.GroupLayout.DEFAULT_SIZE, 252, Short.MAX_VALUE)
+                    .addComponent(Pri_Nombre)
+                    .addComponent(Pri_Stock)
+                    .addComponent(Pri_Fecha, javax.swing.GroupLayout.DEFAULT_SIZE, 224, Short.MAX_VALUE)
+                    .addComponent(Pri_Descripcion)
                     .addComponent(Pri_Medida)
                     .addComponent(Pri_TipoMP))
-                .addContainerGap(54, Short.MAX_VALUE))
+                .addGap(30, 30, 30))
         );
         panelRound1Layout.setVerticalGroup(
             panelRound1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(panelRound1Layout.createSequentialGroup()
-                .addGap(15, 15, 15)
+                .addGap(20, 20, 20)
                 .addComponent(jLabel5)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(Pri_Codigo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(Pri_Codigo, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jLabel6)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(Pri_Nombre, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(Pri_Nombre, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jLabel7)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(Pri_Stock, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(Pri_Stock, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jLabel8)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(Pri_Fecha, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(Pri_Fecha, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jLabel10)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(Pri_Descripcion, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(Pri_Descripcion, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jLabel19)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(Pri_Medida, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(Pri_Medida, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jLabel21)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(Pri_TipoMP, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(25, Short.MAX_VALUE))
+                .addComponent(Pri_TipoMP, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(186, Short.MAX_VALUE))
         );
 
         panelRound2.setBackground(new java.awt.Color(255, 255, 255));
-        panelRound2.setRoundBottomLeft(75);
-        panelRound2.setRoundBottomRight(75);
-        panelRound2.setRoundTopLeft(75);
-        panelRound2.setRoundTopRight(75);
+        panelRound2.setRoundBottomLeft(30);
+        panelRound2.setRoundBottomRight(30);
+        panelRound2.setRoundTopLeft(30);
+        panelRound2.setRoundTopRight(30);
 
-        jLabel15.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        jLabel15.setFont(new java.awt.Font("Segoe UI", 1, 15)); // NOI18N
         jLabel15.setForeground(new java.awt.Color(0, 12, 26));
         jLabel15.setText("Datos del Proveedor");
 
-        jLabel16.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        jLabel16.setFont(new java.awt.Font("Segoe UI", 1, 13)); // NOI18N
         jLabel16.setText("Codigo Proveedor:");
 
-        jLabel17.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        jLabel17.setFont(new java.awt.Font("Segoe UI", 1, 13)); // NOI18N
         jLabel17.setText("Nombres:");
 
-        jLabel18.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        jLabel18.setFont(new java.awt.Font("Segoe UI", 1, 13)); // NOI18N
         jLabel18.setText("Apellidos:");
 
         Pri_ApellidosPro.addActionListener(new java.awt.event.ActionListener() {
@@ -423,51 +429,51 @@ public class Registro_MPVista extends javax.swing.JPanel {
         panelRound2Layout.setHorizontalGroup(
             panelRound2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(panelRound2Layout.createSequentialGroup()
-                .addGap(37, 37, 37)
+                .addGap(20, 20, 20)
+                .addComponent(rSButtonMaterialIconDos4, javax.swing.GroupLayout.PREFERRED_SIZE, 78, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(10, 10, 10)
                 .addGroup(panelRound2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel15)
-                    .addGroup(panelRound2Layout.createSequentialGroup()
-                        .addGroup(panelRound2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel16)
-                            .addComponent(Pri_CodigoPro, javax.swing.GroupLayout.PREFERRED_SIZE, 213, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(18, 18, 18)
-                        .addGroup(panelRound2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(Pri_NombrePro, javax.swing.GroupLayout.PREFERRED_SIZE, 213, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel17))
-                        .addGap(18, 18, 18)
-                        .addGroup(panelRound2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(Pri_ApellidosPro, javax.swing.GroupLayout.PREFERRED_SIZE, 213, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel18))))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 32, Short.MAX_VALUE)
-                .addComponent(rSButtonMaterialIconDos4, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(41, 41, 41))
+                    .addComponent(jLabel16)
+                    .addComponent(Pri_CodigoPro, javax.swing.GroupLayout.DEFAULT_SIZE, 222, Short.MAX_VALUE))
+                .addGap(18, 18, 18)
+                .addGroup(panelRound2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(Pri_NombrePro, javax.swing.GroupLayout.DEFAULT_SIZE, 224, Short.MAX_VALUE)
+                    .addComponent(jLabel17))
+                .addGap(18, 18, 18)
+                .addGroup(panelRound2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(Pri_ApellidosPro, javax.swing.GroupLayout.DEFAULT_SIZE, 224, Short.MAX_VALUE)
+                    .addComponent(jLabel18))
+                .addGap(20, 20, 20))
         );
         panelRound2Layout.setVerticalGroup(
             panelRound2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(panelRound2Layout.createSequentialGroup()
-                .addGap(21, 21, 21)
                 .addGroup(panelRound2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(panelRound2Layout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(rSButtonMaterialIconDos4, javax.swing.GroupLayout.PREFERRED_SIZE, 78, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, panelRound2Layout.createSequentialGroup()
+                        .addGap(20, 20, 20)
                         .addComponent(jLabel15)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGap(12, 12, 12)
                         .addGroup(panelRound2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jLabel16)
                             .addComponent(jLabel17)
-                            .addComponent(jLabel18)))
-                    .addComponent(rSButtonMaterialIconDos4, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(panelRound2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(Pri_CodigoPro, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(Pri_NombrePro, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(Pri_ApellidosPro, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(32, Short.MAX_VALUE))
+                            .addComponent(jLabel18))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(panelRound2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(Pri_CodigoPro, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(Pri_NombrePro, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(Pri_ApellidosPro, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                .addGap(20, 20, 20))
         );
 
         panelRound3.setBackground(new java.awt.Color(255, 255, 255));
-        panelRound3.setRoundBottomLeft(75);
-        panelRound3.setRoundBottomRight(75);
-        panelRound3.setRoundTopLeft(75);
-        panelRound3.setRoundTopRight(75);
+        panelRound3.setRoundBottomLeft(30);
+        panelRound3.setRoundBottomRight(30);
+        panelRound3.setRoundTopLeft(30);
+        panelRound3.setRoundTopRight(30);
 
         Tabla_Primas.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -484,16 +490,16 @@ public class Registro_MPVista extends javax.swing.JPanel {
         panelRound3Layout.setHorizontalGroup(
             panelRound3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelRound3Layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 766, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(30, 30, 30))
+                .addGap(20, 20, 20)
+                .addComponent(jScrollPane1)
+                .addGap(20, 20, 20))
         );
         panelRound3Layout.setVerticalGroup(
             panelRound3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelRound3Layout.createSequentialGroup()
-                .addContainerGap(51, Short.MAX_VALUE)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 479, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(22, 22, 22))
+            .addGroup(panelRound3Layout.createSequentialGroup()
+                .addGap(20, 20, 20)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 491, Short.MAX_VALUE)
+                .addGap(20, 20, 20))
         );
 
         Pri_Eliminar.setBackground(new java.awt.Color(16, 16, 16));
@@ -538,59 +544,60 @@ public class Registro_MPVista extends javax.swing.JPanel {
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(29, 29, 29)
+                .addGap(20, 20, 20)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
+                        .addGap(0, 0, 0)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(panelRound1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addGroup(layout.createSequentialGroup()
-                                .addComponent(Pri_Eliminar, javax.swing.GroupLayout.PREFERRED_SIZE, 151, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(Pri_Guardar, javax.swing.GroupLayout.PREFERRED_SIZE, 151, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(Pri_Editar, javax.swing.GroupLayout.PREFERRED_SIZE, 151, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(Pri_Buscar, javax.swing.GroupLayout.PREFERRED_SIZE, 151, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                        .addGap(30, 30, 30)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(panelRound3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(panelRound2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                                .addComponent(Pri_Editar, javax.swing.GroupLayout.PREFERRED_SIZE, 1, Short.MAX_VALUE)
+                                .addGap(10, 10, 10)
+                                .addComponent(Pri_Buscar, javax.swing.GroupLayout.PREFERRED_SIZE, 1, Short.MAX_VALUE))
+                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                                .addGroup(layout.createSequentialGroup()
+                                    .addComponent(Pri_Eliminar, javax.swing.GroupLayout.PREFERRED_SIZE, 1, Short.MAX_VALUE)
+                                    .addGap(10, 10, 10)
+                                    .addComponent(Pri_Guardar, javax.swing.GroupLayout.PREFERRED_SIZE, 1, Short.MAX_VALUE))
+                                .addComponent(panelRound1, javax.swing.GroupLayout.PREFERRED_SIZE, 283, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addGap(12, 12, 12)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(panelRound2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(panelRound3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(rSButtonMaterialIconDos20, javax.swing.GroupLayout.PREFERRED_SIZE, 77, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(rSButtonMaterialIconDos20, javax.swing.GroupLayout.PREFERRED_SIZE, 55, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jLabel4)
                             .addComponent(jLabel3))))
-                .addContainerGap(35, Short.MAX_VALUE))
+                .addGap(20, 20, 20))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(22, 22, 22)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(rSButtonMaterialIconDos20, javax.swing.GroupLayout.PREFERRED_SIZE, 77, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(20, 20, 20)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(rSButtonMaterialIconDos20, javax.swing.GroupLayout.PREFERRED_SIZE, 55, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(jLabel3)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(jLabel4)))
-                .addGap(30, 30, 30)
+                .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(panelRound2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)
-                        .addComponent(panelRound3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addGap(12, 12, 12)
+                        .addComponent(panelRound3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(panelRound1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 108, Short.MAX_VALUE)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(Pri_Eliminar, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(Pri_Guardar, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(panelRound1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addGap(12, 12, 12)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(Pri_Eliminar, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(Pri_Guardar, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(Pri_Editar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(Pri_Buscar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(50, 50, 50))))
+                            .addComponent(Pri_Editar, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(Pri_Buscar, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                .addGap(20, 20, 20))
         );
     }// </editor-fold>//GEN-END:initComponents
 
@@ -827,6 +834,10 @@ public class Registro_MPVista extends javax.swing.JPanel {
         Buscar_ProveedorVista BusProv = new Buscar_ProveedorVista();
         BusProv.setVisible(true);
     }//GEN-LAST:event_rSButtonMaterialIconDos4ActionPerformed
+
+    private void Pri_CodigoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Pri_CodigoActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_Pri_CodigoActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

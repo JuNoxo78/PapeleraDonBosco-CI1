@@ -33,21 +33,21 @@
                       </Group>
                       <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
                   </Group>
-                  <Group type="102" alignment="0" attributes="0">
-                      <Group type="103" groupAlignment="1" attributes="0">
-                          <Group type="102" alignment="1" attributes="0">
-                              <Component id="Cl_Editar" min="-2" pref="151" max="-2" attributes="0"/>
-                              <EmptySpace max="-2" attributes="0"/>
-                              <Component id="Cl_Buscar" min="-2" pref="155" max="-2" attributes="0"/>
+                  <Group type="102" attributes="0">
+                      <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                          <Group type="102" alignment="0" attributes="0">
+                              <Component id="Cl_Editar" pref="0" max="32767" attributes="0"/>
+                              <EmptySpace min="-2" pref="10" max="-2" attributes="0"/>
+                              <Component id="Cl_Buscar" pref="0" max="32767" attributes="0"/>
                           </Group>
-                          <Group type="102" attributes="0">
-                              <Component id="Cl_Guardar" min="-2" pref="151" max="-2" attributes="0"/>
-                              <EmptySpace max="-2" attributes="0"/>
-                              <Component id="Cl_Eliminar" min="-2" pref="155" max="-2" attributes="0"/>
+                          <Component id="panelRound4" alignment="1" max="32767" attributes="0"/>
+                          <Group type="102" alignment="0" attributes="0">
+                              <Component id="Cl_Eliminar" pref="0" max="32767" attributes="0"/>
+                              <EmptySpace min="-2" pref="10" max="-2" attributes="0"/>
+                              <Component id="Cl_Guardar" pref="0" max="32767" attributes="0"/>
                           </Group>
-                          <Component id="panelRound4" min="-2" max="-2" attributes="0"/>
                       </Group>
-                      <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                      <EmptySpace min="-2" pref="12" max="-2" attributes="0"/>
                       <Component id="panelRound5" max="32767" attributes="0"/>
                       <EmptySpace min="-2" pref="20" max="-2" attributes="0"/>
                   </Group>
@@ -70,11 +70,11 @@
               <EmptySpace type="separate" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="0" attributes="0">
                   <Group type="102" attributes="0">
-                      <Component id="panelRound4" max="-2" attributes="0"/>
+                      <Component id="panelRound4" max="32767" attributes="0"/>
                       <EmptySpace min="-2" pref="12" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="3" attributes="0">
-                          <Component id="Cl_Guardar" alignment="3" min="-2" pref="40" max="-2" attributes="0"/>
                           <Component id="Cl_Eliminar" alignment="3" min="-2" pref="40" max="-2" attributes="0"/>
+                          <Component id="Cl_Guardar" alignment="3" min="-2" pref="40" max="-2" attributes="0"/>
                       </Group>
                       <EmptySpace max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="3" attributes="0">
@@ -143,21 +143,21 @@
                   <EmptySpace min="-2" pref="30" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="0" attributes="0">
                       <Component id="jLabel3" min="-2" max="-2" attributes="0"/>
-                      <Component id="Cl_Contraseña" min="-2" pref="252" max="-2" attributes="0"/>
+                      <Component id="Cl_Contraseña" pref="223" max="32767" attributes="0"/>
                       <Component id="jLabel10" min="-2" max="-2" attributes="0"/>
-                      <Component id="Cl_Correo" min="-2" pref="252" max="-2" attributes="0"/>
+                      <Component id="Cl_Correo" max="32767" attributes="0"/>
                       <Component id="jLabel9" min="-2" max="-2" attributes="0"/>
-                      <Component id="Cl_Telefono" min="-2" pref="252" max="-2" attributes="0"/>
+                      <Component id="Cl_Telefono" max="32767" attributes="0"/>
                       <Component id="jLabel8" min="-2" max="-2" attributes="0"/>
-                      <Component id="Cl_Direccion" min="-2" pref="252" max="-2" attributes="0"/>
+                      <Component id="Cl_Direccion" max="32767" attributes="0"/>
                       <Component id="jLabel7" min="-2" max="-2" attributes="0"/>
-                      <Component id="Cl_Dni" min="-2" pref="252" max="-2" attributes="0"/>
+                      <Component id="Cl_Dni" max="32767" attributes="0"/>
                       <Component id="jLabel6" min="-2" max="-2" attributes="0"/>
-                      <Component id="Cl_Apellidos" min="-2" pref="252" max="-2" attributes="0"/>
+                      <Component id="Cl_Apellidos" max="32767" attributes="0"/>
                       <Component id="jLabel5" min="-2" max="-2" attributes="0"/>
-                      <Component id="Cl_Nombre" min="-2" pref="252" max="-2" attributes="0"/>
+                      <Component id="Cl_Nombre" max="32767" attributes="0"/>
                       <Component id="jLabel4" min="-2" max="-2" attributes="0"/>
-                      <Component id="Cl_Codigo" min="-2" pref="252" max="-2" attributes="0"/>
+                      <Component id="Cl_Codigo" max="32767" attributes="0"/>
                   </Group>
                   <EmptySpace min="-2" pref="30" max="-2" attributes="0"/>
               </Group>
@@ -169,36 +169,36 @@
                   <EmptySpace min="-2" pref="20" max="-2" attributes="0"/>
                   <Component id="jLabel3" min="-2" max="-2" attributes="0"/>
                   <EmptySpace max="-2" attributes="0"/>
-                  <Component id="Cl_Codigo" max="-2" attributes="0"/>
+                  <Component id="Cl_Codigo" min="-2" pref="22" max="-2" attributes="0"/>
                   <EmptySpace max="-2" attributes="0"/>
                   <Component id="jLabel4" min="-2" max="-2" attributes="0"/>
                   <EmptySpace max="-2" attributes="0"/>
-                  <Component id="Cl_Nombre" max="-2" attributes="0"/>
+                  <Component id="Cl_Nombre" min="-2" pref="22" max="-2" attributes="0"/>
                   <EmptySpace max="-2" attributes="0"/>
                   <Component id="jLabel5" min="-2" max="-2" attributes="0"/>
                   <EmptySpace max="-2" attributes="0"/>
-                  <Component id="Cl_Apellidos" max="-2" attributes="0"/>
+                  <Component id="Cl_Apellidos" min="-2" pref="22" max="-2" attributes="0"/>
                   <EmptySpace max="-2" attributes="0"/>
                   <Component id="jLabel6" min="-2" max="-2" attributes="0"/>
                   <EmptySpace max="-2" attributes="0"/>
-                  <Component id="Cl_Dni" max="-2" attributes="0"/>
+                  <Component id="Cl_Dni" min="-2" pref="22" max="-2" attributes="0"/>
                   <EmptySpace max="-2" attributes="0"/>
                   <Component id="jLabel7" min="-2" max="-2" attributes="0"/>
                   <EmptySpace max="-2" attributes="0"/>
-                  <Component id="Cl_Direccion" max="-2" attributes="0"/>
+                  <Component id="Cl_Direccion" min="-2" pref="22" max="-2" attributes="0"/>
                   <EmptySpace max="-2" attributes="0"/>
                   <Component id="jLabel8" min="-2" max="-2" attributes="0"/>
                   <EmptySpace max="-2" attributes="0"/>
-                  <Component id="Cl_Telefono" max="-2" attributes="0"/>
+                  <Component id="Cl_Telefono" min="-2" pref="22" max="-2" attributes="0"/>
                   <EmptySpace max="-2" attributes="0"/>
                   <Component id="jLabel10" min="-2" max="-2" attributes="0"/>
                   <EmptySpace max="-2" attributes="0"/>
-                  <Component id="Cl_Correo" max="-2" attributes="0"/>
+                  <Component id="Cl_Correo" min="-2" pref="22" max="-2" attributes="0"/>
                   <EmptySpace max="-2" attributes="0"/>
                   <Component id="jLabel9" min="-2" max="-2" attributes="0"/>
                   <EmptySpace max="-2" attributes="0"/>
-                  <Component id="Cl_Contraseña" max="-2" attributes="0"/>
-                  <EmptySpace min="-2" pref="20" max="-2" attributes="0"/>
+                  <Component id="Cl_Contraseña" min="-2" pref="22" max="-2" attributes="0"/>
+                  <EmptySpace pref="44" max="32767" attributes="0"/>
               </Group>
           </Group>
         </DimensionLayout>
@@ -236,6 +236,9 @@
           </Properties>
         </Component>
         <Component class="javax.swing.JTextField" name="Cl_Apellidos">
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="Cl_ApellidosActionPerformed"/>
+          </Events>
         </Component>
         <Component class="javax.swing.JLabel" name="jLabel6">
           <Properties>
@@ -305,7 +308,7 @@
           <Group type="103" groupAlignment="0" attributes="0">
               <Group type="102" alignment="0" attributes="0">
                   <EmptySpace min="-2" pref="20" max="-2" attributes="0"/>
-                  <Component id="jScrollPane1" pref="655" max="32767" attributes="0"/>
+                  <Component id="jScrollPane1" pref="671" max="32767" attributes="0"/>
                   <EmptySpace min="-2" pref="20" max="-2" attributes="0"/>
               </Group>
           </Group>

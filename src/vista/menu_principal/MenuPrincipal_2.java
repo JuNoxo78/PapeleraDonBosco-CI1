@@ -11,6 +11,7 @@ import javax.swing.JPanel;
 import modelo.autenticacion.Empleado;
 import vista.autenticacion.Registro_EmpleadoVista;
 import vista.clientes.Registro_ClienteVista;
+import vista.compras.Registro_CompraVista;
 import vista.informacion.InformacionVista;
 import vista.inventario.materiales_intermedios.Registro_MIVista;
 import vista.inventario.materias_primas.Registro_MPVista;
@@ -33,6 +34,7 @@ public class MenuPrincipal_2 extends javax.swing.JFrame {
 
         HomeVista h = new HomeVista();
         h.setLocation(0, 0);
+        btn_home.setSelected(true);
         ContentPanel.add(h, BorderLayout.CENTER);
         ContentPanel.revalidate();
         ContentPanel.repaint();
@@ -112,7 +114,7 @@ public class MenuPrincipal_2 extends javax.swing.JFrame {
             panelRound1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(panelRound1Layout.createSequentialGroup()
                 .addGap(12, 12, 12)
-                .addComponent(jl_cargo)
+                .addComponent(jl_cargo, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jl_nombre)
                 .addGap(12, 12, 12))
@@ -224,6 +226,11 @@ public class MenuPrincipal_2 extends javax.swing.JFrame {
         btn_compras.setForma(RSMaterialComponent.RSButtonFormaIcon.FORMA.RECT);
         btn_compras.setIcons(rojeru_san.efectos.ValoresEnum.ICONS.CREDIT_CARD);
         btn_compras.setPositionIcon(rojeru_san.efectos.ValoresEnum.POSITIONICON.LEFT);
+        btn_compras.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_comprasActionPerformed(evt);
+            }
+        });
 
         btn_informacion.setBackground(new java.awt.Color(28, 27, 32));
         btn_informacion.setText("  Información");
@@ -249,7 +256,7 @@ public class MenuPrincipal_2 extends javax.swing.JFrame {
         LateralPanelLayout.setHorizontalGroup(
             LateralPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, LateralPanelLayout.createSequentialGroup()
-                .addContainerGap()
+                .addGap(10, 10, 10)
                 .addGroup(LateralPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(jLabel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -299,7 +306,7 @@ public class MenuPrincipal_2 extends javax.swing.JFrame {
                 .addComponent(btn_materialIntermedio, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(btn_compras, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 146, Short.MAX_VALUE)
                 .addComponent(jSeparator2, javax.swing.GroupLayout.PREFERRED_SIZE, 3, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jLabel3)
@@ -307,9 +314,9 @@ public class MenuPrincipal_2 extends javax.swing.JFrame {
                 .addComponent(btn_informacion, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(btn_close, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGap(10, 10, 10)
                 .addComponent(panelRound1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addContainerGap(112, Short.MAX_VALUE))
+                .addGap(12, 12, 12))
         );
 
         btn_home.setFocusPainted(false);
@@ -566,6 +573,27 @@ public class MenuPrincipal_2 extends javax.swing.JFrame {
         ContentPanel.revalidate();
         ContentPanel.repaint();        // TODO add your handling code here:
     }//GEN-LAST:event_btn_informacionActionPerformed
+
+    private void btn_comprasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_comprasActionPerformed
+        btn_home.setSelected(false);
+        btn_cliente.setSelected(false);
+        btn_empleado.setSelected(false);
+        btn_proveedor.setSelected(false);
+        btn_pedido.setSelected(false);
+        btn_producto.setSelected(false);
+        btn_prima.setSelected(false);
+        btn_materialIntermedio.setSelected(false);
+        btn_compras.setSelected(true);
+        btn_informacion.setSelected(false);
+
+        Registro_CompraVista compraVista = new Registro_CompraVista();
+        compraVista.setLocation(0, 0);
+
+        ContentPanel.removeAll();
+        ContentPanel.add(compraVista, BorderLayout.CENTER);
+        ContentPanel.revalidate();
+        ContentPanel.repaint();
+    }//GEN-LAST:event_btn_comprasActionPerformed
 
     public static void main(String args[]) {
         /* Set the Nimbus look and feel */

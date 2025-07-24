@@ -9,6 +9,7 @@ import modelo.inventario.productos_terminados.ProductoTerminado;
 public class AddPedido_SelectPTVista extends javax.swing.JDialog {
 
 	private ProductoTerminado productoTerminadoCreado = new ProductoTerminado();
+	private DefaultTableModel model;
 
 	public AddPedido_SelectPTVista(java.awt.Frame parent, boolean modal) {
 		super(parent, modal);
@@ -101,6 +102,10 @@ public class AddPedido_SelectPTVista extends javax.swing.JDialog {
 		return productoTerminadoCreado;
 	}
 
+	public DefaultTableModel getModel() {
+		return model;
+	}
+
 	//// Objetos visuales
 	public JTextField getJt_txtBusqueda() {
 		return jt_txtBusqueda;
@@ -121,7 +126,7 @@ public class AddPedido_SelectPTVista extends javax.swing.JDialog {
 
 	// Métodos extra
 	public void cargarTabla(String[] cabecera, Object[][] datos) {
-		DefaultTableModel modelo = new DefaultTableModel(datos, cabecera) {
+		model = new DefaultTableModel(datos, cabecera) {
 			@Override
 			public boolean isCellEditable(int row, int column) {
 				// Solo la primera columna ("Elegir") es editable
@@ -139,7 +144,7 @@ public class AddPedido_SelectPTVista extends javax.swing.JDialog {
 		};
 
 		jtable_datosPT.setRowSorter(null);
-		jtable_datosPT.setModel(modelo);
+		jtable_datosPT.setModel(model);
 	}
 
 	public static void main(String args[]) {

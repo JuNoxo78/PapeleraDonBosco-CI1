@@ -18,6 +18,9 @@ import javax.swing.JTable;
 import javax.swing.RowFilter;
 import javax.swing.event.DocumentEvent;
 import javax.swing.event.DocumentListener;
+import javax.swing.event.TableModelEvent;
+import javax.swing.event.TableModelListener;
+import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableModel;
 import javax.swing.table.TableRowSorter;
 import modelo.inventario.productos_terminados.ProductoTerminado;
@@ -42,6 +45,7 @@ public final class AddPedido_SelectPTControlador {
 
 	public void initController() {
 		cargarPTenTabla();
+		booleanColumnEvent();
 
 		JTable jtable_datosPT = selectPTVista.getJtable_datosPT();
 		TableRowSorter<TableModel> sorter = new TableRowSorter<>(jtable_datosPT.getModel());
@@ -54,7 +58,18 @@ public final class AddPedido_SelectPTControlador {
 		selectPTVista.setVisible(true);
 	}
 
-	// Carga inciial de PT en tabla
+	// Escuchar evento de selección de casillas en primera columna de tabla
+	public void booleanColumnEvent() {
+		DefaultTableModel model = selectPTVista.getModel();
+		model.addTableModelListener((TableModelEvent e) -> {
+			if (e.getType() == TableModelEvent.UPDATE && e.getColumn() == 0) {
+				List<String> idsSeleccionados = obtenerIdsSeleccionados();
+				agregarPedidoVista.setIdsPTSeleccionados(idsSeleccionados);
+			}
+		});
+	}
+
+	// Carga incial de PT en tabla
 	public void cargarPTenTabla() {
 		String[] cabecera = {"Elegir", "Id PT", "Nombre", "Descripción", "Precio", "Tipo PT", "Dimensiones"};
 		Object[][] datos = obtenerDatosTablaPT();
@@ -127,12 +142,12 @@ public final class AddPedido_SelectPTControlador {
 		addPTVista.addWindowListener(new WindowAdapter() {
 			@Override
 			public void windowClosed(WindowEvent e) {
-				cargarPTenTabla();
-				String idPT = selectPTVista.getProductoTerminadoCreado().getIdProductoTerminado();
 				JTable jtable_datosPT = selectPTVista.getJtable_datosPT();
 				TableRowSorter<TableModel> sorter = new TableRowSorter<>(jtable_datosPT.getModel());
 				jtable_datosPT.setRowSorter(sorter);
 				eventBusqueda(sorter);
+				cargarPTenTabla();
+				booleanColumnEvent();
 			}
 		});
 
@@ -142,6 +157,8 @@ public final class AddPedido_SelectPTControlador {
 	// Evento de Seleccionar PTs
 	public void selectPTButtonEvent() {
 		List<String> idsSeleccionados = obtenerIdsSeleccionados();
+		List<DetallePedido> listaDetallePedido = agregarPedidoVista.getListDetallePedido();
+
 		if (!idsSeleccionados.isEmpty()) {
 			agregarPedidoVista.setIdsPTSeleccionados(obtenerIdsSeleccionados());
 			AcordeonPanel acordeon = new AcordeonPanel();
@@ -149,7 +166,7 @@ public final class AddPedido_SelectPTControlador {
 
 			int i = 0;
 
-			agregarPedidoVista.getListDetallePedido().clear();
+			listaDetallePedido.clear();
 
 			for (String id : idsSeleccionados) {
 				ProductoTerminado pt = ptDAO.buscarPorId(id);
@@ -160,17 +177,18 @@ public final class AddPedido_SelectPTControlador {
 				dp.setIdPedido(idPedido);
 				dp.setIdProductoTerminado(idPT);
 
-				agregarPedidoVista.getListDetallePedido().add(dp);
+				listaDetallePedido.add(dp);
 				AddMIDetalle_PedidosVista addMIDetalleVista = new AddMIDetalle_PedidosVista(id, acordeon, selectPTVista, agregarPedidoVista);
 				acordeon.agregarSeccion(pt.getNombre() + " (" + pt.getIdProductoTerminado() + ")", addMIDetalleVista);
 
 				BigDecimal precioUnitario = ptDAO.buscarPorId(pt.getIdProductoTerminado()).getPrecio();
-				agregarPedidoVista.getListDetallePedido().get(i).setPrecioUnitario(precioUnitario);
-				System.out.println(agregarPedidoVista.getListDetallePedido().get(i));
+				listaDetallePedido.get(i).setPrecioUnitario(precioUnitario);
 
 				listenerCantidadField(acordeon, addMIDetalleVista, i);
 				i++;
 			}
+
+			System.out.println(listaDetallePedido);
 
 			JPanel envoltorio = new JPanel(new BorderLayout());
 			envoltorio.add(acordeon, BorderLayout.NORTH);

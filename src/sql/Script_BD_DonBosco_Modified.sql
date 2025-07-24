@@ -657,7 +657,7 @@ CREATE TABLE IF NOT EXISTS `papeleraartesanal`.`listapedidomi` (
   `idPedido` VARCHAR(10) NOT NULL,
   `cantidad` INT NULL,
   `idProductoTerminado` VARCHAR(10) NOT NULL,
-  PRIMARY KEY (`idMaterialIntermedio`, `idPedido`),
+  PRIMARY KEY (`idMaterialIntermedio`, `idProductoTerminado`, `idPedido`),
   INDEX `listapedidomi_ibfk_1_idx` (`idPedido` ASC) VISIBLE,
   INDEX `listapedidomi_ibfk_3_idx` (`idProductoTerminado` ASC) VISIBLE,
   CONSTRAINT `listapedidomi_ibfk_1`

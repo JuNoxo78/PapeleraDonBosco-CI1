@@ -10,6 +10,8 @@ import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JTable;
 import modelo.inventario.materiales_intermedios.MaterialIntermedio;
+import modelo.pedidos_ventas.DetallePedido;
+import modelo.pedidos_ventas.ListaPedidoMI;
 import vista.pedidos_ventas.AddMIDetalle_Card;
 import vista.pedidos_ventas.AddMIDetalle_PedidosVista;
 import vista.pedidos_ventas.AddPedidoVista;
@@ -21,11 +23,13 @@ public final class SelectMIManualmenteControlador {
 	private MIDAO miDAO = new MIDAO();
 	private final AddPedidoVista agregarPedidoVista;
 	private final AddMIDetalle_PedidosVista addMIDetalleVista;
+	private final String idPT;
 
-	public SelectMIManualmenteControlador(SelectMIManualmente addMIManualVista, AddPedidoVista agregarPedidoVista, AddMIDetalle_PedidosVista addMIDetalleVista) {
+	public SelectMIManualmenteControlador(SelectMIManualmente addMIManualVista, AddPedidoVista agregarPedidoVista, AddMIDetalle_PedidosVista addMIDetalleVista, String idPT) {
 		this.selectManualVista = addMIManualVista;
 		this.agregarPedidoVista = agregarPedidoVista;
 		this.addMIDetalleVista = addMIDetalleVista;
+		this.idPT = idPT;
 		initController();
 	}
 
@@ -62,8 +66,22 @@ public final class SelectMIManualmenteControlador {
 
 	public void selectMIButtonEvent() {
 		List<String> idsSeleccionados = obtenerIdsSeleccionados();
+		List<ListaPedidoMI> listaPedidoMI = agregarPedidoVista.getListaPedidoMI();
+		listaPedidoMI.clear();
 		if (!idsSeleccionados.isEmpty()) {
 			agregarPedidoVista.setIdsMISeleccionados(idsSeleccionados);
+
+			ListaPedidoMI instListaPedidoMI = new ListaPedidoMI();
+
+			for (int i = 0; i < idsSeleccionados.size(); i++) {
+				instListaPedidoMI.setIdMaterialIntermedio(idsSeleccionados.get(i));
+				instListaPedidoMI.setIdPedido(agregarPedidoVista.getJt_idPedido().getText());
+				instListaPedidoMI.setIdProductoTerminado(idPT);
+
+				listaPedidoMI.add(instListaPedidoMI);
+			}
+			System.out.println(listaPedidoMI);
+			
 			cargarMIDetalle();
 			selectManualVista.dispose();
 		} else {

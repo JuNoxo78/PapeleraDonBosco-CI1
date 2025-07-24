@@ -3,18 +3,9 @@ package controlador.pedidos_ventas;
 import dao.inventario.materiales_intermedios.MIDAO;
 import dao.inventario.productos_terminados.PTDAO;
 import extra.AcordeonPanel;
-import extra.SingleColumnLayout;
-import java.awt.Dimension;
 import java.awt.Frame;
 import java.awt.event.ActionEvent;
-import java.math.BigDecimal;
-import java.util.List;
-import javax.swing.JPanel;
-import javax.swing.event.DocumentEvent;
-import javax.swing.event.DocumentListener;
-import modelo.inventario.materiales_intermedios.MaterialIntermedio;
 import modelo.inventario.productos_terminados.ProductoTerminado;
-import vista.pedidos_ventas.AddMIDetalle_Card;
 import vista.pedidos_ventas.AddMIDetalle_PedidosVista;
 import vista.pedidos_ventas.AddPedidoVista;
 import vista.pedidos_ventas.SelectMIManualmente;
@@ -52,6 +43,6 @@ public class AddMIDetalleControlador {
 
 	public void botonAddManualmenteEvento() {
 		SelectMIManualmente addMIManualVista = new SelectMIManualmente((Frame) selectPTVista.getOwner(), true);
-		new SelectMIManualmenteControlador(addMIManualVista, agregarPedidoVista, addMIDetalleVista);
+		new SelectMIManualmenteControlador(addMIManualVista, agregarPedidoVista, addMIDetalleVista, idPT);
 	}
 }
